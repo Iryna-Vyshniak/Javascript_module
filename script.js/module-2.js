@@ -1,3 +1,193 @@
+const friends1 = ['kiwi', 'lemon', 'mango', 'peach'];
+console.table(friends1);
+const lastIndex1 = friends1.length - 1;
+for (i = 0; i <= lastIndex1; i += 1){
+    console.log(friends[i]);
+    // call to every elements in array: kiwi, lemon, mango, ...
+}
+
+// 0	'kiwi'
+// 1	'lemon'
+// 2	'mango'
+// 3	'peach'
+// Array(4)
+// VM545:5 kiwi
+// VM545:5 lemon
+// VM545:5 mango
+// VM545:5 peach
+
+const friends2 = ['kiwi', 'lemon', 'mango', 'peach'];
+console.table(friends2);
+const lastIndex2 = friends2.length - 1;
+for (i = 0; i <= lastIndex2; i += 1){
+    friends2[i] += '-1';
+}
+console.log(friends2[i]);
+
+
+// 0	'kiwi'
+// 1	'lemon'
+// 2	'mango'
+// 3	'peach'
+// Array(4)
+// 0
+// :
+// "kiwi-1"
+// 1
+// :
+// "lemon-1"
+// 2
+// :
+// "mango-1"
+// 3
+// :
+// "peach-1"
+// length: 4
+
+
+const friends3 = ['kiwi', 'lemon', 'mango', 'peach'];
+
+for (const friend3 of friends3){
+    console.log(friend3);
+}
+
+// kiwi
+// lemon
+// mango
+// peach
+
+
+
+// cout total summ shopping in cart
+const cart1 = [45, 67, 112, 300, 260, 567, 789];
+let totalSumm1 = 0;
+for (let i = 0; i < cart1.length; i += 1) {
+    console.log(cart1[i]);
+    totalSumm1 += cart1[i];
+}
+console.log('Total: ', totalSumm1);
+
+// 45
+// 67
+// 112
+// 300
+// 260
+// 567
+// 789
+// Total:  2140
+
+// for ... of => if we want only count, don`t change 
+const carts2 = [45, 67, 112, 300, 260, 567, 789];
+let totalSumm2 = 0;
+for (let cart2 of carts2) {
+    totalSumm2 += cart2;
+}
+console.log('Total: ', totalSumm2);
+//  Total:  2140
+
+// if we want change elements in array ~ add task on 1.1%
+const carts3 = [45, 67, 112, 300, 260, 567, 789];
+for (let i = 0; i < carts3.length; i += 1) {
+    carts3[i] = Math.round(carts3[i] * 1.1);
+}
+console.log(carts3);
+// (7) [50, 74, 123, 330, 286, 624, 868]
+
+
+//  перевірити кожен елемент на кратність і кожен кратний 2 + в сумму
+// variant 1
+const numbers1 = [1, 3, 5, 4, 7, 8, 12, 14, 18, 22, 45, 44];
+let total1 = 0;
+for (let i = 0; i < numbers1.length; i += 1){
+    console.log(numbers1[i]);
+    
+    if (numbers1[i] % 2 === 0) {
+        console.log('Кратне 2!');
+        
+        total1 += numbers1[i];
+    }
+}
+console.log('Total: ', total1);
+//  1
+//  3
+//  5
+//  4
+//  Кратне 2!
+//  7
+//  8
+//  Кратне 2!
+//  12
+//  Кратне 2!
+//  14
+//  Кратне 2!
+//  18
+//  Кратне 2!
+//  22
+//  Кратне 2!
+//  45
+//  44
+//  Кратне 2!
+// 3 Total:  122
+
+// variant 2
+const numbers2 = [1, 3, 5, 4, 7, 8, 12, 14, 18, 22, 45, 44];
+let total2 = 0;
+const number2 = numbers2[i];
+for (let i = 0; i < numbers2.length; i += 1){
+    console.log(numbers2[i]);
+    
+    if (number2 % 2 === 0) {
+        console.log('Кратне 2!');
+        
+        total2 += number2;
+    }
+}
+console.log('Total: ', total2);
+
+
+// variant 3
+const numbers3 = [1, 3, 5, 4, 7, 8, 12, 14, 18, 22, 45, 44];
+let total3 = 0;
+for (let number3 of numbers3){
+    console.log(number3);
+    
+    if (number3 % 2 === 0) {
+        console.log(`${number3} - kратне 2!`);
+        
+        total3 += number3;
+    }
+}
+console.log('Total: ', total3);
+
+// variant 4
+// логіка від зворотнього
+const numbers4 = [1, 3, 5, 4, 7, 8, 12, 14, 18, 22, 45, 44];
+let total4 = 0;
+for (let number4 of numbers4){
+    if (number4 % 2 !== 0) {
+        console.log("Цю ітерацію необхідно пропустити", number4);
+        continue; 
+    }
+     console.log(`${number4} - кратне 2`);
+     total4 += number4;
+}
+console.log('Total: ', total4);
+// Цю ітерацію необхідно пропустити 1
+// Цю ітерацію необхідно пропустити 3
+// Цю ітерацію необхідно пропустити 5
+// 4 - кратне 2
+// Цю ітерацію необхідно пропустити 7
+// 8 - кратне 2
+// 12 - кратне 2
+// 14 - кратне 2
+// 18 - кратне 2
+// 22 - кратне 2
+// Цю ітерацію необхідно пропустити 45
+// 44 - кратне 2
+//  Total:  122
+
+
+
 // 1
 // Запиши умову в інструкції if таким чином, щоб функція працювала правильно.
 function checkAge(age) {
@@ -42,14 +232,14 @@ function checkStorage(available, ordered) {
 
 // 4
 // Оголоси змінну fruits і присвой їй масив фруктів - рядків "apple", "plum", "pear" і "orange".
-const fruits = ["apple", "plum", "pear", "orange"];
+const fruits1 = ["apple", "plum", "pear", "orange"];
 
 // 5
 // Оголоси три змінні і присвой кожній з них значення, використовуючи нотацію квадратних дужок. 
-const fruits = ["apple", "plum", "pear", "orange"];
-const firstElement = fruits[0];
-const secondElement = fruits[1];
-const lastElement = fruits[fruits.length - 1];
+const fruits2 = ["apple", "plum", "pear", "orange"];
+const firstElement2 = fruits2[0];
+const secondElement2 = fruits2[1];
+const lastElement2 = fruits2[fruits2.length - 1];
 
 // 6
 // Виконай перевизначення значення елементів з індексами 1 і 3. Заміни "plum" на "peach", а "orange" на "banana". 
@@ -144,10 +334,10 @@ return makeArray;
 
 //   17
 // Доповни цикл for таким чином, щоб він логував всі цілі числа в діапазоні від start до end включно.
-const start = 3;
-const end = 7;
+const start1 = 3;
+const end1 = 7;
 
-for (let i = start; i <= end; i += 1) { 
+for (let i = start1; i <= end1; i += 1) { 
   console.log(i);
 }
 
