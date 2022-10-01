@@ -1,2 +1,2 @@
-# modul.js
+# module.js
 practic js
