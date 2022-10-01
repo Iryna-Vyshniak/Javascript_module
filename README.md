@@ -1,0 +1,2 @@
+# modul.js
+practic js
