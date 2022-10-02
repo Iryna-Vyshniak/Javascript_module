@@ -1,3 +1,4 @@
+
 const friends1 = ['kiwi', 'lemon', 'mango', 'peach'];
 console.table(friends1);
 const lastIndex1 = friends1.length - 1;
@@ -11,10 +12,7 @@ for (i = 0; i <= lastIndex1; i += 1){
 // 2	'mango'
 // 3	'peach'
 // Array(4)
-// kiwi
-// lemon
-// mango
-// peach
+
 
 const friends2 = ['kiwi', 'lemon', 'mango', 'peach'];
 console.table(friends2);
@@ -232,6 +230,7 @@ function checkStorage(available, ordered) {
 
 // 4
 // Оголоси змінну fruits і присвой їй масив фруктів - рядків "apple", "plum", "pear" і "orange".
+
 const fruits1 = ["apple", "plum", "pear", "orange"];
 
 // 5
@@ -240,6 +239,7 @@ const fruits2 = ["apple", "plum", "pear", "orange"];
 const firstElement2 = fruits2[0];
 const secondElement2 = fruits2[1];
 const lastElement2 = fruits2[fruits2.length - 1];
+
 
 // 6
 // Виконай перевизначення значення елементів з індексами 1 і 3. Заміни "plum" на "peach", а "orange" на "banana". 
@@ -334,6 +334,7 @@ return makeArray;
 
 //   17
 // Доповни цикл for таким чином, щоб він логував всі цілі числа в діапазоні від start до end включно.
+
 const start1 = 3;
 const end1 = 7;
 
