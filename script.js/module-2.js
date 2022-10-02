@@ -12,10 +12,7 @@ for (i = 0; i <= lastIndex1; i += 1){
 // 2	'mango'
 // 3	'peach'
 // Array(4)
-// VM545:5 kiwi
-// VM545:5 lemon
-// VM545:5 mango
-// VM545:5 peach
+
 
 const friends2 = ['kiwi', 'lemon', 'mango', 'peach'];
 console.table(friends2);

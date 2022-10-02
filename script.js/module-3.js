@@ -207,4 +207,68 @@ if (apartment8.hasOwnProperty(key)) {
 }
 
 // 12
-// 
+// Напиши функцію countProps(object), яка рахує і повертає кількість власних властивостей об'єкта в параметрі object. Використовуй змінну propCount для зберігання кількості властивостей об'єкта.
+function countProps(object) {
+  let propCount = 0;
+  
+const array = [];
+   for (key in object) {
+   if (object.hasOwnProperty(key)){
+    array.push(key);
+    propCount = array.length;
+}
+   }
+  
+  return propCount;
+}
+
+// 13
+// Перебери об'єкт apartment, використовуючи метод Object.keys() і цикл for...of. Запиши у змінну keys масив ключів власних властивостей об'єкта apartment, і додай в масив values всі значення його властивостей.
+const apartment9 = {
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+};
+const values9 = [];
+// Change code below this line
+const keys9 = Object.keys(apartment9);
+ for (const key of keys){
+   values9.push(apartment9[key]);
+ }
+
+ //14
+//  Виконай рефакторинг функції countProps(object), використовуючи метод Object.keys() і, можливо, але не обов'язково, цикл for...of.
+// Оголошена функція countProps(object)
+// Виклик countProps({}) повертає 0
+// Виклик countProps({ name: "Mango", age: 2 }) повертає 2
+// Виклик countProps({ mail: "poly@mail.com", isOnline: true, score: 500 }) повертає 3
+// Функція підраховує тільки власні властивості об'єкта
+// Функція використовує метод Object.keys() і, можливо, цикл for...of
+ function countProps(object) {
+  
+  let propCount = 0;
+  const array = [];
+
+  const keys = Object.keys(object);
+ 
+for (const key of keys) {
+  array.push(key);
+  propCount = array.length;
+}
+  return propCount;
+  
+}
+
+// 15
+// Запиши у змінну keys масив ключів власних властивостей об'єкта apartment, а у змінну values - масив всіх значень його властивостей. Використовуй методи Object.keys() і Object.values().
+const apartment10 = {
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+};
+
+const keys10 = Object.keys(apartment);
+const values10 = Object.values(apartment);
+
+// 16
+// Напиши функцію countTotalSalary(salaries), яка приймає об'єкт зарплат, де ім'я властивості - це ім'я співробітника, а значення властивості - це зарплата. Функція повинна розрахувати загальну суму зарплат співробітників і повернути її. Використовуй змінну totalSalary для зберігання загальної суми зарплати.
