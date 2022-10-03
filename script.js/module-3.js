@@ -284,6 +284,9 @@ const value = [];
 }
 
 
+// WRITTING WITH COMMENT, BECAUSE CONST NAME REPEAT
+
+
 // 17
 // Перебери масив об'єктів colors, використовуючи цикл for...of. Додай у масив hexColors значення властивостей hex, а в масив rgbColors - значення властивостей rgb з усіх об'єктів масиву colors.
 
@@ -302,4 +305,27 @@ const value = [];
 //   hexColors.push(value.hex);
 //   rgbColors.push(value.rgb);
 // }
+
+
+
+// 18
+// Напиши функцію getProductPrice(productName), яка приймає один параметр productName - назва продукту. Функція шукає об'єкт продукту з таким ім'ям (властивість name) в масиві products і повертає його ціну (властивість price). Якщо продукт з такою назвою не знайдений, функція повинна повертати null.
+
+const products = [
+  { name: "Radar", price: 1300, quantity: 4 },
+  { name: "Scanner", price: 2700, quantity: 3 },
+  { name: "Droid", price: 400, quantity: 7 },
+  { name: "Grip", price: 1200, quantity: 9 },
+];
+
+function getProductPrice(productName) {
+  
+  for (const product of products){
+if (product.name === productName){
+  return product.price;
+}
+  }
+return null;
+
+}
 
