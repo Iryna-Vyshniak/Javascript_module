@@ -329,3 +329,66 @@ return null;
 
 }
 
+// CODEWAR
+// Write a function findNeedle() that takes an array full of junk but containing one "needle"
+// After your function finds the needle it should return a message (as a string) that says:
+// "found the needle at position " plus the index it found the needle
+
+function findNeedle(haystack) {
+  let message = "found the needle at position " + haystack.indexOf('needle');
+  return message; 
+}
+
+// Timmy & Sarah think they are in love, but around where they live, they will only know once they pick a flower each. If one of the flowers has an even number of petals and the other has an odd number of petals it means they are in love. Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't.
+// var1
+function lovefunc(flower1, flower2){
+ 
+  return (flower1 % 2 === 0 && flower2 % 2 !== 0) || (flower1 % 2 !== 0 && flower2 % 2 === 0)
+    ? true
+    : false;
+}
+//  var 2
+function lovefunc(flower1, flower2){
+  let lovePetals = flower1 + flower2;
+  return lovePetals % 2 !== 0
+    ? true
+    : false;
+}
+
+// create your first JS function and print "Hello World!"
+function helloWorld(){
+  let str = "Hello World!";
+  console.log(str);
+}
+
+// Выведите на экран последний символ строки, находящейся в константе name
+const nameN = 'Na\nharis';
+console.log(nameN[nameN.length - 1]);
+
+
+// Напишите программу, которая будет генерировать заголовок и тело письма, используя уже готовые переменные, и выводить получившиеся строки на экран.
+// Для заголовка используйте переменные firstName и greeting, запятую и восклицательный знак. Выведите это на экран в правильном порядке.
+// Для тела письма используйте переменные info и intro, при этом второе предложение должно быть на новой строке.
+let info = "We couldn't verify your mother's maiden name.";
+let intro = 'Here is important information about your account security.';
+
+let firstName = 'Joffrey';
+let greeting = 'Hello';
+
+console.log(greeting + ',' + ' ' + firstName + '!');
+console.log(intro + '\n' + info);
+
+// Напишите программу, которая берет исходное количество евро, записанное в переменную eurosCount, переводит евро в доллары и выводит на экран. Затем полученное значение переводит в грн и выводит на новой строчке. Считаем, что:
+// - 1 евро = 1.25 долларов
+// - 1 доллар = 30грн
+let eurosCount = 100;
+
+let euroToDollars = 1.25;
+let dollarsCount = eurosCount * euroToDollars;
+
+console.log(dollarsCount);
+
+let  uaPerDollar = 30;
+let uaCount = dollarsCount * uaPerDollar;
+
+console.log(uaCount);
