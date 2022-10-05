@@ -1,11 +1,11 @@
 // 1
 // Присвой змінній apartment об'єкт, який описує квартиру
 const apartment = {
-imgUrl: "https://via.placeholder.com/640x480",
-descr: "Spacious apartment in the city center",
-rating: 4,
-price: 2153,
-tags: ["premium", "promoted", "top"],
+  imgUrl: "https://via.placeholder.com/640x480",
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+  tags: ["premium", "promoted", "top"],
 };
 
 // 2
@@ -18,7 +18,7 @@ const apartment1 = {
   tags: ["premium", "promoted", "top"],
   owner: {
     name: 'Henry',
-    phone: "982-126-1588", 
+    phone: "982-126-1588",
     email: "henry.carter@aptmail.com",
   },
 };
@@ -140,7 +140,7 @@ apartment6.location = {
   country: "Jamaica",
   city: "Kingston",
 }
-  
+
 // 8
 // Доповни код оголошення об'єкта таким чином, щоб у нього були властивості name, price, image і tags зі значеннями зі змінних з аналогічними іменами. Обов'язково використовуй синтаксис коротких властивостей.
 const name1 = "Repair Droid";
@@ -162,9 +162,9 @@ const emailInputName = "email";
 const passwordInputName = "password";
 
 const credentials = {
-  
-[emailInputName]: "henry.carter@aptmail.com", 
-[passwordInputName]: "jqueryismyjam",
+
+  [emailInputName]: "henry.carter@aptmail.com",
+  [passwordInputName]: "jqueryismyjam",
 
 };
 
@@ -180,7 +180,7 @@ const values = ["Spacious apartment in the city center", 4, 2153];
 // Change code below this line
 for (const keys in apartment7) {
   keys;
-  values;  
+  values;
 }
 
 // 11
@@ -197,28 +197,28 @@ apartment8.price = 2153;
 
 for (const key in apartment8) {
   // Change code below this line
-if (apartment8.hasOwnProperty(key)) {
+  if (apartment8.hasOwnProperty(key)) {
     console.log(key);
     console.log(apartment8[key]);
     keys.push(key);
     values.push(apartment8[key]);
-}
- 
+  }
+
 }
 
 // 12
 // Напиши функцію countProps(object), яка рахує і повертає кількість власних властивостей об'єкта в параметрі object. Використовуй змінну propCount для зберігання кількості властивостей об'єкта.
 function countProps(object) {
   let propCount = 0;
-  
-const array = [];
-   for (key in object) {
-   if (object.hasOwnProperty(key)){
-    array.push(key);
-    propCount = array.length;
-}
-   }
-  
+
+  const array = [];
+  for (key in object) {
+    if (object.hasOwnProperty(key)) {
+      array.push(key);
+      propCount = array.length;
+    }
+  }
+
   return propCount;
 }
 
@@ -232,11 +232,11 @@ const apartment9 = {
 const values9 = [];
 // Change code below this line
 const keys9 = Object.keys(apartment9);
- for (const key of keys){
-   values9.push(apartment9[key]);
- }
+for (const key of keys) {
+  values9.push(apartment9[key]);
+}
 
- //14
+//14
 //  Виконай рефакторинг функції countProps(object), використовуючи метод Object.keys() і, можливо, але не обов'язково, цикл for...of.
 // Оголошена функція countProps(object)
 // Виклик countProps({}) повертає 0
@@ -244,19 +244,19 @@ const keys9 = Object.keys(apartment9);
 // Виклик countProps({ mail: "poly@mail.com", isOnline: true, score: 500 }) повертає 3
 // Функція підраховує тільки власні властивості об'єкта
 // Функція використовує метод Object.keys() і, можливо, цикл for...of
- function countProps(object) {
-  
+function countProps(object) {
+
   let propCount = 0;
   const array = [];
 
   const keys = Object.keys(object);
- 
-for (const key of keys) {
-  array.push(key);
-  propCount = array.length;
-}
+
+  for (const key of keys) {
+    array.push(key);
+    propCount = array.length;
+  }
   return propCount;
-  
+
 }
 
 // 15
@@ -275,8 +275,8 @@ const values10 = Object.values(apartment);
 function countTotalSalary(salaries) {
   let totalSalary = 0;
   // Change code below this line
-const value = [];
-  for (const value of Object.values(salaries)){
+  const value = [];
+  for (const value of Object.values(salaries)) {
     totalSalary += value;
   }
   // Change code above this line
@@ -319,13 +319,13 @@ const products = [
 ];
 
 function getProductPrice(productName) {
-  
-  for (const product of products){
-if (product.name === productName){
-  return product.price;
-}
+
+  for (const product of products) {
+    if (product.name === productName) {
+      return product.price;
+    }
   }
-return null;
+  return null;
 
 }
 
@@ -336,19 +336,19 @@ return null;
 
 function findNeedle(haystack) {
   let message = "found the needle at position " + haystack.indexOf('needle');
-  return message; 
+  return message;
 }
 
 // Timmy & Sarah think they are in love, but around where they live, they will only know once they pick a flower each. If one of the flowers has an even number of petals and the other has an odd number of petals it means they are in love. Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't.
 // var1
-function lovefunc(flower1, flower2){
- 
+function lovefunc(flower1, flower2) {
+
   return (flower1 % 2 === 0 && flower2 % 2 !== 0) || (flower1 % 2 !== 0 && flower2 % 2 === 0)
     ? true
     : false;
 }
 //  var 2
-function lovefunc(flower1, flower2){
+function lovefunc(flower1, flower2) {
   let lovePetals = flower1 + flower2;
   return lovePetals % 2 !== 0
     ? true
@@ -356,7 +356,7 @@ function lovefunc(flower1, flower2){
 }
 
 // create your first JS function and print "Hello World!"
-function helloWorld(){
+function helloWorld() {
   let str = "Hello World!";
   console.log(str);
 }
@@ -388,7 +388,123 @@ let dollarsCount = eurosCount * euroToDollars;
 
 console.log(dollarsCount);
 
-let  uaPerDollar = 30;
+let uaPerDollar = 30;
 let uaCount = dollarsCount * uaPerDollar;
 
 console.log(uaCount);
+
+
+// Поиск в массиве объектов. Методы Find,findIndex и filter
+// .find or.findIndex
+let arrIndex = [
+  { name: 'Nick', age: 36 },
+  { name: 'Olha', age: 18 },
+  { name: 'David', age: 45 },
+]
+let resultOne = arrIndex.find(item => item.age === 18);
+
+console.log(resultOne);
+
+// {name: 'Olha', age: 18}
+
+let resultTwo = arr.findIndex(item => item.age === 18);
+
+console.log(resultTwo);
+// 1
+
+// .filter
+let arrFilter = [
+  { name: 'Nick', age: 36 },
+  { name: 'Olha', age: 18 },
+  { name: 'David', age: 45 },
+]
+let resultFilterOne = arrFilter.filter(item => item.age >= 18);
+
+console.log(resultFilterOne);
+//  {name: 'Nick', age: 36},
+// {name: 'Olha', age: 18},
+// {name: 'David', age: 45},
+
+// Сортировка массива. Методы sort и reverse
+// .sort() for unicod
+
+let arrSort = ['Nick', 'Olha', 'John'];
+let resultArrSort = arrSort.sort();
+
+console.log(resultArrSort);
+// ["John","Nick","Olha"]
+
+let arrSortN = [22, 1, 5];
+let resultArrSortNumber = arrSortN.sort();
+
+console.log(resultArrSortNumber);
+// [1,22,5]
+
+let arrSortS = ["22", "1", "Ann", "ananas"];
+let resultArrSortString = arrSortS.sort();
+
+console.log(resultArrSortString);
+// ["1","22","Ann","ananas"]
+
+
+// .reverse()
+let arrReverse = ["22", "1", "Ann", "ananas"];
+let resultArrReverse = arrReverse.reverse();
+
+console.log(resultArrReverse);
+// ["ananas","Ann","1","22"]
+
+//  Метод .map(function) (преобразование массива) original Array doesn`t change => copy
+let arrMap = ["Nick", "Olha", "Sonic", "Ananas"];
+let resultArrMap = arrMap.map(item => item[0]);
+// or resultArrMap = arrMap.map(function(item, index, array)){
+// return item[0];
+// }
+console.log(resultArrMap);
+// ["N","O","S","A"]
+
+let firstPart = "likes JS";
+let userInfo = {
+  name: 'Nick',
+  age: 30,
+  [firstPart]: true,
+};
+
+let key = 'name';
+console.log(userInfo[key]);
+// 'Nick'
+
+// Значение свойств объекта из переменных
+function makeUserInfo (name, age) {
+  return {
+        name,
+        age,
+  };
+}
+let user = makeUserInfo('Nick', 30);
+console.log(user);
+
+// [object Object] 
+// {
+//   "name": "Nick",
+//   "age": 30
+// }
+
+// Изменение объекта и его свойств
+let userInfor = {
+  name: 'Nick',
+};
+userInfor.age = 30;
+userInfor.address = {
+  city: 'Kyiv',
+  street: 'Freedom',
+};
+userInfor['likes JS'] = true;
+
+console.log(userInfor);
+// {name: 'Nick', age: 30, address: {…}, likes JS: true}
+// address: {city: 'Kyiv', street: 'Freedom'}
+// age: 30
+// likes JS: true
+// name: "Nick"
+// [[Prototype]]: Object
