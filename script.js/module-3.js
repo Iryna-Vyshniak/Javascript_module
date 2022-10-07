@@ -723,3 +723,183 @@ function calculateMeanTemperature(forecast) {
   return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
 }
 
+// 
+const charlie = { name: 'Charlie' };
+const joy = { name: 'Joy' };
+const lordy = { name: 'Lordy' };
+
+makeRobotsPair(joy, lordy);
+
+console.log(
+  joy.partner === lordy, // true 
+  lordy.partner === joy, // true
+);
+
+makeRobotsPair(charlie);
+
+console.log(charlie.partner); // null
+
+console.log(joy)
+
+function makeRobotsPair(robot1, robot2) {
+  if (!robot2) {
+    robot1.partner = null
+    return
+  }
+  robot1.partner = robot2
+  robot2.partner = robot1
+}
+
+
+// Robot Factory собираются составить бюджет на следующий год. Для этого им нужно знать сколько будут стоить все детали, которые они планируют приобрести в течение года. Создай функцию calculateCost, которая принимает bucket, и products. bucket - это объект с запчастями, которые мы собираемся приобрести, а products - объект с ценами на детали от магазинов. Товары в магазинах не повторяются.
+// const bucket = {
+//   display: 20,
+//   wheel: 100,
+//   cpu: 40,
+// }
+
+// const products = {
+//   amazobot: {
+//     wheel: 12.5,
+//   },
+//   robozetka: {
+//     display: 56.2,
+//     cpu: 150,
+//   },
+// }
+
+// function calculateCost(bucket, products) {
+//   let totalValue = 0
+   
+//   const productsArr = Object.values(products)
+//   const priceObj =  Object.assign({}, ...productsArr)
+  
+//   for (const good in bucket) {
+//     let goodsCount = bucket[good]
+//     let goodsPrice = priceObj[good]
+    
+//     totalValue += goodsCount * goodsPrice
+//   }
+//   return totalValue
+// }
+
+// 27
+// У змінній scores зберігається масив результатів тестування. Використовуючи розподіл і методи Math.max() і Math.min(), доповни код таким чином, щоб у змінній bestScore був найвищий бал, а у worstScore - найнижчий.
+const scores = [89, 64, 42, 17, 93, 51, 26];
+// Change code below this line
+const bestScore = Math.max(...scores);
+const worstScore = Math.min(...scores);
+
+
+// 28
+// У змінних firstGroupScores, secondGroupScores і thirdGroupScores зберігаються результати тестування окремих груп. Використовуючи розподіл, доповни код таким чином, щоб:
+// У змінній allScores зберігався масив всіх результатів від першої до третьої групи.
+// У змінній bestScore був найвищий загальний бал.
+// У змінній worstScore був найнижчий загальний бал.
+
+// const firstGroupScores = [64, 42, 93];
+// const secondGroupScores = [89, 14, 51, 26];
+// const thirdGroupScores = [29, 47, 18, 97, 81];
+// // Change code below this line
+// const allScores = [...firstGroupScores, ...secondGroupScores, ...thirdGroupScores];
+// const bestScore = Math.max(...allScores);
+// const worstScore = Math.min(...allScores);
+
+
+// 29
+// В конструкторі можна створювати нові тести, для яких є налаштування за замовчуванням, які зберігаються у змінній defaultSettings. Під час створення тесту, усі або частину налаштувань можна перевизначити, вони зберігаються у змінній overrideSettings.
+// Для того щоб отримати фінальні налаштування тесту, необхідно взяти налаштування за замовчуванням і поверх них застосувати перевизначені налаштування. Доповни код таким чином, щоб у змінній finalSettings утворився об'єкт фінальних налаштувань тесту.
+const defaultSettings = {
+  theme: "light",
+  public: true,
+  withPassword: false,
+  minNumberOfQuestions: 10,
+  timePerQuestion: 60,
+};
+const overrideSettings = {
+  public: false,
+  withPassword: true,
+  timePerQuestion: 30,
+};
+
+const finalSettings = {...defaultSettings, ...overrideSettings};
+
+// 30
+// Напиши функцію makeTask(data) яка приймає один параметр data - об'єкт з наступними властивостями.
+// text - текст завдання.
+// category - категорія завдання.
+// priority - пріоритет завдання.
+// Функція повинна створити і повернути новий об'єкт завдання, не змінюючи напряму параметр data. У новому об'єкті повинна бути властивість completed, значення якої зберігається в однойменній локальній змінній.
+// В параметрі data гарантовано буде тільки властивість text, а інші дві, category і priority, можуть бути відсутніми. Тоді, в новому об'єкті завдання, у властивостях category і priority повинні бути значення за замовчуванням, що зберігаються в однойменних локальних змінних.
+
+function makeTask(data) {
+  const completed = false;
+  const category = "General";
+  const priority = "Normal";
+ 
+let newTask = {completed, 
+               category, 
+               priority, ...data};
+  return newTask;
+}
+
+// 31
+// Використовуючи операцію rest, доповни код функції add() таким чином, щоб вона приймала будь-яку кількість аргументів, рахувала і повертала їх суму.
+function add (...args) {
+  let totalSum = 0;
+  for (const arg of args){
+    totalSum += arg;
+  }
+  return totalSum;
+}
+
+// 32
+// Функція addOverNum() рахує суму всіх аргументів. Зміни параметри і тіло функції addOverNum() таким чином, щоб вона рахувала суму тільки тих аргументів, які більші за задане число. Це число повинно бути першим параметром функції.
+function addOverNum (maxNumber, ...args) {
+  let total = 0;
+  for (const arg of args) {
+    if (arg > maxNumber) {
+      total += arg;
+  }
+  }
+  return total;
+}
+
+// 33
+// Функція findMatches() приймає довільну кількість аргументів. Першим аргументом завжди буде масив чисел, а решта аргументів будуть просто числами.
+// Доповни код функції таким чином, щоб вона повертала новий масив matches, в якому будуть тільки ті аргументи, починаючи з другого, які є в масиві першого аргументу.
+// Наприклад, findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7) повинна повернути масив [1, 2], тому що тільки вони є в масиві першого аргументу.
+
+function findMatches(array, ...args) {
+  const matches = []; // Don't change this line
+for (const arrayItem of array){
+if (args.includes(arrayItem)){
+matches.push(arrayItem);
+}
+}
+  return matches;
+}
+
+// 34
+// Додай об'єкту bookShelf ще два методи, які поки що будуть повертати просто рядки за аналогією з getBooks() і addBook(bookName).
+// Метод removeBook(bookName) буде видаляти книгу за назвою. Повертає рядок "Deleting book <назва книги>", де <назва книги> - це значення параметра bookName.
+// Метод updateBook(oldName, newName) буде оновлювати назву книги на нову. Повертає рядок "Updating book <стара назва> to <нова назва>", де <стара назва> і <нова назва> - це значення параметрів oldName і newName відповідно.
+
+const bookShelf = {
+  books: ["The last kingdom", "The guardian of dreams"],
+  getBooks() {
+    return "Returning all books";
+  },
+  addBook(bookName) {
+    return `Adding book ${bookName}`;
+  },
+  removeBook(bookName) {
+    return `Deleting book ${bookName}`;
+  },
+  updateBook(oldName, newName) {
+    return `Updating book ${oldName} to ${newName}`;
+  },
+};
+
+// 35
+// Доповни метод updateBook(oldName, newName) таким чином, щоб він змінював назву книги з oldName на newName у властивості books. Використовуй indexOf() для того, щоб знайти потрібний елемент масиву, і splice() для того, щоб замінити цей елемент. 
