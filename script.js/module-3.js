@@ -903,3 +903,71 @@ const bookShelf = {
 
 // 35
 // Доповни метод updateBook(oldName, newName) таким чином, щоб він змінював назву книги з oldName на newName у властивості books. Використовуй indexOf() для того, щоб знайти потрібний елемент масиву, і splice() для того, щоб замінити цей елемент. 
+// const bookShelf = {
+//   books: ["The last kingdom", "Haze", "The guardian of dreams"],
+//   updateBook(oldName, newName) {
+// const oldBookIndex = this.books.indexOf(oldName);
+//     this.books.splice(oldBookIndex, 1, newName);
+//   },
+// };
+
+// 36
+// До нас звернулася власниця крамниці зілля «У старої жаби» і замовила програму для ведення інвентарю - додавання, видалення, пошуку та оновлення зілля. Додай об'єкту atTheOldToad властивість potions, значенням якої зроби порожній масив. 
+const atTheOldToad = {
+  
+  potions: [],
+
+};
+
+// 37
+// Додай об'єкту atTheOldToad метод getPotions(), який просто повертає значення властивості potions.
+// const atTheOldToad = {
+//   potions: ["Speed potion", "Dragon breath", "Stone skin"],
+
+// getPotions(){
+//   return this.potions;
+// }
+// };
+
+// 38
+// Доповни метод addPotion(potionName) таким чином, щоб він додавав зілля potionName в кінець масиву зілля у властивості potions.
+// const atTheOldToad = {
+//   potions: ["Speed potion", "Dragon breath", "Stone skin"],
+//   addPotion(potionName) {
+
+// this.potions.push(potionName);
+
+//   },
+// };
+
+
+
+// 39
+// Доповни метод removePotion(potionName) таким чином, щоб він видаляв зілля potionName з масиву зілля у властивості potions.
+// const atTheOldToad = {
+//   potions: ["Speed potion", "Dragon breath", "Stone skin"],
+
+//   removePotion(potionName) {
+// const indexPotion = this.potions.indexOf(potionName);
+// this.potions.splice(indexPotion, 1);
+//   },
+// };
+
+// 40
+// Доповни метод updatePotionName(oldName, newName) таким чином, щоб він оновлював назву зілля з oldName на newName в масиві зілля у властивості potions.
+// const atTheOldToad = {
+//   potions: ["Speed potion", "Dragon breath", "Stone skin"],
+//   updatePotionName(oldName, newName) {
+// let indexPotion = this.potions.indexOf(oldName);
+//     this.potions.splice(indexPotion, 1, newName);
+//   },
+// };
+
+// 41
+// Замовниця хоче, щоб кожне зілля було представлено не тільки ім'ям, але й ціною, а в майбутньому, можливо, й іншими характеристиками. Тому зараз у властивості potions буде зберігатися масив об'єктів з наступними властивостями. 
+// {
+//   name: "Dragon breath",
+//   price: 700
+// }
+// Виконай рефакторинг методів об'єкта atTheOldToad таким чином, щоб вони працювали не з масивом рядків, а з масивом об'єктів.
+
