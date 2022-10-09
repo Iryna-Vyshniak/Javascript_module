@@ -913,11 +913,11 @@ const bookShelf = {
 
 // 36
 // До нас звернулася власниця крамниці зілля «У старої жаби» і замовила програму для ведення інвентарю - додавання, видалення, пошуку та оновлення зілля. Додай об'єкту atTheOldToad властивість potions, значенням якої зроби порожній масив. 
-const atTheOldToad = {
+// const atTheOldToad = {
   
-  potions: [],
+//   potions: [],
 
-};
+// };
 
 // 37
 // Додай об'єкту atTheOldToad метод getPotions(), який просто повертає значення властивості potions.
@@ -970,4 +970,49 @@ const atTheOldToad = {
 //   price: 700
 // }
 // Виконай рефакторинг методів об'єкта atTheOldToad таким чином, щоб вони працювали не з масивом рядків, а з масивом об'єктів.
+const atTheOldToad = {
+  potions: [
+    { name: "Speed potion", price: 460 },
+    { name: "Dragon breath", price: 780 },
+    { name: "Stone skin", price: 520 },
+  ],
+  
+   getPotions() {
+      const { potions } = this;
+      return potions;
+  },
+    addPotion(newPotion) {
+        const { potions } = this;
+        for (const potion of potions) {
+            
+            if (potion.name === newPotion.name) {
+                return `Error! Potion ${newPotion.name} is already in your inventory!`;
+            }
+        }
+        potions.push(newPotion);
+    },
+
+    removePotion(potionName) {
+        const { potions } = this;
+        
+      for (let i = 0; i < potions.length; i += 1){
+          const { name } = this.potions[i];
+          
+          if (potionName === name) {
+              potions.splice(i, 1);
+        }
+      }
+  },
+
+    updatePotionName(oldName, newName) {
+        const { potions } = this;
+        for (const potion of potions) {
+            if (potion.name === oldName) {
+                potion.name = newName;
+            }
+        }
+  },
+
+};
+
 
