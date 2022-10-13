@@ -107,3 +107,6 @@ const filterBudget = persons
   }, 0);
 console.log(filterBudget);
 // 85230
+
+const displayItems = allItems.filter(item => item.name.contains('phone'));
+// const displayItems = allItems.filter(item => item.name.indexOf('phone') !== -1);
