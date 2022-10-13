@@ -57,9 +57,9 @@ function sumAll(...all) {
 }
 
 const res = sumAll(1, 2, 3, 4, 5);
-// console.log(res)
+console.log(res);
 
-// 5 Замыкания
+// 5 Замыкания -из одной функции возвращаем другую функцию
 function createMember(name) {
   return function (lastName) {
     console.log(name + lastName);
@@ -67,5 +67,5 @@ function createMember(name) {
 }
 
 const logWithLastName = createMember('Andrew');
-console.log(logWithLastName('Glagolev'));
-console.log(logWithLastName('Vyshniak'));
+console.log(logWithLastName(' Glagolev')); /* Andrew Glagolev */
+console.log(logWithLastName(' Vyshniak')); /* Andrew Vyshniak */
