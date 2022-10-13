@@ -97,6 +97,7 @@ const someBudget = persons.reduce((acc, person) => {
 console.log(someBudget);
 // 85230
 
+// declaration method
 // short & true
 const filterBudget = persons
   .filter(person => person.budget > 40000)
@@ -105,3 +106,4 @@ const filterBudget = persons
     return acc;
   }, 0);
 console.log(filterBudget);
+// 85230
