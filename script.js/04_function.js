@@ -74,7 +74,7 @@ console.log(logWithLastName(' Vyshniak')); /* Andrew Vyshniak */
 let nameUa = 'Іван';
 
 function sayHi() {
-  alert('Привіт, ' + nameUa);
+  console.log('Привіт, ' + nameUa);
 }
 
 nameUa = 'Петро';
@@ -89,7 +89,7 @@ function makeWorker() {
   let name1 = 'Петро';
 
   return function () {
-    alert(name1);
+    console.log(name1);
   };
 }
 
@@ -116,11 +116,11 @@ function makeCounter() {
 let counter1 = makeCounter();
 let counter2 = makeCounter();
 
-alert(counter1()); // 0
-alert(counter1()); // 1
+console.log(counter1()); // 0
+console.log(counter1()); // 1
 
-alert(counter2()); // 0
-alert(counter2()); // 1
+console.log(counter2()); // 0
+console.log(counter2()); // 1
 
 // Функції counter і counter2 створюються різними викликами makeCounter.
 // Отже, вони мають незалежні зовнішні лексичні середовища, кожне з яких має свою власну змінну count.
@@ -138,9 +138,9 @@ function Counter() {
 
 let counter3 = new Counter();
 
-alert(counter3.up()); // 1
-alert(counter3.up()); // 2
-alert(counter3.down()); // 1
+console.log(counter3.up()); // 1
+console.log(counter3.up()); // 2
+console.log(counter3.down()); // 1
 // Обидві вкладені функції створюються в межах єдиного зовнішнього лексичного середовища, тому вони мають спільний доступ до однієї змінної count.
 
 // У нас є вбудований для масивів метод arr.filter(f). Він фільтрує всі елементи через функцію f. Якщо вона повертає true, цей елемент повертається в отриманому масиві.
@@ -158,9 +158,9 @@ alert(counter3.down()); // 1
 /* .. ваш код для inBetween та inArray */
 // let arr = [1, 2, 3, 4, 5, 6, 7];
 
-// alert( arr.filter(inBetween(3, 6)) ); // 3,4,5,6
+// console.log( arr.filter(inBetween(3, 6)) ); // 3,4,5,6
 
-// alert( arr.filter(inArray([1, 2, 10])) ); // 1,2
+// console.log( arr.filter(inArray([1, 2, 10])) ); // 1,2
 // Фільтр inBetween
 function inBetween(a, b) {
   return function (x) {
@@ -169,7 +169,7 @@ function inBetween(a, b) {
 }
 
 let arr = [1, 2, 3, 4, 5, 6, 7];
-alert(arr.filter(inBetween(3, 6))); // 3,4,5,6
+console.log(arr.filter(inBetween(3, 6))); // 3,4,5,6
 
 // Фільтр inArray
 function inArray(arr) {
@@ -179,4 +179,152 @@ function inArray(arr) {
 }
 
 let arr2 = [1, 2, 3, 4, 5, 6, 7];
-alert(arr2.filter(inArray([1, 2, 10]))); // 1,2
+console.log(arr2.filter(inArray([1, 2, 10]))); // 1,2
+
+//
+function createCalcFunction(n) {
+  return function () {
+    console.log(1000 * 42);
+  };
+}
+createCalcFunction(); // nothing
+const calc = createCalcFunction(42);
+calc();
+//42000
+
+function createIncrementor(n) {
+  return function (num) {
+    return num + n;
+  };
+}
+
+const addOne = createIncrementor(1);
+// addOne() => num
+addOne(42);
+// 42 + 1
+// 43
+
+const addTen = createIncrementor(10);
+addTen(42);
+// 42+ 10
+// 52
+
+function urlGenerator(domain) {
+  return function (url) {
+    return `https://${url}.${domain}`;
+  };
+}
+
+const comUrl = urlGenerator('.com');
+comUrl('google');
+console.log(comUrl('google'));
+// https://google.com
+comUrl('netflix');
+// https://netflix.com
+const byUrl2 = urlGenerator('.by');
+byUrl2('belnews');
+console.log(comUrl('belnews'));
+// https://belnews.by
+
+const a = 10;
+function f1() {
+  console.log(a);
+}
+
+f1();
+// 10
+
+////////////////////////////////////
+function f2() {
+  let a = 33;
+  console.log(a);
+}
+f2();
+console.log(f2());
+
+///////////////////////////////////
+
+const counterPlus = (n = 0) => {
+  let count = n;
+  return function () {
+    count += 1;
+    console.log(count);
+  };
+};
+
+const step1 = counterPlus();
+step1();
+step1();
+// 1
+// 2
+// ...
+const step2 = counterPlus(200);
+step2();
+// 201
+
+// recursia
+// get random number from min - 0.5 to max + 0.5
+const randomInteger = (min, max) => {
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(rand);
+};
+
+function createBeggar() {
+  let s = 0;
+  return function beggar() {
+    s += randomInteger(0, 100);
+
+    console.log(s);
+    if (s >= 250) return;
+    beggar();
+  };
+}
+let begg1 = createBeggar();
+// 77
+// 154
+// 231
+let begg2 = createBeggar();
+// 60
+// 68
+// 147
+
+// anonimous 2 functions for button in separated .js files, with same let p
+/* 
+  function buttonClick(){
+  let p = 10;
+  let q = document.querySelector('.b-1');
+
+  q.onclick = () => {
+    p += 1;
+    console.log('work bt-1: ' + p);
+  };
+}
+buttonClick();
+*/
+// 1
+(() => {
+  let p = 0;
+  let q = document.querySelector('.b-1');
+
+  q.onclick = () => {
+    p += 1;
+    console.log('work bt-1: ' + p);
+  };
+})();
+// work bt-1: 1
+// work bt-1: 2
+// work bt-1: 3
+
+// 2
+(() => {
+  let p = 10;
+  let q = document.querySelector('.b-2');
+
+  q.onclick = () => {
+    p += 1;
+    console.log('work bt-2: ' + p);
+  };
+})();
+// work bt-2: 10
+// work bt-2: 12
+// work bt-2: 13
