@@ -1,0 +1,18 @@
+button {
+  display: block;
+  margin: 10px auto;
+  color: #ffffff;
+  background-color: lime;
+}
+
+.test-2 {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.red {
+  padding: 5px;
+  color: #ffffff;
+  background-color: red;
+}
