@@ -397,3 +397,24 @@ const fruits = [
 
 const r3 = filter(fruits, fruit => fruit.quantity >= 120);
 console.log(r3);
+
+// you will be given an array a and a value x. All you need to do is check whether the provided array contains the value.
+// Array can contain numbers or strings. X can be either.
+// Return true if the array contains the value, false if not.
+
+function check(a, x) {
+  // your code here
+  let result = false;
+
+  for (let i = 0; i < a.length; i += 1) {
+    if (a[i] === x) {
+      return (result = true);
+    }
+  }
+  return result;
+}
+//  or
+function check1(a, x) {
+  // your code here
+  return a.includes(x) ? true : false;
+}

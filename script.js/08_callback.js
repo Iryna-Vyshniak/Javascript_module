@@ -75,12 +75,13 @@ console.log(res2);
 
 // callback function
 function copyArrDoSomething(arr, instructions) {
-  const output = [];
+  // const output = [];
 
-  for (let i = 0; i < arr.length; i += 1) {
-    output.push(instructions(arr[i]));
-  }
-  return output;
+  // for (let i = 0; i < arr.length; i += 1) {
+  //   output.push(instructions(arr[i]));
+  // }
+  // return output;
+  return instructions(...arr);
 }
 
 const numInstructions = num => {
@@ -396,3 +397,51 @@ console.log(salaryManager.current());
 // console.log(myLib.getValue());
 // myLib.add(10);
 // console.log(myLib.getValue());
+
+const numbers = [1, 2, 3, 4, 5];
+const each = function (array, callback) {
+  const newArray = [];
+
+  for (item of array) {
+    newArray.push(callback(item));
+  }
+  return newArray;
+};
+
+const eachReduce = each.reduce((acc, callback) => aac + callback, 0);
+
+// capitalize letter
+
+const capitalize = word => word[0].toUpperCase() + word.slice(1).toLowerCase();
+
+const camelCase = (string, callback) => {
+  const wordsArr = string.split(' ');
+  const capitalizeWordsArr = [];
+  // for (const word of wordsArr) {
+  //     capitalizeWordsArr.push(callback(word));
+  //   }
+  // return capitalizeWordsArr.join(' ');
+  wordsArr.forEach(word => capitalizeWordsArr.join(' '));
+};
+
+const newString = camelCase('this is funhouse', capitalize);
+
+console.log(newString);
+
+// get a room
+
+// vip || standart
+const getClientsStatus = () => (Math.round(Math.random()) % 2 !== 0 ? 'vip' : 'standart');
+
+const offerLuxuryRoom = () => 'Luxury Room';
+const offerStandartRoom = () => 'Standart Room';
+
+// offerRoom(getClientsStatus, offerLuxuryRoom, offerStandartRoom);
+
+function offerRoom(getClientsStatus, offerLuxuryRoom, offerStandartRoom) {
+  return getClientsStatus() === 'standart' ? offerStandartRoom() : offerLuxuryRoom();
+}
+
+const result7 = offerRoom(getClientsStatus, offerLuxuryRoom, offerStandartRoom);
+
+console.log(result7);
