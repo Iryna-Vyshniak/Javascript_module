@@ -418,3 +418,47 @@ function check1(a, x) {
   // your code here
   return a.includes(x) ? true : false;
 }
+// ========================================================================================
+const people = [
+  ['Mike', 'Anderson'],
+  ['Olha', 'Nickol'],
+];
+
+/*
+result = [
+{firstName: 'Mike', lastName: 'Anderson'}
+{firstName: 'Olha', lastName: 'Nickol'}
+]
+  */
+
+const mapDateBase = peopleArr =>
+  peopleArr.map(person => ({ firstName: person[0], lastName: person[1] }));
+
+const newUsers = mapDateBase(people);
+console.log(newUsers);
+
+// ===========================================================================================
+const ages = [18, 14, 22, 34, 43, 18, 20, 34, 24];
+
+// const getAvarageAges = arrAges => Math.round(arrArges.reduce((acc, age) => (acc + age) / arrAges.length));
+
+const getAvarageAges = arrAges =>
+  Math.round(arrArges.reduce((acc, age) => acc + age / arrAges.length, 0));
+
+// ===========================================================================================
+const getObjectAges = arrAges => {
+  return arrArges.reduce((acc, age) => {
+    const objAge = { age };
+    acc.push(objAge);
+    return acc;
+  }, []);
+};
+// [{age: 18}, {age: 14}]
+console.log(getAvarageAge(ages));
+
+// ===============================================================================================
+// from object to sort array with filter names
+const getArrayofNewPeople = arr =>
+  arr
+    .map(person => `${person.firstName} ${person.lastName}`)
+    .sort((currentName, nextName) => currentName.localeCompare(nextName));
