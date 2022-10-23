@@ -108,7 +108,7 @@ const filterBudget = persons
 console.log(filterBudget);
 // 85230
 
-const displayItems = allItems.filter(item => item.name.contains('phone'));
+// const displayItems = allItems.filter(item => item.name.contains('phone'));
 // const displayItems = allItems.filter(item => item.name.indexOf('phone') !== -1);
 
 /*
@@ -281,3 +281,58 @@ function countPositivesSumNegatives(input) {
 
   return newArr;
 }
+
+// Напишіть функцію camelize(str), яка перетворює такі рядки “my-short-string” в “myShortString”.
+// Тобто дефіси видаляються, а всі слова після них починаються з великої літери.
+// Приклади:
+// camelize("background-color") == 'backgroundColor';
+// camelize("list-style-image") == 'listStyleImage';
+// camelize("-webkit-transition") == 'WebkitTransition';
+
+const camelize = str => {
+  return str
+    .split('-')
+    .map((word, index) => (index === 0 ? word : word[0].toUpperCase() + word.slice(1)))
+    .join('');
+};
+
+console.log(camelize('index-phone-number'));
+
+// Напишіть функцію filterRange(arr, a, b), яка приймає масив arr, шукає в ньому елементи більші-рівні a та менші-рівні b і віддає масив цих елементів.
+// Функція повинна повертати новий масив і не змінювати вихідний.
+// Наприклад:
+// let arr = [5, 3, 8, 1];
+// let filtered = filterRange(arr, 1, 4);
+// alert( filtered ); // 3,1 (відфільтровані значення)
+// alert( arr ); // 5,3,8,1 (не змінюється)
+
+const filterRange = (arr, a, b) => {
+  let filtered = arr.filter(index => index >= a && index <= b);
+  return filtered;
+};
+
+let arr = [5, 3, 8, 1];
+let filtered = filterRange(arr, 1, 4);
+
+console.log(arr); // 5,3,8,1 (не змінюється)
+console.log(filtered); // 3,1 (відфільтровані значення)
+
+// Напишіть функцію filterRangeInPlace(arr, a, b), яка приймає масив arr і видаляє з нього всі значення крім тих, які знаходяться між a і b. Тобто, перевірка має вигляд a ≤ arr[i] ≤ b.
+// Функція повинна змінювати поточний масив і нічого не повертати.
+// Наприклад:
+// let arr = [5, 3, 8, 1];
+// filterRangeInPlace(arr, 1, 4); // видаляє всі числа крім тих, що в діапазоні від 1 до 4
+// alert( arr ); // [3, 1]
+
+const filterRangeInPlace = (array, a, b) => {
+  for (let i = 0; i < array.length; i += 1) {
+    if (array[i] < a || array[i] > b) {
+      array.splice(i, 1);
+      i--;
+    }
+  }
+};
+
+let array = [5, 3, 8, 1];
+filterRangeInPlace(array, 1, 4); // видаляє всі числа крім тих, що в діапазоні від 1 до 4
+console.log(array); // [3, 1]
