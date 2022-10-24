@@ -10,52 +10,68 @@
  * - Не в строгом режиме = window
  */
 
-// Rазведывательному управлению SI:7, нужно безопасно хранить добытые данные. Твоё задание абсолютно засекречено!
-// Создай функцию makeSecret, которая принимает строки secret и password и возвращает функцию storage с секретом.
-//     • при обычном вызове storage возвращает строку Absolutely not a secret thing
-//     • если вызвать метод storage.getSecret и передать ему правильный пароль, то мы получим секретное значение secret
-//     • если пароль неправильный, то результат будет Wrong password!
-//     • если пароль трижды подряд введён неправильно, то метод блокируется и все его последующие вызовы будут возвращать null (даже для правильного пароля)
-//     • если ДО блокировки введён правильный пароль, то счётчик неправильных вводов сбрасывается снова до 3
-//     • метод storage.setSecret(newSecret, newPassword) позволяет установить новый пароль и секретную фразу и сбросить счётчик
 
-const storage = makeSecret('Santa exists!', 'qwerty');
-storage.setSecret('Coll Secret', 'qazwsx');
+// =================================== THIS ====================
+const btn = document.querySelector('.button');
 
-function makeSecret(secret, pasw) {
-  let currentSecret = secret;
-  let currentPasw = pasw;
-  let numberOfMistakes = 0;
+btn.addEventListener('click', log);
 
-  const innerStorage = () => 'Absolutely not a secret thing';
-  innerStorage.getSecret = initialPasw => {
-    if (numberOfMistakes > 3) {
-      return null;
-    }
+function log() {
+  console.log(this);
+  // console.dir(this) => button
 
-    if (initialPasw === currentPasw) {
-      return currentSecret;
-    }
+  setTimeout(() => { console.log(this); }, 100);
+  // button, on click => button
 
-    numberOfMistakes++;
-    return 'Wrong password!';
-  };
 
-  innerStorage.setSecret = (newSecret, newPasw) => {
-    currentSecret = newSecret;
-    currentPasw = newPasw;
-    numberOfMistakes = 0;
-  };
-  return innerStorage;
+  // setTimeout(function () {
+  //   console.log(this);
+
+  // }, 100);
+  // window with use strict
 }
+
+log();
+// first => use strict => undefined
+// without use strict => window
+// when click =>  < button type = "button" class="button" > Click me</ >
+
+
+
+
+// ======================================================
+// const ladder = {
+//   step: 0,
+
+//   up() {
+//     this.step += 1;
+//     return this
+//   },
+//   down() {
+//     this.step -= 1
+//     return this
+//   },
+
+//   showStep() {
+//     console.log(this.step)
+//     return this
+//   }
+// }
+// Тепер, якщо нам потрібно зробити кілька послідовних викликів, ми можемо зробити це так:
+
+//Змініть код методів up, down і showStep таким чином, щоб їх виклик можна було зробити ланцюжком, наприклад так:
+// console.log(ladder.up().up().up().up().up().showStep().down());
+
+// ========================================================
+
 
 // =======================================  BIND ==========================================================
 /* FULL VERSION
-
+ 
 const calcOrder = (func, num, price, drink) => {
   let sum = num * price;
   let text = '';
-
+ 
   if (drink === 'coffee') {
     text = 'Get ice!';
   } else if (drink === 'tea') {
@@ -63,15 +79,15 @@ const calcOrder = (func, num, price, drink) => {
   } else {
     text = 'Get free order!';
   }
-
+ 
   func(sum, text);
 };
-
+ 
 const showMessage = (text, orderPrice) => {
   console.log(text);
   console.log(`Your order price: ${orderPrice}`);
 };
-
+ 
 calcOrder(showMessage, 3, 30, 'coffee');
 */
 
@@ -175,3 +191,43 @@ const nextUser2 = {
 };
 
 nextUser2.getNextUserName();
+
+
+// Rазведывательному управлению SI:7, нужно безопасно хранить добытые данные. Твоё задание абсолютно засекречено!
+// Создай функцию makeSecret, которая принимает строки secret и password и возвращает функцию storage с секретом.
+//     • при обычном вызове storage возвращает строку Absolutely not a secret thing
+//     • если вызвать метод storage.getSecret и передать ему правильный пароль, то мы получим секретное значение secret
+//     • если пароль неправильный, то результат будет Wrong password!
+//     • если пароль трижды подряд введён неправильно, то метод блокируется и все его последующие вызовы будут возвращать null (даже для правильного пароля)
+//     • если ДО блокировки введён правильный пароль, то счётчик неправильных вводов сбрасывается снова до 3
+//     • метод storage.setSecret(newSecret, newPassword) позволяет установить новый пароль и секретную фразу и сбросить счётчик
+
+const storage = makeSecret('Santa exists!', 'qwerty');
+storage.setSecret('Coll Secret', 'qazwsx');
+
+function makeSecret(secret, pasw) {
+  let currentSecret = secret;
+  let currentPasw = pasw;
+  let numberOfMistakes = 0;
+
+  const innerStorage = () => 'Absolutely not a secret thing';
+  innerStorage.getSecret = initialPasw => {
+    if (numberOfMistakes > 3) {
+      return null;
+    }
+
+    if (initialPasw === currentPasw) {
+      return currentSecret;
+    }
+
+    numberOfMistakes++;
+    return 'Wrong password!';
+  };
+
+  innerStorage.setSecret = (newSecret, newPasw) => {
+    currentSecret = newSecret;
+    currentPasw = newPasw;
+    numberOfMistakes = 0;
+  };
+  return innerStorage;
+}
