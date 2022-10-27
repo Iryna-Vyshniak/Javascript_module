@@ -14,7 +14,8 @@
     "liveSassCompile.settings.excludeList": ["**/node_modules/**", ".vscode/**"],
     "liveSassCompile.settings.generateMap": true,
     "liveServer.settings.port": 1235,
-    "liveSassCompile.settings.autoprefix": null
+    "liveSassCompile.settings.autoprefix": null,
+    "livePreview.defaultPreviewPath": "c:\\Users\\irina\\Desktop\\modul.js\\flex-panel.html"
   }
 
   
