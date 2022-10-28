@@ -3,6 +3,29 @@
  *Події елементів форм. focus, blur, change, input, submit
  */
 
+const form = document.querySelector('.js-register-form');
+
+// добавляем слушателя события submit
+form.addEventListener('submit', onFormSubmit);
+
+// обработчик подписок
+const onFormSubmit = (event) => {
+    event.preventDefault(); // когда отправляется форма - перезагрузка браузера, отменяем
+    console.log('send submit');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//  ==================================================================================================================
 const inputRef = document.querySelector(".js-username-input");
 const btnRef = document.querySelector(".js-contact-form-submit");
 const checkboxRef = document.querySelector(".js-policy-checkbox");
