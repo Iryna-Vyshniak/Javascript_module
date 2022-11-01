@@ -28,12 +28,12 @@ function createColorCardsMarkup(colors) { // (colors) & const colors -> абсо
         .map(({ hex, rgb }) => {
             return `
     <div class="color-card">
-     <div><div><div> <div
+     <div
      class="color-swatch"
      data-hex="${hex}"
      data-rgb="${rgb}"
      style="background-color: ${hex}"
-   ></div></div></div></div>
+   ></div>
       <div class="color-meta">
         <p>HEX: ${hex}</p>
         <p>RGB: ${rgb}</p>
