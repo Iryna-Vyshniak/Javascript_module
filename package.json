@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Iryna-Vyshniak/modul.js#readme",
   "dependencies": {
-    "joi": "^17.6.4"
+    "joi": "^17.6.4",
+    "lodash": "^4.17.21",
+    "lodash.throttle": "^4.1.1"
   }
 }

@@ -10,6 +10,8 @@ const localKey = 'feedback-form-state';
 form.addEventListener('input', Throttle(storageFormData, 500));
 form.addEventListener('submit', onFormSubmit);
 // Adds listener on the window for the load event. Saves what is recorded in the Storage.
+
+
 window.addEventListener('load', checkStorage);
 // Functions
 // Check the Storage for the presence of recorded keys (якщо в localStorage щось є, то ф-ція бере дані з об'єкта з localStorage, і розбиває на окремі ключі і заповнює ними inputs, коли ми перезавантажуємо сторінку).
@@ -54,4 +56,33 @@ function storageFormData(event) {
     formValue[event.target.name] = event.target.value.trim();
     // console.log(formValue);
     localStorage.setItem(localKey, JSON.stringify(formValue));
+}
+
+//===========================================================================================
+
+
+function reloadPage() {
+    const saveValues = localStorage.getItem(STORAGE_KEY);
+
+    if (saveValues) {
+        formData = JSON.parse(saveValues);
+        console.log(formData);
+        Object.entries(formData).forEach(([name, value]) => {
+            form.elements[name].value = value;
+        });
+    }
+}
+
+//=====================================================================================
+
+checkStorage();
+
+function checkStorage() {
+    if (localStorage.getItem(STORAGE_KEY)) {
+        saveObject = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
+        for (let key in saveObject) {
+            formEl.elements[key].value = saveObject[key];
+        }
+    }
 }
