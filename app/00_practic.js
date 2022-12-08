@@ -112,3 +112,26 @@ const randomNum = Math.random() * (20 - 10) + 10;
 console.log(randomNum); // 14.2343434545t4
 const randomNum1 = Math.random() * (50 - 10) + 10;
 console.log(Math.ceil(randomNum1)); // 21
+const max = 100;
+const min = 1;
+const randomNum2 = Math.floor(Math.random() * (max - min) + min);
+console.log(randomNum2); // 2
+
+const word = 'superjavascript';
+const substring1 = 'java';
+console.log(word.indexOf(substring1)); //5,  begin from 5 position letter j
+const substring2 = 'css';
+console.log(word.indexOf(substring2)); //-1, doesn`t have
+const word1 = 'banana';
+console.log(word1.lastIndexOf('a')); // 5, last a
+console.log(word1.indexOf('a')); // 1, first a
+console.log(word1.lastIndexOf('n')); // 4, last a
+const sentence = 'two tasty bananas';
+console.log(sentence.indexOf(' ')); // 3, space in position 3
+console.log(sentence.indexOf('tasty bananas')); //4
+
+// replace()
+const jsFileName = 'app.js';
+const minJsFileName = jsFileName.replace('.js', '.min.js');
+console.log(jsFileName); //app.js
+console.log(minJsFileName); // app.min.js
