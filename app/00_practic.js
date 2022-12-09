@@ -281,3 +281,59 @@ for (let i = 0; i <= 12; i += 1) {
 
   console.log('after', i);
 }
+
+// NaN
+console.log(NaN / NaN); // NaN
+
+/*
+  ? Дано рядок 'Vasyl Pupkin is 24 years old'.
+  ? Скопіюйте з цього рядка окремо ім'я з прізвищем та окремо вік.
+*/
+//
+const test = 'Vasyl Pupkin is 24 years old';
+console.log(test.indexOf(2)); // 16
+console.log(test.indexOf('n')); //11
+
+const ageTest = test.slice(16);
+console.log(ageTest);
+const nameTest = test.slice(0, 12);
+console.log(nameTest);
+
+//? У нас є рядок '24px', дізнайтеся на що закінчується цей рядок, на: %, rem, em або px;
+
+const testStr = '24px';
+const res = testStr.endsWith('px');
+console.log(res);
+switch (res) {
+  case true:
+    console.log('px');
+    break;
+  default:
+    console.log('another');
+}
+
+//? У нас є рядок '23,4', замініть кому на крапку
+const strNum = '23,4';
+const res1 = strNum.replace(',', '.');
+console.log(res1); // 23.4
+const res2 = Number.parseFloat(strNum);
+console.log(res1); // 23.4
+
+/*
+  ? Є рядок 'HTML, CSS, JS, PHP, React, Vue, Node.js, C, C++'.
+  ? Дізнайтеся, чи є в цьому рядку мова: 'JavaScript', або 'JS'?
+  ? Якщо є, дізнайтесь позицію на якій перебуває цей підрядок
+*/
+
+const sentc = 'HTML, CSS, JS, PHP, React, Vue, Node.js, C, C++';
+const fullName = sentc.includes('JavaScript');
+const shortName = sentc.includes('JS');
+if (fullName) {
+  const resFull = sentc.indexOf('JavaScript');
+  console.log(resFull);
+} else if (shortName) {
+  const resShort = sentc.indexOf('JS');
+  console.log(resShort);
+} else {
+  console.log('nothing');
+}
