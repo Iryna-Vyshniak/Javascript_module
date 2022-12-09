@@ -135,3 +135,58 @@ const jsFileName = 'app.js';
 const minJsFileName = jsFileName.replace('.js', '.min.js');
 console.log(jsFileName); //app.js
 console.log(minJsFileName); // app.min.js
+
+//slice()
+const word2 = 'amazingjavascript';
+word2.slice(8, 10);
+console.log(word2); // amazingjavascript
+const word3 = word2.slice(7, 11);
+console.log(word3); //java
+console.log(word2.length); //17
+console.log(word2.slice(0, word2.length)); //amazingjavascript, from 0 to 17, our word2 has 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 => 17
+console.log(word2.slice(-6, -3)); //scr => from the last: -1,-2,-3,-4,-5,-6 to -3, but doesn`t include
+console.log(word2.slice(0, word2.length - 2)); //amazingjavascri => whithout last 2 letter pt
+
+// trim(), trimEnd(), trimStart()
+console.log(word2.length); //17
+const word4 = '  amazingjavascript  ';
+console.log(word4.length); //21 with space
+console.log(word4.trim().length); // 17 => delete space
+
+// приведення типів
+console.log(2 + 5 + '' + 1 + 0 - 10); //700
+console.log(true + false); // 1
+console.log(true + 'false'); //'truefalse'
+console.log(true + ''); //'true'
+console.log(true - 'false'); // NaN
+console.log(7 / 0); //Infinity
+console.log(!null); // true
+console.log(!null + 1); // 2
+
+// if else
+// this code isn`t declarative
+const num = 50;
+num > 50 ? console.log('>') : num < 50 ? console.log('<') : console.log('==='); // ===
+
+//switch... break
+/*
+const enteredNum = Number(prompt('enter a num between 0 and 3')); //3
+
+switch (enteredNum) {
+  case 0:
+    console.log('You enetered 0');
+    break;
+  case 1:
+    console.log('You enetered 1');
+    break;
+  case 2:
+    console.log('You enetered 2');
+    break;
+  case 3:
+    console.log('You enetered 3'); // You enetered 3
+    break;
+  default:
+    console.log('You enetered another number');
+}
+
+*/
