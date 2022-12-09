@@ -190,3 +190,94 @@ switch (enteredNum) {
 }
 
 */
+
+// loop
+// while
+
+let counter = 1;
+while (counter <= 5) {
+  console.log('counter', counter);
+  counter += 1;
+}
+console.log('finish');
+
+// do... while
+
+/*
+let inputNum;
+
+do {
+  console.log('here');
+  inputNum = Number(prompt('input num, that bigger, then 100'));
+} while (inputNum <= 100);
+
+console.log(inputNum);
+*/
+
+// for...
+let word5 = '';
+
+for (let i = 0; i <= 5; i += 1) {
+  console.log('previous str', word5);
+  console.log(i);
+  word5 += i;
+  console.log('next str', word5);
+}
+console.log('final', word5);
+
+let wordJS = 'javascript';
+let nextWord = '';
+
+for (let i = 0; i < wordJS.length; i += 1) {
+  console.log('iteration', i + 1);
+  console.log('previous str', wordJS[i]);
+  let snowflakesWord = `${wordJS[i]}` + '*';
+  nextWord += snowflakesWord;
+  console.log('new str', nextWord);
+} // j*a*v*a*s*c*r*i*p*t*
+
+// or
+for (let i = 0; i < wordJS.length - 5; i += 1) {
+  let snowWord = `${wordJS[i]}*`;
+  nextWord += snowWord;
+  console.log(nextWord);
+} // j*a*v*a*s*c*r*i*p*t*
+
+const sentenceLoop = 'javascript is cool';
+let newSentence = '';
+console.log(sentenceLoop.length); //18
+
+for (let i = 0; i < sentenceLoop.length; i += 1) {
+  // console.log('iteration', i);
+  // console.log(sentenceLoop[i]);
+  newSentence += sentenceLoop[i];
+  console.log(newSentence);
+  if (newSentence === 'java') {
+    console.log(newSentence);
+    break;
+  }
+}
+console.log(newSentence);
+
+const num5 = 50;
+const num6 = 60;
+
+for (let i = num6; i >= num5; i -= 1) {
+  console.log(i);
+  const randomMath = Math.floor(Math.random() * (num6 - num5) + num5);
+  console.log(randomMath);
+  if (randomMath === 55) {
+    console.log('Bingo');
+    break;
+  }
+}
+
+for (let i = 0; i <= 12; i += 1) {
+  console.log('before', i);
+  if (i / 3 === 4 || i / 2 === 5) {
+    console.log(i);
+    continue;
+  }
+
+  console.log('after', i);
+}
