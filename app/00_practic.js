@@ -337,3 +337,72 @@ if (fullName) {
 } else {
   console.log('nothing');
 }
+
+//task
+let productName = 'Droid';
+let pricePerItem = 2000;
+
+productName = 'Repair droid';
+pricePerItem += 1500;
+console.log(pricePerItem);
+
+// task
+const ageViewer = 11;
+const accompanied = true;
+if ((ageViewer >= 11 && accompanied) || ageViewer >= 12) {
+  console.log('viewer may come');
+} else {
+  console.log('viewer may not come');
+}
+
+//task
+const dinosaurs = [
+  'Тираннозавр',
+  'Велоцираптор',
+  'Стегозавр',
+  'Трицератопс',
+  'Брахиозавр',
+  'Птеранодон',
+  'Апатозавр',
+  'Диплодок',
+  'Компсогнат',
+];
+
+dinosaurs[0] = 'Тираннозавр рекс';
+console.log(dinosaurs);
+
+const dinosaursAndNumbers = [3, 'динозавры', ['трицератопс', 'стегозавр', 3627.5], 10];
+
+console.log(dinosaursAndNumbers[0]); //3
+console.log(dinosaursAndNumbers[1]); //динозавры
+
+console.log(dinosaursAndNumbers[2]); //['трицератопс', 'стегозавр', 3627.5]
+console.log(dinosaursAndNumbers[2][0]); //трицератопс
+console.log(dinosaursAndNumbers[2][2]); //3627.5
+
+console.log(dinosaursAndNumbers[3]); //10
+
+console.log(dinosaurs.length); //9
+
+dinosaurs.push('Dino');
+console.log(dinosaurs); //['Тираннозавр рекс', 'Велоцираптор', 'Стегозавр', 'Трицератопс', 'Брахиозавр', 'Птеранодон', 'Апатозавр', 'Диплодок', 'Компсогнат', 'Dino']
+
+dinosaurs.unshift('Dinozacr');
+console.log(dinosaurs); // ['Dinozacr', 'Тираннозавр рекс', 'Велоцираптор', 'Стегозавр', 'Трицератопс', 'Брахиозавр', 'Птеранодон', 'Апатозавр', 'Диплодок', 'Компсогнат', 'Dino']
+
+const lastDinosaur = dinosaurs.pop();
+console.log(lastDinosaur); //Dino
+console.log(dinosaurs); //['Dinozacr', 'Тираннозавр рекс', 'Велоцираптор', 'Стегозавр', 'Трицератопс', 'Брахиозавр', 'Птеранодон', 'Апатозавр', 'Диплодок', 'Компсогнат']
+
+const firstDinos = dinosaurs.shift();
+console.log(firstDinos); //Dinozacr
+console.log(dinosaurs); //['Тираннозавр рекс', 'Велоцираптор', 'Стегозавр', 'Трицератопс', 'Брахиозавр', 'Птеранодон', 'Апатозавр', 'Диплодок', 'Компсогнат']
+
+dinosaurs.push(lastDinosaur);
+console.log(dinosaurs); //['Тираннозавр рекс', 'Велоцираптор', 'Стегозавр', 'Трицератопс', 'Брахиозавр', 'Птеранодон', 'Апатозавр', 'Диплодок', 'Компсогнат', 'Dino']
+
+//Random words
+const randomWords = ['Lady', 'Miss', 'Queen', 'Witch'];
+const randomIndex = Math.floor(Math.random() * 4);
+const resRandom = randomWords[randomIndex];
+console.log(resRandom); // Lady
