@@ -1,4 +1,4 @@
-button {
+/* button {
   display: block;
   margin: 10px auto;
   color: #ffffff;
@@ -15,4 +15,13 @@ button {
   padding: 5px;
   color: #ffffff;
   background-color: red;
+} */
+
+.btn-fate:hover {
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px rgba(165, 10, 10, 0.8);
+}
+
+.btn-fate:active {
+  top: 2px;
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px rgba(165, 10, 10, 0.8);
 }

@@ -428,13 +428,86 @@ if (dayHour >= 11 && dayHour <= 17) {
   console.log(greeting);
 }
 
-const greetingBlock = document.querySelector('.gretting');
+const greetingBlock = document.querySelector('.greeting');
 
-greetingBlock.textContent = `${greeting}`;
-greetingBlock.style = `
+greetingBlock.innerHTML = `<p class='greeting-content'>${greeting} Do you want to know your fate?</p>`;
+
+const greetingContent = document.querySelector('.greeting-content');
+greetingContent.style = `
 display: grid;
 place-content: center;
-padding-top: 45vh;
+margin-bottom: 3vh;
+margin-right: auto;
+margin-left: auto;
+padding-top: 25vh;
+padding-right: 1vw;
+padding-left: 1vw;
+width: 70vw;
+text-align: center;
 font-size: 5vw;
 color: tomato;
 text-shadow: 1px 1px 1px #000000, 1px 1px 50px rgba(251, 2, 2, 0.58);`;
+
+// task
+const motivationPhrases = [
+  'If you fall asleep now, you will dream. If you study now, you will live your dream',
+  'When you think it’s too late, the truth is, it’s still early',
+  'The pain of studying is only temporary. But the pain of not knowing – ignorance – is forever',
+  'Studying is not about time. It’s about effort',
+  'Life is not all about studying. But if you can’t even conquer this little part of life, then what else can you possibly do?',
+  'Enjoy the inexorable pain',
+  'It’s those who are earlier than the others, those who put in more effort, who can enjoy the feeling of success',
+  'Not everyone can truly succeed in everything. But success only comes with self-management and determination',
+  'Time is flying',
+  'The saliva that flows now will become the tears of joy tomorrow',
+  'If you don’t walk today, you’ll have to run tomorrow',
+  'People who invest in the future are realists',
+  'The level of education is in direct correlation with your salary',
+  'When today is over, it will never come back',
+  'Even now, your enemies are eagerly flipping through books',
+  'No pain, no gain',
+];
+
+console.log(motivationPhrases.length);
+const ballOfFate = motivationPhrases[Math.floor(Math.random() * motivationPhrases.length)];
+console.log(ballOfFate);
+
+// const btnFate = document.createElement('button');
+
+// btnFate.setAttribute('type', 'button');
+// btnFate.textContent = 'Click me';
+
+// console.log(btnFate);
+
+greetingBlock.insertAdjacentHTML(
+  'beforeend',
+  /*html*/ `<button type='button' class='btn-fate'>Click me</button>`
+);
+
+const btnFate = document.querySelector('.btn-fate');
+btnFate.style = `
+position: relative;
+display: flex;
+align-items: center;
+margin-right: auto;
+margin-left: auto;
+width: calc((1vh + 1vw) * 2);
+height: calc((1vh + 1vw) * 2);
+padding: 0.5em;
+border: none;
+outline: none;
+border-radius: 50%;
+background-color: rgba(251, 2, 2, 0.58);
+  box-shadow: -5px -5px 10px #fff, 5px 5px 15px rgba(165, 10, 10, .8);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+color: #ffffff;
+text-shadow: 0.5px 0.5px 0.5px #000000; 
+font-size: calc((1vh + 1vw) * .5);
+`;
+
+btnFate.addEventListener('click', e => {
+  e.preventDefault();
+
+  greetingBlock.insertAdjacentHTML('beforeend', `${ballOfFate}`);
+});
