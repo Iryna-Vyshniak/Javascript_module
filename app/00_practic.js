@@ -436,4 +436,5 @@ display: grid;
 place-content: center;
 padding-top: 45vh;
 font-size: 5vw;
-color: tomato;`;
+color: tomato;
+text-shadow: 1px 1px 1px #000000, 1px 1px 50px rgba(251, 2, 2, 0.58);`;
