@@ -506,8 +506,24 @@ text-shadow: 0.5px 0.5px 0.5px #000000;
 font-size: calc((1vh + 1vw) * .5);
 `;
 
+const soundBtn = document.querySelector('.sound-btn');
+const audio = document.querySelector('.audio');
+
 btnFate.addEventListener('click', e => {
   e.preventDefault();
 
   greetingBlock.insertAdjacentHTML('beforeend', `${ballOfFate}`);
 });
+
+soundBtn.addEventListener('click', e => {
+  soundBtn.classList.toggle('paused');
+  audio.paused ? audio.play() : audio.pause();
+});
+
+window.onfocus = function () {
+  soundBtn.classList.contains('paused') ? audio.pause() : audio.play();
+};
+
+window.onblur = function () {
+  audio.pause();
+};

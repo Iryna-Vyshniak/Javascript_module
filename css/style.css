@@ -25,3 +25,16 @@
   top: 2px;
   box-shadow: -2px -2px 5px #fff, 2px 2px 5px rgba(165, 10, 10, 0.8);
 }
+
+.sound-btn {
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  width: 30px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.sound-btn.paused {
+  opacity: 0.1;
+}
