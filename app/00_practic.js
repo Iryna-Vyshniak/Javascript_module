@@ -406,3 +406,34 @@ const randomWords = ['Lady', 'Miss', 'Queen', 'Witch'];
 const randomIndex = Math.floor(Math.random() * 4);
 const resRandom = randomWords[randomIndex];
 console.log(resRandom); // Lady
+
+// greeting
+const today = new Date();
+console.log(today);
+const dayHour = today.getHours();
+console.log(dayHour);
+let greeting;
+
+if (dayHour >= 11 && dayHour <= 17) {
+  greeting = 'Good day! You`re welcome!';
+  console.log(greeting);
+} else if (dayHour >= 5 && dayHour <= 11) {
+  greeting = 'Good morning! You`re welcome!';
+  console.log(greeting);
+} else if (dayHour >= 18 && dayHour <= 23) {
+  greeting = 'Good evening! You`re welcome!';
+  console.log(greeting);
+} else {
+  greeting = 'Hello! You`re welcome!';
+  console.log(greeting);
+}
+
+const greetingBlock = document.querySelector('.gretting');
+
+greetingBlock.textContent = `${greeting}`;
+greetingBlock.style = `
+display: grid;
+place-content: center;
+padding-top: 45vh;
+font-size: 5vw;
+color: tomato;`;
