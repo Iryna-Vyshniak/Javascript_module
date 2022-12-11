@@ -434,25 +434,15 @@ greetingBlock.innerHTML = `<p class='greeting-content'>${greeting} Do you want t
 
 const greetingContent = document.querySelector('.greeting-content');
 greetingContent.style = `
-display: grid;
-place-content: center;
 margin-bottom: 3vh;
 margin-right: auto;
 margin-left: auto;
-padding-top: 25vh;
+padding-top: 10vh;
 padding-right: 1vw;
 padding-left: 1vw;
-width: 70vw;
 text-align: center;
 font-size: 5vw;
-
 color: #f1ebe5;
-  text-shadow: 0px 1px 1px #090109, 0 -1px 1px #fff;
-filter: drop-shadow(0.5px 0.5px 0.5px rgb(86, 6, 6))
-    drop-shadow(-0.5px -0.5px 0.5px #fff);
-  -webkit-filter: drop-shadow(0.5px 0.5px 0.5px rgb(86, 6, 6))
-    drop-shadow(-0.5px -0.5px 0.5px #fff);
-  
 `;
 
 // task
@@ -499,18 +489,17 @@ align-items: center;
 margin-bottom: 3vh;
 margin-right: auto;
 margin-left: auto;
+padding: 0.5em;
 width: calc((1vh + 1vw) * 2);
 height: calc((1vh + 1vw) * 2);
-padding: 0.5em;
 border: none;
 outline: none;
 border-radius: 50%;
 background-color: transparent;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-color: #ffffff;
-text-shadow: 0.5px 0.5px 0.5px #000000; 
+transition: all 0.2s ease-in-out;
+cursor: pointer;
 font-size: calc((1vh + 1vw) * .5);
+font-weight: 600;
 `;
 
 const soundBtn = document.querySelector('.sound-btn');
@@ -539,6 +528,15 @@ function randomBgColor() {
 
   let bgColor = `rgba(${r}, ${g}, ${b}, 0.3)`;
   document.body.style.backgroundColor = bgColor;
+  const styleElem = document.head.appendChild(document.createElement('style'));
+  //   styleElem.innerHTML = '.card-fate::before { background: rgba(106, 0, 255, 0.8);
+  //   box - shadow: 0 0 5px rgba(106, 0, 255, 0.8), 0 0 15px rgba(106, 0, 255, 0.8),
+  //     0 0 30px rgba(106, 0, 255, 0.8), 0px 0px 60px rgba(106, 0, 255, 0.8);
+  // }';
+  // let colorBgBeforeAfter = window
+  //   .getComputedStyle(document.querySelector('.card-fate'), '::before')
+  //   .getPropertyValue('background-color');
+  // colorBgBeforeAfter = bgColor;
 }
 
 function normalSpacing() {

@@ -4,6 +4,7 @@
   "description": "practic js",
   "main": "index.js",
   "scripts": {
+    "start": "parcel src/*.html -p 1133 --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
