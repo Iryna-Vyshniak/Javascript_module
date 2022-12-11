@@ -445,11 +445,18 @@ padding-left: 1vw;
 width: 70vw;
 text-align: center;
 font-size: 5vw;
-color: tomato;
-text-shadow: 1px 1px 1px #000000, 1px 1px 50px rgba(251, 2, 2, 0.58);`;
+
+color: #f1ebe5;
+  text-shadow: 0px 1px 1px #090109, 0 -1px 1px #fff;
+filter: drop-shadow(0.5px 0.5px 0.5px rgb(86, 6, 6))
+    drop-shadow(-0.5px -0.5px 0.5px #fff);
+  -webkit-filter: drop-shadow(0.5px 0.5px 0.5px rgb(86, 6, 6))
+    drop-shadow(-0.5px -0.5px 0.5px #fff);
+  
+`;
 
 // task
-document.body.style.backgroundImage = 'linear-gradient(to bottom, #5d326c, #350048)';
+const bodyBg = document.querySelector('.js-body-bg');
 
 const motivationPhrases = [
   'If you fall asleep now, you will dream. If you study now, you will live your dream',
@@ -517,10 +524,25 @@ function ballOfFate() {
 }
 
 function createFate() {
+  bodyBg.classList.remove('js-body-bg');
   cardFate.classList.toggle('visually-hidden');
-  console.log(cardFate);
+  randomBgColor();
+  normalSpacing();
   cardFate.innerHTML = ballOfFate();
   audioPlay();
+}
+
+function randomBgColor() {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+
+  let bgColor = `rgba(${r}, ${g}, ${b}, 0.3)`;
+  document.body.style.backgroundColor = bgColor;
+}
+
+function normalSpacing() {
+  greetingContent.style.letterSpacing = '0.1em';
 }
 
 function audioPlay() {
