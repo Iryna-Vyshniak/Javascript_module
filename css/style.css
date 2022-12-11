@@ -17,13 +17,38 @@
   background-color: red;
 } */
 
+body {
+  min-height: 100vh;
+}
+
+section {
+  padding: calc(1vh + 1vw);
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+.btn-fate {
+  box-shadow: rgb(255 255 255) -1px -1px 5px, rgb(165 10 10 / 80%) 1px 1px 5px;
+}
+
 .btn-fate:hover {
-  box-shadow: -2px -2px 5px #fff, 2px 2px 5px rgba(165, 10, 10, 0.8);
+  box-shadow: -0.5px -0.5px 2px #fff, 0.5px 0.5px 2px rgba(165, 10, 10, 0.8);
 }
 
 .btn-fate:active {
   top: 2px;
-  box-shadow: -2px -2px 5px #fff, 2px 2px 5px rgba(165, 10, 10, 0.8);
+  box-shadow: -0.5px -0.5px 2px #fff, 0.5px 0.5px 2px rgba(165, 10, 10, 0.8);
 }
 
 .sound-btn {
@@ -31,10 +56,115 @@
   bottom: 5vh;
   right: 5vw;
   width: 30px;
+
+  width: calc((1vh + 1vw) * 1.2);
+  height: calc((1vh + 1vw) * 1.2);
+  padding: 0.2em;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  background-color: transparent;
+  box-shadow: rgb(255 255 255) -1px -1px 5px, rgb(165 10 10 / 80%) 1px 1px 5px;
   cursor: pointer;
   transition: 0.25s ease;
 }
 
 .sound-btn.paused {
   opacity: 0.1;
+}
+
+.card-fate {
+  position: relative;
+  display: grid;
+  place-content: center;
+  height: calc((1vw + 1vh) * 9);
+  margin: 0;
+
+  color: #fff;
+  text-shadow: 0.5px 0.5px 0.5px #000000;
+  text-align: center;
+  font-size: calc((1vh + 1vw) * 0.9);
+}
+
+.card-fate p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 1em;
+  overflow: hidden;
+  font-weight: 300;
+  letter-spacing: 1px;
+  transition: 0.5s;
+  backdrop-filter: blur(15px);
+}
+.card-fate:hover p {
+  letter-spacing: 2px;
+}
+.card-fate p::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(45deg) translate(0);
+  transition: 0.5s;
+  filter: blur(0px);
+}
+.card-fate:hover p::before {
+  transform: skewX(45deg) translate(200px);
+}
+.card-fate::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-45%);
+  bottom: -2.3em;
+  width: 30px;
+  height: 10px;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0.5;
+}
+.card-fate:hover::before {
+  bottom: 2;
+  height: 80%;
+  width: 80%;
+  border-radius: 30px;
+}
+
+.card-fate::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-45%);
+  top: -0.2em;
+  width: 30px;
+  height: 10px;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0.5;
+}
+.card-fate:hover::after {
+  top: 2;
+  height: 80%;
+  width: 80%;
+  border-radius: 30px;
+}
+.card-fate::before,
+.card-fate::after {
+  background: rgba(255, 31, 113);
+  box-shadow: 0 0 5px #ff1f71, 0 0 15px #ff1f71, 0 0 30px #ff1f71, 0 0 60px #ff1f71;
 }

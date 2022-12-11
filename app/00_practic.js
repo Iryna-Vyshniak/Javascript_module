@@ -449,6 +449,8 @@ color: tomato;
 text-shadow: 1px 1px 1px #000000, 1px 1px 50px rgba(251, 2, 2, 0.58);`;
 
 // task
+document.body.style.backgroundImage = 'linear-gradient(to bottom, #5d326c, #350048)';
+
 const motivationPhrases = [
   'If you fall asleep now, you will dream. If you study now, you will live your dream',
   'When you think it’s too late, the truth is, it’s still early',
@@ -469,8 +471,6 @@ const motivationPhrases = [
 ];
 
 console.log(motivationPhrases.length);
-const ballOfFate = motivationPhrases[Math.floor(Math.random() * motivationPhrases.length)];
-console.log(ballOfFate);
 
 // const btnFate = document.createElement('button');
 
@@ -489,6 +489,7 @@ btnFate.style = `
 position: relative;
 display: flex;
 align-items: center;
+margin-bottom: 3vh;
 margin-right: auto;
 margin-left: auto;
 width: calc((1vh + 1vw) * 2);
@@ -497,8 +498,7 @@ padding: 0.5em;
 border: none;
 outline: none;
 border-radius: 50%;
-background-color: rgba(251, 2, 2, 0.58);
-  box-shadow: -5px -5px 10px #fff, 5px 5px 15px rgba(165, 10, 10, .8);
+background-color: transparent;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 color: #ffffff;
@@ -508,17 +508,27 @@ font-size: calc((1vh + 1vw) * .5);
 
 const soundBtn = document.querySelector('.sound-btn');
 const audio = document.querySelector('.audio');
+const cardFate = document.querySelector('.card-fate');
 
-btnFate.addEventListener('click', e => {
-  e.preventDefault();
+btnFate.addEventListener('click', createFate);
 
-  greetingBlock.insertAdjacentHTML('beforeend', `${ballOfFate}`);
-});
+function ballOfFate() {
+  return `<p>${motivationPhrases[Math.floor(Math.random() * motivationPhrases.length)]}</p>`;
+}
 
-soundBtn.addEventListener('click', e => {
+function createFate() {
+  cardFate.classList.toggle('visually-hidden');
+  console.log(cardFate);
+  cardFate.innerHTML = ballOfFate();
+  audioPlay();
+}
+
+function audioPlay() {
   soundBtn.classList.toggle('paused');
   audio.paused ? audio.play() : audio.pause();
-});
+}
+
+soundBtn.addEventListener('click', audioPlay);
 
 window.onfocus = function () {
   soundBtn.classList.contains('paused') ? audio.pause() : audio.play();
