@@ -733,3 +733,17 @@ function checkingStorage(available, ordered) {
 
 checkingStorage(100, 50);
 checkingStorage(100, 130);
+
+// use conditional operator => check password
+
+function checkPsw(psw) {
+  const ADMIN_PASSWORD = 'qwerty';
+  let message;
+  message = psw === ADMIN_PASSWORD ? 'Access is allowed' : 'Access denied, wrong password!';
+  console.log(message);
+  return message;
+}
+checkPsw('jqueryismyjam');
+checkPsw('angul4r1sl1f3');
+checkPsw('r3actsux');
+checkPsw('qwerty');
