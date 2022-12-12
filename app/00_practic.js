@@ -794,3 +794,39 @@ checkPswd('mangohackzor');
 checkPswd(null);
 checkPswd('polyhax');
 checkPswd('jqueryismyjam');
+
+//get shipping cost(country) =>  перевіряти можливість доставки товару в країну користувача (параметр country) і повертати повідомлення про результат, що зберігається у змінній message. Use "switch" statement
+
+function getShippingCost(country) {
+  let message;
+  let price;
+  switch (country) {
+    case 'China':
+      price = 100;
+      message = `Shipping to ${country} will cost ${price} credits`;
+      break;
+    case 'Chile':
+      price = 250;
+      message = `Shipping to ${country} will cost ${price} credits`;
+      break;
+    case 'Australia':
+      price = 170;
+      message = `Shipping to ${country} will cost ${price} credits`;
+      break;
+    case 'Jamaica':
+      price = 120;
+      message = `Shipping to ${country} will cost ${price} credits`;
+      break;
+    default:
+      message = 'Sorry, there is no delivery to your country';
+  }
+  console.log(message);
+  return message;
+}
+
+getShippingCost('Australia');
+getShippingCost('Germany');
+getShippingCost('China');
+getShippingCost('Chile');
+getShippingCost('Jamaica');
+getShippingCost('Sweden');
