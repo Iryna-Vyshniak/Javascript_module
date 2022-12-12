@@ -557,3 +557,80 @@ window.onfocus = function () {
 window.onblur = function () {
   audio.pause();
 };
+
+// check password
+function isValidPassword(psw) {
+  const VALID_PASSWORD = 'sfhdjsfhkdj374';
+  const checkPsw = psw === VALID_PASSWORD;
+  return checkPsw;
+}
+
+isValidPassword('fhdskhff687');
+
+// check age
+const checkAge = age => {
+  let message;
+  if (age >= 18) {
+    message = 'You are an adult';
+  } else {
+    message = 'You are a minor';
+  }
+  console.log(message);
+  return message;
+};
+
+checkAge(18);
+checkAge(14);
+
+// checkStorage(available, ordered)
+const checkStorage = (available, ordered) => {
+  let message;
+  if (available < ordered) {
+    message = 'Not enough goods in stock!';
+  } else {
+    message = 'Order is processed, our manager will contact you.';
+  }
+  console.log(message);
+  return message;
+};
+
+checkStorage(100, 50);
+checkStorage(100, 130);
+
+// makeTransaction(pricePerDroid, orderedQuantity, customerCredits)
+
+const makeTransaction = (pricePerDroid, orderedQuantity, customerCredits) => {
+  let message;
+  const totalPrice = pricePerDroid * orderedQuantity;
+  if (totalPrice > customerCredits) {
+    message = 'Insufficient funds!';
+  } else {
+    const leftCredits = customerCredits - totalPrice;
+    message = `You ordered ${orderedQuantity} droids, you have ${leftCredits} credits left`;
+  }
+  console.log(message);
+  return message;
+};
+makeTransaction(3000, 5, 23000);
+makeTransaction(1000, 3, 15000);
+makeTransaction(5000, 10, 8000);
+makeTransaction(2000, 8, 10000);
+
+// checkPassword(password)
+const checkPassword = password => {
+  const ADMIN_PASSWORD = 'jqueryismyjam';
+  let message;
+  if (password === null) {
+    message = 'Canceled by user!';
+  } else if (password === ADMIN_PASSWORD) {
+    message = 'Welcome!';
+  } else {
+    message = 'Access denied, wrong password!';
+  }
+  console.log(message);
+  return message;
+};
+checkPassword('mangohackzor');
+checkPassword(null);
+checkPassword('polyhax');
+checkPassword('jqueryismyjam');
