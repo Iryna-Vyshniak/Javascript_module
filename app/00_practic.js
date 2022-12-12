@@ -3,6 +3,8 @@
 //   return () => {
 //     console.log(counter);
 
+// const { func } = require('joi/lib');
+
 //     counter--;
 //     console.log(`counts left ${counter}`);
 //   };
@@ -852,3 +854,17 @@ function getSubstring(string, length) {
 getSubstring('Hello world', 3);
 getSubstring('Hello world', 6);
 getSubstring('Hello world', 8);
+
+// format message => приймає рядок (параметр message) і форматує його, якщо довжина перевищує значення в параметрі maxLength.
+function formatMessage(message, maxLength) {
+  let result;
+  result = message.length <= maxLength ? message : `${message.slice(0, maxLength)}...`;
+  console.log(result);
+  return result;
+}
+
+formatMessage('Curabitur ligula sapien', 16);
+formatMessage('Curabitur ligula sapien', 23);
+formatMessage('Vestibulum facilisis purus nec', 20);
+formatMessage('Vestibulum facilisis purus nec', 30);
+formatMessage('Nunc sed turpis a felis in nunc fringilla', 15);
