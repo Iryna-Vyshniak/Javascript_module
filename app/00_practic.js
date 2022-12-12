@@ -715,3 +715,21 @@ getDiscount(1300);
 getDiscount(5000);
 getDiscount(20000);
 getDiscount(50000);
+
+//check storage
+function checkingStorage(available, ordered) {
+  let message;
+
+  // available > ordered
+  //   ? (message = 'The order is accepted, our manager will contact you')
+  //   : (message = 'Not enough goods in stock!');
+  message =
+    ordered > available
+      ? 'Not enough goods in stock!'
+      : 'The order is accepted, our manager will contact you';
+  console.log(message);
+  return message;
+}
+
+checkingStorage(100, 50);
+checkingStorage(100, 130);
