@@ -661,3 +661,15 @@ isNumberInRange(10, 30, 17);
 isNumberInRange(10, 30, 5);
 isNumberInRange(20, 50, 24);
 isNumberInRange(20, 50, 76);
+
+// checkIfCanAccessContent(subType)
+function checkIfCanAccessContent(subType) {
+  const canAccessContent = subType === 'pro' || subType === 'vip';
+  console.log(canAccessContent);
+  return canAccessContent;
+}
+
+checkIfCanAccessContent('pro');
+checkIfCanAccessContent('starter');
+checkIfCanAccessContent('vip');
+checkIfCanAccessContent('free');
