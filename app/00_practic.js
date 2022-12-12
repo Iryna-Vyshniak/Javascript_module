@@ -769,3 +769,28 @@ function getSubscriptionPrice(type) {
 getSubscriptionPrice('professional');
 getSubscriptionPrice('organization');
 getSubscriptionPrice('starter');
+
+//check password(password) отримує пароль в параметр password, перевіряє його на збіг з паролем адміністратора у змінній ADMIN_PASSWORD і повертає повідомлення про результат порівняння, яке зберігається у змінній message. Use "switch" statement
+
+function checkPswd(password) {
+  const ADMIN_PASSWORD = 'jqueryismyjam';
+  let message;
+
+  switch (password) {
+    case null:
+      message = 'Canceled by user!';
+      break;
+    case ADMIN_PASSWORD:
+      message = 'Welcome!';
+      break;
+    default:
+      message = 'Access denied, wrong password!';
+  }
+  console.log(message);
+  return message;
+}
+
+checkPswd('mangohackzor');
+checkPswd(null);
+checkPswd('polyhax');
+checkPswd('jqueryismyjam');
