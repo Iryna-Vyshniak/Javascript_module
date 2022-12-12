@@ -868,3 +868,13 @@ formatMessage('Curabitur ligula sapien', 23);
 formatMessage('Vestibulum facilisis purus nec', 20);
 formatMessage('Vestibulum facilisis purus nec', 30);
 formatMessage('Nunc sed turpis a felis in nunc fringilla', 15);
+
+// normalize input => приймає рядок (параметр input) і повертає такий самий рядок, але в нижньому регістрі.
+function normalizeInput(input) {
+  const normalizedInput = input.toLowerCase();
+  console.log(normalizedInput);
+  return normalizedInput;
+}
+normalizeInput('Hello world');
+normalizeInput("This ISN'T SpaM");
+normalizeInput('Big SALE');
