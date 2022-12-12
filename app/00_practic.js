@@ -747,3 +747,25 @@ checkPsw('jqueryismyjam');
 checkPsw('angul4r1sl1f3');
 checkPsw('r3actsux');
 checkPsw('qwerty');
+
+// get subscription price(type) отримати рядок з типом передплати користувача (параметр type), перевірити її на збіг з трьома можливими типами щомісячної передплати та повернути ціну, що зберігається у змінній price.
+function getSubscriptionPrice(type) {
+  let price;
+
+  switch (type) {
+    case 'starter':
+      price = 0;
+      break;
+    case 'professional':
+      price = 20;
+      break;
+    case 'organization':
+      price = 50;
+      break;
+  }
+  console.log(price);
+  return price;
+}
+getSubscriptionPrice('professional');
+getSubscriptionPrice('organization');
+getSubscriptionPrice('starter');
