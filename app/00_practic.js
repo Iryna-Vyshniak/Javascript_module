@@ -842,3 +842,13 @@ const courseTopic = 'JavaScript essentials';
 const courseTopicLength = courseTopic.length; //21
 const firstElement = courseTopic[0]; //"J"
 const lastElement = courseTopic[courseTopic.length - 1]; //'s';
+
+//get substring => приймає рядок і повертає підрядок від початку і до length символів
+function getSubstring(string, length) {
+  const substring = string.slice(string, length);
+  console.log(substring);
+  return substring;
+}
+getSubstring('Hello world', 3);
+getSubstring('Hello world', 6);
+getSubstring('Hello world', 8);
