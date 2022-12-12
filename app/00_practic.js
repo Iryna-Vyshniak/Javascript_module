@@ -878,3 +878,14 @@ function normalizeInput(input) {
 normalizeInput('Hello world');
 normalizeInput("This ISN'T SpaM");
 normalizeInput('Big SALE');
+
+//check for name => приймає два параметри та повертає буль true або false - результат перевірки входження підрядка name у рядок fullname.
+function checkForName(fullname, name) {
+  const result = fullname.includes(name);
+  console.log(result);
+  return result;
+}
+checkForName('Egor Kolbasov', 'Egor');
+checkForName('Egor Kolbasov', 'egor');
+checkForName('Egor Kolbasov', 'egOr');
+checkForName('Vadim Nekrasov', 'Vadim');
