@@ -836,3 +836,9 @@ function getNameLength(name) {
   const message = `Name ${name} is ${name.length} characters long`;
   return message;
 }
+
+//присвоїти оголошеним змінним вирази звертання до відповідних елементів або властивостей рядка у змінній course.
+const courseTopic = 'JavaScript essentials';
+const courseTopicLength = courseTopic.length; //21
+const firstElement = courseTopic[0]; //"J"
+const lastElement = courseTopic[courseTopic.length - 1]; //'s';
