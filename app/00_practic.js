@@ -830,3 +830,9 @@ getShippingCost('China');
 getShippingCost('Chile');
 getShippingCost('Jamaica');
 getShippingCost('Sweden');
+
+//get name length(name) => приймає ім'я (параметр name) і повертає рядок, в якому вказана його довжина.
+function getNameLength(name) {
+  const message = `Name ${name} is ${name.length} characters long`;
+  return message;
+}
