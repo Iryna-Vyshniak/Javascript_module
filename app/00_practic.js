@@ -673,3 +673,16 @@ checkIfCanAccessContent('pro');
 checkIfCanAccessContent('starter');
 checkIfCanAccessContent('vip');
 checkIfCanAccessContent('free');
+
+// is number not in range(start, end, number) перевіряє, чи не входить число у проміжок. Тобто число повинно бути меншим або дорівнювати start і більшим або дорівнювати end
+function isNumberNotInRange(start, end, number) {
+  const isInRange = number >= start && number <= end;
+  const isNotInRange = !isInRange;
+  console.log(isNotInRange);
+  return isNotInRange;
+}
+
+isNumberNotInRange(10, 30, 17);
+isNumberNotInRange(10, 30, 5);
+isNumberNotInRange(20, 50, 24);
+isNumberNotInRange(20, 50, 76);
