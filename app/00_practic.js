@@ -906,3 +906,38 @@ checkForSpam('Amazing SalE, only tonight!');
 checkForSpam('Trust me, this is not a spam message');
 checkForSpam('Get rid of sPaM emails. Our book in on sale!');
 checkForSpam('[SPAM] How to earn fast money?');
+
+// INCREMENT, DECREMENT
+let a = 1,
+  b = 1;
+
+let c = ++a; // 2, префіксна форма повертає нове значення
+let d = b++; // 1, постфіксна форма повертає старе значення
+
+console.log(++a); // 3, префіксна форма повертає нове значення
+console.log(b++); // 2, постфіксна форма повертає старе значення
+
+console.log(a); // 3, збільшується один раз
+console.log(b); // 3, збільшується один раз
+
+//check user psw
+
+function checkUser(userName) {
+  let message;
+  let psw;
+  if (userName === 'admin' || userName === 'master') {
+    psw = prompt('Enter psw');
+    if (psw === 'boss') {
+      message = 'Hello, Boss';
+    } else {
+      message = 'Wrong password';
+    }
+  } else {
+    alert('I don`t know you');
+  }
+  console.log(message);
+  return message;
+}
+//checkUser('admin');
+//checkUser('user');
+//checkUser('master');
