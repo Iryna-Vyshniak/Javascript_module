@@ -634,3 +634,21 @@ checkPassword('mangohackzor');
 checkPassword(null);
 checkPassword('polyhax');
 checkPassword('jqueryismyjam');
+
+//checkStorage(available, ordered)
+function checkStorages(available, ordered) {
+  let message;
+  if (ordered === 0) {
+    message = 'There are no products in the order!';
+  } else if (ordered > available) {
+    message = 'Your order is too large, there are not enough items in stock!';
+  } else {
+    message = 'The order is accepted, our manager will contact you';
+  }
+  console.log(message);
+  return message;
+}
+checkStorages(100, 50);
+checkStorage(70, 0);
+
+// isNumberInRange(start, end, number)
