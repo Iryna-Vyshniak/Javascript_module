@@ -1117,3 +1117,25 @@ function solutions(str) {
 }
 solutions('world');
 solutions('goIt');
+
+//Take an array and remove every second element from the array. Always keep the first element and start removing with the next element.
+function removeEveryOther(arr) {
+  return arr.filter((el, i) => i % 2 === 0);
+}
+console.log(removeEveryOther(['Hello', 'Goodbye', 'Hello Again']));
+console.log(removeEveryOther([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+console.log(removeEveryOther([[1, 2]]));
+console.log(removeEveryOther([['Goodbye'], { Great: 'Job' }]));
+
+function removeEveryOtherEl(arr) {
+  let oddArr = [];
+  for (let i = 0; i < arr.length; i += 2) {
+    oddArr.push(arr[i]);
+  }
+  console.log(oddArr);
+  return oddArr;
+}
+removeEveryOtherEl(['Hello', 'Goodbye', 'Hello Again']);
+removeEveryOtherEl([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+removeEveryOtherEl([[1, 2]]);
+removeEveryOtherEl([['Goodbye'], { Great: 'Job' }]);
