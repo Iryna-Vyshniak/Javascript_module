@@ -1031,10 +1031,10 @@ function totalSalary(numberEmployers) {
   const maxSalary = 5000;
   for (let i = 0; i < numberEmployers; i += 1) {
     const salary = Math.floor(Math.random() * (maxSalary - minSalary) + minSalary);
-    console.log('Salary of employer', `${salary}$`);
+    console.log(`Salary of the ${i} employer:`, `${salary}$`);
     totalSalary += salary;
   }
-  console.log('Salary of employer', `${totalSalary}$`);
+  console.log('Total salary of employers:', `${totalSalary}$`);
   return totalSalary;
 }
 totalSalary(1);
