@@ -997,3 +997,28 @@ bookingStars(3);
 bookingStars(1);
 bookingStars(5);
 bookingStars(7);
+
+// delivery
+function delivery(options) {
+  let message;
+  switch (options) {
+    case 1:
+      message = `Take from the office`;
+      break;
+    case 2:
+      message = `The courier will deliver`;
+      break;
+    case 3:
+      message = `Sent to post`;
+      break;
+    default:
+      message = `Our manager call you `;
+  }
+  console.log(message);
+  return message;
+}
+
+delivery(1);
+delivery(2);
+delivery(3);
+delivery(4);
