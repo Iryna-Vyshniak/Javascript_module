@@ -1029,7 +1029,7 @@ function totalSalary(numberEmployers) {
   let totalSalary = 0;
   const minSalary = 500;
   const maxSalary = 5000;
-  for (let i = 0; i < numberEmployers; i += 1) {
+  for (let i = 1; i < numberEmployers; i += 1) {
     const salary = Math.floor(Math.random() * (maxSalary - minSalary) + minSalary);
     console.log(`Salary of the ${i} employer:`, `${salary}$`);
     totalSalary += salary;
