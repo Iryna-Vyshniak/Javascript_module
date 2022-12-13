@@ -1022,3 +1022,22 @@ delivery(1);
 delivery(2);
 delivery(3);
 delivery(4);
+
+// salary employers, where salary is random number from 500 to 5000; total salary
+
+function totalSalary(numberEmployers) {
+  let totalSalary = 0;
+  const minSalary = 500;
+  const maxSalary = 5000;
+  for (let i = 0; i < numberEmployers; i += 1) {
+    const salary = Math.floor(Math.random() * (maxSalary - minSalary) + minSalary);
+    console.log('Salary of employer', `${salary}$`);
+    totalSalary += salary;
+  }
+  console.log('Salary of employer', `${totalSalary}$`);
+  return totalSalary;
+}
+totalSalary(1);
+totalSalary(2);
+totalSalary(3);
+totalSalary(5);
