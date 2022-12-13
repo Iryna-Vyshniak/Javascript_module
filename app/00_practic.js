@@ -941,3 +941,29 @@ function checkUser(userName) {
 //checkUser('admin');
 //checkUser('user');
 //checkUser('master');
+
+// booking
+function booking(stars) {
+  let price;
+  let message;
+
+  if (stars === 1 || stars === 2) {
+    price = 1500;
+    message = `Price of this hotel is ${price}`;
+  } else if (stars === 3 || stars === 4) {
+    price = 3500;
+    message = `Price of this hotel is ${price}`;
+  } else if (stars === 5) {
+    price = 7000;
+    message = `Price of this hotel is ${price}`;
+  } else {
+    message = 'Didn`t find hotel with these stars';
+  }
+  console.log(message);
+  return message;
+}
+
+booking(2);
+booking(5);
+booking(4);
+booking(6);
