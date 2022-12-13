@@ -1095,3 +1095,25 @@ function repeatStr(n, s) {
 repeatStr(3, '*');
 repeatStr(5, '#');
 repeatStr(2, 'ha ');
+
+//reverses the string passed into it
+function solution(str) {
+  const reversesStr = str.split('').reverse().join('');
+  console.log(reversesStr);
+  return reversesStr;
+}
+solution('world');
+solution('hello');
+solution('fox');
+solution('horror');
+
+function solutions(str) {
+  let reverseStr = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    reverseStr += str[i];
+  }
+  console.log(reverseStr);
+  return reverseStr;
+}
+solutions('world');
+solutions('goIt');
