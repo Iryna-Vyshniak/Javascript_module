@@ -1060,3 +1060,28 @@ function sumOfAllEvenNum(min, max) {
 sumOfAllEvenNum(2, 24);
 sumOfAllEvenNum(1, 3);
 sumOfAllEvenNum(3, 7);
+
+//We need a function that can transform a string into a number.
+const stringToNumber = str => {
+  const num = Number.parseInt(str);
+  console.log(num);
+  return num;
+};
+stringToNumber('1234px');
+stringToNumber('-7rem');
+stringToNumber('1405');
+
+//Timmy & Sarah think they are in love, but around where they live, they will only know once they pick a flower each. If one of the flowers has an even number of petals and the other has an odd number of petals it means they are in love.
+//Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't.
+function lovefunc(flower1, flower2) {
+  const isInLove =
+    // (flower1 % 2 !== 0 && flower2 % 2 === 0) || (flower1 % 2 === 0 && flower2 % 2 !== 0)
+    flower1 % 2 !== flower2 % 2 ? true : false;
+
+  console.log(isInLove);
+  return isInLove;
+}
+lovefunc(1, 4);
+lovefunc(2, 2);
+lovefunc(0, 1);
+lovefunc(0, 0);
