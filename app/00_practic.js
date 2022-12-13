@@ -967,3 +967,33 @@ booking(2);
 booking(5);
 booking(4);
 booking(6);
+
+// booking with use "switch" statement
+function bookingStars(stars) {
+  let price;
+  let message;
+  switch (stars) {
+    case 1:
+    case 2:
+      price = 1500;
+      message = `Price of this hotel is ${price}`;
+      break;
+    case 3:
+    case 4:
+      price = 3500;
+      message = `Price of this hotel is ${price}`;
+      break;
+    case 5:
+      price = 7000;
+      message = `Price of this hotel is ${price}`;
+      break;
+    default:
+      message = 'Didn`t find hotel with these stars';
+  }
+  console.log(message);
+  return message;
+}
+bookingStars(3);
+bookingStars(1);
+bookingStars(5);
+bookingStars(7);
