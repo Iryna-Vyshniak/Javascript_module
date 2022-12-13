@@ -1085,3 +1085,13 @@ lovefunc(1, 4);
 lovefunc(2, 2);
 lovefunc(0, 1);
 lovefunc(0, 0);
+
+//function that accepts an integer n and a string s as parameters, and returns a string of s repeated exactly n times.
+function repeatStr(n, s) {
+  const repeat = s.repeat(n);
+  console.log(repeat);
+  return repeat;
+}
+repeatStr(3, '*');
+repeatStr(5, '#');
+repeatStr(2, 'ha ');
