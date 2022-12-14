@@ -1149,3 +1149,19 @@ function doubleInteger(i) {
 
 doubleInteger(2);
 doubleInteger(4);
+
+//return the additive inverse of each from the set of numbers. Each positive becomes negatives, and the negatives become positives
+function invert(array) {
+  const invertAdditive = array.map(arr => {
+    if (Number.parseInt(arr) > 0) {
+      return -Number.parseInt(arr);
+    } else {
+      return Number.parseInt(arr) * -1;
+    }
+  });
+  console.log(invertAdditive);
+  return invertAdditive;
+}
+invert([1, 2, 3, 4, 5]);
+invert([1, -2, 3, -4, 5]);
+invert([0]);
