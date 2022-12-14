@@ -1165,3 +1165,17 @@ function invert(array) {
 invert([1, 2, 3, 4, 5]);
 invert([1, -2, 3, -4, 5]);
 invert([0]);
+
+// use method Math.abs return the additive inverse of each from the set of numbers
+const invertNum = array =>
+  array.map(arr => {
+    if (Number.parseInt(arr) >= 0) {
+      return -Number.parseInt(arr);
+    } else {
+      return Math.abs(arr);
+    }
+  });
+
+console.log(invertNum([1, 2, 3, 4, 5])); // [-1, -2, -3, -4, -5]
+console.log(invertNum([1, -2, 3, -4, 5])); // [-1, 2, -3, 4, -5]
+console.log(invertNum([0])); // [-0]
