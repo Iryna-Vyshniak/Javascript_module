@@ -1288,3 +1288,13 @@ function howMuchILoveYou(nbPetals) {
 howMuchILoveYou(3); // a lot
 howMuchILoveYou(6); // not at all
 howMuchILoveYou(7); // I love you
+
+//  next variant func to determine which phrase the girls would say at the last petal for a flower of a given number of petals
+function howMuchILove(nbPetals) {
+  let petals = ['not at all', 'I love you', 'a little', 'a lot', 'passionately', 'madly'];
+  return petals[nbPetals % petals.length];
+}
+
+console.log(howMuchILove(3)); // a lot
+console.log(howMuchILove(6)); // not at all
+console.log(howMuchILove(7)); // I love you
