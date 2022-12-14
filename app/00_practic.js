@@ -1197,3 +1197,13 @@ const invertNum = array =>
 console.log(invertNum([1, 2, 3, 4, 5])); // [-1, -2, -3, -4, -5]
 console.log(invertNum([1, -2, 3, -4, 5])); // [-1, 2, -3, 4, -5]
 console.log(invertNum([0])); // [-0]
+
+// next variant return the additive inverse of each from the set of numbers
+function invertArr(array) {
+  const invertAdditive = array.map(arr => -arr);
+  console.log(invertAdditive);
+  return invertAdditive;
+}
+invertArr([1, 2, 3, 4, 5]);
+invertArr([1, -2, 3, -4, 5]);
+invertArr([0]);
