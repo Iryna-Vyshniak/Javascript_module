@@ -1245,3 +1245,16 @@ function abbrevName(name) {
 abbrevName('Sam Harris');
 abbrevName('Patrick Feenan');
 abbrevName('Evan Cole');
+
+//next variant function to convert a name into initials. This kata strictly takes two words with one space in between them.The output should be two capital letters with a dot separating them.
+const abbrName = name =>
+  name
+    .toUpperCase()
+    .trim()
+    .split(' ')
+    .map(index => index[0])
+    .join('.');
+
+console.log(abbrName('Sam Harris'));
+console.log(abbrName('Patrick Feenan'));
+console.log(abbrName('Evan Cole'));
