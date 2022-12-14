@@ -1207,3 +1207,16 @@ function invertArr(array) {
 invertArr([1, 2, 3, 4, 5]);
 invertArr([1, -2, 3, -4, 5]);
 invertArr([0]);
+
+// next variant with for to return the additive inverse of each from the set of numbers
+function invertArrNum(array) {
+  let invertAdditive = [];
+  for (let i = 0; i < array.length; i += 1) {
+    invertAdditive.push(-array[i]);
+  }
+  console.log(invertAdditive);
+  return invertAdditive;
+}
+invertArrNum([1, 2, 3, 4, 5]);
+invertArrNum([1, -2, 3, -4, 5]);
+invertArrNum([0]);
