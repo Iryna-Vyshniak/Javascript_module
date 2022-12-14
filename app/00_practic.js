@@ -1298,3 +1298,30 @@ function howMuchILove(nbPetals) {
 console.log(howMuchILove(3)); // a lot
 console.log(howMuchILove(6)); // not at all
 console.log(howMuchILove(7)); // I love you
+
+// next variant
+function howMuchLove(nbPetals) {
+  let message = nbPetals % 6;
+
+  switch (message) {
+    case 0:
+      return 'not at all';
+    case 1:
+      return 'I love you';
+    case 2:
+      return 'a little';
+    case 3:
+      return 'a lot';
+    case 4:
+      return 'passionately';
+    case 5:
+      return 'madly';
+
+    default:
+      return;
+  }
+}
+
+console.log(howMuchLove(3)); // a lot
+console.log(howMuchLove(6)); // not at all
+console.log(howMuchLove(7)); // I love you
