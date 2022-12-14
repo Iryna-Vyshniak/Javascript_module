@@ -1235,9 +1235,9 @@ invertNumber([0]);
 
 //function to convert a name into initials. This kata strictly takes two words with one space in between them.The output should be two capital letters with a dot separating them.
 function abbrevName(name) {
-  const arrName = name.trim().split('');
+  const arrName = name.toUpperCase().trim().split('');
   const dott = arrName.indexOf(' ');
-  const abbrArr = arrName[0].toUpperCase() + '.' + arrName.slice(dott, dott + 2);
+  const abbrArr = arrName[0] + '.' + arrName.slice(dott, dott + 2);
   const result = abbrArr.replace(' ,', '');
   console.log(result);
   return result;
