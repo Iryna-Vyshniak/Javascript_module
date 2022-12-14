@@ -1043,6 +1043,8 @@ totalSalary(3);
 totalSalary(5);
 
 //the sum of all even numbers in the range
+
+/*
 function sumOfAllEvenNum(min, max) {
   let totalSum = 0;
   for (let i = min; i < max; i += 1) {
@@ -1052,6 +1054,22 @@ function sumOfAllEvenNum(min, max) {
       console.log(`${i} - is even number`);
       totalSum += i;
     }
+  }
+  console.log(`Total sum of even numbers is ${totalSum}`);
+  return totalSum;
+}
+
+*/
+
+function sumOfAllEvenNum(min, max) {
+  let totalSum = 0;
+  for (let i = min; i < max; i += 1) {
+    if (i % 2 !== 0) {
+      console.log(`${i} - isn't even number`);
+      continue;
+    }
+    console.log(`${i} - is even number`);
+    totalSum += i;
   }
   console.log(`Total sum of even numbers is ${totalSum}`);
   return totalSum;
