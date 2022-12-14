@@ -1139,3 +1139,13 @@ removeEveryOtherEl(['Hello', 'Goodbye', 'Hello Again']);
 removeEveryOtherEl([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 removeEveryOtherEl([[1, 2]]);
 removeEveryOtherEl([['Goodbye'], { Great: 'Job' }]);
+
+//to double the integer and return it.
+function doubleInteger(i) {
+  const double = i * 2;
+  console.log(double);
+  return double;
+}
+
+doubleInteger(2);
+doubleInteger(4);
