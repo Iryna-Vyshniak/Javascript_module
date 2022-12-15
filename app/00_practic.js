@@ -1388,7 +1388,8 @@ console.log('Total sum all even num: ', totalSumEvenNum);
 // find login
 function loginToFind(loginFind) {
   const logins = ['farrid', 'jechr65', 'koss123', 'proxy777', 'fox345'];
-  let message;
+  let message = `This login - isn't find login`;
+
   for (const login of logins) {
     console.log(`${login} === ${loginFind}: `, login === loginFind);
 
@@ -1396,10 +1397,22 @@ function loginToFind(loginFind) {
       message = `This login ${login} - find login`;
       break;
     }
-    message = `This login ${login} - isn't find login`;
   }
   console.log(message);
   return message;
 }
 
 loginToFind('proxy777');
+
+// find login use declarative code
+function toFindLogin(loginToFind) {
+  const logins = ['farrid', 'jechr65', 'koss123', 'pro2011', 'proxy777', 'fox345'];
+  let message = logins.includes(loginToFind)
+    ? `This login ${loginToFind} - find login`
+    : `This login ${loginToFind} - isn't find login`;
+
+  console.log(message);
+  return message;
+}
+
+toFindLogin('pro2011');
