@@ -1452,3 +1452,17 @@ function invertedString(phrase) {
 invertedString('JavaScript');
 invertedString('i LoVe YuO');
 invertedString('hTML, css AND jAVAsCRIPT');
+
+// refactor inverted string
+function invertedPhrase(phrase) {
+  let letters = phrase.split('');
+  let invertedStr = '';
+
+  for (const letter of letters) {
+    invertedStr += letter === letter.toLowerCase() ? letter.toUpperCase() : letter.toLowerCase();
+  }
+  console.log(invertedStr);
+  return invertedStr;
+}
+
+invertedPhrase('hTML, css, sass AND jAVAsCRIPT');
