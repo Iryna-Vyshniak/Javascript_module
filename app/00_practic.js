@@ -1334,6 +1334,8 @@ const lastIndex = friends.length - 1;
 console.log(lastIndex);
 for (let i = 0; i <= lastIndex; i += 1) {
   console.log(friends[i]);
+  friends[i] += ' student';
+  console.table(friends);
 }
 
 let aB = 10;
