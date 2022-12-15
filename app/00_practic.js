@@ -1466,3 +1466,13 @@ function invertedPhrase(phrase) {
 }
 
 invertedPhrase('hTML, css, sass AND jAVAsCRIPT');
+
+// create slug from article title
+
+function slugCreate(title) {
+  const slug = title.toLowerCase().split(' ').join('-');
+  console.log(slug);
+  return slug;
+}
+
+slugCreate('Top 10 benefits of React framework'); //top-10-benefits-of-react-framework
