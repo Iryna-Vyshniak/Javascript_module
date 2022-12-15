@@ -1325,3 +1325,13 @@ function howMuchLove(nbPetals) {
 console.log(howMuchLove(3)); // a lot
 console.log(howMuchLove(6)); // not at all
 console.log(howMuchLove(7)); // I love you
+
+//array
+const friends = ['Helen', 'John', 'Nick', 'Andrew'];
+console.table(friends);
+
+const lastIndex = friends.length - 1;
+console.log(lastIndex);
+for (let i = 0; i <= lastIndex; i += 1) {
+  console.log(friends[i]);
+}
