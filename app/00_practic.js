@@ -1370,3 +1370,17 @@ for (const goodPrice of cart) {
   totalSum += goodPrice;
 }
 console.log('Total sum:', totalSum);
+
+// total sum all even elements in array
+
+const numArr = [12, 345, 66, 88, 942, 53, 100];
+let totalSumEvenNum = 0;
+for (const num of numArr) {
+  if (num % 2 !== 0) {
+    console.log('It`s odd num: ', num);
+    continue;
+  }
+  console.log('It`s even num: ', num);
+  totalSumEvenNum += num;
+}
+console.log('Total sum all even num: ', totalSumEvenNum);
