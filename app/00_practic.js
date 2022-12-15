@@ -1384,3 +1384,22 @@ for (const num of numArr) {
   totalSumEvenNum += num;
 }
 console.log('Total sum all even num: ', totalSumEvenNum);
+
+// find login
+function loginToFind(loginFind) {
+  const logins = ['farrid', 'jechr65', 'koss123', 'proxy777', 'fox345'];
+  let message;
+  for (const login of logins) {
+    console.log(`${login} === ${loginFind}: `, login === loginFind);
+
+    if (login === loginFind) {
+      message = `This login ${login} - find login`;
+      break;
+    }
+    message = `This login ${login} - isn't find login`;
+  }
+  console.log(message);
+  return message;
+}
+
+loginToFind('proxy777');
