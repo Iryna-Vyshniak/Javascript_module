@@ -1433,3 +1433,22 @@ function smallNumToFind(numbers) {
 smallNumToFind([51, 67, 45, 345, 87, 9005, 12]);
 smallNumToFind([451, 787, 565, 345, 857, 910, 120]);
 smallNumToFind([145, 637, 453, 345, 456, 9005, 124]);
+
+// inverted string
+function invertedString(phrase) {
+  let letters = phrase.split('');
+  let invertedString = '';
+  for (const letter of letters) {
+    if (letter === letter.toLowerCase()) {
+      invertedString += letter.toUpperCase();
+    } else {
+      invertedString += letter.toLowerCase();
+    }
+  }
+  console.log(invertedString);
+  return invertedString;
+}
+
+invertedString('JavaScript');
+invertedString('i LoVe YuO');
+invertedString('hTML, css AND jAVAsCRIPT');
