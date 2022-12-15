@@ -1335,3 +1335,20 @@ console.log(lastIndex);
 for (let i = 0; i <= lastIndex; i += 1) {
   console.log(friends[i]);
 }
+
+let aB = 10;
+let bC = aB;
+console.log(aB); // 10
+console.log(bC); //10
+aB = 20;
+console.log(aB); // 20
+console.log(bC); // 10;
+const aBc = [1, 2, 3];
+const bCd = aBc;
+console.log(aBc); // [1, 2, 3]
+console.log(bCd); // [1, 2, 3]
+aBc[0] = 500;
+console.log(aBc); // [500, 2, 3]
+console.log(bCd); // [500, 2, 3]
+console.log(aBc === bCd); // true
+console.log([1, 2, 3] === [1, 2, 3]); // false
