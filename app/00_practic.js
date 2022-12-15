@@ -1416,3 +1416,20 @@ function toFindLogin(loginToFind) {
 }
 
 toFindLogin('pro2011');
+
+// to find the smallest number
+
+function smallNumToFind(numbers) {
+  let smallestNum = numbers[0];
+
+  for (const num of numbers) {
+    if (num < smallestNum) {
+      smallestNum = num;
+    }
+  }
+  console.log(`The smallest number is ${smallestNum}`);
+  return smallestNum;
+}
+smallNumToFind([51, 67, 45, 345, 87, 9005, 12]);
+smallNumToFind([451, 787, 565, 345, 857, 910, 120]);
+smallNumToFind([145, 637, 453, 345, 456, 9005, 124]);
