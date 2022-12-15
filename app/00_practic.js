@@ -1354,3 +1354,19 @@ console.log(aBc); // [500, 2, 3]
 console.log(bCd); // [500, 2, 3]
 console.log(aBc === bCd); // true
 console.log([1, 2, 3] === [1, 2, 3]); // false
+
+// total sum elements in loop through an array
+const cart = [10, 23, 45, 678, 9456, 356];
+let total = 0;
+for (let i = 0; i <= cart.length - 1; i += 1) {
+  total += cart[i];
+}
+console.log('Total sum:', total);
+
+//the best variant use for..of
+const cartShop = [10, 23, 45, 678, 9456, 356];
+let totalSum = 0;
+for (const goodPrice of cart) {
+  totalSum += goodPrice;
+}
+console.log('Total sum:', totalSum);
