@@ -1476,3 +1476,18 @@ function slugCreate(title) {
 }
 
 slugCreate('Top 10 benefits of React framework'); //top-10-benefits-of-react-framework
+
+// calculate total price
+
+const calculateTotalPrice = items => {
+  let total = 0;
+
+  for (const item of items) {
+    console.log(item);
+    total += item;
+  }
+  console.log(total);
+  return total;
+};
+
+calculateTotalPrice([1, 34, 789]); // 824
