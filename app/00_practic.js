@@ -1619,3 +1619,13 @@ function makeStringFromArray(array, delimiter) {
 
 console.log(makeStringFromArray(['Mango', 'hurries', 'to', 'the', 'train'], ' '));
 console.log(makeStringFromArray(['top', 'picks', 'for', 'you'], '_'));
+
+// func which takes the title of the article, the title parameter, and returns a slug created from that string.
+function slugify(title) {
+  let slug = title.toLowerCase().split(' ').join('-');
+  return slug;
+}
+console.log(slugify('Arrays for begginers')); // "arrays-for-begginers"
+console.log(slugify('English for developer'));
+console.log(slugify('Ten secrets of JavaScript'));
+console.log(slugify('How to become a JUNIOR developer in TWO WEEKS'));
