@@ -1773,3 +1773,17 @@ function getEvenNumbers(start, end) {
 getEvenNumbers(2, 5); // [2, 4]
 getEvenNumbers(3, 11); // [4, 6, 8, 10]
 getEvenNumbers(6, 12); // [6, 8, 10, 12]
+
+// function returned the first number from start to end, which is divided by the divisor without a remainder
+function findNumber(start, end, divisor) {
+  for (let i = start; i <= end; i += 1) {
+    if (i % divisor === 0) {
+      console.log(i);
+      return i;
+    }
+  }
+}
+findNumber(2, 6, 5); // 5
+findNumber(8, 17, 3); // 9
+findNumber(6, 9, 4); // 8
+findNumber(16, 35, 7); // 21
