@@ -1774,7 +1774,7 @@ getEvenNumbers(2, 5); // [2, 4]
 getEvenNumbers(3, 11); // [4, 6, 8, 10]
 getEvenNumbers(6, 12); // [6, 8, 10, 12]
 
-// function returned the first number from start to end, which is divided by the divisor without a remainder
+// function to return the first number from start to end, which is divided by the divisor without a remainder
 function findNumber(start, end, divisor) {
   for (let i = start; i <= end; i += 1) {
     if (i % divisor === 0) {
@@ -1787,3 +1787,17 @@ findNumber(2, 6, 5); // 5
 findNumber(8, 17, 3); // 9
 findNumber(6, 9, 4); // 8
 findNumber(16, 35, 7); // 21
+
+// function to checks if value is present in array, returning true if present and false otherwise
+function includes(array, value) {
+  for (const item of array) {
+    if (item === value) {
+      return true;
+    }
+  }
+  return false;
+}
+
+console.log(includes([1, 2, 3, 4, 5], 3)); // true
+console.log(includes([1, 2, 3, 4, 5], 17)); //false
+console.log(includes(['Earth', 'Mars', 'Venus', 'Jupiter', 'Saturn'], 'Jupiter')); // true
