@@ -1521,3 +1521,15 @@ biggestNumberToFind(10556, 34045, 56855, 789, 765); // 56855
 biggestNumberToFind(7057, 7340, 756, 7789, 5674); // 7789
 biggestNumberToFind(6105, 7340, 756, 4789, 87654, 567, 456, 908); //87654
 biggestNumberToFind(8905, 434, 234456, 78789, 990987); // 990987
+
+// check age
+function checkAdult(age) {
+  if (age >= 18) {
+    return 'You are an adult';
+  }
+  return 'You are a minor';
+}
+
+console.log(checkAdult(18));
+console.log(checkAdult(15));
+console.log(checkAdult(28));
