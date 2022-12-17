@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 html {
   box-sizing: border-box;
-  background: #ffc600;
   font-size: 20px;
   font-weight: 200;
 }
 
 body {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+
   margin: 0;
 }
 
@@ -15,12 +21,59 @@ body {
   box-sizing: inherit;
 }
 
-ul {
+.main-list-links {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+
   margin: 0;
   padding: 0;
   list-style: none;
 }
+/* link */
+.main-item {
+  margin-bottom: 50px;
+}
 
+.main-link {
+  margin-bottom: 20px;
+  text-decoration: none;
+
+  max-width: 150px;
+  padding: 8px 12px;
+
+  border: 0;
+  outline: 0;
+  border-radius: 320px;
+
+  background-color: #ebecf0;
+  text-shadow: 1px 1px 0 #fff;
+
+  font-size: 16px;
+  font: inherit;
+  font-weight: bold;
+
+  color: #61677c;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.main-link:focus,
+.main-link:hover {
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+  text-decoration: none;
+  color: #61677c;
+}
+
+.main-link:active {
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+  text-decoration: none;
+  color: #61677c;
+}
+
+/* FLEX-PANEL */
 .panels {
   min-height: 100vh;
   overflow: hidden;
