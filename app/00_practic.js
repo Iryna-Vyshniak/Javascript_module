@@ -1706,3 +1706,20 @@ function createArrayOfNumbers(min, max) {
 }
 createArrayOfNumbers(1, 3); // [1, 2, 3]
 createArrayOfNumbers(29, 34); // [29, 30, 31, 32, 33, 34]
+
+// function, which accepts an array of numbers and returns a new array, which will contain only those elements of the array numbers that are greater than the value of the parameter value (number).
+
+function filterArray(numbers, value) {
+  let biggestNumbers = [];
+
+  for (const num of numbers) {
+    if (num > value) {
+      biggestNumbers.push(num);
+    }
+  }
+  console.log(biggestNumbers);
+  return biggestNumbers;
+}
+filterArray([1, 2, 3, 4, 5], 3); //[4, 5]
+filterArray([1, 2, 3, 4, 5], 4); // 5
+filterArray([12, 24, 8, 41, 76], 38); // [41, 76]
