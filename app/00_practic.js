@@ -1676,3 +1676,21 @@ function calcTotalPrice(order) {
   return total;
 }
 calcTotalPrice([12, 85, 37, 4]);
+
+//function, which accepts an arbitrary string consisting only of words separated by a space (parameter string) and returns the longest word in this string
+function findLongestWord(string) {
+  let words = string.split(' ');
+  let longestWord = words[0];
+
+  for (const word of words) {
+    if (longestWord.length < word.length) {
+      longestWord = word;
+    }
+  }
+  console.log(longestWord);
+  return longestWord;
+}
+
+findLongestWord('The quick brown fox jumped over the lazy dog'); // jumped
+findLongestWord('Google do a roll'); // Google
+findLongestWord('May the force be with you'); // force
