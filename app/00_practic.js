@@ -1629,3 +1629,24 @@ console.log(slugify('Arrays for begginers')); // "arrays-for-begginers"
 console.log(slugify('English for developer'));
 console.log(slugify('Ten secrets of JavaScript'));
 console.log(slugify('How to become a JUNIOR developer in TWO WEEKS'));
+
+//to create a new array with all elements of the two original firstArray and secondArray
+function makeArray(firstArray, secondArray, maxLength) {
+  // const joinedArray = firstArray.concat(secondArray);
+  // if (joinedArray.length > maxLength) {
+  //   return joinedArray.slice(0, maxLength);
+  // }
+  // if (maxLength === 0) {
+  //   return [];
+  // }
+  // return joinedArray;
+  let newArray = firstArray.concat(secondArray).slice(0, maxLength);
+  return newArray;
+}
+
+console.log(makeArray(['Mango', 'Poly'], ['Ajax', 'Chelsea'], 3)); // ["Mango", "Poly", "Ajax"]
+console.log(makeArray(['Mango', 'Poly', 'Houston'], ['Ajax', 'Chelsea'], 4));
+console.log(makeArray(['Mango'], ['Ajax', 'Chelsea', 'Poly', 'Houston'], 3));
+console.log(makeArray(['Earth', 'Jupiter'], ['Neptune', 'Uranus'], 2));
+console.log(makeArray(['Earth', 'Jupiter'], ['Neptune', 'Uranus'], 4));
+console.log(makeArray(['Earth', 'Jupiter'], ['Neptune', 'Uranus', 'Venus'], 0)); // []
