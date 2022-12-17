@@ -1664,3 +1664,15 @@ function calculateTotal(number) {
 console.log(calculateTotal(1));
 console.log(calculateTotal(3));
 console.log(calculateTotal(7));
+
+//function, which accepts one order parameter - an array of numbers, and calculates the total sum of its elements
+function calcTotalPrice(order) {
+  let total = 0;
+
+  for (let i = 0; i <= order.length - 1; i += 1) {
+    total += order[i];
+  }
+  console.log(total);
+  return total;
+}
+calcTotalPrice([12, 85, 37, 4]);
