@@ -653,6 +653,24 @@ function checkStorages(available, ordered) {
 checkStorages(100, 50);
 checkStorage(70, 0);
 
+// check storages use early pattern
+function checkKeeping(available, ordered) {
+  if (ordered === 0) {
+    return 'Your order is empty!';
+  }
+  if (ordered > available) {
+    return 'Your order is too large, not enough goods in stock!';
+  }
+  return 'The order is accepted, our manager will contact you';
+}
+
+console.log(checkKeeping(100, 50));
+console.log(checkKeeping(100, 130));
+console.log(checkKeeping(70, 0));
+console.log(checkKeeping(200, 20));
+console.log(checkKeeping(200, 250));
+console.log(checkKeeping(150, 0));
+
 // isNumberInRange(start, end, number)
 function isNumberInRange(start, end, number) {
   const isInRange = number >= start && number <= end;
@@ -1546,3 +1564,5 @@ function checkAdminPassword(password) {
 console.log(checkAdminPassword('mangohackzor'));
 console.log(checkAdminPassword('polyhax'));
 console.log(checkAdminPassword('jqueryismyjam'));
+
+//
