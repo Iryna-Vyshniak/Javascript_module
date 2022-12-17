@@ -1533,3 +1533,16 @@ function checkAdult(age) {
 console.log(checkAdult(18));
 console.log(checkAdult(15));
 console.log(checkAdult(28));
+
+// check password use early pattern
+function checkAdminPassword(password) {
+  const ADMIN_PASSWORD = 'jqueryismyjam';
+  if (password === ADMIN_PASSWORD) {
+    return 'Welcome!';
+  }
+  return 'Access denied, wrong password!';
+}
+
+console.log(checkAdminPassword('mangohackzor'));
+console.log(checkAdminPassword('polyhax'));
+console.log(checkAdminPassword('jqueryismyjam'));
