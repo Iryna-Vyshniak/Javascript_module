@@ -1610,3 +1610,12 @@ console.log(calculateEngravingPrice('JavaScript is in my blood', 10));
 console.log(calculateEngravingPrice('JavaScript is in my blood', 20));
 console.log(calculateEngravingPrice('Web-development is creative work', 40));
 console.log(calculateEngravingPrice('Web-development is creative work', 20));
+
+// return in the variable string the result of connecting the elements of the array - array with the separator delimiter: a string.
+function makeStringFromArray(array, delimiter) {
+  let string = '';
+  return (string = array.join(delimiter));
+}
+
+console.log(makeStringFromArray(['Mango', 'hurries', 'to', 'the', 'train'], ' '));
+console.log(makeStringFromArray(['top', 'picks', 'for', 'you'], '_'));
