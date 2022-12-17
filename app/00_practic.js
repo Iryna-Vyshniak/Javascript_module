@@ -1738,3 +1738,23 @@ checkFruit('mandarin');
 checkFruit('pear');
 checkFruit('Pear');
 checkFruit('apple');
+
+//function, returns a new array consisting of those elements that are present in both original arrays
+function getCommonElements(array1, array2) {
+  let arrOfCommomElements = [];
+
+  // for (let i = 0; i < array1.length; i += 1) {
+  //   if (array2.includes(array1[i])) {
+  //     arrOfCommomElements.push(array1[i]);
+  //   }
+  for (const item of array1) {
+    if (array2.includes(item)) {
+      arrOfCommomElements.push(item);
+    }
+  }
+  console.log(arrOfCommomElements);
+  return arrOfCommomElements;
+}
+getCommonElements([1, 2, 3], [2, 4]); // [2]
+getCommonElements([1, 2, 3], [2, 1, 17, 19]);
+getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27]);
