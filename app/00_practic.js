@@ -1570,3 +1570,22 @@ const fruits = ['apple', 'plum', 'pear', 'orange'];
 fruits[1] = 'peach';
 fruits[fruits.length - 1] = 'banana';
 console.log(fruits);
+
+//
+function getExtremeElements(array) {
+  const firstEl = array[0];
+
+  const lastEl = array[array.length - 1];
+
+  const arrayFromTwoElements = [];
+  arrayFromTwoElements.unshift(firstEl);
+
+  arrayFromTwoElements.push(lastEl);
+
+  console.log(arrayFromTwoElements);
+  return arrayFromTwoElements;
+}
+
+getExtremeElements([1, 2, 3, 4, 5]); // [1, 5]
+getExtremeElements(['Earth', 'Mars', 'Venus']); // ["Earth", "Venus"]
+getExtremeElements(['apple', 'peach', 'pear', 'banana']); //["apple", "banana"]
