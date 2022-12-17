@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Theme 🥑</title>
+
+    <link rel="stylesheet" href="./css/theme.css" />
+    <!-- AdminKit CSS file -->
+    <link rel="stylesheet" href="https://unpkg.com/@adminkit/core@latest/dist/css/app.css" />
+  </head>
+  <body class="light-theme">
+    <!-- nav link -->
+    <ul class="main-list-links">
+      <li class="main-item">
+        <a class="main-link" href="./index.html">Card Fate 🧙</a>
+      </li>
+      <li class="main-item">
+        <a class="main-link" href="./flex-panel.html">Flex Panel 🃏</a>
+      </li>
+    </ul>
+
+    <!-- THEME -->
+
+    <div class="menu">
+      <div class="menu-header">
+        <div class="theme-switcher">
+          <input type="radio" name="themes" id="light-theme" checked />
+          <label for="light-theme">
+            <span><i data-feather="sun"></i>Light</span>
+          </label>
+          <input type="radio" name="themes" id="dark-theme" />
+          <label for="dark-theme">
+            <span><i data-feather="moon"></i>Dark</span>
+          </label>
+          <input type="radio" name="themes" id="black-theme" />
+          <label for="black-theme">
+            <span><i data-feather="star"></i>Black</span>
+          </label>
+          <span class="slider"></span>
+        </div>
+      </div>
+    </div>
+    <!-- AdminKit JS file -->
+    <script src="https://unpkg.com/@adminkit/core@latest/dist/js/app.js"></script>
+    <script src="./app/theme.js" defer></script>
+  </body>
+</html>
