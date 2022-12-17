@@ -1650,3 +1650,17 @@ console.log(makeArray(['Mango'], ['Ajax', 'Chelsea', 'Poly', 'Houston'], 3));
 console.log(makeArray(['Earth', 'Jupiter'], ['Neptune', 'Uranus'], 2));
 console.log(makeArray(['Earth', 'Jupiter'], ['Neptune', 'Uranus'], 4));
 console.log(makeArray(['Earth', 'Jupiter'], ['Neptune', 'Uranus', 'Venus'], 0)); // []
+
+//function, which accepts an integer (parameter number) and returns the sum of all integers from one to this number
+function calculateTotal(number) {
+  let total = 0;
+  for (let i = 0; i <= number; i += 1) {
+    total += i;
+  }
+
+  return total;
+}
+
+console.log(calculateTotal(1));
+console.log(calculateTotal(3));
+console.log(calculateTotal(7));
