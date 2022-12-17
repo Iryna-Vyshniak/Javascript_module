@@ -1756,5 +1756,20 @@ function getCommonElements(array1, array2) {
   return arrOfCommomElements;
 }
 getCommonElements([1, 2, 3], [2, 4]); // [2]
-getCommonElements([1, 2, 3], [2, 1, 17, 19]);
-getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27]);
+getCommonElements([1, 2, 3], [2, 1, 17, 19]); // [1, 2]
+getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27]); // [12, 27, 3]
+
+//function to return an array of all even numbers from start to end.
+function getEvenNumbers(start, end) {
+  let arrEvenNum = [];
+  for (let i = start; i <= end; i += 1) {
+    if (i % 2 === 0) {
+      arrEvenNum.push(i);
+    }
+  }
+  console.log(arrEvenNum);
+  return arrEvenNum;
+}
+getEvenNumbers(2, 5); // [2, 4]
+getEvenNumbers(3, 11); // [4, 6, 8, 10]
+getEvenNumbers(6, 12); // [6, 8, 10, 12]
