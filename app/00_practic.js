@@ -1599,3 +1599,14 @@ function splitMessage(message, delimiter) {
 console.log(splitMessage('Mango hurries to the train', ' ')); //["Mango", "hurries", "to", "the", "train"]
 console.log(splitMessage('Mango', '')); //['M', 'a', 'n', 'g', 'o']
 console.log(splitMessage('best_for_week', '_')); // ["best", "for", "week"]
+
+//return the total cost of engraving all the words in the string
+function calculateEngravingPrice(message, pricePerWord) {
+  let totalPriceEngraving = 0;
+  return (totalPriceEngraving = message.split(' ').length * pricePerWord);
+}
+
+console.log(calculateEngravingPrice('JavaScript is in my blood', 10));
+console.log(calculateEngravingPrice('JavaScript is in my blood', 20));
+console.log(calculateEngravingPrice('Web-development is creative work', 40));
+console.log(calculateEngravingPrice('Web-development is creative work', 20));
