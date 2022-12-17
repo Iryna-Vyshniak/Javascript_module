@@ -1589,3 +1589,13 @@ function getExtremeElements(array) {
 getExtremeElements([1, 2, 3, 4, 5]); // [1, 5]
 getExtremeElements(['Earth', 'Mars', 'Venus']); // ["Earth", "Venus"]
 getExtremeElements(['apple', 'peach', 'pear', 'banana']); //["apple", "banana"]
+
+// split message
+function splitMessage(message, delimiter) {
+  let words = [];
+  return (words = message.split(delimiter));
+}
+
+console.log(splitMessage('Mango hurries to the train', ' ')); //["Mango", "hurries", "to", "the", "train"]
+console.log(splitMessage('Mango', '')); //['M', 'a', 'n', 'g', 'o']
+console.log(splitMessage('best_for_week', '_')); // ["best", "for", "week"]
