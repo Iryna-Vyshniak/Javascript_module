@@ -1417,6 +1417,17 @@ function toFindLogin(loginToFind) {
 
 toFindLogin('pro2011');
 
+// to find login from logins
+const loginToFindFromLogins = (allLogins, login) => {
+  return allLogins.includes(login) ? `This ${login} found` : `This ${login} didn't find`;
+};
+
+const r1 = loginToFindFromLogins(
+  ['farid23', '@swither', 'foxnews777', 'nickunknown', 'tory11'],
+  'foxnews777'
+);
+console.log('r1:', r1);
+
 // to find the smallest number
 
 function smallNumToFind(numbers) {
@@ -1491,3 +1502,22 @@ const calculateTotalPrice = items => {
 };
 
 calculateTotalPrice([1, 34, 789]); // 824
+
+// find the biggest number
+function biggestNumberToFind(...numbers) {
+  let biggestNum = numbers[0];
+
+  for (const num of numbers) {
+    if (num > biggestNum) {
+      biggestNum = num;
+    }
+  }
+  console.log(biggestNum);
+  return biggestNum;
+}
+
+biggestNumberToFind(105, 340, 56, 789); //789
+biggestNumberToFind(10556, 34045, 56855, 789, 765); // 56855
+biggestNumberToFind(7057, 7340, 756, 7789, 5674); // 7789
+biggestNumberToFind(6105, 7340, 756, 4789, 87654, 567, 456, 908); //87654
+biggestNumberToFind(8905, 434, 234456, 78789, 990987); // 990987
