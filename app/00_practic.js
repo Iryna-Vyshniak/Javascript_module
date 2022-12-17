@@ -1565,4 +1565,8 @@ console.log(checkAdminPassword('mangohackzor'));
 console.log(checkAdminPassword('polyhax'));
 console.log(checkAdminPassword('jqueryismyjam'));
 
-//
+// redefinition of the value of elements with indexes
+const fruits = ['apple', 'plum', 'pear', 'orange'];
+fruits[1] = 'peach';
+fruits[fruits.length - 1] = 'banana';
+console.log(fruits);
