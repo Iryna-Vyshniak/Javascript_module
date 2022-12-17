@@ -1723,3 +1723,18 @@ function filterArray(numbers, value) {
 filterArray([1, 2, 3, 4, 5], 3); //[4, 5]
 filterArray([1, 2, 3, 4, 5], 4); // 5
 filterArray([12, 24, 8, 41, 76], 38); // [41, 76]
+
+// check whether an element is present in the array, and its position (index) is not important
+function checkFruit(fruit) {
+  const fruits = ['apple', 'plum', 'pear', 'orange'];
+  // const fruitToFind = fruits.includes(fruit) ? true : false;
+  // console.log(fruitToFind);
+  // return fruitToFind;
+  console.log(fruits.includes(fruit));
+  return fruits.includes(fruit);
+}
+checkFruit('plum');
+checkFruit('mandarin');
+checkFruit('pear');
+checkFruit('Pear');
+checkFruit('apple');
