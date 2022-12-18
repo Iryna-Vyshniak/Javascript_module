@@ -1801,3 +1801,57 @@ function includes(array, value) {
 console.log(includes([1, 2, 3, 4, 5], 3)); // true
 console.log(includes([1, 2, 3, 4, 5], 17)); //false
 console.log(includes(['Earth', 'Mars', 'Venus', 'Jupiter', 'Saturn'], 'Jupiter')); // true
+
+// return animals respective ages
+const humanYearsCatYearsDogYears = function (humanYears) {
+  let catYears = 0;
+  let dogYears = 0;
+
+  let humansYearsCatYearsDogYears = [];
+
+  for (let i = 1; i <= humanYears; i += 1) {
+    switch (i) {
+      case 1:
+        catYears += 15;
+        dogYears += 15;
+        break;
+
+      case 2:
+        catYears += 9;
+        dogYears += 9;
+        break;
+
+      default:
+        catYears += 4;
+        dogYears += 5;
+      // catYears = 24 + (humanYears - 2) * 4;
+      // dogYears = 24 + (humanYears - 2) * 5;
+    }
+  }
+  humansYearsCatYearsDogYears.push(humanYears);
+  humansYearsCatYearsDogYears.push(catYears);
+  humansYearsCatYearsDogYears.push(dogYears);
+  console.log(humansYearsCatYearsDogYears);
+  return humansYearsCatYearsDogYears;
+};
+
+humanYearsCatYearsDogYears(1); //[1,15,15]
+humanYearsCatYearsDogYears(2); // [2, 24, 24];
+humanYearsCatYearsDogYears(10); // [10, 56, 64];
+
+// OBJECTS
+// const playlist = {
+//   name: 'My super playlist',
+//   tracks: ['track-1', 'track-2', 'track-3', 'track-4'],
+//   rating: 8,
+//   trackCount: 3,
+// };
+
+// console.log(playlist);
+// console.log(playlist.name); // 'My super playlist'
+// console.log(playlist['name']); // 'My super playlist'
+
+// const propertyName = 'tracks';
+// console.log(propertyName);
+
+// const { name, tracks, rating = 8, trackCount } = playlist;

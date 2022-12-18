@@ -80,7 +80,7 @@ body {
 
 section {
   margin: 0 auto;
-  padding: calc(2vh + 1vw);
+  padding: calc(3vh + 1vw);
 }
 
 .visually-hidden {
