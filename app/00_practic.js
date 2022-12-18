@@ -2010,6 +2010,21 @@ console.log(calculate(-3, '/', 0));
 console.log(calculate(-3, '*', 0));
 console.log(calculate(-3, 'w', 0));
 
+// function that takes an array full of junk but containing one "needle"
+const findNeedle = haystack => `found the needle at position ${haystack.indexOf('needle')}`;
+
+console.log(
+  findNeedle(['3', '123124234', undefined, 'needle', 'world', 'hay', 2, '3', true, false])
+);
+
+//return true if the first argument(string) passed in ends with the 2nd argument (also a string).
+const findEnds = (str, ending) => (str.endsWith(ending) ? true : false);
+
+console.log(findEnds('abcde', 'cde'));
+console.log(findEnds('abcde', 'abc'));
+console.log(findEnds('abc', 'd'));
+console.log(findEnds('abc', 'bc'));
+
 // OBJECTS
 // const playlist = {
 //   name: 'My super playlist',
