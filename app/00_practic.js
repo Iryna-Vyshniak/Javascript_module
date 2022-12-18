@@ -1839,6 +1839,31 @@ humanYearsCatYearsDogYears(1); //[1,15,15]
 humanYearsCatYearsDogYears(2); // [2, 24, 24];
 humanYearsCatYearsDogYears(10); // [10, 56, 64];
 
+//Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers
+function evenOrOdd(number) {
+  return number % 2 === 0 ? 'Even' : 'Odd';
+}
+
+console.log(evenOrOdd(2));
+console.log(evenOrOdd(7));
+console.log(evenOrOdd(-42));
+console.log(evenOrOdd(0));
+
+//Create a function with two arguments that will return an array of the first n multiples of x.
+function countBy(x, n) {
+  let z = [];
+  for (let i = 1; i <= n * x; i += 1) {
+    if (i % x === 0) {
+      z.push(i);
+    }
+  }
+  console.log(z);
+  return z;
+}
+
+countBy(1, 10); // [1,2,3,4,5,6,7,8,9,10]
+countBy(2, 5); // [2,4,6,8,10]
+
 // OBJECTS
 // const playlist = {
 //   name: 'My super playlist',
