@@ -1944,8 +1944,39 @@ console.log(
     true,
   ])
 );
+// next variant function that counts the number of sheep present in the array (true means present)
+function countSheepsOnTheFarm(arrayOfSheep) {
+  return arrayOfSheep.filter(Boolean).length;
+}
 
-//console.log(countSheeps([500]));
+console.log(
+  countSheepsOnTheFarm([
+    true,
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    true,
+    false,
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    true,
+  ])
+);
 
 // OBJECTS
 // const playlist = {
