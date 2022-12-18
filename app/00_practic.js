@@ -1978,6 +1978,38 @@ console.log(
   ])
 );
 
+// function called calculate that takes 3 values
+function calculate(num1, operation, num2) {
+  let result;
+  switch (operation) {
+    case '+':
+      result = num1 + num2;
+      break;
+    case '-':
+      result = num1 - num2;
+      break;
+    case '*':
+      result = num1 * num2 || 0;
+      break;
+    case '/':
+      result = num2 === 0 ? null : num1 / num2;
+      break;
+    default:
+      result = null;
+  }
+  return result;
+}
+
+console.log(calculate(3.2, '+', 8));
+console.log(calculate(3.2, '-', 8));
+console.log(calculate(3.2, '/', 8));
+console.log(calculate(3.2, '*', 8));
+console.log(calculate(-3, '+', 0));
+console.log(calculate(-3, '-', 0));
+console.log(calculate(-3, '/', 0));
+console.log(calculate(-3, '*', 0));
+console.log(calculate(-3, 'w', 0));
+
 // OBJECTS
 // const playlist = {
 //   name: 'My super playlist',
