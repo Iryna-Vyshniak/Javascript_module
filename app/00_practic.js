@@ -1900,6 +1900,53 @@ const rps = (p1, p2) => {
 console.log(rps('rock', 'rock'));
 console.log(rps('rock', 'scissors'));
 
+//function that counts the number of sheep present in the array (true means present)
+function countSheeps(arrayOfSheep) {
+  let total = 0;
+  const presentSheep = true;
+  for (const sheep of arrayOfSheep) {
+    if (arrayOfSheep.includes(null || undefined || false || NaN)) {
+      continue;
+    }
+    if (sheep === presentSheep) {
+      total += sheep;
+    }
+  }
+  console.log(Number(total));
+  return `There are ${total} sheeps in total`;
+}
+
+console.log(
+  countSheeps([
+    true,
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    true,
+    false,
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    true,
+  ])
+);
+
+//console.log(countSheeps([500]));
+
 // OBJECTS
 // const playlist = {
 //   name: 'My super playlist',
