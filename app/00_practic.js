@@ -2030,8 +2030,39 @@ const playlist = {
   name: 'My super playlist',
   tracks: ['track-1', 'track-2', 'track-3', 'track-4'],
   rating: 8,
-  trackCount: 3,
+  // trackCount: 4,
+  getName: function () {
+    console.log(`It's old school object method`);
+  },
+  getNames() {
+    console.log(`It's modern school object method`);
+  },
+  changeName(newName) {
+    this.name = newName;
+  },
+  showName() {
+    console.log(this.name);
+  },
+  addTrack(track) {
+    this.tracks.push(track);
+    console.log(this.tracks); //['track-1', 'track-2', 'track-3', 'track-4', 'new track']
+    // this.trackCount = this.tracks.length;
+    // console.log(this.trackCount);
+  },
+  updateRating(newRating) {
+    this.rating = newRating;
+    console.log(this.rating); // 10
+  },
+  getTrackCount() {
+    console.log('tracks: ', this.tracks.length); //tracks:  5
+    return this.tracks.length;
+  },
 };
+
+playlist.showName();
+playlist.addTrack('new track');
+playlist.updateRating(10);
+playlist.getTrackCount();
 
 console.log(playlist);
 console.log(playlist.name); // 'My super playlist'
@@ -2046,7 +2077,13 @@ console.log(playlist[propertyName]); //['track-1', 'track-2', 'track-3', 'track-
 console.log(playlist['tracks']); // ['track-1', 'track-2', 'track-3', 'track-4']
 
 playlist.favouriteSinger = 'King';
-console.log(playlist); //{name: 'My super playlist', tracks: Array(4), rating: 8, trackCount: 3, favouriteSinger: 'King'}
+console.log(playlist); //{name: 'My super playlist', tracks: Array(4), rating: 8, trackCount: 4, favouriteSinger: 'King'}
+
+playlist.changeName('Super amazing playlist');
+console.log(playlist.name); // 'Super amazing playlist'
+console.log(playlist); // {name: 'Super amazing playlist', tracks: Array(4), rating: 8, trackCount: 3, getName: ƒ, …}
+
+playlist.showName();
 
 //shortcase
 const username = 'Avex777';
@@ -2086,4 +2123,30 @@ dE.b = 2;
 console.log(dE); // {a: 1, b: 2}
 console.log(fJ); // {a: 1, b: 2}
 
-// const { name, tracks, rating = 8, trackCount } = playlist;
+const hotel = {
+  name: 'Fairmont',
+  stars: 5,
+  rating: 10,
+  capacity: 1200,
+  booking: 700,
+  pool: true,
+  gym: true,
+  restourant: true,
+  changeName(newName) {
+    this.name = newName;
+  },
+  showName() {
+    console.log(this.name);
+  },
+  changeCapacity(value) {
+    this.capacity = value;
+  },
+};
+
+hotel.showName();
+
+hotel.changeName('Fairmont Grand Hotel');
+console.log(hotel.name); // Fairmont Grand Hotel
+
+hotel.changeCapacity(2000);
+console.log(hotel.capacity); // 2000
