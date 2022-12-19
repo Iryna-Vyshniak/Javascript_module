@@ -2039,8 +2039,51 @@ console.log(playlist['name']); // 'My super playlist'
 
 const propertyName = 'tracks';
 console.log(propertyName); // 'tracks'
+
 console.log(playlist.propertyName); // undefined
 console.log(playlist[propertyName]); //['track-1', 'track-2', 'track-3', 'track-4']
+
 console.log(playlist['tracks']); // ['track-1', 'track-2', 'track-3', 'track-4']
+
+playlist.favouriteSinger = 'King';
+console.log(playlist); //{name: 'My super playlist', tracks: Array(4), rating: 8, trackCount: 3, favouriteSinger: 'King'}
+
+//shortcase
+const username = 'Avex777';
+const email = 'avex777@gmail.com';
+
+const signupData = {
+  username: username,
+  email: email,
+};
+
+console.log(signupData); // {username: 'Avex777', email: 'avex777@gmail.com'}
+
+const signupDataShortcase = {
+  username,
+  email,
+};
+
+console.log(signupDataShortcase); // {username: 'Avex777', email: 'avex777@gmail.com'}
+
+// <input name='color' value='tomato'>
+const inputName = 'color';
+const inputValue = 'tomato';
+
+const colorPickerData = {
+  [inputName]: inputValue,
+};
+
+console.log(colorPickerData); // {color: 'tomato'}
+
+console.log({ a: 1 } === { a: 1 }); //false
+const dE = { a: 1 };
+const fJ = dE; // { a: 1 }
+
+console.log(dE === fJ); // true
+
+dE.b = 2;
+console.log(dE); // {a: 1, b: 2}
+console.log(fJ); // {a: 1, b: 2}
 
 // const { name, tracks, rating = 8, trackCount } = playlist;
