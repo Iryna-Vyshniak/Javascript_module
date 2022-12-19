@@ -2026,18 +2026,21 @@ console.log(findEnds('abc', 'd'));
 console.log(findEnds('abc', 'bc'));
 
 // OBJECTS
-// const playlist = {
-//   name: 'My super playlist',
-//   tracks: ['track-1', 'track-2', 'track-3', 'track-4'],
-//   rating: 8,
-//   trackCount: 3,
-// };
+const playlist = {
+  name: 'My super playlist',
+  tracks: ['track-1', 'track-2', 'track-3', 'track-4'],
+  rating: 8,
+  trackCount: 3,
+};
 
-// console.log(playlist);
-// console.log(playlist.name); // 'My super playlist'
-// console.log(playlist['name']); // 'My super playlist'
+console.log(playlist);
+console.log(playlist.name); // 'My super playlist'
+console.log(playlist['name']); // 'My super playlist'
 
-// const propertyName = 'tracks';
-// console.log(propertyName);
+const propertyName = 'tracks';
+console.log(propertyName); // 'tracks'
+console.log(playlist.propertyName); // undefined
+console.log(playlist[propertyName]); //['track-1', 'track-2', 'track-3', 'track-4']
+console.log(playlist['tracks']); // ['track-1', 'track-2', 'track-3', 'track-4']
 
 // const { name, tracks, rating = 8, trackCount } = playlist;
