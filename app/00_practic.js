@@ -2193,3 +2193,38 @@ function sumFeedback(feedbacks) {
 }
 
 sumFeedback(feedback);
+
+// find friend by name
+
+const friendsByNetworks = [
+  { name: 'Alex', online: true },
+  { name: 'Andrew', online: true },
+  { name: 'Antony', online: false },
+  { name: 'Helen', online: true },
+  { name: 'Nick', online: false },
+  { name: 'Valentino', online: true },
+];
+console.table(friendsByNetworks);
+
+for (const friend of friendsByNetworks) {
+  console.log(friend);
+  console.log(friend.name);
+  friend.newprop = 555;
+}
+
+console.table(friendsByNetworks);
+
+function findFriendByName(allFriends, friendName) {
+  for (const friend of allFriends) {
+    if (friend.name === friendName) {
+      console.log(`${friend.name} - find my close friend ${friendName}`);
+      return `${friend.name} - find my close friend ${friendName}`;
+    }
+  }
+  console.log(`oops, didn't find...`);
+  return `oops, didn't find...`;
+}
+
+findFriendByName(friendsByNetworks, 'Valentino');
+findFriendByName(friendsByNetworks, 'Roberto');
+findFriendByName(friendsByNetworks, 'HOOKS');
