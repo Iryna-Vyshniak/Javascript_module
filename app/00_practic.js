@@ -2150,3 +2150,28 @@ console.log(hotel.name); // Fairmont Grand Hotel
 
 hotel.changeCapacity(2000);
 console.log(hotel.capacity); // 2000
+
+// Object.keys
+
+const feedback = {
+  good: 123,
+  neutral: 34,
+  bad: 55,
+};
+
+function calculateFeedback(feedbacks) {
+  let totalFeedback = 0;
+
+  const allKeys = Object.keys(feedbacks);
+  console.log(allKeys);
+
+  for (const key of allKeys) {
+    console.log(key);
+    console.log(feedback[key]); // 123...
+    totalFeedback += feedback[key];
+  }
+  console.log('Total feedback: ', totalFeedback); // 212
+  return totalFeedback;
+}
+
+calculateFeedback(feedback);
