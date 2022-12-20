@@ -2361,3 +2361,48 @@ console.log('it`s array, where add two spreads: ', spreadArr2); // [345, true, 1
 
 const spreadArray = [1000, ...[1, 2, 3, 4], 2000, ...[5, 6, 7, 8, 9], 3000, ...[true, 'silk']];
 console.log(spreadArray); // [1000, 1, 2, 3, 4, 2000, 5, 6, 7, 8, 9, 3000, true, 'silk']
+
+// find the highest and еру lowest temperature
+
+const temp = [18, 14, 30, 29, -1, 0, -32];
+console.log(Math.max(...temp)); // 30
+console.log(Math.min(...temp)); // -32
+
+function getTempByDegrees(temp) {
+  const tempByDegrees = {
+    high: [],
+    low: [],
+  };
+
+  for (const degree of temp) {
+    // if (degree >= 0) {
+    //   tempByDegrees.high.push(degree);
+    //   continue;
+    // }
+    // tempByDegrees.low.push(degree);
+
+    const key = degree >= 0 ? 'high' : 'low';
+    tempByDegrees[key].push(degree);
+  }
+  return tempByDegrees;
+}
+
+console.log(getTempByDegrees(temp)); // { high [18, 14, 30, 29, 0], low [-1, -32] }
+
+const defaultSettings = {
+  theme: 'light',
+  showNotifications: true,
+  hideSideBar: false,
+};
+
+const userSettings = {
+  showNotifications: false,
+  hideSideBar: true,
+};
+
+const finallSettings = {
+  ...defaultSettings,
+  ...userSettings,
+};
+
+console.log(finallSettings);
