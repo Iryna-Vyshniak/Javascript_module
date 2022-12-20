@@ -2235,7 +2235,7 @@ const carList = [
     Make: 'Audi',
     Model: 'Q3',
     Category: 'SUV',
-    status: 'free',
+    status_free: true,
     color: 'Red',
   },
   {
@@ -2243,7 +2243,7 @@ const carList = [
     Make: 'Chevrolet',
     Model: 'Malibu',
     Category: 'Sedan',
-    status: 'busy',
+    status_free: false,
     color: 'Silver',
   },
   {
@@ -2251,7 +2251,7 @@ const carList = [
     Make: 'Cadillac',
     Model: 'Escalade ESV',
     Category: 'SUV',
-    status: 'unavail',
+    status_free: false,
     color: 'Black',
   },
   {
@@ -2259,7 +2259,7 @@ const carList = [
     Make: 'Chevrolet',
     Model: 'Corvette',
     Category: 'Coupe, Convertible',
-    status: 'unavail',
+    status_free: true,
     color: 'White',
   },
   {
@@ -2267,18 +2267,42 @@ const carList = [
     Make: 'Acura',
     Model: 'RLX',
     Category: 'Sedan',
-    status: 'free',
+    status_free: true,
     color: 'Blue',
   },
 ];
 
-function findCarsFree(cars, status) {
-  for (const car of cars) {
-    if (car.status === status) {
-      return `${car.Make} is ${status}`;
-    }
+// get car`s key
+for (const car of carList) {
+  const keys = Object.keys(car);
+
+  // get car`s value
+  for (const key of keys) {
+    console.log(key);
+    console.log(car[key]);
   }
-  return `oops, didn't find...`;
 }
 
-console.log(findCarsFree(carList, 'free'));
+// get all cars values
+for (const car of carList) {
+  const value = Object.values(car);
+  console.log(value); //  [2022, 'Audi', 'Q3', 'SUV', 'true', 'Red'], ... [2020, 'Acura', 'RLX', 'Sedan', 'true', 'Blue']
+}
+
+function findCarsFree(cars) {
+  const freeCars = [];
+  for (const car of cars) {
+    if (car.status_free) {
+      freeCars.push(car.Make);
+    }
+    console.log(`oops, all cars are busy...`);
+  }
+  console.log(`These cars' status are free: `, freeCars);
+  return freeCars;
+}
+
+console.table(findCarsFree(carList));
+
+// function findCars(cars) {}
+
+// console.log(findCars(carList));
