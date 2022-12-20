@@ -2303,6 +2303,17 @@ function findCarsFree(cars) {
 
 console.table(findCarsFree(carList));
 
-// function findCars(cars) {}
+function findBusyCars(cars) {
+  const busyCars = [];
 
-// console.log(findCars(carList));
+  for (const car of cars) {
+    if (!car.status_free) {
+      busyCars.push(car.Make, car.Model);
+    }
+    console.log(`These cars: ${car.Make} ${car.Model} are free`);
+  }
+  console.log(`These cars are busy: `, busyCars.join(', '));
+  return busyCars;
+}
+
+console.log(findBusyCars(carList));
