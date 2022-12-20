@@ -2228,3 +2228,57 @@ function findFriendByName(allFriends, friendName) {
 findFriendByName(friendsByNetworks, 'Valentino');
 findFriendByName(friendsByNetworks, 'Roberto');
 findFriendByName(friendsByNetworks, 'HOOKS');
+
+const carList = [
+  {
+    Year: 2022,
+    Make: 'Audi',
+    Model: 'Q3',
+    Category: 'SUV',
+    status: 'free',
+    color: 'Red',
+  },
+  {
+    Year: 2021,
+    Make: 'Chevrolet',
+    Model: 'Malibu',
+    Category: 'Sedan',
+    status: 'busy',
+    color: 'Silver',
+  },
+  {
+    Year: 2022,
+    Make: 'Cadillac',
+    Model: 'Escalade ESV',
+    Category: 'SUV',
+    status: 'unavail',
+    color: 'Black',
+  },
+  {
+    Year: 2020,
+    Make: 'Chevrolet',
+    Model: 'Corvette',
+    Category: 'Coupe, Convertible',
+    status: 'unavail',
+    color: 'White',
+  },
+  {
+    Year: 2020,
+    Make: 'Acura',
+    Model: 'RLX',
+    Category: 'Sedan',
+    status: 'free',
+    color: 'Blue',
+  },
+];
+
+function findCarsFree(cars, status) {
+  for (const car of cars) {
+    if (car.status === status) {
+      return `${car.Make} is ${status}`;
+    }
+  }
+  return `oops, didn't find...`;
+}
+
+console.log(findCarsFree(carList, 'free'));
