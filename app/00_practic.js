@@ -2163,11 +2163,11 @@ function calculateFeedback(feedbacks) {
   let totalFeedback = 0;
 
   const allKeys = Object.keys(feedbacks);
-  console.log(allKeys);
+  console.log('all keys: ', allKeys);
 
   for (const key of allKeys) {
-    console.log(key);
-    console.log(feedback[key]); // 123...
+    console.log('key: ', key);
+    console.log('value: ', feedback[key]); // 123...
     totalFeedback += feedback[key];
   }
   console.log('Total feedback: ', totalFeedback); // 212
@@ -2175,3 +2175,21 @@ function calculateFeedback(feedbacks) {
 }
 
 calculateFeedback(feedback);
+
+// better variant to use Object.values, because we want to take only values
+
+function sumFeedback(feedbacks) {
+  let totalFeedback = 0;
+
+  const allValues = Object.values(feedbacks);
+  console.log('all values: ', allValues);
+
+  for (const value of allValues) {
+    console.log('value: ', value); // 123...
+    totalFeedback += value;
+  }
+  console.log('Total feedback: ', totalFeedback); // 212
+  return totalFeedback;
+}
+
+sumFeedback(feedback);
