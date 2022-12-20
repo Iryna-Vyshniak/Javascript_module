@@ -2317,3 +2317,32 @@ function findBusyCars(cars) {
 }
 
 console.log(findBusyCars(carList));
+
+// get cars by status
+function getCarsByStatus(cars) {
+  const carsByStatus = {
+    free: [],
+    busy: [],
+  };
+
+  for (const car of cars) {
+    // 1st variant
+
+    // if (car.status_free) {
+    //   carsByStatus.free.push(car.Make);
+    //   continue;
+    // }
+    // carsByStatus.busy.push(car.Make);
+
+    // 2nd variant
+    // carsByStatus[car.status_free ? 'free' : 'busy'].push(car.Make);
+
+    // 3rd variant
+    const key = car.status_free ? 'free' : 'busy';
+    carsByStatus[key].push(car.Make);
+  }
+
+  return carsByStatus;
+}
+
+console.log(getCarsByStatus(carList));
