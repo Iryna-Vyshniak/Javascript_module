@@ -2346,3 +2346,18 @@ function getCarsByStatus(cars) {
 }
 
 console.log(getCarsByStatus(carList));
+
+// spread instead concat
+
+const commonArr = [1, 2, 34, 67, 87];
+const concatArr = commonArr.concat([345, 67, 102]);
+console.log('it`s array with concat: ', concatArr); // [1, 2, 34, 67, 87, 345, 67, 102]
+
+const spreadArr1 = [...commonArr, 345, 67, 102];
+console.log('it`s array, where add spread: ', spreadArr1); // [1, 2, 34, 67, 87, 345, 67, 102]
+
+const spreadArr2 = [345, true, ...commonArr, ...spreadArr1];
+console.log('it`s array, where add two spreads: ', spreadArr2); // [345, true, 1, 2, 34, 67, 87, 1, 2, 34, 67, 87, 345, 67, 102]
+
+const spreadArray = [1000, ...[1, 2, 3, 4], 2000, ...[5, 6, 7, 8, 9], 3000, ...[true, 'silk']];
+console.log(spreadArray); // [1000, 1, 2, 3, 4, 2000, 5, 6, 7, 8, 9, 3000, true, 'silk']
