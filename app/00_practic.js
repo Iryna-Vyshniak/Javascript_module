@@ -2406,3 +2406,15 @@ const finallSettings = {
 };
 
 console.log(finallSettings);
+
+// destructuring assignment
+
+const { name, rating = 0, tracks, trackCount, author = 'Unknown' } = playlist;
+console.log(rating); // 10
+console.log(tracks); // ['track-1', 'track-2', 'track-3', 'track-4', 'new track'];
+tracks.push('track horror');
+console.log(tracks); // ['track-1', 'track-2', 'track-3', 'track-4', 'new track', 'track horror'];
+
+const rgb = [255, 100, 80];
+const [red, green, blue] = rgb;
+console.log(red, green, blue); // 255, 100, 80
