@@ -2495,3 +2495,23 @@ console.log(forename); // "Oluwatobi"
 console.log(surname); // "Sofela"
 console.log(onlineSite); // "codesweetly.com"
 // console.log(website); // "ReferenceError: website is not defined"
+
+//Nullish coalescing operator '??'
+const incoming = '';
+const defaultVal = 10;
+const value235 = incoming ?? defaultVal; // if on left - null or undefind  - return right
+console.log(value235); // ''
+
+// Ми також можемо використовувати послідовність з ??, щоб вибрати перше значення зі списку, яке не є null/undefined.
+
+///Скажімо, у нас є дані користувача в змінних firstName, lastName або nickName. Всі вони можуть бути не визначені, якщо користувач вирішив не вводити значення.
+
+//Ми хотіли б показати ім’я користувача, використовуючи одну з цих змінних, або показати “Анонімний”, якщо всі вони null/undefined.
+
+// Використаймо оператор ?? для цього:
+// показує перше визначене значення:
+let firstName = null;
+let lastName = null;
+let nickName = 'Суперкодер';
+
+console.log(firstName ?? lastName ?? nickName ?? 'Анонімний'); // Суперкодер
