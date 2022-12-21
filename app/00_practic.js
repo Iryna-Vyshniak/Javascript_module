@@ -2408,13 +2408,65 @@ const finallSettings = {
 console.log(finallSettings);
 
 // destructuring assignment
+const playList = {
+  name: 'My video playlist',
+  tracks: ['track-1', 'track-2', 'track-3', 'track-4'],
+  rating: 8,
+  tracksCount: 4,
+};
 
-const { name, rating = 0, tracks, trackCount, author = 'Unknown' } = playlist;
-console.log(rating); // 10
-console.log(tracks); // ['track-1', 'track-2', 'track-3', 'track-4', 'new track'];
-tracks.push('track horror');
-console.log(tracks); // ['track-1', 'track-2', 'track-3', 'track-4', 'new track', 'track horror'];
+const {
+  name,
+  rating = 0,
+  tracks: tracksList,
+  tracksCount: numberOfTracks = 0,
+  author = 'Unknown',
+} = playList;
+// tracksList
+
+console.log(tracksList); // ['track-1', 'track-2', 'track-3', 'track-4']
+console.log(rating); // 8
+
+tracksList.push('new track');
+console.log(tracksList); // ['track-1', 'track-2', 'track-3', 'track-4', 'new track'];
+
+console.log(numberOfTracks); // 4
 
 const rgb = [255, 100, 80];
 const [red, green, blue] = rgb;
 console.log(red, green, blue); // 255, 100, 80
+
+// deep destructuring assignment
+const profile = {
+  name: 'Jacobs Gluke',
+  tag: 'jgluke',
+  location: 'Ocho Rios,Jamaica',
+  avatar:
+    'https://www.bing.com/images/search?view=detailV2&ccid=F54ARgqj&id=EDD5117AEA861033BE4C033C2086C8A39EB79976&thid=OIP.F54ARgqjJL09ySEi3GMk9AHaIl&mediaurl=https%3a%2f%2fi.pinimg.com%2f736x%2fff%2f31%2f11%2fff3111f905f87e14994b20cb74cedaee.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.179e00460aa324bd3dc92122dc6324f4%3frik%3ddpm3nqPIhiA8Aw%26pid%3dImgRaw%26r%3d0&exph=720&expw=621&q=avater&simid=608033821942896098&FORM=IRPRST&ck=A9B85EA08B0BF10C599B1444486045F6&selectedIndex=14&ajaxhist=0&ajaxserp=0',
+  stats: {
+    followers: 5603,
+    views: 4827,
+    likes: 1308,
+  },
+};
+
+const {
+  name: userName,
+  tag,
+  location,
+  avatar,
+  stats: { followers, views, likes },
+} = profile;
+
+const userProfile = {
+  firstName: 'Oluwatobi',
+  lastName: 'Sofela',
+  website: 'codesweetly.com',
+};
+
+const { firstName: forename, lastName: surname, website: onlineSite } = userProfile;
+
+console.log(forename); // "Oluwatobi"
+console.log(surname); // "Sofela"
+console.log(onlineSite); // "codesweetly.com"
+// console.log(website); // "ReferenceError: website is not defined"
