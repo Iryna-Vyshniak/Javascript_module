@@ -50,8 +50,20 @@
 // console.log(numbers.filter(callBack1));
 // console.log(numbers.filterCustom(callBack1));
 
-console.log(1);
+console.log('hello');
 
+// Метод padStart() заполняет текущую строку другой строкой (несколько раз, если нужно) так, что итоговая строка достигает заданной длины. Заполнение осуществляется в начале (слева) текущей строки.
+
+const totalMinutes = 450;
+const hours = Math.floor(totalMinutes / 60);
+const minutes = totalMinutes % 60;
+const formatedTime = `${String(hours).padStart(2, '0')}:${minutes}`;
+console.log(formatedTime); // 07:30
+
+const string = 'abs';
+console.log(string.padStart(4, '5')); // 5abs
+
+// draw cats
 const drawCats = function (howManyTimes) {
   for (let i = 0; i < howManyTimes; i += 1) {
     console.log(i + '=^.^=');
