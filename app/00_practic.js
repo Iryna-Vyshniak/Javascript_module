@@ -2450,13 +2450,26 @@ const profile = {
   },
 };
 
-const {
-  name: userName,
-  tag,
-  location,
-  avatar,
-  stats: { followers, views, likes },
-} = profile;
+// const {
+//   name: userName,
+//   tag,
+//   location,
+//   avatar,
+//   stats: { followers, views, likes },
+// } = profile;
+
+//console.log(userName, tag, location, followers, views, likes); // Jacobs Gluke jgluke Ocho Rios,Jamaica 5603 4827 1308
+
+// const { name: userName, tag, location, avatar, stats } = profile;
+// console.log(stats); // {followers: 5603, views: 4827, likes: 1308}
+
+const { name: userName, tag, location, avatar, stats } = profile;
+const { followers, views, likes } = stats;
+
+console.log(followers); //5603
+console.log(likes); // 1308
+
+console.log(userName, tag, location, followers, views, likes); // Jacobs Gluke jgluke Ocho Rios,Jamaica 5603 4827 1308
 
 const userProfile = {
   firstName: 'Oluwatobi',
