@@ -2656,6 +2656,7 @@ getMultipleNumbers(3, 32); // [5, 10, 15, 20, 25, 30]
 // - If the password ``I am admin'' is entered, then output the line ``Hello!''
 // - Otherwise, output the `"Invalid password"' line
 
+/*
 function checkAdmin(login) {
   const loginName = 'Admin';
   let message = '';
@@ -2680,3 +2681,40 @@ function checkAdmin(login) {
 }
 
 checkAdmin('Admin'); // Hello
+
+*/
+
+const arr1 = [1, 2, 3];
+const arr2 = arr1;
+console.log(arr2); // [1, 2, 3];
+const arr3 = arr2;
+console.log(arr3); // [1, 2, 3];
+arr3[1] = 100;
+console.log(arr1); // [1, 100, 3]
+console.log(arr2); // [1, 100, 3]
+console.log(arr3); // [1, 100, 3]
+
+arr2.length = 0;
+console.log(arr1); // []
+console.log(arr2); // []
+console.log(arr3); // []
+
+arr1[2] = 1000;
+console.log(arr1); // [empty × 2, 1000]
+console.log(arr2); // [empty × 2, 1000]
+console.log(arr3); // [empty × 2, 1000] => undefined  × 2, 1000
+
+for (const elem of arr3) {
+  console.log(elem); // undefined undefined 1000
+}
+
+console.log(arr1.length); // 3
+console.log(arr2.length); // 3
+console.log(arr3.length); // 3
+
+const cd = [1, 2, 3, [4, 5]];
+const de = [1, 2, 3, [4, 5]];
+console.log(cd === de); //false => [1, 2, 3, [4, 5]] === [1, 2, 3, [4, 5]] false
+console.log(cd[0] === de[0]); // true => 1 === 1 true
+console.log(cd[3] === de[3]); // false => [4, 5] === [4, 5] false
+console.log(cd[3][0] === de[3][0]); // true => 4 === 4 true
