@@ -2718,3 +2718,20 @@ console.log(cd === de); //false => [1, 2, 3, [4, 5]] === [1, 2, 3, [4, 5]] false
 console.log(cd[0] === de[0]); // true => 1 === 1 true
 console.log(cd[3] === de[3]); // false => [4, 5] === [4, 5] false
 console.log(cd[3][0] === de[3][0]); // true => 4 === 4 true
+
+// method split('!')
+const str = '1-!2-!3-!4-!5-!6-!7-!8-!9';
+const arrSplit = str.split('-!');
+console.log(arrSplit); // ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+let strSimply = 'Geeks for Geeks';
+let arraySplit = strSimply.split('for');
+console.log(arraySplit); // ['Geeks ', ' Geeks']
+
+strSimply = 'It iS a 5r&e@@t Day.';
+arraySplit = strSimply.split(' ');
+console.log(arraySplit); // ['It', 'iS', 'a', '5r&e@@t', 'Day.']
+
+strSimply = 'It iS a 5r&e@@t Day.';
+arraySplit = strSimply.split(' ', 2);
+console.log(arraySplit); // ['It', 'iS']
