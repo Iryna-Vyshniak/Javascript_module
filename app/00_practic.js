@@ -2552,3 +2552,19 @@ let lastName = null;
 let nickName = 'Суперкодер';
 
 console.log(firstName ?? lastName ?? nickName ?? 'Анонімний'); // Суперкодер
+
+// set time
+function setTime(minutes) {
+  // const currentHour = Math.floor(minutes / 60);
+  // const formatedHours = String(currentHour).padStart(2, '0');
+  const formatedHours = String(Math.floor(minutes / 60)).padStart(2, '0');
+
+  // const currentMinutes = Math.floor(minutes % 60);
+  // const formatedMinutes = String(currentMinutes).padStart(2, '0');
+  const formatedMinutes = String(Math.floor(minutes % 60)).padStart(2, '0');
+
+  const currentTime = `${formatedHours}:${formatedMinutes}`;
+  return currentTime;
+}
+
+console.log(setTime(364)); // 06:04
