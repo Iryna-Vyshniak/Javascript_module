@@ -2871,3 +2871,33 @@ function add() {
 }
 
 add(5, 6, 8, 10); //29
+
+function isIncluded() {
+  const arrayOfArguments = Array.from(arguments);
+  console.log(arrayOfArguments); //[2, 4, 5, 6, 8, 3, 7]
+
+  const number = arrayOfArguments[arrayOfArguments.length - 1];
+  console.log(number); // 7
+
+  const array = arrayOfArguments.slice(0, -1); // 7
+  console.log(array); // [2, 4, 5, 6, 8, 3]
+
+  console.log(array.includes(number));
+  return array.includes(number);
+}
+
+isIncluded(2, 4, 5, 6, 8, 3, 7); //false -> 7 deleted
+
+function isIncludedThroughRest(...arg) {
+  console.log(arg); // [2, 4, 5, 6, 8, 3, 7]
+
+  const number = arg[arg.length - 1];
+  console.log(number); // 7
+
+  const array = arg.slice(0, -1); // 7
+  console.log(array); // [2, 4, 5, 6, 8, 3]
+
+  console.log(array.includes(number));
+  return array.includes(number);
+}
+isIncludedThroughRest(2, 4, 5, 6, 8, 3, 7); // false
