@@ -2590,3 +2590,27 @@ time(24, 0); // 24г.
 time(11, 10); // 11г. 10хв.
 time(6, 5); // 06г. 05хв.
 time(14, 26); // 14г. 26хв.
+
+//Nested branches Вкладені розгалуження
+// Write a script that compares numbers in variables `a` and `b`. If both
+// the value is greater than `100`, then output the maximum of them to the console. On the contrary
+// case in the console should be the sum of the value `b` and the number 512.
+
+function compareNumbers(num1, num2) {
+  let result = 0;
+  if (num1 > 100 && num2 > 100) {
+    if (num1 >= num2) {
+      result = num1;
+    } else {
+      result = num2;
+    }
+  } else {
+    result = num2 + 512;
+  }
+  console.log(result);
+  return result;
+}
+
+compareNumbers(101, 50); // 562
+compareNumbers(101, 150); // 150
+compareNumbers(10, 100); // 612
