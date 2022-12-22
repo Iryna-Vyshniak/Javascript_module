@@ -76,6 +76,7 @@ if (!link.endsWith('/') && link.includes('my-site')) {
 console.log(link); // 'https://my-site.com/about/';
 
 // simply quiz through prompt
+/*
 let answers = [];
 let questions = ['What`s your first name?', 'What`s yuor last name?', 'How old are you?'];
 
@@ -83,6 +84,7 @@ for (let i = 0; i < questions.length; i += 1) {
   answers[i] = prompt(questions[i], '');
 }
 console.log(answers);
+*/
 
 // draw cats
 const drawCats = function (howManyTimes) {
@@ -2518,10 +2520,24 @@ console.log(onlineSite); // "codesweetly.com"
 // console.log(website); // "ReferenceError: website is not defined"
 
 //Nullish coalescing operator '??'
-const incoming = '';
-const defaultVal = 10;
-const value235 = incoming ?? defaultVal; // if on left - null or undefind  - return right
-console.log(value235); // ''
+// зробити рефакторинг коду так, щоб у змінну value присвоювалося значення змінної incoming, якщо воно не рівне null or undefinеd. В іншому випадку має присвоюватися значення defaultVal. Перевірити роботу скрипта для наступних значень змінної incomingValue: null, undefined, 0, false. Використовувати оператор нульового злиття ?? (Nullish coalescing operator '??')
+
+// const incomingValue = '';
+// const defaultValue = 10;
+
+// const incomingValue = null;
+// const defaultValue = 10;
+
+// const incomingValue = false;
+// const defaultValue = 10;
+const incomingValue = 0;
+const defaultValue = 10;
+const valueResult = incomingValue ?? defaultValue; // if on left - null or undefinеd  - return right => defaultValue
+
+// console.log(valueResult); // ''
+//console.log(valueResult); // 10
+//console.log(valueResult); // false
+console.log(valueResult); // 0
 
 // Ми також можемо використовувати послідовність з ??, щоб вибрати перше значення зі списку, яке не є null/undefined.
 
