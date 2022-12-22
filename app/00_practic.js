@@ -2854,3 +2854,20 @@ function sum(x, y) {
 console.log(sum(3, 7)); // 10
 console.log(sum(3, '7')); // One of operands isn`t a number
 console.log(sum(3, 'window')); // One of operands isn`t a number
+
+// pseudo array arguments
+
+function add() {
+  console.log(arguments); //[5, 6, 8, 10, callee: (...), Symbol(Symbol.iterator): ƒ]
+  console.log(arguments.length); // 4
+  console.log(arguments[1]); // 6
+
+  let sum = 0;
+  for (const arg of arguments) {
+    sum += arg;
+  }
+  console.log(sum);
+  return sum;
+}
+
+add(5, 6, 8, 10); //29
