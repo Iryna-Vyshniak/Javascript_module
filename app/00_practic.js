@@ -75,6 +75,15 @@ if (!link.endsWith('/') && link.includes('my-site')) {
 
 console.log(link); // 'https://my-site.com/about/';
 
+// simply quiz through prompt
+let answers = [];
+let questions = ['What`s your first name?', 'What`s yuor last name?', 'How old are you?'];
+
+for (let i = 0; i < questions.length; i += 1) {
+  answers[i] = prompt(questions[i], '');
+}
+console.log(answers);
+
 // draw cats
 const drawCats = function (howManyTimes) {
   for (let i = 0; i < howManyTimes; i += 1) {
