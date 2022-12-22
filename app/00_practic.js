@@ -2763,3 +2763,12 @@ const emptyArr = [];
 const arr8 = emptyArr.push('week', 'morning', 'night', 12);
 console.log(emptyArr); // ['week', 'morning', 'night', 12]
 console.log(arr8); // 4 -> length
+
+//method pop()
+const arr9 = ['week', 'morning', 'night', 12];
+const deletedEl = arr9.pop();
+console.log(arr9); // ['week', 'morning', 'night'];
+console.log(deletedEl); // 12
+
+const arr10 = [];
+console.log(arr10.pop()); //undefined
