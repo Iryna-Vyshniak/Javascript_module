@@ -2772,3 +2772,48 @@ console.log(deletedEl); // 12
 
 const arr10 = [];
 console.log(arr10.pop()); //undefined
+
+// splice()
+
+const arr11 = [1, 2, 3, 4, 5, 5, 6, 6, 7, 8, 9];
+arr11.splice(5, 2);
+console.log(arr11); // (9) [1, 2, 3, 4, 5, 6, 7, 8, 9]
+const arr12 = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Tuesday',
+  'Wednesday',
+  'Wednesday',
+  'Wednesday',
+  'Thursday',
+  'Saturday',
+];
+
+console.log(arr12.indexOf('Tuesday')); // 2
+arr12.splice(2, 1);
+console.log(arr12); // ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Wednesday', 'Wednesday', 'Thursday',  'Saturday']
+
+const arr13 = arr12.splice(2, 1);
+console.log(arr13); // ['Tuesday']
+
+console.log(arr12.indexOf('Wednesday')); // 3
+arr12.splice(3, 2);
+console.log(arr12); // ['Sunday', 'Monday', 'Wednesday', 'Thursday', 'Saturday']
+const arr14 = arr12.splice(2, 0, 'Tuesday');
+console.log(arr14); // []
+console.log(arr12); // (6) ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Saturday']
+
+arr12.splice(5, 0, 'Friday');
+console.log(arr12); //['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+const copyArr12 = arr12.slice();
+console.log(copyArr12); // ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+const arr15 = [1, 2, 3, 4, 4, 4, 7];
+const copyArr15 = arr15.slice();
+console.log(copyArr15); // [1, 2, 3, 4, 4, 4, 7]
+
+const deletedElements = copyArr15.splice(4, 2, 5, 6);
+console.log(deletedElements); // [4, 4]
+console.log(copyArr15); // [1, 2, 3, 4, 5, 6, 7]
