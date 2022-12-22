@@ -2735,3 +2735,21 @@ console.log(arraySplit); // ['It', 'iS', 'a', '5r&e@@t', 'Day.']
 strSimply = 'It iS a 5r&e@@t Day.';
 arraySplit = strSimply.split(' ', 2);
 console.log(arraySplit); // ['It', 'iS']
+
+// method includes()
+const arr4 = [1, 23, 4, 28, 97, 78];
+const arr5 = arr4.includes(100 && 4); // true, because the 1st: 100 - true, 4 - true => true && true = last true; the 2nd: includes last - 4
+console.log(arr5);
+
+const arr6 = arr4.includes(100) && arr4.includes(4);
+console.log(arr6); // false
+
+const arr7 = arr4.includes(100) || arr4.includes(4);
+console.log(arr7); // true
+
+[1, 2, 3].includes(3, -1); // true, -1 -> 3 from the last
+console.log([1, 2, 3].includes(3, 1)); // true, 3 from index 1
+console.log([1, 2, 3].includes(3, 2)); // true, 3 from index 2
+console.log([1, 2, 3].includes(3, 3)); // false, 3 from index 3
+console.log([1, 2, 3].includes(3, -3)); // true, Если вычисленный индекс меньше нуля, то поиск будет производиться во всём массиве.
+console.log([1, 2, 3].includes(3, -30)); // true,
