@@ -2568,3 +2568,25 @@ function setTime(minutes) {
 }
 
 console.log(setTime(364)); // 06:04
+
+//// Напиши скрипт для відображення годин та хвилин у консолі браузера у вигляді рядка
+// формату `"14 г. 26 хв."`. Якщо значення змінної `minutes` дорівнює `0`, то
+// виводь рядок `"14 г."`, без хвилин.
+
+const hoursValue = 14;
+const minutesValue = 10;
+
+function time(hours, minutes) {
+  const formatedHours = String(hours).padStart(2, '0');
+  const formatedMinutes = String(minutes).padStart(2, '0');
+
+  const resultTime =
+    minutes !== 0 ? `${formatedHours}г. ${formatedMinutes}хв.` : `${formatedHours}г.`;
+  console.log(resultTime);
+  return resultTime;
+}
+
+time(24, 0); // 24г.
+time(11, 10); // 11г. 10хв.
+time(6, 5); // 06г. 05хв.
+time(14, 26); // 14г. 26хв.
