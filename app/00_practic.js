@@ -63,6 +63,18 @@ console.log(formatedTime); // 07:30
 const string = 'abs';
 console.log(string.padStart(4, '5')); // 5abs
 
+const hours2 = 14;
+const min2 = 10;
+const result = min2 === 0 ? `${hours2}г.` : `${hours2}г. ${min2}хв.`;
+
+// check address site
+let link = 'https://my-site.com/about';
+if (!link.endsWith('/') && link.includes('my-site')) {
+  link += '/';
+}
+
+console.log(link); // 'https://my-site.com/about/';
+
 // draw cats
 const drawCats = function (howManyTimes) {
   for (let i = 0; i < howManyTimes; i += 1) {
