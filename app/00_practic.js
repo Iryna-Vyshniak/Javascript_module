@@ -2646,3 +2646,37 @@ function getMultipleNumbers(min, max) {
 }
 
 getMultipleNumbers(3, 32); // [5, 10, 15, 20, 25, 30]
+
+// Write a function that will ask for a login
+// - If `"Admin"`, the `prompt` asks for a password
+// - If nothing is entered or the Esc key is pressed - output the `"Cancelled"' line
+// - Otherwise, output the line `"I don't know you"`
+
+// Check the password like this:
+// - If the password ``I am admin'' is entered, then output the line ``Hello!''
+// - Otherwise, output the `"Invalid password"' line
+
+function checkAdmin(login) {
+  const loginName = 'Admin';
+  let message = '';
+
+  if (login === loginName) {
+    const password = prompt('Now enter password');
+
+    if (password === 'I`m admin') {
+      message = 'Hello';
+    } else {
+      message = 'Invalid password';
+    }
+  } else if (!loginName) {
+    // if '', null, undefined
+    message = 'Cancelled';
+  } else {
+    // if another name
+    message = 'I don`t know you';
+  }
+  console.log(message);
+  return message;
+}
+
+checkAdmin('Admin'); // Hello
