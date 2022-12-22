@@ -1935,6 +1935,12 @@ const rps = (p1, p2) => {
 console.log(rps('rock', 'rock'));
 console.log(rps('rock', 'scissors'));
 
+// get every letter
+const strExample = 'javascript';
+for (const character of strExample) {
+  console.log(character);
+}
+
 //function that counts the number of sheep present in the array (true means present)
 function countSheeps(arrayOfSheep) {
   let total = 0;
@@ -2817,3 +2823,25 @@ console.log(copyArr15); // [1, 2, 3, 4, 4, 4, 7]
 const deletedElements = copyArr15.splice(4, 2, 5, 6);
 console.log(deletedElements); // [4, 4]
 console.log(copyArr15); // [1, 2, 3, 4, 5, 6, 7]
+
+// function getAllPropValues(propName), which accepts one parameter propName - the name (key) of the property. The function should return an array of all property values ​​with that name from each object in the products array. If there are no properties with that name in the objects, the function should return an empty array
+
+const products = [
+  { name: 'Radar', price: 1300, quantity: 4 },
+  { name: 'Scanner', price: 2700, quantity: 3 },
+  { name: 'Droid', price: 400, quantity: 7 },
+  { name: 'Grip', price: 1200, quantity: 9 },
+];
+
+function getAllPropValues(propName) {
+  const arrayPropValues = [];
+
+  for (const product of products) {
+    if (product[propName]) arrayPropValues.push(product[propName]);
+  }
+  console.log(arrayPropValues);
+  return arrayPropValues;
+}
+getAllPropValues('name'); //['Radar', 'Scanner', 'Droid', 'Grip']
+getAllPropValues('quantity'); // [4, 3, 7, 9]
+getAllPropValues('category'); // []
