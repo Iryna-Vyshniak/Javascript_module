@@ -2627,3 +2627,22 @@ console.log(checkLink('https://www.w3schools.com', 'w3schools')); //https://www.
 console.log(checkLink('https://www.w3schools.com', 'schools')); //https://www.w3schools.com/
 console.log(checkLink('https://www.w3schools.com/', 'w3')); // null
 console.log(checkLink('https://www.w3schools.com', 'w3-school')); // null
+
+//The for loop
+
+// Write a for loop that displays numbers in increments from `min' to the browser console up to `max`, but only if the number is a multiple of `5`.
+//  i % 5 = 0 -> false; !(i % 5) = 0 -> true;
+
+function getMultipleNumbers(min, max) {
+  const result = [];
+  for (let i = min; i <= max; i += 1) {
+    // !(i % 5) ? result.push(i) : null;
+    // i % 5 ? null : result.push(i);
+    // i % 5 === 0 ? result.push(i) : null;
+    if (i % 5 === 0) result.push(i);
+  }
+  console.log(result);
+  return result;
+}
+
+getMultipleNumbers(3, 32); // [5, 10, 15, 20, 25, 30]
