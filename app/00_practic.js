@@ -2614,3 +2614,16 @@ function compareNumbers(num1, num2) {
 compareNumbers(101, 50); // 562
 compareNumbers(101, 150); // 150
 compareNumbers(10, 100); // 612
+
+// Link formatting (includes and logical "AND")
+
+//Write a script that checks whether the value of the `link' variable has expired by `/` character. If not, add this symbol to the end of the `link` value, but only in if there is a substring `"my-site"` in `link`.
+
+function checkLink(link, substring) {
+  return link.includes(substring) && !link.endsWith('/') ? (link += '/') : null;
+}
+
+console.log(checkLink('https://www.w3schools.com', 'w3schools')); //https://www.w3schools.com/
+console.log(checkLink('https://www.w3schools.com', 'schools')); //https://www.w3schools.com/
+console.log(checkLink('https://www.w3schools.com/', 'w3')); // null
+console.log(checkLink('https://www.w3schools.com', 'w3-school')); // null
