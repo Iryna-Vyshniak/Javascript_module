@@ -2845,3 +2845,12 @@ function getAllPropValues(propName) {
 getAllPropValues('name'); //['Radar', 'Scanner', 'Droid', 'Grip']
 getAllPropValues('quantity'); // [4, 3, 7, 9]
 getAllPropValues('category'); // []
+
+// type of
+function sum(x, y) {
+  return typeof x !== 'number' || typeof y !== 'number' ? 'One of operands isn`t a number' : x + y;
+}
+
+console.log(sum(3, 7)); // 10
+console.log(sum(3, '7')); // One of operands isn`t a number
+console.log(sum(3, 'window')); // One of operands isn`t a number
