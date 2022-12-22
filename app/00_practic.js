@@ -2753,3 +2753,13 @@ console.log([1, 2, 3].includes(3, 2)); // true, 3 from index 2
 console.log([1, 2, 3].includes(3, 3)); // false, 3 from index 3
 console.log([1, 2, 3].includes(3, -3)); // true, Если вычисленный индекс меньше нуля, то поиск будет производиться во всём массиве.
 console.log([1, 2, 3].includes(3, -30)); // true,
+
+// method push()
+
+const emptyArr = [];
+// emptyArr.push('week', 'day', 'day time', 12);
+// console.log(emptyArr); // ['week', 'morning', 'night', 12]
+
+const arr8 = emptyArr.push('week', 'morning', 'night', 12);
+console.log(emptyArr); // ['week', 'morning', 'night', 12]
+console.log(arr8); // 4 -> length
