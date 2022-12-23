@@ -3009,6 +3009,51 @@ function useRest(firstParam, secondParam, ...otherArgs) {
 
 useRest(12, 'week', 345, 'lang', 'mark');
 
+function isIncludedFirstNum(num, ...array) {
+  console.log(array.includes(num));
+}
+
+isIncludedFirstNum(1, 2, 3, 4, 5, 6, 7, 8, 9); //false
+
+function isIncludedFirstNumThroughSlice(...array) {
+  const arr = array.slice(1);
+  console.log(arr); // [2, 3, 4, 5, 6, 7, 8, 9]
+  console.log(arr.includes(array[0])); // false
+}
+
+isIncludedFirstNumThroughSlice(1, 2, 3, 4, 5, 6, 7, 8, 9); //false
+
+function isIncludedFirstNumThroughShift(...array) {
+  const arr = array.shift();
+  console.log(arr); // [1]
+  console.log(array.includes(arr)); // false
+}
+
+isIncludedFirstNumThroughShift(1, 2, 3, 4, 5, 6, 7, 8, 9); //false
+
+function isIncludedLastNum(...array) {
+  console.log(array[array.length - 1]); //9
+  console.log(array.includes(array[array.length - 1]));
+}
+
+isIncludedLastNum(1, 2, 3, 4, 5, 6, 7, 8, 9); // true
+
+function isIncludedLastNumThroughSlice(...array) {
+  const arr = array.slice(-1);
+  console.log(arr); // [9]
+  console.log(array.includes(arr)); // false
+}
+
+isIncludedLastNumThroughSlice(1, 2, 3, 4, 5, 6, 7, 8, 9); //false
+
+function isIncludedLastNumThroughPop(...array) {
+  const arr = array.pop();
+  console.log(arr); // [9]
+  console.log(array.includes(arr)); // false
+}
+
+isIncludedLastNumThroughPop(1, 2, 3, 4, 5, 6, 7, 8, 9); //false
+
 // destructuring assignment
 const playList = {
   name: 'My video playlist',
