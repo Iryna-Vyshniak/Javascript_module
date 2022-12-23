@@ -3130,3 +3130,51 @@ console.log(forename); // "Oluwatobi"
 console.log(surname); // "Sofela"
 console.log(onlineSite); // "codesweetly.com"
 // console.log(website); // "ReferenceError: website is not defined"
+
+const myBook = {
+  bTitle: 'The Last Kingdom',
+  bAuthor: 'Bernard Cornwell',
+  bGenres: ['historical prose', 'adventure'],
+  isPublic: true,
+  bRating: 8.38,
+};
+
+const { bTitle, bAuthor, bGenres, isPublic, bRating: votes, coverImage, price = '5$' } = myBook;
+console.log(bAuthor); //Bernard Cornwell
+console.log(bGenres); // ['historical prose', 'adventure']
+//console.log(bRating); // bRating is not defined
+console.log(votes); // 8.38
+console.log(coverImage); // undefined
+console.log(price); // 5$
+
+const bookShelves = [
+  {
+    bookTitle: 'The Last Kingdom',
+    bookAuthor: 'Bernard Cornwell',
+    bookRating: 8.38,
+  },
+  {
+    bookTitle: 'На березі спокійних вод',
+    bookAuthor: 'Роберт Шеклі',
+    bookRating: 8.51,
+  },
+];
+
+/*
+for (const book of bookShelves) {
+  // console.log(book.bookTitle);
+  // console.log(book.bookAuthor);
+  // console.log(book.bookRating);
+
+  const { bookTitle, bookAuthor, bookRating } = book;
+  console.log(bookTitle);
+  console.log(bookAuthor);
+  console.log(bookRating);
+}
+*/
+
+for (const { bookTitle, bookAuthor, bookRating } of bookShelves) {
+  console.log(bookTitle);
+  console.log(bookAuthor);
+  console.log(bookRating);
+}
