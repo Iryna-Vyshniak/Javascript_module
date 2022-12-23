@@ -2444,6 +2444,53 @@ function isIncludedThroughRest(...arg) {
 isIncludedThroughRest(2, 4, 5, 6, 8, 3, 7); // false
 
 // OBJECTS
+
+// object book
+const book = {
+  title: 'The Last Kingdom',
+  author: 'Bernard Cornwell',
+  genres: ['historical prose', 'adventure'],
+  isPublic: false,
+  rating: 0,
+  data: {
+    a: 1,
+    b: {
+      test: 'test',
+    },
+    c: 3,
+  },
+};
+
+console.log(book);
+console.log(book.data); // {a: 1, b: {test: test}, c: 3}
+console.log(book['data']); // {a: 1, b: {test: test}, c: 3}
+console.log(book.data.a); // 1
+console.log(book['data']['a']); // 1
+console.log(book.data.b.test); //test
+console.log(book['data']['b']['test']); // test
+
+const authorName = 'author';
+console.log(book[authorName]); // Bernard Cornwell
+console.log(book['author']); // Bernard Cornwell
+console.log(book.author); // Bernard Cornwell
+
+console.log(book);
+console.log(book.isPublic); // false
+book.isPublic = true;
+console.log(book);
+console.log(book.isPublic); // true
+
+book.price = '10$';
+// book['price'] = '10$';
+console.log(book);
+
+book.genres.push('tale');
+console.log(book);
+
+const obj = {};
+obj.a = 123;
+console.log(obj); // {a: 123}
+
 const playlist = {
   name: 'My super playlist',
   tracks: ['track-1', 'track-2', 'track-3', 'track-4'],
