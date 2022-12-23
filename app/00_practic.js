@@ -2948,3 +2948,27 @@ console.log(forename); // "Oluwatobi"
 console.log(surname); // "Sofela"
 console.log(onlineSite); // "codesweetly.com"
 // console.log(website); // "ReferenceError: website is not defined"
+
+const bookShelf = {
+  books: ['The Last Kingdom', 'Dream Guardian'],
+  getBooks() {
+    console.log('Цей метод буде повертати всі книги - властивість books');
+    return this.books;
+  },
+  addBook(bookName) {
+    console.log('Цей метод буде додавати нову книгу у властивість books');
+    this.books.push(bookName);
+  },
+  removeBook(bookName) {
+    const bookIndex = this.books.indexOf(bookName);
+    this.books.splice(bookIndex, 1);
+  },
+};
+
+console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'Dream Guardian']
+bookShelf.addBook('Mowgli');
+bookShelf.addBook('"The Mist"');
+console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'Dream Guardian', 'Mowgli', '"The Mist"']
+
+bookShelf.removeBook('Dream Guardian');
+console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'Mowgli', '"The Mist"']
