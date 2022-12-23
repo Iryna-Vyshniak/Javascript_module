@@ -2066,6 +2066,383 @@ console.log(findEnds('abcde', 'abc'));
 console.log(findEnds('abc', 'd'));
 console.log(findEnds('abc', 'bc'));
 
+//Nullish coalescing operator '??'
+// зробити рефакторинг коду так, щоб у змінну value присвоювалося значення змінної incoming, якщо воно не рівне null or undefinеd. В іншому випадку має присвоюватися значення defaultVal. Перевірити роботу скрипта для наступних значень змінної incomingValue: null, undefined, 0, false. Використовувати оператор нульового злиття ?? (Nullish coalescing operator '??')
+
+// const incomingValue = '';
+// const defaultValue = 10;
+
+// const incomingValue = null;
+// const defaultValue = 10;
+
+// const incomingValue = false;
+// const defaultValue = 10;
+const incomingValue = 0;
+const defaultValue = 10;
+const valueResult = incomingValue ?? defaultValue; // if on left - null or undefinеd  - return right => defaultValue
+
+// console.log(valueResult); // ''
+//console.log(valueResult); // 10
+//console.log(valueResult); // false
+console.log(valueResult); // 0
+
+// Ми також можемо використовувати послідовність з ??, щоб вибрати перше значення зі списку, яке не є null/undefined.
+
+///Скажімо, у нас є дані користувача в змінних firstName, lastName або nickName. Всі вони можуть бути не визначені, якщо користувач вирішив не вводити значення.
+
+//Ми хотіли б показати ім’я користувача, використовуючи одну з цих змінних, або показати “Анонімний”, якщо всі вони null/undefined.
+
+// Використаймо оператор ?? для цього:
+// показує перше визначене значення:
+let firstName = null;
+let lastName = null;
+let nickName = 'Суперкодер';
+
+console.log(firstName ?? lastName ?? nickName ?? 'Анонімний'); // Суперкодер
+
+// set time
+function setTime(minutes) {
+  // const currentHour = Math.floor(minutes / 60);
+  // const formatedHours = String(currentHour).padStart(2, '0');
+  const formatedHours = String(Math.floor(minutes / 60)).padStart(2, '0');
+
+  // const currentMinutes = Math.floor(minutes % 60);
+  // const formatedMinutes = String(currentMinutes).padStart(2, '0');
+  const formatedMinutes = String(Math.floor(minutes % 60)).padStart(2, '0');
+
+  const currentTime = `${formatedHours}:${formatedMinutes}`;
+  return currentTime;
+}
+
+console.log(setTime(364)); // 06:04
+
+//// Напиши скрипт для відображення годин та хвилин у консолі браузера у вигляді рядка
+// формату `"14 г. 26 хв."`. Якщо значення змінної `minutes` дорівнює `0`, то
+// виводь рядок `"14 г."`, без хвилин.
+
+const hoursValue = 14;
+const minutesValue = 10;
+
+function time(hours, minutes) {
+  const formatedHours = String(hours).padStart(2, '0');
+  const formatedMinutes = String(minutes).padStart(2, '0');
+
+  const resultTime =
+    minutes !== 0 ? `${formatedHours}г. ${formatedMinutes}хв.` : `${formatedHours}г.`;
+  console.log(resultTime);
+  return resultTime;
+}
+
+time(24, 0); // 24г.
+time(11, 10); // 11г. 10хв.
+time(6, 5); // 06г. 05хв.
+time(14, 26); // 14г. 26хв.
+
+//Nested branches Вкладені розгалуження
+// Write a script that compares numbers in variables `a` and `b`. If both
+// the value is greater than `100`, then output the maximum of them to the console. On the contrary
+// case in the console should be the sum of the value `b` and the number 512.
+
+function compareNumbers(num1, num2) {
+  let result = 0;
+  if (num1 > 100 && num2 > 100) {
+    if (num1 >= num2) {
+      result = num1;
+    } else {
+      result = num2;
+    }
+  } else {
+    result = num2 + 512;
+  }
+  console.log(result);
+  return result;
+}
+
+compareNumbers(101, 50); // 562
+compareNumbers(101, 150); // 150
+compareNumbers(10, 100); // 612
+
+// Link formatting (includes and logical "AND")
+
+//Write a script that checks whether the value of the `link' variable has expired by `/` character. If not, add this symbol to the end of the `link` value, but only in if there is a substring `"my-site"` in `link`.
+
+function checkLink(link, substring) {
+  return link.includes(substring) && !link.endsWith('/') ? (link += '/') : null;
+}
+
+console.log(checkLink('https://www.w3schools.com', 'w3schools')); //https://www.w3schools.com/
+console.log(checkLink('https://www.w3schools.com', 'schools')); //https://www.w3schools.com/
+console.log(checkLink('https://www.w3schools.com/', 'w3')); // null
+console.log(checkLink('https://www.w3schools.com', 'w3-school')); // null
+
+//The for loop
+
+// Write a for loop that displays numbers in increments from `min' to the browser console up to `max`, but only if the number is a multiple of `5`.
+//  i % 5 = 0 -> false; !(i % 5) = 0 -> true;
+
+function getMultipleNumbers(min, max) {
+  const result = [];
+  for (let i = min; i <= max; i += 1) {
+    // !(i % 5) ? result.push(i) : null;
+    // i % 5 ? null : result.push(i);
+    // i % 5 === 0 ? result.push(i) : null;
+    if (i % 5 === 0) result.push(i);
+  }
+  console.log(result);
+  return result;
+}
+
+getMultipleNumbers(3, 32); // [5, 10, 15, 20, 25, 30]
+
+// Write a function that will ask for a login
+// - If `"Admin"`, the `prompt` asks for a password
+// - If nothing is entered or the Esc key is pressed - output the `"Cancelled"' line
+// - Otherwise, output the line `"I don't know you"`
+
+// Check the password like this:
+// - If the password ``I am admin'' is entered, then output the line ``Hello!''
+// - Otherwise, output the `"Invalid password"' line
+
+/*
+function checkAdmin(login) {
+  const loginName = 'Admin';
+  let message = '';
+
+  if (login === loginName) {
+    const password = prompt('Now enter password');
+
+    if (password === 'I`m admin') {
+      message = 'Hello';
+    } else {
+      message = 'Invalid password';
+    }
+  } else if (!loginName) {
+    // if '', null, undefined
+    message = 'Cancelled';
+  } else {
+    // if another name
+    message = 'I don`t know you';
+  }
+  console.log(message);
+  return message;
+}
+
+checkAdmin('Admin'); // Hello
+
+*/
+
+const arr1 = [1, 2, 3];
+const arr2 = arr1;
+console.log(arr2); // [1, 2, 3];
+const arr3 = arr2;
+console.log(arr3); // [1, 2, 3];
+arr3[1] = 100;
+console.log(arr1); // [1, 100, 3]
+console.log(arr2); // [1, 100, 3]
+console.log(arr3); // [1, 100, 3]
+
+arr2.length = 0;
+console.log(arr1); // []
+console.log(arr2); // []
+console.log(arr3); // []
+
+arr1[2] = 1000;
+console.log(arr1); // [empty × 2, 1000]
+console.log(arr2); // [empty × 2, 1000]
+console.log(arr3); // [empty × 2, 1000] => undefined  × 2, 1000
+
+for (const elem of arr3) {
+  console.log(elem); // undefined undefined 1000
+}
+
+console.log(arr1.length); // 3
+console.log(arr2.length); // 3
+console.log(arr3.length); // 3
+
+const cd = [1, 2, 3, [4, 5]];
+const de = [1, 2, 3, [4, 5]];
+console.log(cd === de); //false => [1, 2, 3, [4, 5]] === [1, 2, 3, [4, 5]] false
+console.log(cd[0] === de[0]); // true => 1 === 1 true
+console.log(cd[3] === de[3]); // false => [4, 5] === [4, 5] false
+console.log(cd[3][0] === de[3][0]); // true => 4 === 4 true
+
+// method split('!')
+const str = '1-!2-!3-!4-!5-!6-!7-!8-!9';
+const arrSplit = str.split('-!');
+console.log(arrSplit); // ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+let strSimply = 'Geeks for Geeks';
+let arraySplit = strSimply.split('for');
+console.log(arraySplit); // ['Geeks ', ' Geeks']
+
+strSimply = 'It iS a 5r&e@@t Day.';
+arraySplit = strSimply.split(' ');
+console.log(arraySplit); // ['It', 'iS', 'a', '5r&e@@t', 'Day.']
+
+strSimply = 'It iS a 5r&e@@t Day.';
+arraySplit = strSimply.split(' ', 2);
+console.log(arraySplit); // ['It', 'iS']
+
+// method includes()
+const arr4 = [1, 23, 4, 28, 97, 78];
+const arr5 = arr4.includes(100 && 4); // true, because the 1st: 100 - true, 4 - true => true && true = last true; the 2nd: includes last - 4
+console.log(arr5);
+
+const arr6 = arr4.includes(100) && arr4.includes(4);
+console.log(arr6); // false
+
+const arr7 = arr4.includes(100) || arr4.includes(4);
+console.log(arr7); // true
+
+[1, 2, 3].includes(3, -1); // true, -1 -> 3 from the last
+console.log([1, 2, 3].includes(3, 1)); // true, 3 from index 1
+console.log([1, 2, 3].includes(3, 2)); // true, 3 from index 2
+console.log([1, 2, 3].includes(3, 3)); // false, 3 from index 3
+console.log([1, 2, 3].includes(3, -3)); // true, Если вычисленный индекс меньше нуля, то поиск будет производиться во всём массиве.
+console.log([1, 2, 3].includes(3, -30)); // true,
+
+// method push()
+
+const emptyArr = [];
+// emptyArr.push('week', 'day', 'day time', 12);
+// console.log(emptyArr); // ['week', 'morning', 'night', 12]
+
+const arr8 = emptyArr.push('week', 'morning', 'night', 12);
+console.log(emptyArr); // ['week', 'morning', 'night', 12]
+console.log(arr8); // 4 -> length
+
+//method pop()
+const arr9 = ['week', 'morning', 'night', 12];
+const deletedEl = arr9.pop();
+console.log(arr9); // ['week', 'morning', 'night'];
+console.log(deletedEl); // 12
+
+const arr10 = [];
+console.log(arr10.pop()); //undefined
+
+// splice()
+
+const arr11 = [1, 2, 3, 4, 5, 5, 6, 6, 7, 8, 9];
+arr11.splice(5, 2);
+console.log(arr11); // (9) [1, 2, 3, 4, 5, 6, 7, 8, 9]
+const arr12 = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Tuesday',
+  'Wednesday',
+  'Wednesday',
+  'Wednesday',
+  'Thursday',
+  'Saturday',
+];
+
+console.log(arr12.indexOf('Tuesday')); // 2
+arr12.splice(2, 1);
+console.log(arr12); // ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Wednesday', 'Wednesday', 'Thursday',  'Saturday']
+
+const arr13 = arr12.splice(2, 1);
+console.log(arr13); // ['Tuesday']
+
+console.log(arr12.indexOf('Wednesday')); // 3
+arr12.splice(3, 2);
+console.log(arr12); // ['Sunday', 'Monday', 'Wednesday', 'Thursday', 'Saturday']
+const arr14 = arr12.splice(2, 0, 'Tuesday');
+console.log(arr14); // []
+console.log(arr12); // (6) ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Saturday']
+
+arr12.splice(5, 0, 'Friday');
+console.log(arr12); //['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+const copyArr12 = arr12.slice();
+console.log(copyArr12); // ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+const arr15 = [1, 2, 3, 4, 4, 4, 7];
+const copyArr15 = arr15.slice();
+console.log(copyArr15); // [1, 2, 3, 4, 4, 4, 7]
+
+const deletedElements = copyArr15.splice(4, 2, 5, 6);
+console.log(deletedElements); // [4, 4]
+console.log(copyArr15); // [1, 2, 3, 4, 5, 6, 7]
+
+// function getAllPropValues(propName), which accepts one parameter propName - the name (key) of the property. The function should return an array of all property values ​​with that name from each object in the products array. If there are no properties with that name in the objects, the function should return an empty array
+
+const products = [
+  { name: 'Radar', price: 1300, quantity: 4 },
+  { name: 'Scanner', price: 2700, quantity: 3 },
+  { name: 'Droid', price: 400, quantity: 7 },
+  { name: 'Grip', price: 1200, quantity: 9 },
+];
+
+function getAllPropValues(propName) {
+  const arrayPropValues = [];
+
+  for (const product of products) {
+    if (product[propName]) arrayPropValues.push(product[propName]);
+  }
+  console.log(arrayPropValues);
+  return arrayPropValues;
+}
+getAllPropValues('name'); //['Radar', 'Scanner', 'Droid', 'Grip']
+getAllPropValues('quantity'); // [4, 3, 7, 9]
+getAllPropValues('category'); // []
+
+// type of
+function sum(x, y) {
+  return typeof x !== 'number' || typeof y !== 'number' ? 'One of operands isn`t a number' : x + y;
+}
+
+console.log(sum(3, 7)); // 10
+console.log(sum(3, '7')); // One of operands isn`t a number
+console.log(sum(3, 'window')); // One of operands isn`t a number
+
+// pseudo array arguments
+
+function add() {
+  console.log(arguments); //[5, 6, 8, 10, callee: (...), Symbol(Symbol.iterator): ƒ]
+  console.log(arguments.length); // 4
+  console.log(arguments[1]); // 6
+
+  let sum = 0;
+  for (const arg of arguments) {
+    sum += arg;
+  }
+  console.log(sum);
+  return sum;
+}
+
+add(5, 6, 8, 10); //29
+
+function isIncluded() {
+  const arrayOfArguments = Array.from(arguments);
+  console.log(arrayOfArguments); //[2, 4, 5, 6, 8, 3, 7]
+
+  const number = arrayOfArguments[arrayOfArguments.length - 1];
+  console.log(number); // 7
+
+  const array = arrayOfArguments.slice(0, -1); // 7
+  console.log(array); // [2, 4, 5, 6, 8, 3]
+
+  console.log(array.includes(number));
+  return array.includes(number);
+}
+
+isIncluded(2, 4, 5, 6, 8, 3, 7); //false -> 7 deleted
+
+function isIncludedThroughRest(...arg) {
+  console.log(arg); // [2, 4, 5, 6, 8, 3, 7]
+
+  const number = arg[arg.length - 1];
+  console.log(number); // 7
+
+  const array = arg.slice(0, -1); // 7
+  console.log(array); // [2, 4, 5, 6, 8, 3]
+
+  console.log(array.includes(number));
+  return array.includes(number);
+}
+isIncludedThroughRest(2, 4, 5, 6, 8, 3, 7); // false
+
 // OBJECTS
 const playlist = {
   name: 'My super playlist',
@@ -2524,380 +2901,3 @@ console.log(forename); // "Oluwatobi"
 console.log(surname); // "Sofela"
 console.log(onlineSite); // "codesweetly.com"
 // console.log(website); // "ReferenceError: website is not defined"
-
-//Nullish coalescing operator '??'
-// зробити рефакторинг коду так, щоб у змінну value присвоювалося значення змінної incoming, якщо воно не рівне null or undefinеd. В іншому випадку має присвоюватися значення defaultVal. Перевірити роботу скрипта для наступних значень змінної incomingValue: null, undefined, 0, false. Використовувати оператор нульового злиття ?? (Nullish coalescing operator '??')
-
-// const incomingValue = '';
-// const defaultValue = 10;
-
-// const incomingValue = null;
-// const defaultValue = 10;
-
-// const incomingValue = false;
-// const defaultValue = 10;
-const incomingValue = 0;
-const defaultValue = 10;
-const valueResult = incomingValue ?? defaultValue; // if on left - null or undefinеd  - return right => defaultValue
-
-// console.log(valueResult); // ''
-//console.log(valueResult); // 10
-//console.log(valueResult); // false
-console.log(valueResult); // 0
-
-// Ми також можемо використовувати послідовність з ??, щоб вибрати перше значення зі списку, яке не є null/undefined.
-
-///Скажімо, у нас є дані користувача в змінних firstName, lastName або nickName. Всі вони можуть бути не визначені, якщо користувач вирішив не вводити значення.
-
-//Ми хотіли б показати ім’я користувача, використовуючи одну з цих змінних, або показати “Анонімний”, якщо всі вони null/undefined.
-
-// Використаймо оператор ?? для цього:
-// показує перше визначене значення:
-let firstName = null;
-let lastName = null;
-let nickName = 'Суперкодер';
-
-console.log(firstName ?? lastName ?? nickName ?? 'Анонімний'); // Суперкодер
-
-// set time
-function setTime(minutes) {
-  // const currentHour = Math.floor(minutes / 60);
-  // const formatedHours = String(currentHour).padStart(2, '0');
-  const formatedHours = String(Math.floor(minutes / 60)).padStart(2, '0');
-
-  // const currentMinutes = Math.floor(minutes % 60);
-  // const formatedMinutes = String(currentMinutes).padStart(2, '0');
-  const formatedMinutes = String(Math.floor(minutes % 60)).padStart(2, '0');
-
-  const currentTime = `${formatedHours}:${formatedMinutes}`;
-  return currentTime;
-}
-
-console.log(setTime(364)); // 06:04
-
-//// Напиши скрипт для відображення годин та хвилин у консолі браузера у вигляді рядка
-// формату `"14 г. 26 хв."`. Якщо значення змінної `minutes` дорівнює `0`, то
-// виводь рядок `"14 г."`, без хвилин.
-
-const hoursValue = 14;
-const minutesValue = 10;
-
-function time(hours, minutes) {
-  const formatedHours = String(hours).padStart(2, '0');
-  const formatedMinutes = String(minutes).padStart(2, '0');
-
-  const resultTime =
-    minutes !== 0 ? `${formatedHours}г. ${formatedMinutes}хв.` : `${formatedHours}г.`;
-  console.log(resultTime);
-  return resultTime;
-}
-
-time(24, 0); // 24г.
-time(11, 10); // 11г. 10хв.
-time(6, 5); // 06г. 05хв.
-time(14, 26); // 14г. 26хв.
-
-//Nested branches Вкладені розгалуження
-// Write a script that compares numbers in variables `a` and `b`. If both
-// the value is greater than `100`, then output the maximum of them to the console. On the contrary
-// case in the console should be the sum of the value `b` and the number 512.
-
-function compareNumbers(num1, num2) {
-  let result = 0;
-  if (num1 > 100 && num2 > 100) {
-    if (num1 >= num2) {
-      result = num1;
-    } else {
-      result = num2;
-    }
-  } else {
-    result = num2 + 512;
-  }
-  console.log(result);
-  return result;
-}
-
-compareNumbers(101, 50); // 562
-compareNumbers(101, 150); // 150
-compareNumbers(10, 100); // 612
-
-// Link formatting (includes and logical "AND")
-
-//Write a script that checks whether the value of the `link' variable has expired by `/` character. If not, add this symbol to the end of the `link` value, but only in if there is a substring `"my-site"` in `link`.
-
-function checkLink(link, substring) {
-  return link.includes(substring) && !link.endsWith('/') ? (link += '/') : null;
-}
-
-console.log(checkLink('https://www.w3schools.com', 'w3schools')); //https://www.w3schools.com/
-console.log(checkLink('https://www.w3schools.com', 'schools')); //https://www.w3schools.com/
-console.log(checkLink('https://www.w3schools.com/', 'w3')); // null
-console.log(checkLink('https://www.w3schools.com', 'w3-school')); // null
-
-//The for loop
-
-// Write a for loop that displays numbers in increments from `min' to the browser console up to `max`, but only if the number is a multiple of `5`.
-//  i % 5 = 0 -> false; !(i % 5) = 0 -> true;
-
-function getMultipleNumbers(min, max) {
-  const result = [];
-  for (let i = min; i <= max; i += 1) {
-    // !(i % 5) ? result.push(i) : null;
-    // i % 5 ? null : result.push(i);
-    // i % 5 === 0 ? result.push(i) : null;
-    if (i % 5 === 0) result.push(i);
-  }
-  console.log(result);
-  return result;
-}
-
-getMultipleNumbers(3, 32); // [5, 10, 15, 20, 25, 30]
-
-// Write a function that will ask for a login
-// - If `"Admin"`, the `prompt` asks for a password
-// - If nothing is entered or the Esc key is pressed - output the `"Cancelled"' line
-// - Otherwise, output the line `"I don't know you"`
-
-// Check the password like this:
-// - If the password ``I am admin'' is entered, then output the line ``Hello!''
-// - Otherwise, output the `"Invalid password"' line
-
-/*
-function checkAdmin(login) {
-  const loginName = 'Admin';
-  let message = '';
-
-  if (login === loginName) {
-    const password = prompt('Now enter password');
-
-    if (password === 'I`m admin') {
-      message = 'Hello';
-    } else {
-      message = 'Invalid password';
-    }
-  } else if (!loginName) {
-    // if '', null, undefined
-    message = 'Cancelled';
-  } else {
-    // if another name
-    message = 'I don`t know you';
-  }
-  console.log(message);
-  return message;
-}
-
-checkAdmin('Admin'); // Hello
-
-*/
-
-const arr1 = [1, 2, 3];
-const arr2 = arr1;
-console.log(arr2); // [1, 2, 3];
-const arr3 = arr2;
-console.log(arr3); // [1, 2, 3];
-arr3[1] = 100;
-console.log(arr1); // [1, 100, 3]
-console.log(arr2); // [1, 100, 3]
-console.log(arr3); // [1, 100, 3]
-
-arr2.length = 0;
-console.log(arr1); // []
-console.log(arr2); // []
-console.log(arr3); // []
-
-arr1[2] = 1000;
-console.log(arr1); // [empty × 2, 1000]
-console.log(arr2); // [empty × 2, 1000]
-console.log(arr3); // [empty × 2, 1000] => undefined  × 2, 1000
-
-for (const elem of arr3) {
-  console.log(elem); // undefined undefined 1000
-}
-
-console.log(arr1.length); // 3
-console.log(arr2.length); // 3
-console.log(arr3.length); // 3
-
-const cd = [1, 2, 3, [4, 5]];
-const de = [1, 2, 3, [4, 5]];
-console.log(cd === de); //false => [1, 2, 3, [4, 5]] === [1, 2, 3, [4, 5]] false
-console.log(cd[0] === de[0]); // true => 1 === 1 true
-console.log(cd[3] === de[3]); // false => [4, 5] === [4, 5] false
-console.log(cd[3][0] === de[3][0]); // true => 4 === 4 true
-
-// method split('!')
-const str = '1-!2-!3-!4-!5-!6-!7-!8-!9';
-const arrSplit = str.split('-!');
-console.log(arrSplit); // ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-
-let strSimply = 'Geeks for Geeks';
-let arraySplit = strSimply.split('for');
-console.log(arraySplit); // ['Geeks ', ' Geeks']
-
-strSimply = 'It iS a 5r&e@@t Day.';
-arraySplit = strSimply.split(' ');
-console.log(arraySplit); // ['It', 'iS', 'a', '5r&e@@t', 'Day.']
-
-strSimply = 'It iS a 5r&e@@t Day.';
-arraySplit = strSimply.split(' ', 2);
-console.log(arraySplit); // ['It', 'iS']
-
-// method includes()
-const arr4 = [1, 23, 4, 28, 97, 78];
-const arr5 = arr4.includes(100 && 4); // true, because the 1st: 100 - true, 4 - true => true && true = last true; the 2nd: includes last - 4
-console.log(arr5);
-
-const arr6 = arr4.includes(100) && arr4.includes(4);
-console.log(arr6); // false
-
-const arr7 = arr4.includes(100) || arr4.includes(4);
-console.log(arr7); // true
-
-[1, 2, 3].includes(3, -1); // true, -1 -> 3 from the last
-console.log([1, 2, 3].includes(3, 1)); // true, 3 from index 1
-console.log([1, 2, 3].includes(3, 2)); // true, 3 from index 2
-console.log([1, 2, 3].includes(3, 3)); // false, 3 from index 3
-console.log([1, 2, 3].includes(3, -3)); // true, Если вычисленный индекс меньше нуля, то поиск будет производиться во всём массиве.
-console.log([1, 2, 3].includes(3, -30)); // true,
-
-// method push()
-
-const emptyArr = [];
-// emptyArr.push('week', 'day', 'day time', 12);
-// console.log(emptyArr); // ['week', 'morning', 'night', 12]
-
-const arr8 = emptyArr.push('week', 'morning', 'night', 12);
-console.log(emptyArr); // ['week', 'morning', 'night', 12]
-console.log(arr8); // 4 -> length
-
-//method pop()
-const arr9 = ['week', 'morning', 'night', 12];
-const deletedEl = arr9.pop();
-console.log(arr9); // ['week', 'morning', 'night'];
-console.log(deletedEl); // 12
-
-const arr10 = [];
-console.log(arr10.pop()); //undefined
-
-// splice()
-
-const arr11 = [1, 2, 3, 4, 5, 5, 6, 6, 7, 8, 9];
-arr11.splice(5, 2);
-console.log(arr11); // (9) [1, 2, 3, 4, 5, 6, 7, 8, 9]
-const arr12 = [
-  'Sunday',
-  'Monday',
-  'Tuesday',
-  'Tuesday',
-  'Wednesday',
-  'Wednesday',
-  'Wednesday',
-  'Thursday',
-  'Saturday',
-];
-
-console.log(arr12.indexOf('Tuesday')); // 2
-arr12.splice(2, 1);
-console.log(arr12); // ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Wednesday', 'Wednesday', 'Thursday',  'Saturday']
-
-const arr13 = arr12.splice(2, 1);
-console.log(arr13); // ['Tuesday']
-
-console.log(arr12.indexOf('Wednesday')); // 3
-arr12.splice(3, 2);
-console.log(arr12); // ['Sunday', 'Monday', 'Wednesday', 'Thursday', 'Saturday']
-const arr14 = arr12.splice(2, 0, 'Tuesday');
-console.log(arr14); // []
-console.log(arr12); // (6) ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Saturday']
-
-arr12.splice(5, 0, 'Friday');
-console.log(arr12); //['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-
-const copyArr12 = arr12.slice();
-console.log(copyArr12); // ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-
-const arr15 = [1, 2, 3, 4, 4, 4, 7];
-const copyArr15 = arr15.slice();
-console.log(copyArr15); // [1, 2, 3, 4, 4, 4, 7]
-
-const deletedElements = copyArr15.splice(4, 2, 5, 6);
-console.log(deletedElements); // [4, 4]
-console.log(copyArr15); // [1, 2, 3, 4, 5, 6, 7]
-
-// function getAllPropValues(propName), which accepts one parameter propName - the name (key) of the property. The function should return an array of all property values ​​with that name from each object in the products array. If there are no properties with that name in the objects, the function should return an empty array
-
-const products = [
-  { name: 'Radar', price: 1300, quantity: 4 },
-  { name: 'Scanner', price: 2700, quantity: 3 },
-  { name: 'Droid', price: 400, quantity: 7 },
-  { name: 'Grip', price: 1200, quantity: 9 },
-];
-
-function getAllPropValues(propName) {
-  const arrayPropValues = [];
-
-  for (const product of products) {
-    if (product[propName]) arrayPropValues.push(product[propName]);
-  }
-  console.log(arrayPropValues);
-  return arrayPropValues;
-}
-getAllPropValues('name'); //['Radar', 'Scanner', 'Droid', 'Grip']
-getAllPropValues('quantity'); // [4, 3, 7, 9]
-getAllPropValues('category'); // []
-
-// type of
-function sum(x, y) {
-  return typeof x !== 'number' || typeof y !== 'number' ? 'One of operands isn`t a number' : x + y;
-}
-
-console.log(sum(3, 7)); // 10
-console.log(sum(3, '7')); // One of operands isn`t a number
-console.log(sum(3, 'window')); // One of operands isn`t a number
-
-// pseudo array arguments
-
-function add() {
-  console.log(arguments); //[5, 6, 8, 10, callee: (...), Symbol(Symbol.iterator): ƒ]
-  console.log(arguments.length); // 4
-  console.log(arguments[1]); // 6
-
-  let sum = 0;
-  for (const arg of arguments) {
-    sum += arg;
-  }
-  console.log(sum);
-  return sum;
-}
-
-add(5, 6, 8, 10); //29
-
-function isIncluded() {
-  const arrayOfArguments = Array.from(arguments);
-  console.log(arrayOfArguments); //[2, 4, 5, 6, 8, 3, 7]
-
-  const number = arrayOfArguments[arrayOfArguments.length - 1];
-  console.log(number); // 7
-
-  const array = arrayOfArguments.slice(0, -1); // 7
-  console.log(array); // [2, 4, 5, 6, 8, 3]
-
-  console.log(array.includes(number));
-  return array.includes(number);
-}
-
-isIncluded(2, 4, 5, 6, 8, 3, 7); //false -> 7 deleted
-
-function isIncludedThroughRest(...arg) {
-  console.log(arg); // [2, 4, 5, 6, 8, 3, 7]
-
-  const number = arg[arg.length - 1];
-  console.log(number); // 7
-
-  const array = arg.slice(0, -1); // 7
-  console.log(array); // [2, 4, 5, 6, 8, 3]
-
-  console.log(array.includes(number));
-  return array.includes(number);
-}
-isIncludedThroughRest(2, 4, 5, 6, 8, 3, 7); // false
