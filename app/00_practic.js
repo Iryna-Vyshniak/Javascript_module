@@ -3009,3 +3009,26 @@ const familyName = 'lastName';
 student[familyName] = 'Snow';
 student.getName(); //Student's name:  John Snow
 console.log(student); // {firstName: 'John', lastName: 'Snow', age: 23, email: 'jhondoe@gmail.com', homeworkResults: Array(2), …}
+
+// computed properties
+const propName = 'name';
+
+const currentUser = {
+  age: 21,
+};
+
+console.log(currentUser); //{age: 21}
+currentUser[propName] = 'Ariya';
+console.log(currentUser[propName]); // Ariya
+console.log(currentUser.name); // Ariya
+
+console.log(currentUser); // {age: 21, name: 'Ariya'}
+
+const admin = {
+  age: 25,
+  [propName]: 'Arya Stark',
+};
+
+console.log(admin); // {age: 25, name: 'Arya Stark'}
+console.log(admin[propName]); // Arya Stark
+console.log(admin.name); // 'Arya Stark'
