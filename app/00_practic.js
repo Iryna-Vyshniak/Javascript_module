@@ -2972,3 +2972,40 @@ console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'Dream Guardian', 'Mo
 
 bookShelf.removeBook('Dream Guardian');
 console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'Mowgli', '"The Mist"']
+
+const student = {
+  firstName: 'John',
+  lastName: 'Doe',
+  age: 23,
+  email: 'jhondoe@gmail.com',
+  homeworkResults: [],
+  getName() {
+    console.log(`Student's name: `, this.firstName, this.lastName);
+  },
+  getEmail() {
+    console.log('Student`s email: ', this.email);
+  },
+  getHWResults() {
+    console.log('Student`s HW results: ', this.homeworkResults);
+  },
+  addHWResults(topic, sucess) {
+    // const item = { topic: topic, sucess: sucess }; create object
+    const item = { topic, sucess };
+    this.homeworkResults.push(item);
+    console.log('add student`s HW results:', this.homeworkResults);
+  },
+};
+
+console.log(student);
+console.log(student.homeworkResults); // []
+student.getName(); // Student's name:  John Doe
+student.getEmail(); // Student`s email:  jhondoe@gmail.com
+student.getHWResults(); // []
+
+student.addHWResults('Array', true); // [{sucess: true, topic: "Array"}]
+student.addHWResults('Loops', true); // [{sucess: true, topic: "Array"}, {topic: 'Loops', sucess: true}]
+
+const familyName = 'lastName';
+student[familyName] = 'Snow';
+student.getName(); //Student's name:  John Snow
+console.log(student); // {firstName: 'John', lastName: 'Snow', age: 23, email: 'jhondoe@gmail.com', homeworkResults: Array(2), …}
