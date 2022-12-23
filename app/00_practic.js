@@ -3032,3 +3032,41 @@ const admin = {
 console.log(admin); // {age: 25, name: 'Arya Stark'}
 console.log(admin[propName]); // Arya Stark
 console.log(admin.name); // 'Arya Stark'
+
+// Object.keys(), Object.values(), Object.entries()
+
+const movies = {
+  name: 'Jurassic Park',
+  year: 1993,
+  runtime: 127,
+  categories: ['adventure', 'thriller', 'sci-fi'],
+  'release-date': '1993-06-11',
+  director: 'Steven Spielberg',
+  writer: ['Michael Crichton', 'David Koepp'],
+  actors: ['Sam Neill', 'Laura Dern', 'Jeff Goldblum'],
+  storyline:
+    'Huge advancements in scientific technology have enabled a mogul ... critical security systems are shut down and it now becomes a race for survival with dinosaurs roaming freely over the island.',
+};
+
+const keys = Object.keys(movies);
+console.log(keys); // ['name', 'year', 'runtime', 'categories', 'release-date', 'director', 'writer', 'actors', 'storyline']
+
+for (const key of keys) {
+  console.log(movies[key]);
+}
+
+const values = Object.values(movies);
+console.log(values); // ['Jurassic Park', 1993, 127, Array(3), '1993-06-11', 'Steven Spielberg', Array(2), Array(3), 'Huge advancements in scientific technology have en…al with dinosaurs roaming freely over the island.']
+
+const entries = Object.entries(movies);
+console.log(entries);
+// [
+// ['name', 'Jurassic Park']['year', 1993]
+// ['runtime', 127]
+// ['categories', Array(3)]
+// ['release-date', '1993-06-11']
+// ['director', 'Steven Spielberg']
+// ['writer', Array(2)]
+// ['actors', Array(3)]
+// ['storyline', 'Huge advancements in scientific technology h..']
+// ]
