@@ -3231,3 +3231,59 @@ function getBooks(books) {
 }
 
 getBooks(bestBooks); //{italyAuthor:  ['Dante Alighieri', {…}], anotherAuthor: ['Chinua Achebe', {…}, 'Hans Christian Andersen', {…}]
+
+//Pattern for Parameter Object
+
+const car1 = {
+  brand: 'BMW',
+  model: '700',
+  a: 'red',
+  maxSpeed: 240,
+  isNew: true,
+  dimensions: {
+    weight: 2000,
+    height: 150,
+    length: 4.2,
+  },
+};
+
+const car2 = {
+  brand: 'BMW',
+  model: '500',
+  a: 'silver',
+  maxSpeed: 240,
+  isNew: true,
+  dimensions: {
+    height: 150,
+    length: 4.2,
+  },
+};
+
+function createMessage({
+  dimensions: { weight = 'no info', height = 'no info', length = 'no info' },
+  a: color = 'no info',
+  maxSpeed = 'no info',
+  isNew = 'no info',
+}) {
+  const message = `
+  Color: ${color}
+  Max Speed : ${maxSpeed}
+  isNew: ${isNew}
+  Weight: ${weight}
+  `;
+
+  console.log(message);
+  return message;
+}
+
+createMessage(car1);
+// Color: red
+// Max Speed : 240
+// isNew: true
+// Weight: 2000
+
+createMessage(car2);
+// Color: silver
+// Max Speed : 240
+// isNew: true
+// Weight: no info
