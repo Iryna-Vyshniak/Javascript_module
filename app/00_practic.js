@@ -3178,3 +3178,56 @@ for (const { bookTitle, bookAuthor, bookRating } of bookShelves) {
   console.log(bookAuthor);
   console.log(bookRating);
 }
+
+const bestBooks = [
+  {
+    authorBook: 'Chinua Achebe',
+    country: 'Nigeria',
+    imageLink: 'images/things-fall-apart.jpg',
+    language: 'English',
+    link: 'https://en.wikipedia.org/wiki/Things_Fall_Apart',
+    pages: 209,
+    title: 'Things Fall Apart',
+    year: 1958,
+  },
+  {
+    authorBook: 'Hans Christian Andersen',
+    country: 'Denmark',
+    imageLink: 'images/fairy-tales.jpg',
+    language: 'Danish',
+    link: 'https://en.wikipedia.org/wiki/Fairy_Tales_Told_for_Children._First_Collection',
+    pages: 784,
+    title: 'Fairy tales',
+    year: 1836,
+  },
+  {
+    authorBook: 'Dante Alighieri',
+    country: 'Italy',
+    imageLink: 'images/the-divine-comedy.jpg',
+    language: 'Italian',
+    link: 'https://en.wikipedia.org/wiki/Divine_Comedy',
+    pages: 928,
+    title: 'The Divine Comedy',
+    year: 1315,
+  },
+];
+
+function getBooks(books) {
+  const authorBookOfCounties = {
+    italyAuthor: [],
+    anotherAuthor: [],
+  };
+
+  for (const { authorBook, ...dataBook } of books) {
+    console.log(authorBook);
+    console.log(dataBook); // {country: 'Italy', imageLink: 'images/the-divine-comedy.jpg', language: 'Italian', link: 'https://en.wikipedia.org/wiki/Divine_Comedy\n', pages: 928, …}
+
+    authorBook === 'Dante Alighieri'
+      ? authorBookOfCounties.italyAuthor.push(authorBook, dataBook)
+      : authorBookOfCounties.anotherAuthor.push(authorBook, dataBook);
+  }
+  console.log(authorBookOfCounties);
+  return authorBookOfCounties;
+}
+
+getBooks(bestBooks); //{italyAuthor:  ['Dante Alighieri', {…}], anotherAuthor: ['Chinua Achebe', {…}, 'Hans Christian Andersen', {…}]
