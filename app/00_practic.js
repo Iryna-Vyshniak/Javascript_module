@@ -471,7 +471,7 @@ greetingBlock.innerHTML = `<p class='greeting-content'>${greeting} Do you want t
 
 const greetingContent = document.querySelector('.greeting-content');
 greetingContent.style = `
-margin-bottom: 3vh;
+margin-bottom: 15vh;
 margin-right: auto;
 margin-left: auto;
 padding-top: 10vh;
@@ -515,7 +515,11 @@ console.log(motivationPhrases.length);
 
 greetingBlock.insertAdjacentHTML(
   'beforeend',
-  /*html*/ `<button type='button' class='btn-fate'>Click me</button>`
+  /*html*/ `
+  <div class="button-mouse">
+  <button type='button' class='btn-fate'>Click me</button>
+  <img class="btn-fate-mouse" src="https://th.bing.com/th/id/R.ef396a69cb3cae6189911b769dae8a8d?rik=keCh2uUSgW4SzQ&riu=http%3a%2f%2fmiam-images.m.i.pic.centerblog.net%2fo%2f1295f5fc.png&ehk=cik7qEO%2bZfO0CuAWyJjAfzdP0D5CgmI%2baP9ubF18dpo%3d&risl=&pid=ImgRaw&r=0" alt="mouse with cheese" width="70">
+  </div>`
 );
 
 const btnFate = document.querySelector('.btn-fate');
@@ -3239,62 +3243,6 @@ function getBooks(books) {
 
 getBooks(bestBooks); //{italyAuthor:  ['Dante Alighieri', {…}], anotherAuthor: ['Chinua Achebe', {…}, 'Hans Christian Andersen', {…}]
 
-//Pattern for Parameter Object ==========================================================
-
-const car1 = {
-  brand: 'BMW',
-  model: '700',
-  a: 'red',
-  maxSpeed: 240,
-  isNew: true,
-  dimensions: {
-    weight: 2000,
-    height: 150,
-    length: 4.2,
-  },
-};
-
-const car2 = {
-  brand: 'BMW',
-  model: '500',
-  a: 'silver',
-  maxSpeed: 240,
-  isNew: true,
-  dimensions: {
-    height: 150,
-    length: 4.2,
-  },
-};
-
-function createMessage({
-  dimensions: { weight = 'no info', height = 'no info', length = 'no info' },
-  a: color = 'no info',
-  maxSpeed = 'no info',
-  isNew = 'no info',
-}) {
-  const message = `
-  Color: ${color}
-  Max Speed : ${maxSpeed}
-  isNew: ${isNew}
-  Weight: ${weight}
-  `;
-
-  console.log(message);
-  return message;
-}
-
-createMessage(car1);
-// Color: red
-// Max Speed : 240
-// isNew: true
-// Weight: 2000
-
-createMessage(car2);
-// Color: silver
-// Max Speed : 240
-// isNew: true
-// Weight: no info
-
 const flowerlist = [
   {
     category: 'Shrubs',
@@ -3391,3 +3339,136 @@ for (const entry of entriesFollowers) {
   const [name, followers] = entry;
   console.log(`name: ${name},  followers: ${followers}`); //name: Naomi,  followers: 56483
 }
+
+//Pattern for Parameter Object ==========================================================
+
+const car1 = {
+  brand: 'BMW',
+  model: '700',
+  a: 'red',
+  maxSpeed: 240,
+  isNew: true,
+  dimensions: {
+    weight: 2000,
+    height: 150,
+    length: 4.2,
+  },
+};
+
+const car2 = {
+  brand: 'BMW',
+  model: '500',
+  a: 'silver',
+  maxSpeed: 240,
+  isNew: true,
+  dimensions: {
+    height: 150,
+    length: 4.2,
+  },
+};
+
+function createMessage({
+  dimensions: { weight = 'no info', height = 'no info', length = 'no info' },
+  a: color = 'no info',
+  maxSpeed = 'no info',
+  isNew = 'no info',
+}) {
+  const message = `
+  Color: ${color}
+  Max Speed : ${maxSpeed}
+  isNew: ${isNew}
+  Weight: ${weight}
+  `;
+
+  console.log(message);
+  return message;
+}
+
+createMessage(car1);
+// Color: red
+// Max Speed : 240
+// isNew: true
+// Weight: 2000
+
+createMessage(car2);
+// Color: silver
+// Max Speed : 240
+// isNew: true
+// Weight: no info
+
+const fnUsers = {
+  fullYears: 22,
+  closeFriends: 0,
+  isStudend: true,
+  hobbies: ['swimming', 'ride a bike'],
+  games: { favourite_game: 'Starker' },
+};
+
+const fn = function ({
+  fullYears = 'no info',
+  closeFriends = 0,
+  isStudend = false,
+  hobbies = [],
+  games = {},
+}) {
+  console.log(fullYears); //22
+  console.log(hobbies); //['swimming', 'ride a bike']
+};
+
+fn(fnUsers);
+
+const userProfileInfo = [
+  {
+    balance: '$3,946.45',
+    picture:
+      'https://th.bing.com/th/id/R.f8f96861a3bf36975f4e3d76d76c7813?rik=DMSnP%2bEEbjvLlg&riu=http%3a%2f%2f1.bp.blogspot.com%2f-O2j6aa67sSI%2fU8QSqJzp0XI%2fAAAAAAAAEYU%2fviASirylQ3k%2fs1600%2f2964_render_Ratatoulle.png&ehk=5lnSTnIlnOltjP3KQOR3OW10Tdd1%2bad%2fI1c9ZYJiNuQ%3d&risl=&pid=ImgRaw&r=0',
+    age: 2,
+    name: 'Ratatouille Remy',
+    gender: 'male',
+    company: 'NIMON',
+    email: 'ratatouilleremy@nimon.com',
+  },
+  {
+    balance: '$2,499.49',
+    picture: 'https://www.pngall.com/wp-content/uploads/5/The-Boss-Baby-PNG-Image.png',
+    age: 12,
+    name: 'Tim Templeton',
+    gender: 'male',
+    company: 'LUXURIA',
+    email: 'timtempleton@luxuria.com',
+  },
+  {
+    balance: '$2,820.18',
+    picture: 'https://vgboxart.com/resources/render/7866_mr-peabody-sherman-prev.png',
+    age: 10,
+    name: 'Sherman',
+    gender: 'male',
+    company: 'QUADEEBO',
+    email: 'sherman@quadeebo.com',
+  },
+];
+
+const showProfileInfo = function (info) {
+  return info
+    .map(({ balance, picture, age, name, gender, company, email }) => {
+      return `<li class="boss-item">
+          <div class="boss-avatar-thumb">
+            <img class= "boss-avatar" src="${picture}" alt="${name}">
+          </div>
+          <div class="boss-info">
+            <p class="boss-name"><span>Name:</span> ${name}</p>
+            <p class="boss-gender"><span>Gender:</span> ${gender}</p>
+            <p class="boss-age"><span>Age:</span> ${age}</p>
+            <p class="boss-company"><span>Company:</span> ${company}</p>
+            <p class="boss-balance"><span>Balance:</span> ${balance}</p>
+            <p class="boss-email"><span>email:</span> ${email}</p>
+          </div>
+        </li>`;
+    })
+    .join('');
+};
+
+const boss = document.querySelector('.gallery-boss');
+console.log(boss);
+const renderProfileInfo = showProfileInfo(userProfileInfo);
+boss.insertAdjacentHTML('beforeend', renderProfileInfo);
