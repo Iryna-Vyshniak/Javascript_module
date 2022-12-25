@@ -3287,3 +3287,69 @@ createMessage(car2);
 // Max Speed : 240
 // isNew: true
 // Weight: no info
+
+const flowerlist = [
+  {
+    category: 'Shrubs',
+    price: 15.99,
+    instructions:
+      'Large double. Good grower, heavy bloomer. Early to mid-season, acid loving plants. Plant in moist well drained soil with pH of 4.0-5.5.',
+    photo:
+      'https://th.bing.com/th/id/R.d082edabff836f05a043f1a95fd29945?rik=dFoncquS%2bRNWhA&pid=ImgRaw&r=0',
+    name: 'Azalea',
+    productId: 1,
+  },
+  {
+    category: 'Container Plants',
+    price: 4.99,
+    instructions:
+      'Compact mounds of colorful dainty flowers, good for window boxes. Fertile well drained soil.',
+    photo: 'https://th.bing.com/th/id/OIP.eLDBh4WDc-YUesG_GRPc8wHaHa?pid=ImgDet&rs=1',
+    name: 'Viola Penny Orange Jump Up',
+    productId: 13,
+  },
+  {
+    category: 'Cacti & Succulents',
+    price: 18.99,
+    instructions:
+      'Add water until there is half inch of dry soil on the surface. Do not water again until the soil is completely dry.',
+    photo: 'https://th.bing.com/th/id/OIP.21ZdvLFYrt2I-xHKMcytYAHaIr?pid=ImgDet&rs=1',
+    name: 'Red Cactus',
+    productId: 27,
+  },
+  {
+    category: 'Herbaceous Perennials',
+    price: 9.99,
+    instructions: 'Chrysanthemums respond to plenty of food and moisture, and prefer full sun.',
+    photo:
+      'https://th.bing.com/th/id/R.1d0329926ccc5c8718539e1529b34374?rik=5GNxSQnKWgn3Og&pid=ImgRaw&r=0',
+    name: 'Chrysanthemum',
+    productId: 20,
+  },
+];
+
+const galleryFlowers = document.querySelector('.gallery-flowers');
+const flowerMarkup = renderMarkupFlowers(flowerlist);
+galleryFlowers.insertAdjacentHTML('beforeend', flowerMarkup);
+
+function renderMarkupFlowers(items) {
+  return items
+    .map(({ category, name, photo, price, instructions, productId }) => {
+      return `<li class="gallery__item flower-card" data-id="${productId}">
+                  <div class="flower-card__poster-thumb">
+                    <img src="${photo}"
+                        class="flower-card__poster"
+                        alt="${name}"
+                                            />
+                  </div>
+                  <div class="flower-card__wrap">
+                      <h2 class="flower-info-title"> ${category}</h2>
+                      <div class="flower-info-list">
+                      <p class="flower-item-instructions"><span>Istructions:</span> ${instructions}</p>
+                        <p class="info-item-price"><span>Price:</span> ${price}$</p>
+                      </div>
+                  </div>
+            </li>`;
+    })
+    .join('');
+}
