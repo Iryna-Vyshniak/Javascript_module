@@ -567,7 +567,7 @@ function randomBgColor() {
   let b = Math.floor(Math.random() * 256);
 
   let bgColor = `rgba(${r}, ${g}, ${b}, 0.3)`;
-  document.body.style.background = `url(../media/magic.png) 0 0 / 100% no-repeat fixed,` + bgColor;
+  document.body.style.background = `center center / contain no-repeat fixed,` + bgColor;
   const styleElem = document.head.appendChild(document.createElement('style'));
   //   styleElem.innerHTML = '.card-fate::before { background: rgba(106, 0, 255, 0.8);
   //   box - shadow: 0 0 5px rgba(106, 0, 255, 0.8), 0 0 15px rgba(106, 0, 255, 0.8),
