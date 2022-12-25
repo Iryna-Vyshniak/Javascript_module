@@ -3222,9 +3222,16 @@ function getBooks(books) {
     console.log(authorBook);
     console.log(dataBook); // {country: 'Italy', imageLink: 'images/the-divine-comedy.jpg', language: 'Italian', link: 'https://en.wikipedia.org/wiki/Divine_Comedy\n', pages: 928, …}
 
-    authorBook === 'Dante Alighieri'
-      ? authorBookOfCounties.italyAuthor.push(authorBook, dataBook)
-      : authorBookOfCounties.anotherAuthor.push(authorBook, dataBook);
+    // 1st variant
+    //   authorBook === 'Dante Alighieri'
+    //   ? authorBookOfCounties.italyAuthor.push(authorBook, dataBook)
+    //   : authorBookOfCounties.anotherAuthor.push(authorBook, dataBook);
+
+    // 2rd variant
+    // authorBookOfCounties[authorBook === 'Dante Alighieri' ? 'italyAuthor' : 'anotherAuthor'].push(authorBook, dataBook );
+
+    const key = authorBook === 'Dante Alighieri' ? 'italyAuthor' : 'anotherAuthor';
+    authorBookOfCounties[key].push(authorBook, dataBook);
   }
   console.log(authorBookOfCounties);
   return authorBookOfCounties;
