@@ -2066,7 +2066,7 @@ console.log(findEnds('abcde', 'abc'));
 console.log(findEnds('abc', 'd'));
 console.log(findEnds('abc', 'bc'));
 
-//Nullish coalescing operator '??'
+//Nullish coalescing operator '??' ======================================================
 // зробити рефакторинг коду так, щоб у змінну value присвоювалося значення змінної incoming, якщо воно не рівне null or undefinеd. В іншому випадку має присвоюватися значення defaultVal. Перевірити роботу скрипта для наступних значень змінної incomingValue: null, undefined, 0, false. Використовувати оператор нульового злиття ?? (Nullish coalescing operator '??')
 
 // const incomingValue = '';
@@ -2138,7 +2138,7 @@ time(11, 10); // 11г. 10хв.
 time(6, 5); // 06г. 05хв.
 time(14, 26); // 14г. 26хв.
 
-//Nested branches Вкладені розгалуження
+//Nested branches Вкладені розгалуження =================================================
 // Write a script that compares numbers in variables `a` and `b`. If both
 // the value is greater than `100`, then output the maximum of them to the console. On the contrary
 // case in the console should be the sum of the value `b` and the number 512.
@@ -2175,7 +2175,7 @@ console.log(checkLink('https://www.w3schools.com', 'schools')); //https://www.w3
 console.log(checkLink('https://www.w3schools.com/', 'w3')); // null
 console.log(checkLink('https://www.w3schools.com', 'w3-school')); // null
 
-//The for loop
+//The for loop ===========================================================================
 
 // Write a for loop that displays numbers in increments from `min' to the browser console up to `max`, but only if the number is a multiple of `5`.
 //  i % 5 = 0 -> false; !(i % 5) = 0 -> true;
@@ -2266,7 +2266,7 @@ console.log(cd[0] === de[0]); // true => 1 === 1 true
 console.log(cd[3] === de[3]); // false => [4, 5] === [4, 5] false
 console.log(cd[3][0] === de[3][0]); // true => 4 === 4 true
 
-// method split('!')
+// method split('!')  =================================================================
 const str = '1-!2-!3-!4-!5-!6-!7-!8-!9';
 const arrSplit = str.split('-!');
 console.log(arrSplit); // ['1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -2283,7 +2283,7 @@ strSimply = 'It iS a 5r&e@@t Day.';
 arraySplit = strSimply.split(' ', 2);
 console.log(arraySplit); // ['It', 'iS']
 
-// method includes()
+// method includes() =================================================================
 const arr4 = [1, 23, 4, 28, 97, 78];
 const arr5 = arr4.includes(100 && 4); // true, because the 1st: 100 - true, 4 - true => true && true = last true; the 2nd: includes last - 4
 console.log(arr5);
@@ -2301,7 +2301,7 @@ console.log([1, 2, 3].includes(3, 3)); // false, 3 from index 3
 console.log([1, 2, 3].includes(3, -3)); // true, Если вычисленный индекс меньше нуля, то поиск будет производиться во всём массиве.
 console.log([1, 2, 3].includes(3, -30)); // true,
 
-// method push()
+// method push()  =====================================================================
 
 const emptyArr = [];
 // emptyArr.push('week', 'day', 'day time', 12);
@@ -2320,7 +2320,7 @@ console.log(deletedEl); // 12
 const arr10 = [];
 console.log(arr10.pop()); //undefined
 
-// splice()
+// splice() =======================================================================
 
 const arr11 = [1, 2, 3, 4, 5, 5, 6, 6, 7, 8, 9];
 arr11.splice(5, 2);
@@ -2387,7 +2387,7 @@ getAllPropValues('name'); //['Radar', 'Scanner', 'Droid', 'Grip']
 getAllPropValues('quantity'); // [4, 3, 7, 9]
 getAllPropValues('category'); // []
 
-// type of
+// type of  ============================================================================
 function sum(x, y) {
   return typeof x !== 'number' || typeof y !== 'number' ? 'One of operands isn`t a number' : x + y;
 }
@@ -2396,7 +2396,7 @@ console.log(sum(3, 7)); // 10
 console.log(sum(3, '7')); // One of operands isn`t a number
 console.log(sum(3, 'window')); // One of operands isn`t a number
 
-// pseudo array arguments
+// pseudo array arguments ===============================================================
 
 function add() {
   console.log(arguments); //[5, 6, 8, 10, callee: (...), Symbol(Symbol.iterator): ƒ]
@@ -2443,7 +2443,7 @@ function isIncludedThroughRest(...arg) {
 }
 isIncludedThroughRest(2, 4, 5, 6, 8, 3, 7); // false
 
-// OBJECTS
+// OBJECTS ==============================================================================
 
 // object book
 const book = {
@@ -2550,7 +2550,7 @@ console.log(playlist); // {name: 'Super amazing playlist', tracks: Array(4), rat
 
 playlist.showName();
 
-//shortcase
+//shortcase ==========================================================================
 const username = 'Avex777';
 const email = 'avex777@gmail.com';
 
@@ -2641,7 +2641,7 @@ function calculateFeedback(feedbacks) {
 
 calculateFeedback(feedback);
 
-// better variant to use Object.values, because we want to take only values
+// better variant to use Object.values, because we want to take only values ===============
 
 function sumFeedback(feedbacks) {
   let totalFeedback = 0;
@@ -2896,7 +2896,7 @@ console.log(admin); // {age: 25, name: 'Arya Stark'}
 console.log(admin[propName]); // Arya Stark
 console.log(admin.name); // 'Arya Stark'
 
-// Object.keys(), Object.values(), Object.entries()
+// Object.keys(), Object.values(), Object.entries() ======================================
 
 const movies = {
   name: 'Jurassic Park',
@@ -2934,7 +2934,7 @@ console.log(entries);
 // ['storyline', 'Huge advancements in scientific technology h..']
 // ]
 
-// spread instead concat
+// spread instead concat ===========================================================
 
 const commonArr = [1, 2, 34, 67, 87];
 const concatArr = commonArr.concat([345, 67, 102]);
@@ -2997,13 +2997,13 @@ console.log(finallSettings);
 // ...rest
 
 function useRest(firstParam, secondParam, ...otherArgs) {
-  // => REST
+  // => REST =================================================================
   console.log(firstParam); // 12
   console.log(secondParam); // week
   console.log(otherArgs.length); // 3
   console.log(otherArgs); //  [345, 'lang', 'mark']
 
-  const array = [...otherArgs]; // => SPREAD
+  const array = [...otherArgs]; // => SPREAD ==========================================
   console.log(array); // [345, 'lang', 'mark']
 }
 
@@ -3054,7 +3054,7 @@ function isIncludedLastNumThroughPop(...array) {
 
 isIncludedLastNumThroughPop(1, 2, 3, 4, 5, 6, 7, 8, 9); //false
 
-// destructuring assignment
+// destructuring assignment ============================================================
 const playList = {
   name: 'My video playlist',
   tracks: ['track-1', 'track-2', 'track-3', 'track-4'],
@@ -3083,7 +3083,7 @@ const rgb = [255, 100, 80];
 const [red, green, blue] = rgb;
 console.log(red, green, blue); // 255, 100, 80
 
-// deep destructuring assignment
+// deep destructuring assignment =======================================================
 const profile = {
   name: 'Jacobs Gluke',
   tag: 'jgluke',
@@ -3232,7 +3232,7 @@ function getBooks(books) {
 
 getBooks(bestBooks); //{italyAuthor:  ['Dante Alighieri', {…}], anotherAuthor: ['Chinua Achebe', {…}, 'Hans Christian Andersen', {…}]
 
-//Pattern for Parameter Object
+//Pattern for Parameter Object ==========================================================
 
 const car1 = {
   brand: 'BMW',
@@ -3329,7 +3329,9 @@ const flowerlist = [
 ];
 
 const galleryFlowers = document.querySelector('.gallery-flowers');
+console.log(galleryFlowers);
 const flowerMarkup = renderMarkupFlowers(flowerlist);
+// console.log(flowerMarkup);
 galleryFlowers.insertAdjacentHTML('beforeend', flowerMarkup);
 
 function renderMarkupFlowers(items) {
@@ -3352,4 +3354,33 @@ function renderMarkupFlowers(items) {
             </li>`;
     })
     .join('');
+}
+
+//Object.entries() => array with arrays ================================================
+
+const entriesFlowers = Object.entries(flowerlist);
+console.log(entriesFlowers); // [['0', {…}] ['1', {…}] ['2', {…}] ['3', {…}]]
+
+const authorsFollowers = {
+  Fox: 1234,
+  Dexy: 6745,
+  Harry: 7846,
+  Naomi: 56483,
+};
+
+const entriesFollowers = Object.entries(authorsFollowers);
+console.log(entriesFollowers); // [['Fox', 1234] ['Dexy', 6745] ['Harry', 7846] ['Naomi', 56483]]
+
+for (const entry of entriesFollowers) {
+  console.log(entry);
+  // ['Fox', 1234]
+  // ['Dexy', 6745]
+  // ['Harry', 7846]
+  // ['Naomi', 56483]
+
+  // const name = entry[0];
+  // const followers = entry[1];
+
+  const [name, followers] = entry;
+  console.log(`name: ${name},  followers: ${followers}`); //name: Naomi,  followers: 56483
 }
