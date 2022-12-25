@@ -23,14 +23,16 @@ body {
 /* JS-BG-BODY */
 
 .js-body-bg {
-  background: linear-gradient(to bottom, #5d326c, #350048);
+  background: url(../media/magic.png) 0 0 / 100% no-repeat fixed,
+    linear-gradient(to bottom, #5d326c, #350048);
 }
 
 /* link */
 .main-list-links {
   position: fixed;
-  top: 10px;
+  top: 20px;
   left: 10px;
+  z-index: 10;
 
   list-style: none;
 }
@@ -50,22 +52,23 @@ body {
   outline: 0;
   border-radius: 320px;
 
-  background-color: #ebecf0;
+  background-color: transparent;
   text-shadow: 1px 1px 0 #fff;
+  backdrop-filter: shadow(10px);
 
   font-size: 16px;
   font: inherit;
   font-weight: bold;
 
   color: #61677c;
-  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  box-shadow: -2px -2px 20px #fff, 2px 2px 2px #babecc;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .main-link:focus,
 .main-link:hover {
-  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+  box-shadow: -2px -2px 5px #fff, 2px 2px 2px #babecc;
   text-decoration: none;
   color: #61677c;
 }
@@ -96,8 +99,11 @@ section {
   margin: -1px;
 }
 
+.greeting {
+  color: rgb(253, 253, 3);
+}
 .greeting-content {
-  text-shadow: 0px 0.5px 1px rgb(86, 6, 6), 0px 0.5px 1px #090109;
+  text-shadow: 0px 5px 6px rgb(137, 6, 6), 0px 5px 6px #ffa201;
   filter: drop-shadow(0.5px 0.5px 0.5px rgb(86, 6, 6)) drop-shadow(-0.5px -0.5px 0.5px #fff);
   -webkit-filter: drop-shadow(0.5px 0.5px 0.5px rgb(86, 6, 6)) drop-shadow(-0.5px -0.5px 0.5px #fff);
   letter-spacing: 2em;
@@ -106,7 +112,7 @@ section {
 
 .greeting-content:focus,
 .greeting-content:hover {
-  text-shadow: -0.5px -0.5px 1px rgb(86, 6, 6), 0.5px 0.5px 1px #090109;
+  text-shadow: 0px -5px 6px rgb(137, 6, 6), 0px -5px 6px #ffa201;
   filter: drop-shadow(0.5px 0.5px 0.5px rgb(86, 6, 6)) drop-shadow(-0.5px -0.5px 0.5px #fff);
   -webkit-filter: drop-shadow(0.5px 0.5px 0.5px rgb(86, 6, 6)) drop-shadow(-0.5px -0.5px 0.5px #fff);
 }
@@ -137,6 +143,7 @@ section {
   box-shadow: 0px 1px 1px rgb(86, 6, 6), 0 -2px 1px #fff;
   color: rgb(86, 6, 6);
   text-shadow: 0.5px -0.5px 0.5px #fff;
+  backdrop-filter: blur(10px);
 }
 
 .btn-fate:hover {
@@ -161,6 +168,8 @@ section {
   position: fixed;
   bottom: 5vh;
   right: 5vw;
+  z-index: 10;
+
   width: 30px;
 
   width: calc((1vh + 1vw) * 1.2);
@@ -188,7 +197,7 @@ section {
   max-width: 70vw;
   min-height: calc((1vw + 1vh) * 9);
 
-  color: #fff;
+  color: rgb(253, 3, 3);
   text-shadow: 0.5px -0.5px 1px rgb(86, 6, 6), 0.5px 0.5px 1px #090109;
   text-align: center;
   font-size: calc((1vh + 1vw) * 0.9);
@@ -225,8 +234,8 @@ section {
 .card-fate:hover p {
   box-shadow: -0.5px -0.5px 2px #fff, 0.5px 0.5px 2px rgba(84, 1, 1, 0.8);
   letter-spacing: 2px;
-  color: rgb(123, 0, 0);
-  text-shadow: 0.5px 0.5px 0.5px #fff;
+  color: rgb(253, 253, 3);
+  text-shadow: 0px 1px 1px rgb(255, 3, 3), 0px 1px 1px #ffa201;
 }
 .card-fate p::before {
   content: '';
@@ -285,7 +294,7 @@ section {
   background: rgba(255, 255, 255);
   box-shadow: 0 0 5px rgba(255, 255, 255), 0 0 15px rgba(255, 255, 255),
     0 0 30px rgba(255, 255, 255), 0 0 60px rgba(255, 255, 255);
-  filter: blur(0px);
+  filter: blur(5px);
 }
 
 /* =========== FLOWERS ========================== */
@@ -308,6 +317,8 @@ section {
   flex-basis: calc((100% - 1 * 32px) / 2);
   margin-right: 32px;
   margin-bottom: 32px;
+
+  backdrop-filter: blur(10px);
 }
 
 @media (min-width: 480px) and (max-width: 767.98px) {
@@ -400,8 +411,6 @@ section {
   display: block;
   width: 100%;
   height: 100%;
-
-  background: transparent;
 
   object-fit: cover;
   object-position: center;
