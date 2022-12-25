@@ -566,7 +566,7 @@ function randomBgColor() {
   let g = Math.floor(Math.random() * 256);
   let b = Math.floor(Math.random() * 256);
 
-  let bgColor = `rgba(${r}, ${g}, ${b}, 0.3)`;
+  let bgColor = `rgba(${r}, ${g}, ${b}, 0.7)`;
   document.body.style.background =
     `url(../media/magic.png) center center / cover no-repeat fixed,` + bgColor;
   const styleElem = document.head.appendChild(document.createElement('style'));
