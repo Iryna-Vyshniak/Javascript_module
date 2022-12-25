@@ -471,7 +471,7 @@ greetingBlock.innerHTML = `<p class='greeting-content'>${greeting} Do you want t
 
 const greetingContent = document.querySelector('.greeting-content');
 greetingContent.style = `
-margin-bottom: 15vh;
+margin-bottom: 20vh;
 margin-right: auto;
 margin-left: auto;
 padding-top: 10vh;
