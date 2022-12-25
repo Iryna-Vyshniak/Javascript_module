@@ -111,6 +111,28 @@ section {
   -webkit-filter: drop-shadow(0.5px 0.5px 0.5px rgb(86, 6, 6)) drop-shadow(-0.5px -0.5px 0.5px #fff);
 }
 
+.button-mouse {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  max-width: 100px;
+}
+.btn-fate-mouse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -132%);
+  filter: drop-shadow(0px 1px 1px rgb(58, 5, 5));
+  transition: top, 250ms ease-in-out;
+}
+
+.btn-fate-mouse:focus,
+.btn-fate-mouse:hover {
+  top: 2px;
+}
+
 .btn-fate {
   box-shadow: 0px 1px 1px rgb(86, 6, 6), 0 -2px 1px #fff;
   color: rgb(86, 6, 6);
@@ -120,6 +142,13 @@ section {
 .btn-fate:hover {
   box-shadow: -0.5px -0.5px 2px #fff, 0.5px 0.5px 2px rgba(83, 8, 8, 0.8);
   text-shadow: 0.5px 0.5px 0.5px #fff;
+}
+.btn-fate:focus + .btn-fate-mouse,
+.btn-fate:hover + .btn-fate-mouse {
+  top: 2px;
+}
+.btn-fate:active + .btn-fate-mouse {
+  bottom: 40px;
 }
 
 .btn-fate:active {
@@ -261,13 +290,15 @@ section {
 
 /* =========== FLOWERS ========================== */
 
-.gallery-flowers {
+.gallery-flowers,
+.gallery-boss {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.gallery__item {
+.gallery__item,
+.boss-item {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -280,27 +311,32 @@ section {
 }
 
 @media (min-width: 480px) and (max-width: 767.98px) {
-  .gallery__item:not(:last-child) {
+  .gallery__item:not(:last-child),
+  .boss-item:not(:last-child) {
     margin-bottom: 32px;
     margin-right: 32px;
   }
 
-  .gallery__item:nth-child(2n) {
+  .gallery__item:nth-child(2n),
+  .boss-item:nth-child(3n) {
     margin-right: 0;
   }
 
-  .gallery__item:last-child {
+  .gallery__item:last-child,
+  .boss-item:last-child {
     margin-right: auto;
     margin-bottom: 0px;
   }
 
-  .gallery__item:nth-last-child(-n + 2) {
+  .gallery__item:nth-last-child(-n + 2),
+  .boss-item:nth-last-child(-n + 3) {
     margin-bottom: 0;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .gallery__item {
+  .gallery__item,
+  .boss-item {
     flex-basis: calc((100% - 60px) / 4);
     margin-right: 16px;
     margin-bottom: 32px;
@@ -308,25 +344,34 @@ section {
     transition-duration: 500ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
+  .boss-item {
+    flex-basis: calc((100% - 60px) / 3);
+  }
 
-  .gallery__item:nth-child(4n) {
+  .gallery__item:nth-child(4n),
+  .boss-item:nth-child(3n) {
     margin-right: 0;
   }
 
-  .gallery__item:last-child {
+  .gallery__item:last-child,
+  .boss-item:last-child {
     margin-right: auto;
   }
 }
 
 .gallery__item:hover,
 .gallery__item:active,
-.gallery__item:focus {
+.gallery__item:focus,
+.boss-item:hover,
+.boss-item:active,
+.boss-item:focus {
   scale: 1.03;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
-.flower-card__poster-thumb {
+.flower-card__poster-thumb,
+.boss-avatar-thumb {
   display: block;
   width: 100%;
   height: 420px;
@@ -336,22 +381,28 @@ section {
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
-  .flower-card__poster-thumb {
+  .flower-card__poster-thumb,
+  .boss-avatar-thumb {
     margin-bottom: 8px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .flower-card__poster-thumb {
+  .flower-card__poster-thumb,
+  .boss-avatar-thumb {
     margin-bottom: 12px;
   }
 }
 
-.flower-card__poster {
+.flower-card__poster,
+.boss-avatar {
   margin: 0;
   display: block;
   width: 100%;
-  height: 420px;
+  height: 100%;
+
+  background: transparent;
+
   object-fit: cover;
   object-position: center;
   border-radius: 5px;
@@ -363,22 +414,32 @@ section {
 
   cursor: pointer;
 }
-.flower-card__poster:hover {
+
+.boss-avatar {
+  object-fit: contain;
+}
+
+.flower-card__poster:hover,
+.boss-avatar:hover {
   scale: 1.15;
 }
 
-.flower-card__wrap {
+.flower-card__wrap,
+.boss-info {
   /* flex-grow: 1; */
   padding: 5px;
 
   font-size: 14px;
   line-height: 1.2;
   text-align: left;
+  text-shadow: 0px 0.11px 0.5px #090109;
+  letter-spacing: 1.2px;
+  color: #e66bfe;
 }
 
 .flower-info-title {
   margin-bottom: 5px;
-  color: #e9e2eb;
+  color: #fc488a;
   text-transform: uppercase;
 
   font-size: 12px;
@@ -389,7 +450,6 @@ section {
 .flower-info-list {
   display: flex;
   flex-direction: column;
-  color: #e7cfec;
 }
 
 .flower-item-instructions {
@@ -398,7 +458,12 @@ section {
 }
 
 .flower-info-list span,
-.info-item-price span {
+.info-item-price span,
+.boss-info span {
   font-weight: 600;
   color: blanchedalmond;
+}
+
+.boss-info {
+  color: #e66bfe;
 }
