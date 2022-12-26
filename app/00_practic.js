@@ -3565,3 +3565,106 @@ console.log(markup);
 
 const profileMarkup = document.querySelector('.profile');
 profileMarkup.insertAdjacentHTML('beforeend', markup);
+
+// SHOPPING CART
+
+const cartShopping = {
+  items: [],
+  getItems() {
+    return this.items;
+  },
+  add(product) {
+    const { items } = this;
+
+    for (const item of items) {
+      if (item.name === product.name) {
+        item.quantity += 1;
+        return;
+      }
+    }
+    const newProduct = {
+      ...product,
+      quantity: 1,
+    };
+
+    this.items.push(newProduct);
+  },
+  remove(productName) {
+    const { items } = this;
+    console.log(items);
+
+    for (let i = 0; i < items.length; i += 1) {
+      const { name } = items[i];
+      // const item = items[i];
+      console.log(name);
+
+      // or if (productName === items[i].name) {
+      // or if (productName === item.name) {
+      if (productName === name) {
+        console.log('This product find: ', productName);
+        console.log('index find remove element: ', i); // 2
+        items.splice(i, 1);
+      }
+    }
+  },
+  clear() {
+    this.items = [];
+    console.log('Cart is clear');
+  },
+  countTotalPrice() {
+    let totalPrice = 0;
+
+    const { items } = this;
+
+    // for (const item of items) {
+    // totalPrice += item.price * item.quantity;
+    for (const { price, quantity } of items) {
+      totalPrice += price * quantity;
+    }
+    console.log('Total price: ', totalPrice);
+    return totalPrice;
+  },
+  // increaseQuantity(productName) {},
+  // decreaseQuantity(productName) {},
+};
+
+console.table(cartShopping.getItems()); // []
+
+cartShopping.add({ name: '🍏', price: 50 });
+cartShopping.add({ name: '🍇', price: 60 });
+cartShopping.add({ name: '🍋', price: 70 });
+cartShopping.add({ name: '🍓', price: 110 });
+
+console.table(cartShopping.getItems());
+cartShopping.remove('🍋');
+console.table(cartShopping.getItems());
+
+cartShopping.clear();
+console.table(cartShopping.getItems());
+
+cartShopping.add({ name: '🍏', price: 50 });
+console.table(cartShopping.getItems());
+cartShopping.countTotalPrice();
+
+cartShopping.add({ name: '🍇', price: 60 });
+cartShopping.add({ name: '🍋', price: 70 });
+cartShopping.add({ name: '🍓', price: 110 });
+console.table(cartShopping.getItems());
+cartShopping.countTotalPrice();
+
+cartShopping.clear();
+cartShopping.countTotalPrice();
+console.table(cartShopping.getItems());
+
+cartShopping.add({ name: '🍋', price: 70 });
+cartShopping.add({ name: '🍋', price: 70 });
+cartShopping.add({ name: '🍋', price: 70 });
+cartShopping.add({ name: '🍓', price: 110 });
+console.table(cartShopping.getItems());
+cartShopping.countTotalPrice();
+
+const getProductTotalPrice = function ({ price, quantity }) {
+  return price * quantity;
+};
+
+console.log(getProductTotalPrice(cartShopping.items[1])); // 110
