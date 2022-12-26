@@ -3668,3 +3668,82 @@ const getProductTotalPrice = function ({ price, quantity }) {
 };
 
 console.log(getProductTotalPrice(cartShopping.items[1])); // 110
+
+// shopCart
+
+const shopCart = {
+  goods: [],
+
+  getGoods() {
+    return this.goods;
+  },
+  addGoods(product) {
+    const { goods } = this;
+
+    for (const good of goods) {
+      if (good.name === product.name) {
+        good.quantity += 1;
+        return;
+      }
+    }
+
+    const newProduct = {
+      ...product,
+      quantity: 1,
+    };
+
+    goods.push(newProduct);
+  },
+  removeGoods(productName) {
+    const { goods } = this;
+
+    for (let i = 0; i < goods.length; i += 1) {
+      const { name } = goods[i];
+
+      if (name === productName) {
+        goods.splice(i, 1);
+        console.log(`${name} is remove`);
+      }
+    }
+  },
+  clearCart() {
+    console.log('Shop cart is clear');
+    return (this.goods = []);
+  },
+  countTotalPrice(productName) {
+    let total = 0;
+
+    const { goods } = this;
+    for (const { price, quantity } of goods) {
+      total += price * quantity;
+    }
+    console.log('Total price: ', total);
+    return total;
+  },
+};
+
+shopCart.getGoods();
+console.table(shopCart.getGoods());
+
+shopCart.addGoods({ name: '🍕 ', price: 230 });
+console.table(shopCart.getGoods());
+
+shopCart.clearCart();
+console.table(shopCart.getGoods());
+
+shopCart.addGoods({ name: '🧁', price: 60 });
+shopCart.addGoods({ name: '🥛', price: 70 });
+shopCart.addGoods({ name: '🥛', price: 70 });
+shopCart.addGoods({ name: '🥝 ', price: 30 });
+console.table(shopCart.getGoods());
+
+shopCart.removeGoods('🧁');
+shopCart.removeGoods('🥛');
+console.table(shopCart.getGoods());
+
+shopCart.addGoods({ name: '🍕 ', price: 230 });
+shopCart.addGoods({ name: '🍸 ', price: 230 });
+shopCart.addGoods({ name: '🍸 ', price: 230 });
+console.table(shopCart.getGoods());
+
+shopCart.countTotalPrice();
