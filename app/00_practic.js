@@ -3472,3 +3472,96 @@ const boss = document.querySelector('.gallery-boss');
 console.log(boss);
 const renderProfileInfo = showProfileInfo(userProfileInfo);
 boss.insertAdjacentHTML('beforeend', renderProfileInfo);
+
+// destructuring assingment
+
+const actress = {
+  actress_name: 'Monica Bellucci',
+  actress_rating: 3956,
+  image_path: '/z3sLuRKP7hQVrvSTsqdLjGSldwG.jpg',
+  alternative_name: 'Monica Anna Maria Bellucci',
+  objectID: '551486310',
+  actress_stats: {
+    actress_folowers: 236874343842,
+    actress_likes: 884328403849320702,
+    actress_views: 74327403274328429,
+  },
+};
+
+const getActressInfo = info => {
+  const {
+    actress_name,
+    actress_rating,
+    image_path,
+    alternative_name,
+    objectID,
+    actress_stats: { actress_folowers, actress_likes, actress_views },
+  } = info;
+
+  console.log(info); // {actress_name: 'Monica Bellucci', actress_rating: 3956, image_path: '/z3sLuRKP7hQVrvSTsqdLjGSldwG.jpg', alternative_name: 'Monica Anna Maria Bellucci', objectID: '551486310', …}
+};
+
+getActressInfo(actress);
+
+// 2nd variant
+const getActressData = function ({
+  actress_name,
+  actress_rating,
+  image_path,
+  alternative_name,
+  objectID,
+  actress_stats: { actress_folowers, actress_likes, actress_views },
+}) {
+  console.log(
+    actress_name,
+    actress_rating,
+    image_path,
+    alternative_name,
+    objectID,
+    actress_folowers,
+    actress_likes,
+    actress_views
+  ); // Monica Bellucci 3956 /z3sLuRKP7hQVrvSTsqdLjGSldwG.jpg Monica Anna Maria Bellucci 551486310 236874343842 884328403849320700 74327403274328430
+};
+
+getActressData(actress);
+
+const actorData = {
+  actor_name: 'Tom Cruise',
+  actor_rating: 2237,
+  actor_image:
+    'https://th.bing.com/th/id/R.aba6d840425b2a088387ea84da019301?rik=PfsKTs%2bM8X9vmw&riu=http%3a%2f%2fpictures.4ever.eu%2fdata%2fdownload%2fpeople%2factors-and-actresses%2ftom-cruise-223811.jpg%3fno-logo&ehk=PVab0aCfKNc6AkUugjr5ol3vFAanhwmZhnZm0i7hbsM%3d&risl=&pid=ImgRaw&r=0',
+  actor_alternative_name: 'no alternative name',
+  actor_stats: {
+    actor_folowers: 4937503975047,
+    actor_likes: 77535938393974,
+    actor_views: 7439893849,
+  },
+};
+
+const renderProfileMarkup = function (userProfile) {
+  const {
+    actor_name,
+    actor_rating,
+    actor_image = 'https://th.bing.com/th/id/R.aba6d840425b2a088387ea84da019301?rik=PfsKTs%2bM8X9vmw&riu=http%3a%2f%2fpictures.4ever.eu%2fdata%2fdownload%2fpeople%2factors-and-actresses%2ftom-cruise-223811.jpg%3fno-logo&ehk=PVab0aCfKNc6AkUugjr5ol3vFAanhwmZhnZm0i7hbsM%3d&risl=&pid=ImgRaw&r=0',
+    actor_alternative_name,
+    actor_stats: { actor_folowers, actor_likes, actor_views },
+  } = userProfile;
+
+  return `<div>
+        <img src="${actor_image}" alt="user avatar" width="250" height="auto">
+        <p>Name: ${actor_name}, rating:<span>${actor_rating}</span></p>
+        <p>Alternative name: ${actor_alternative_name}</p>
+        <ul>
+          <li>Followers: ${actor_folowers}</li>
+          <li>Views: ${actor_views}</li>
+          <li>Likes: ${actor_likes}</li>
+        </ul>
+      </div>}`;
+};
+
+const markup = renderProfileMarkup(actorData);
+console.log(markup);
+
+const profileMarkup = document.querySelector('.profile');
+profileMarkup.insertAdjacentHTML('beforeend', markup);
