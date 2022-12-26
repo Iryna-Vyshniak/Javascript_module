@@ -328,7 +328,7 @@ const filterRangeInPlace = (array, a, b) => {
   for (let i = 0; i < array.length; i += 1) {
     if (array[i] < a || array[i] > b) {
       array.splice(i, 1);
-      i--;
+      i -= 1;
     }
   }
 };
@@ -336,3 +336,131 @@ const filterRangeInPlace = (array, a, b) => {
 let array = [5, 3, 8, 1];
 filterRangeInPlace(array, 1, 4); // видаляє всі числа крім тих, що в діапазоні від 1 до 4
 console.log(array); // [3, 1]
+
+// array genres with elements jazz and blues
+const genres = ['Jazz', 'Blues'];
+console.log(genres);
+
+console.log(genres[0]);
+console.log(genres[genres.length - 1]);
+
+genres.shift();
+console.log(genres);
+
+genres.unshift('Country', 'Reggae');
+console.log(genres); // ['Jazz', 'Blues', 'Country']
+
+//square
+
+const values = '8 11';
+const sidesArray = values.split(' ');
+console.log(sidesArray);
+const square = sidesArray[0] * sidesArray[1];
+console.log(square); //88
+
+// for ... of
+
+const fruits = ['apple', 'grapes', 'lemon', 'mango'];
+for (const fruit of fruits) {
+  const index = fruits.indexOf(fruit) + 1;
+
+  console.log(`${index}: ${fruit}`);
+  // 1: apple
+  // 2: grapes
+  // 3: lemon
+  // 4: mango
+}
+
+for (let i = 0; i < fruits.length; i += 1) {
+  console.log(`${i + 1}: ${fruits[i]}`);
+  // 1: apple
+  // 2: grapes
+  // 3: lemon
+  // 4: mango
+}
+
+// name and phone
+const name = 'Jacobs, William, Solomon, Artemis';
+const phones = '89095453464, 89034353454, 8904324354353, 890074392732';
+
+const arrName = name.split(',');
+const arrPhone = phones.split(',');
+console.log(arrName); //['Jacobs', ' William', ' Solomon', ' Artemis']
+
+for (let i = 0; i < arrName.length; i += 1) {
+  console.log(`${arrName[i]}: ${arrPhone[i]}`); //Jacobs: 89095453464
+}
+
+// reverse string without  reverse()
+function getReverseString(str) {
+  const strSplit = str.split('');
+  let result = [];
+
+  for (const char of strSplit) {
+    result.unshift(char);
+  }
+  const reverseStr = result.join('');
+  console.log(reverseStr);
+  return reverseStr;
+}
+
+getReverseString('welcome to the future'); // erutuf eht ot emoclew
+getReverseString('JS is awesome!'); // !emosewa si SJ
+
+function getStringOfReverse(str) {
+  let result = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    result += str[i];
+  }
+  console.log(result);
+  return result;
+}
+
+getStringOfReverse('welcome to the future'); // erutuf eht ot emoclew
+getStringOfReverse('JS is awesome!'); //!emosewa si SJ
+
+function getReverseStr(str) {
+  let arrStr = str.split('');
+  let reverseStr = [];
+
+  for (let i = arrStr.length - 1; i >= 0; i -= 1) {
+    reverseStr.push(arrStr[i]);
+  }
+  const result = reverseStr.join('');
+  console.log(result);
+  return result;
+}
+
+getReverseStr('welcome to the future'); // erutuf eht ot emoclew
+getReverseStr('JS is awesome!'); // erutuf eht ot emoclew
+
+function reverseOfString(str) {
+  console.log(str.split('').reverse().join(''));
+  return str.split('').reverse().join('');
+}
+
+reverseOfString('welcome to the future'); // erutuf eht ot emoclew
+reverseOfString('JS is awesome!'); // !emosewa si SJ
+
+// min number
+function getMinNum(num) {
+  return Math.min(...num);
+}
+
+console.log(getMinNum([10, 45, 67, 8])); //8
+console.log(getMinNum([101, 455, 6724, 8676])); //101
+
+function getSmallestNum(numbers) {
+  let smallestNumber = numbers[0];
+
+  for (const num of numbers) {
+    if (num < smallestNumber) {
+      smallestNumber = num;
+    }
+  }
+  console.log('smallestNumber: ', smallestNumber);
+  return smallestNumber;
+}
+
+getSmallestNum([51, 18, 13, 24, 7, 85, 19]); // smallestNumber:  7
+getSmallestNum([101, 455, 6724, 8676]); // smallestNumber:  101
