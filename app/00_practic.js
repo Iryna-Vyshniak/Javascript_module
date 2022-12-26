@@ -3710,7 +3710,7 @@ const shopCart = {
     console.log('Shop cart is clear');
     return (this.goods = []);
   },
-  countTotalPrice(productName) {
+  countTotalPrice() {
     let total = 0;
 
     const { goods } = this;
