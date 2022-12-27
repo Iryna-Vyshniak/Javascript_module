@@ -839,3 +839,21 @@ function countProps(object) {
   }
   return propCount;
 }
+
+function countPropes(object) {
+  let propCount = 0;
+  const array = [];
+
+  const keys = Object.keys(object);
+
+  for (const key of keys) {
+    array.push(key);
+    propCount = array.length;
+  }
+  console.log(propCount);
+  return propCount;
+}
+
+countPropes({}); //0
+countPropes({ name: 'Mango', age: 2 }); // 2
+countPropes({ mail: 'poly@mail.com', isOnline: true, score: 500 }); //3
