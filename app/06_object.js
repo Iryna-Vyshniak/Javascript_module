@@ -761,3 +761,81 @@ apartment.location = {
 };
 
 console.log(apartment);
+
+const nameProduct = 'Repair Droid';
+const price = 2500;
+const image = 'https://via.placeholder.com/640x480';
+const tags = ['on sale', 'trending', 'best buy'];
+
+const product = {
+  nameProduct,
+  price,
+  image,
+  tags,
+};
+
+//computed properties
+const emailInputName = 'email';
+const passwordInputName = 'password';
+
+const credentials = {
+  [emailInputName]: 'henry.carter@aptmail.com',
+  [passwordInputName]: 'jqueryismyjam',
+};
+
+const apKeys = Object.keys(apartment);
+const keyArr = [];
+const valuesArr = [];
+
+for (const key of apKeys) {
+  keyArr.push(key);
+  valuesArr.push(apartment[key]);
+}
+
+console.log('Keys: ', keyArr);
+console.log('Values: ', valuesArr);
+
+const apartments = {
+  descr: 'Spacious apartment in the city center',
+  rating: 4,
+  price: 2153,
+};
+const keysApart = ['descr', 'rating', 'price'];
+const valuesApart = ['Spacious apartment in the city center', 4, 2153];
+
+for (const key in apartments) {
+  keysApart;
+  console.log(key);
+  valuesApart;
+  console.log(apartments[key]);
+}
+
+const allKeys = [];
+const allValues = [];
+const advert = {
+  service: 'apt',
+};
+const aparts = Object.create(advert);
+aparts.descr = 'Spacious apartment in the city center';
+aparts.rating = 4;
+aparts.price = 2153;
+for (const key in aparts) {
+  if (aparts.hasOwnProperty(key)) {
+    console.log(key);
+    console.log(aparts[key]);
+    allKeys.push(key);
+    allValues.push(aparts[key]);
+  }
+}
+
+function countProps(object) {
+  let propCount = 0;
+  const array = [];
+  for (key in object) {
+    if (object.hasOwnProperty(key)) {
+      array.push(key);
+      propCount = array.length;
+    }
+  }
+  return propCount;
+}
