@@ -1,4 +1,6 @@
-const person = {
+console.log('Hello!');
+
+const personData = {
   namePerson: 'Valik',
   age: 23,
   isProgrammer: true,
@@ -14,22 +16,22 @@ const person = {
   },
 };
 
-console.log(person.namePerson);
+console.log(personData.namePerson);
 const ageKey = 'age';
-console.log(person[ageKey]);
-console.log(person['complex key']);
-person.greet();
+console.log(personData[ageKey]);
+console.log(personData['complex key']);
+personData.greet();
 
-person.age += 1;
-person.languages.push('by');
+personData.age += 1;
+personData.languages.push('by');
 // person['key_4'] = undefined
-delete person['key_4'];
+delete personData['key_4'];
 
-console.log(person);
-console.log(person['key_4']);
+console.log(personData);
+console.log(personData['key_4']);
 
-const { namePerson, age: personAge = 10, languages } = person;
-console.log(person);
+const { namePerson, age: personAge = 10, languages } = personData;
+console.log(personData);
 
 // for (const key in person) {
 //   if (person.hasOwnProperty(key)) {
@@ -37,9 +39,9 @@ console.log(person);
 //     console.log('value:', person[key])
 //   }
 // }
-Object.keys(person).forEach(key => {
+Object.keys(personData).forEach(key => {
   console.log('key:', key);
-  console.log('value:', person[key]);
+  console.log('value:', personData[key]);
 });
 
 // Context
@@ -83,8 +85,8 @@ const logger = {
 // const bound = logger.keys.bind(person)
 // bound()
 // logger.keysAndValues.call(person)
-logger.withParams.call(person, true, true, true);
-logger.withParams.apply(person, [true, true, true]);
+logger.withParams.call(personData, true, true, true);
+logger.withParams.apply(personData, [true, true, true]);
 
 // object book
 const book = {
@@ -711,3 +713,51 @@ console.log(entries);
 // ['actors', Array(3)]
 // ['storyline', 'Huge advancements in scientific technology h..']
 // ]
+
+//
+const apartment = {
+  imgUrl: 'https://via.placeholder.com/640x480',
+  descr: 'Spacious apartment in the city center',
+  rating: 4,
+  price: 2153,
+  tags: ['premium', 'promoted', 'top'],
+  owner: {
+    name: 'Henry',
+    phone: '982-126-1588',
+    email: 'henry.carter@aptmail.com',
+  },
+};
+
+const aptRating = apartment.rating;
+// const aptRating = apartment['rating'];
+const aptDescr = apartment.descr;
+// const aptDescr = apartment['descr'];
+const aptPrice = apartment.price;
+// const aptPrice = apartment['price'];
+const aptTags = apartment.tags;
+// const aptTags = apartment['tags'];
+const ownerName = apartment.owner.name;
+const ownerPhone = apartment.owner.phone;
+const ownerEmail = apartment.owner.email;
+const numberOfTags = apartment.tags.length;
+console.log(numberOfTags); // 3
+const firstTag = apartment.tags[0];
+console.log(firstTag); // premium
+const lastTag = apartment.tags[apartment.tags.length - 1];
+console.log(lastTag); //top
+
+apartment.price = 500;
+apartment.rating = 4.7;
+apartment.owner.name = 'Henry Sibola';
+apartment.tags.push('trusted');
+
+console.log(apartment);
+
+apartment.area = 60;
+apartment.rooms = 3;
+apartment.location = {
+  country: 'Jamaica',
+  city: 'Kingston',
+};
+
+console.log(apartment);
