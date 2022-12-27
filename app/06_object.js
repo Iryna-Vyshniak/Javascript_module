@@ -857,3 +857,24 @@ function countPropes(object) {
 countPropes({}); //0
 countPropes({ name: 'Mango', age: 2 }); // 2
 countPropes({ mail: 'poly@mail.com', isOnline: true, score: 500 }); //3
+
+const propKeys = Object.keys(apartments);
+const propValues = Object.values(apartments);
+
+// count total salary
+function countTotalSalary(salaries) {
+  let totalSalary = 0;
+
+  const keys = Object.keys(salaries);
+
+  for (const key of keys) {
+    totalSalary += salaries[key];
+  }
+
+  console.log(totalSalary);
+  return totalSalary;
+}
+
+countTotalSalary({}); // 0
+countTotalSalary({ mango: 100, poly: 150, alfred: 80 }); // 330
+countTotalSalary({ kiwi: 200, poly: 50, ajax: 150 }); // 400
