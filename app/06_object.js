@@ -1093,10 +1093,49 @@ calcBMI('58,3', '1,61'); //22.5
 // get rect aria
 const getRectAria = dimensions => {
   const addDot = dimensions.replaceAll(',', '.');
+  console.log(addDot); // 12 34 //42.8sm  1.42m
+
   const sideArr = addDot.split(' ');
+  console.log(sideArr); // 42.8sm  1.42m
+
   const result = Number.parseFloat(sideArr[0]) * Number.parseFloat(sideArr[sideArr.length - 1]);
+  console.log(Number.parseFloat(sideArr[0])); // 42.8
+  console.log(Number.parseFloat(sideArr[sideArr.length - 1])); // 1.42
+
   console.log(result.toFixed(1));
   return result.toFixed(1);
 };
-getRectAria('12 34'); //408
-getRectAria('42,8sm  1,42m'); //408
+//getRectAria('12 34'); //408.0
+//getRectAria('42,8sm  1,42m'); // 60.8
+//getRectAria('42,8 0'); // 0
+
+const logItem = items => {
+  const itemsArr = items.split(', ');
+  console.log(itemsArr);
+  let message = '';
+
+  for (const item of itemsArr) {
+    const index = itemsArr.indexOf(item) + 1;
+    message = `${index}: ${item}`;
+    console.log(message);
+  }
+  return message;
+
+  // let message = '';
+  // for (const item of items) {
+  //   const index = items.indexOf(item) + 1;
+  //   message = `${index}: ${item}`;
+  //   console.log(message);
+  // }
+  // return message;
+};
+
+logItem('mango, lemon');
+logItem('🍋, 🍎, 🍌');
+// logItem(['mango', 'lemon']);
+// logItem(['🍋', '🍎', '🍌']);
+
+console.log(['🍋', '🍎', '🍌'].at(-1)); // 🍌
+
+const fruitsPlate = ['🍋', '🍎', '🍌'];
+console.log(fruitsPlate.at(-1)); // 🍌
