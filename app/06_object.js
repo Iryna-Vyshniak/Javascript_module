@@ -1013,3 +1013,58 @@ const [a, secondLetter, c, d, lastValue = 'e'] = arrDestr;
 
 console.log(lastValue); //e
 console.log(c); // c
+
+// FUNCTIONS ============================================
+// A function is a routine, an independent piece of code, designed to perform a specific task multiple times with different initial values. Functions allow you to structure large programs, reduce repetition, and isolate code.
+// function expression & function declaration
+
+// function declaration
+function userFullName(userFirstName, userLastName) {
+  const message = `Hello, ${userFirstName} ${userLastName}`;
+  console.log(message);
+}
+
+userFullName('Craig'); //Hello, Craig undefined
+
+function userFullName1(userFirstName, userLastName) {
+  const lastName = '';
+
+  if (userLastName) {
+    lastName = lastName;
+  }
+  const message = `Hello, ${userFirstName} ${lastName}`;
+  console.log(message);
+}
+
+userFullName1('Craig'); // Hello, Craig
+
+function userFullName2(userFirstName, userLastName = '') {
+  const message = `Hello, ${userFirstName} ${userLastName}`;
+  console.log(message);
+}
+
+userFullName2('Craig'); // Hello, Craig
+
+// function expression
+const userFullName3 = function (userFirstName, userLastName = '') {
+  const message = `Hello, ${userFirstName} ${userLastName}`;
+  console.log(message);
+};
+
+userFullName3('Craig', 'Morris'); // Hello, Craig Morris
+
+// Write a script that outputs to the console all the words of the line except the first and the last The resulting string must not begin or end
+// space character. The script should work for any string.
+
+const stringWithoutFirstLastElment = function (string) {
+  const stringArray = string.trim().split(' ');
+
+  stringArray.pop();
+  stringArray.shift();
+
+  const result = stringArray.join(' ');
+  console.log(result);
+  return result;
+};
+
+stringWithoutFirstLastElment('    Welcome to the future. Be Happy!   '); // to the future. Be
