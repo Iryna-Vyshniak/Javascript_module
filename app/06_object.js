@@ -1181,3 +1181,45 @@ function calcAvarage() {
 }
 
 console.log(calcAvarage(1, 2, 3, 4)); //2.5
+
+const courses = ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL'];
+
+function addCourse(courseName) {
+  if (courses.includes(courseName)) {
+    console.log('У вас вже є такий курс');
+    return;
+  }
+  courses.push(courseName);
+}
+
+addCourse('Express');
+console.log(courses); // ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL', 'Express']
+addCourse('CSS'); // 'У вас вже є такий курс'
+
+function removeCourse(courseName) {
+  if (!courses.includes(courseName)) {
+    console.log('Курс за такою назвою не знайдено');
+    return;
+  }
+
+  const courseIndex = courses.indexOf(courseName);
+  courses.splice(courseIndex, 1);
+}
+
+removeCourse('React');
+console.log(courses); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'Express']
+removeCourse('Vue'); // 'Курс за такою назвою не знайдено'
+
+function renameCourse(currentName, newName) {
+  if (!courses.includes(currentName)) {
+    console.log('Курс за такою назвою не знайдено');
+    return;
+  }
+
+  const currentCourseIndex = courses.indexOf(currentName);
+  courses.splice(currentCourseIndex, 1, newName);
+}
+
+renameCourse('PostgreSQL', 'NestJS');
+console.log(courses); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'NestJS']
+renameCourse('С++', 'PHP'); // 'Курса за такою назвою не знайдено'
