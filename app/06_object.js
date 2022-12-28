@@ -1077,4 +1077,15 @@ function getMin(num1, num2) {
 console.log(getMin(3, 12)); //3
 console.log(getMin(43, 12)); //12
 
-//
+//calc BMI
+function calcBMI(weight, height) {
+  weight = Number.parseFloat(weight.replace(',', '.'));
+  height = Number.parseFloat(height.replace(',', '.'));
+
+  const result = weight / Math.pow(height, 2);
+  console.log(result.toFixed(1));
+  return result.toFixed(1);
+}
+
+calcBMI('88,3', '1,75'); //28.8
+calcBMI('58,3', '1,61'); //22.5
