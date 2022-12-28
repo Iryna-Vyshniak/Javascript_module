@@ -1089,3 +1089,14 @@ function calcBMI(weight, height) {
 
 calcBMI('88,3', '1,75'); //28.8
 calcBMI('58,3', '1,61'); //22.5
+
+// get rect aria
+const getRectAria = dimensions => {
+  const addDot = dimensions.replaceAll(',', '.');
+  const sideArr = addDot.split(' ');
+  const result = Number.parseFloat(sideArr[0]) * Number.parseFloat(sideArr[sideArr.length - 1]);
+  console.log(result.toFixed(1));
+  return result.toFixed(1);
+};
+getRectAria('12 34'); //408
+getRectAria('42,8sm  1,42m'); //408
