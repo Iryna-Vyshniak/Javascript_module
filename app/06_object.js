@@ -1156,3 +1156,28 @@ const showPersonContact = (names, phones) => {
 const namesList = 'Jacobs, William, Solomon, Artemis';
 const phonesList = '89095453464, 89034353454, 8904324354353, 890074392732';
 showPersonContact(namesList, phonesList);
+
+function findLargestNum(numArr) {
+  let max = numArr[0];
+
+  for (const num of numArr) {
+    if (num > max) {
+      max = num;
+    }
+  }
+  console.log(max);
+  return max;
+}
+
+findLargestNum([2, 17, 94, 55, 758]); //758
+
+function calcAvarage() {
+  let total = 0;
+  for (const num of arguments) {
+    total += num;
+  }
+  console.log(total / arguments.length);
+  return total / arguments.length;
+}
+
+console.log(calcAvarage(1, 2, 3, 4)); //2.5
