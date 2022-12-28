@@ -932,3 +932,84 @@ getProductPrice('Radar');
 console.log(getProductPrice('Radar')); //1300
 console.log(getProductPrice('Grip')); //1200
 console.log(getProductPrice('Engine')); //null
+
+// SPREAD and REST ========================================================
+const [aK, b, ...everythingElse] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+console.log(b); // 1
+console.log(everythingElse); // [2, 3, 4, 5, 6, 7, 8] - REST
+// const [a, ....everythingElse, b] = [ 1, 2, 3, 4, 5, 6, 7, 8]; // SyntaxError rest must be last
+
+function aF(...argumentS) {
+  console.log('it`s REST, array, isn`t pseudo');
+}
+
+aF(1, 2, 3, 4, 5, 6);
+
+const { street, ...address } = {
+  // ...address - REST OBJECT
+  street: 'Stepna',
+  city: 'Kyiv',
+  country: 'Ukraine',
+};
+
+console.log(address); // {city: 'Kyiv', country: 'Ukraine'} REST OBJECT
+
+const district = { district: 'Stepna' };
+const locations = {
+  city: 'Kyiv',
+  country: 'Ukraine',
+};
+
+const resultSpread = {
+  district,
+  ...locations,
+};
+console.log(resultSpread); // {district: {…}, city: 'Kyiv', country: 'Ukraine'} SPREAD OBJECT
+
+const resultsSpread = {
+  ...district,
+  ...locations,
+};
+console.log(resultsSpread); // {district: 'Stepna', city: 'Kyiv', country: 'Ukraine'} SPREAD OBJECT
+
+const addressUser = { post: '01004', city: 'Kyiv' };
+const streetUser = { street: 'forest rose', city: 'Newtone' };
+
+const results = { ...streetUser, ...addressUser };
+console.log(results); // SPREAD {street: 'forest rose', city: 'Kyiv', post: '01004'}
+
+const userLocations = {
+  country: 'Ukraine',
+  userDistrict: {
+    userStreet: 'Sosnova',
+    house: 25,
+    postCode: '011003',
+  },
+  userAddress: {
+    city: 'Kyiv',
+  },
+};
+
+const {
+  country = 'France',
+  userDistrict,
+  userDistrict: { userStreet: nameStreet, house, postCode },
+  userAddress,
+  userAddress: { city },
+} = userLocations;
+
+console.log(city); // destructuring Kyiv
+console.log(userAddress); // {city: 'Kyiv'}
+console.log(userDistrict); //{street: 'Sosnova', house: 25, postCode: '011003'}
+// console.log(userStreet); //userStreet is not defined
+console.log(nameStreet); //Sosnova
+console.log(house); // 25
+console.log(city); // Kyiv
+console.log(postCode); // 011003
+console.log(country); //Ukraine
+
+const arrDestr = ['a', 'b', 'c', 'd'];
+const [a, secondLetter, c, d, lastValue = 'e'] = arrDestr;
+
+console.log(lastValue); //e
+console.log(c); // c
