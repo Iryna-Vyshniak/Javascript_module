@@ -1019,14 +1019,14 @@ console.log(c); // c
 // function expression & function declaration
 
 // function declaration
-function userFullName(userFirstName, userLastName) {
+function getUserFullName(userFirstName, userLastName) {
   const message = `Hello, ${userFirstName} ${userLastName}`;
   console.log(message);
 }
 
-userFullName('Craig'); //Hello, Craig undefined
+getUserFullName('Craig'); //Hello, Craig undefined
 
-function userFullName1(userFirstName, userLastName) {
+function getUserFullName1(userFirstName, userLastName) {
   const lastName = '';
 
   if (userLastName) {
@@ -1036,27 +1036,27 @@ function userFullName1(userFirstName, userLastName) {
   console.log(message);
 }
 
-userFullName1('Craig'); // Hello, Craig
+getUserFullName1('Craig'); // Hello, Craig
 
-function userFullName2(userFirstName, userLastName = '') {
+function getUserFullName2(userFirstName, userLastName = '') {
   const message = `Hello, ${userFirstName} ${userLastName}`;
   console.log(message);
 }
 
-userFullName2('Craig'); // Hello, Craig
+getUserFullName2('Craig'); // Hello, Craig
 
 // function expression
-const userFullName3 = function (userFirstName, userLastName = '') {
+const getUserFullName3 = function (userFirstName, userLastName = '') {
   const message = `Hello, ${userFirstName} ${userLastName}`;
   console.log(message);
 };
 
-userFullName3('Craig', 'Morris'); // Hello, Craig Morris
+getUserFullName3('Craig', 'Morris'); // Hello, Craig Morris
 
 // Write a script that outputs to the console all the words of the line except the first and the last The resulting string must not begin or end
 // space character. The script should work for any string.
 
-const stringWithoutFirstLastElment = function (string) {
+const getStringWithoutFirstLastElment = function (string) {
   const stringArray = string.trim().split(' ');
 
   stringArray.pop();
@@ -1067,4 +1067,14 @@ const stringWithoutFirstLastElment = function (string) {
   return result;
 };
 
-stringWithoutFirstLastElment('    Welcome to the future. Be Happy!   '); // to the future. Be
+getStringWithoutFirstLastElment('    Welcome to the future. Be Happy!   '); // to the future. Be
+
+// get min number
+function getMin(num1, num2) {
+  return num1 < num2 ? num1 : num2;
+}
+
+console.log(getMin(3, 12)); //3
+console.log(getMin(43, 12)); //12
+
+//
