@@ -1139,3 +1139,20 @@ console.log(['🍋', '🍎', '🍌'].at(-1)); // 🍌
 
 const fruitsPlate = ['🍋', '🍎', '🍌'];
 console.log(fruitsPlate.at(-1)); // 🍌
+
+// get names with phones
+const getNamesWithPhones = (names, phones) => {
+  const arrName = names.split(', ');
+  const arrPhone = phones.split(', ');
+  let message = '';
+
+  for (let i = 0; i < arrName.length; i += 1) {
+    message = `${arrName[i]}: ${arrPhone[i]}`;
+    console.log(message);
+  }
+  return message;
+};
+
+const namesList = 'Jacobs, William, Solomon, Artemis';
+const phonesList = '89095453464, 89034353454, 8904324354353, 890074392732';
+getNamesWithPhones(namesList, phonesList);
