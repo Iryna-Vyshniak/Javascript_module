@@ -1264,6 +1264,20 @@ function updateCourse(oldName, newName) {
   return result;
 }
 
+let res = addCourse('Express');
+console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL', 'Express']
+
+res = addCourse('Express');
+console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL', 'Express']
+// addCourse('CSS'); // 'Ви вже маєте такий курс'
+
+res = deleteCourse();
+console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'Express']
+// removeCourse('Vue'); // 'Курс із таким ім'ям не знайдено'
+
+res = updateCourse('Expressss', 'NestJS');
+console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'NestJS']
+
 const numArr = [8, 9, 10];
 console.log(numArr.sort()); // [10, 9, 8]
 
