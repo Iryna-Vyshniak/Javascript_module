@@ -1184,6 +1184,18 @@ function calcAvarage() {
 
 console.log(calcAvarage(1, 2, 3, 4)); //2.5
 
+// 2nd variant
+function calculateAvarage(...args) {
+  let total = 0;
+  for (const arg of args) {
+    total += arg;
+  }
+  console.log(total / args.length);
+  return total / args.length;
+}
+
+console.log(calculateAvarage(1, 2, 3, 4)); //2.5
+
 const courses = ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL'];
 
 function addCourse(courseName) {
