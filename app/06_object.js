@@ -1158,15 +1158,17 @@ const phonesList = '89095453464, 89034353454, 8904324354353, 890074392732';
 showPersonContact(namesList, phonesList);
 
 function findLargestNum(numArr) {
-  let max = numArr[0];
+  // let max = numArr[0];
 
-  for (const num of numArr) {
-    if (num > max) {
-      max = num;
-    }
-  }
-  console.log(max);
-  return max;
+  // for (const num of numArr) {
+  //   if (num > max) {
+  //     max = num;
+  //   }
+  // }
+  // console.log(max);
+  // return max;
+  console.log(Math.max(...numArr));
+  return Math.max(...numArr);
 }
 
 findLargestNum([2, 17, 94, 55, 758]); //758
@@ -1186,8 +1188,9 @@ const courses = ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL'];
 
 function addCourse(courseName) {
   if (courses.includes(courseName)) {
+    // if (courses.indexOf(courseName) > -1) {
     console.log('У вас вже є такий курс');
-    return;
+    return 'Курс додано';
   }
   courses.push(courseName);
 }
@@ -1197,12 +1200,20 @@ console.log(courses); // ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL', 'E
 addCourse('CSS'); // 'У вас вже є такий курс'
 
 function removeCourse(courseName) {
-  if (!courses.includes(courseName)) {
+  // if (!courses.includes(courseName)) {
+  //   console.log('Курс за такою назвою не знайдено');
+  //   return;
+  // }
+
+  // const courseIndex = courses.indexOf(courseName);
+  // courses.splice(courseIndex, 1);
+
+  const courseIndex = courses.indexOf(courseName);
+  if (courseIndex === -1) {
     console.log('Курс за такою назвою не знайдено');
     return;
   }
 
-  const courseIndex = courses.indexOf(courseName);
   courses.splice(courseIndex, 1);
 }
 
@@ -1215,7 +1226,6 @@ function renameCourse(currentName, newName) {
     console.log('Курс за такою назвою не знайдено');
     return;
   }
-
   const currentCourseIndex = courses.indexOf(currentName);
   courses.splice(currentCourseIndex, 1, newName);
 }
@@ -1223,3 +1233,39 @@ function renameCourse(currentName, newName) {
 renameCourse('PostgreSQL', 'NestJS');
 console.log(courses); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'NestJS']
 renameCourse('С++', 'PHP'); // 'Курса за такою назвою не знайдено'
+
+// 2nd variant
+function deleteCourse(name = 'deafult value') {
+  /**
+   * 1. Знайти індекс елемента. indexOF
+   * 2. Видаляємо елемент по індексу. splice
+   */
+
+  const index = courses.indexOf(name);
+  if (index === -1) {
+    return 'Такого курса нема';
+  }
+
+  const result = `Курс ${courses[index]} видалено`;
+  courses.splice(index, 1);
+
+  return result;
+}
+
+function updateCourse(oldName, newName) {
+  const index = courses.indexOf(oldName);
+  if (index === -1) {
+    return 'Такого курса нема';
+  }
+
+  const result = `Курс ${oldName} оновлено на курс ${newName}`;
+  courses.splice(index, 1, newName);
+
+  return result;
+}
+
+const numArr = [8, 9, 10];
+console.log(numArr.sort()); // [10, 9, 8]
+
+const sortNum = [...numArr].sort((currentNum, nextNum) => currentNum - nextNum);
+console.log(sortNum); // [8, 9, 10]
