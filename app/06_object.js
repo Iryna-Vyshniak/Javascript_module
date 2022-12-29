@@ -1295,3 +1295,128 @@ console.log(numArr.sort()); // [10, 9, 8]
 
 const sortNum = [...numArr].sort((currentNum, nextNum) => currentNum - nextNum);
 console.log(sortNum); // [8, 9, 10]
+
+//call stack ============================================================================
+let f;
+
+f = function () {
+  console.log(1);
+};
+
+let execute = function (fff) {
+  fff();
+};
+
+execute(f); // 1
+
+f = function () {
+  console.log(2);
+};
+
+///////////////////////////////
+let g;
+
+g = function () {
+  console.log(1);
+  return 'stinger';
+};
+
+let executes = function (ggg) {
+  return ggg();
+};
+
+// const r = executes(g);
+// console.log(r);
+// // 1
+// // 'stinger'
+
+console.log(executes(g));
+
+g = function () {
+  console.log(2);
+};
+
+/////////////////////////////////
+
+let h;
+
+h = function () {
+  k();
+  console.log(1);
+  // return 'stinger';
+};
+
+let carryOut = function (hhh) {
+  // return hhh();
+  hk();
+  hhh();
+  hkg();
+};
+
+// const r = carryOut(h);
+// console.log(r);
+// // 1
+// // 'stinger'
+
+console.log(carryOut(h));
+//3
+// 2
+// 1
+// 4
+
+h = function () {
+  console.log(2);
+};
+
+function k() {
+  console.log(2);
+}
+function hk() {
+  console.log(3);
+}
+function hkg() {
+  console.log(4);
+}
+
+///////////////////////////////////////
+
+let l;
+
+l = function () {
+  kl();
+  console.log(1);
+  return 'stinger';
+};
+
+let carryOuts = function (lll) {
+  hkl();
+  hkgl();
+  return lll();
+};
+
+// const r = carryOut(h);
+// console.log(r);
+// // 1
+// // 'stinger'
+
+console.log(carryOuts(l));
+//333
+// 444
+// 222
+// 1
+// stinger
+
+l = function () {
+  console.log(2);
+};
+
+function kl() {
+  console.log(222);
+}
+function hkl() {
+  console.log(333);
+  return 'wild';
+}
+function hkgl() {
+  console.log(444);
+}
