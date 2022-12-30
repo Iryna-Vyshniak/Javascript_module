@@ -1491,3 +1491,59 @@ function countQuality(object) {
 countQuality({ name: 'Mango', age: 2 }); // 2
 countQuality({ mail: 'poly@mail.com', isOnline: true, score: 500 }); // 3
 countQuality({}); // 0
+
+//Write the function getAllPropValues(propName), which accepts one parameter propName - the name (key) of the property. The function should return an array of all property values ​​with that name from each object in the products array. If there are no properties with that name in the objects, the function should return an empty array.
+
+const cartPoducts = [
+  { name: 'Radar', price: 1300, quantity: 4 },
+  { name: 'Scanner', price: 2700, quantity: 3 },
+  { name: 'Droid', price: 400, quantity: 7 },
+  { name: 'Grip', price: 1200, quantity: 9 },
+];
+
+function getAllPropValues(propName) {
+  const arrProductsValues = [];
+
+  for (const product of cartPoducts) {
+    if (product[propName]) {
+      arrProductsValues.push(product[propName]);
+    }
+  }
+
+  // for (const product of cartPoducts) {
+  //   const keys = Object.keys(product);
+  //   for (const key of keys) {
+  //     if (key === propName) {
+  //       arrProductsValues.push(product[key]);
+  //     }
+  //   }
+  // }
+  console.log(arrProductsValues);
+  return arrProductsValues;
+}
+
+getAllPropValues('name'); //
+getAllPropValues('quantity'); //
+
+// Write the function calculateTotalPrice(productName), which accepts one parameter productName - the name of the product. The function should return the total cost (price * quantity) of the product with this name from the products array.
+
+function calculateTotalPrice(productName) {
+  let totalPrice = 0;
+
+  for (const product of cartPoducts) {
+    const { name, price, quantity } = product;
+
+    if (name === productName) {
+      totalPrice = price * quantity;
+    }
+  }
+  console.log(totalPrice);
+  return totalPrice;
+}
+calculateTotalPrice('Blaster');
+calculateTotalPrice('Radar');
+calculateTotalPrice('Droid');
+calculateTotalPrice('Grip');
+calculateTotalPrice('Scanner');
+
+//
