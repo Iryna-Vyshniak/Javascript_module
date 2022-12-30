@@ -1644,3 +1644,31 @@ const {
 } = forecast;
 
 console.log(lowTomorrow); // 27
+
+//"Settings object" pattern ===========================================================================
+function doStuffWithBook(book) {
+  const { title, numberOfPages, downloads, rating, publics } = book;
+  console.log(title);
+  console.log(numberOfPages);
+  // etc
+}
+
+// Або в сигнатурі (підписі), різниці немає.
+function doStuffWithBooks({ title, numberOfPages, downloads, rating, publics }) {
+  console.log(title);
+  console.log(numberOfPages);
+  // etc
+}
+
+//The function calculateMeanTemperature(forecast) accepts one forecast parameter - a temperature object for two days in the following format. Replace the declaration of variables todayLow, todayHigh, tomorrowLow and tomorrowHigh with one operation of destructuring the properties of the forecast object.
+function calculateMeanTemperature(forecast) {
+  // const todayLow = forecast.today.low;
+  // const todayHigh = forecast.today.high;
+  // const tomorrowLow = forecast.tomorrow.low;
+  // const tomorrowHigh = forecast.tomorrow.high;
+  const {
+    today: { low: todayLow, high: todayHigh },
+    tomorrow: { low: tomorrowLow, high: tomorrowHigh },
+  } = forecast;
+  return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
+}
