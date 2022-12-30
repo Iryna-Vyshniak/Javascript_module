@@ -1616,3 +1616,31 @@ for (const { hex, rgb } of colors) {
   console.log(hexColor);
   console.log(rgbColor);
 }
+
+//received the weather forecast for two days, with minimum and maximum temperatures, as well as optional icons. Replace the declaration of all variables with one operation of destructuring the properties of the forecast object. Set default values ​​for icons, variables todayIcon and tomorrowIcon - string "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg".
+const forecast = {
+  today: {
+    low: 28,
+    high: 32,
+    icon: 'https://www.flaticon.com/svg/static/icons/svg/861/861059.svg',
+  },
+  tomorrow: {
+    low: 27,
+    high: 31,
+  },
+};
+
+const {
+  today: {
+    low: lowToday,
+    high: highTodays,
+    icon: todayIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg',
+  },
+  tomorrow: {
+    low: lowTomorrow,
+    high: highTomorrows,
+    icon: tomorrowIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg',
+  },
+} = forecast;
+
+console.log(lowTomorrow); // 27
