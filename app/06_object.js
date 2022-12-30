@@ -1546,4 +1546,73 @@ calculateTotalPrice('Droid');
 calculateTotalPrice('Grip');
 calculateTotalPrice('Scanner');
 
-//
+// destructuring assignment ===========================================================================
+
+//A three-day forecast of maximum temperatures has arrived and we are calculating the average temperature for three days (meanTemperature). Replace the declaration of variables yesterday, today and tomorrow with one operation of destructuring the properties of the highTemperatures object.
+const highTemperatures = {
+  yesterday: 28,
+  today: 26,
+  tomorrow: 33,
+};
+
+const {
+  yesterday,
+  today,
+  tomorrow,
+  icon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg',
+} = highTemperatures;
+const meanTemperature = (yesterday + today + tomorrow) / 3;
+
+//During destructuring, you can change the name of the variable into which the property value is unpacked. First, we write the name of the property from which we want to get the value, after which we put a colon and write the name of the variable in which the value of this property must be placed.
+const firstBook = {
+  title: 'Останнє королівство',
+  coverImage: 'https://images-na.ssl-images-amazon.com/images/I/51b5YG6Y1rL.jpg',
+};
+
+const { title: firstTitle, coverImage: firstCoverImage = 'https://via.placeholder.com/640/480' } =
+  firstBook;
+
+console.log(firstTitle); // Останнє королівство
+console.log(firstCoverImage); // https://images-na.ssl-images-amazon.com/images/I/51b5YG6Y1rL.jpg
+
+const secondBook = {
+  title: 'Сон смішної людини',
+};
+
+const { title: secondTitle, coverImage: secondCoverImage = 'https://via.placeholder.com/640/480' } =
+  secondBook;
+
+console.log(secondTitle); // Сон смішної людини
+console.log(secondCoverImage); // https://via.placeholder.com/640/480
+
+//Replace the declaration of variables highYesterday, highToday, highTomorrow and highIcon with a single operation of destructuring the properties of the highTemperatures object. Set the default value for highIcon to the string "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg".
+const highTemperature = {
+  yesterday: 28,
+  today: 26,
+  tomorrow: 33,
+};
+
+const {
+  yesterday: highYesterday,
+  today: highToday,
+  tomorrow: highTomorrow,
+  icon: highIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg',
+} = highTemperature;
+
+//Refactor the for...of loop so that it uses object destructuring.
+const someColors = [
+  { hex: '#f44336', rgb: '244,67,54' },
+  { hex: '#2196f3', rgb: '33,150,243' },
+  { hex: '#4caf50', rgb: '76,175,80' },
+  { hex: '#ffeb3b', rgb: '255,235,59' },
+];
+
+const hexColor = [];
+const rgbColor = [];
+
+for (const { hex, rgb } of colors) {
+  hexColor.push(hex);
+  rgbColor.push(rgb);
+  console.log(hexColor);
+  console.log(rgbColor);
+}
