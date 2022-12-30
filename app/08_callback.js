@@ -456,7 +456,7 @@ const filterData = (arr, test) => {
       filter.push(num);
     }
   }
-  console.log(filter);
+  // console.log(filter);
   return filter;
 };
 
@@ -467,3 +467,36 @@ console.log(checkIsTrue(3));
 
 console.log(filterData([2, 3, 56, 7, 1], checkIsTrue)); //[3, 56, 7]
 console.log(filterData([2, 3, 56, 7, 1], checkIs)); //[2, 3, 1]
+
+const fruitBasket = [
+  {
+    name: 'apple',
+    color: 'green',
+    weight: '150',
+    delicious: '1',
+    quantity: 200,
+    isFresh: true,
+  },
+  {
+    name: 'banana',
+    color: 'yellow',
+    weight: '116',
+    delicious: '1',
+    quantity: 150,
+    isFresh: false,
+  },
+  {
+    name: 'strawberries',
+    color: 'red',
+    weight: '12',
+    delicious: '1',
+    quantity: 500,
+    isFresh: true,
+  },
+];
+
+const getFruitWithQuantity = fruit => fruit.quantity >= 200;
+const checkIsFresh = fruit => !fruit.isFresh;
+
+console.log(filterData(fruitBasket, getFruitWithQuantity)); // [{…}, {…}]
+console.log(filterData(fruitBasket, checkIsFresh)); // [{name: 'banana', color: 'yellow', weight: '116', delicious: '1', quantity: 150, …}]
