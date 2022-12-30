@@ -1786,3 +1786,19 @@ findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7); //[1, 2]
 findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2); // [17, 89, 2]
 findMatches([10, 24, 41, 6, 9, 19], 24, 11, 9, 23, 41); //  [24, 9, 41]
 findMatches([63, 11, 8, 29], 4, 7, 16); // []
+
+// object model ============================================
+// JavaScript objects are containers for named values called properties. Object Methods Objects can also have methods.
+// Supplement the updateBook(oldName, newName) method so that it changes the book name from oldName to newName in the books property. Use indexOf() to find the desired element of the array, and splice() to replace this element.
+const bookShelves = {
+  books: ['The last kingdom', 'Haze', 'The guardian of dreams'],
+  updateBook(oldName, newName) {
+    const { books } = this;
+
+    const index = books.indexOf(oldName);
+    books.splice(index, 1, newName);
+    console.log(books);
+  },
+};
+
+bookShelves.updateBook('Haze', 'Dungeon chronicles'); //
