@@ -62,7 +62,7 @@ console.log(partsOfBody);
 // string => array
 const e = [...'hello'];
 console.log(e);
-// 5) ['h', 'e', 'l', 'l', 'o']
+// ['h', 'e', 'l', 'l', 'o']
 
 // set => array
 const setToArray = [...new Set([1, 1, 2, 3, 3, 4, 5])];
@@ -93,8 +93,70 @@ let b3 = { ...b1, bike: true };
 console.log(b3);
 // {name: 'Bill', param: 15, bike: true}
 
+function getScores(scores) {
+  const bestScore = Math.max(...scores);
+  console.log(bestScore);
+  const worstScore = Math.min(...scores);
+  console.log(worstScore);
+}
+
+getScores([89, 64, 42, 17, 93, 51, 26]); // 93 // 17
+
+//The firstGroupScores, secondGroupScores, and thirdGroupScores variables store the test results of individual groups. Using division, complete the code so that:
+
+// The variable allScores stored an array of all scores from the first to the third group.
+// The bestScore variable had the highest overall score.
+// The worstScore variable had the lowest overall score
+const firstGroupScores = [64, 42, 93];
+const secondGroupScores = [89, 14, 51, 26];
+const thirdGroupScores = [29, 47, 18, 97, 81];
+
+const allScores = [...firstGroupScores, ...secondGroupScores, ...thirdGroupScores];
+const bestScores = Math.max(...allScores);
+const worstScores = Math.min(...allScores);
+
+console.log(bestScores); // 97
+console.log(worstScores); // 14
+
+//take the default settings and apply overridden settings on top of them. Add the code in such a way that the final settings object of the test is created in the finalSettings variable.
+const defaultSetup = {
+  theme: 'light',
+  public: true,
+  withPassword: false,
+  minNumberOfQuestions: 10,
+  timePerQuestion: 60,
+};
+const overrideSetup = {
+  public: false,
+  withPassword: true,
+  timePerQuestion: 30,
+};
+
+const finalSetup = { ...defaultSetup, ...overrideSetup };
+console.log(finalSetup);
+
+//Write a function makeTask(data) that takes one parameter data - an object with the following properties.","text - the text of the task.","category - task category.","priority is the priority of the task.","The function must create and return a new task object without directly changing the data parameter.
+
+function makeTask(data) {
+  const completed = false;
+  const category = 'General';
+  const priority = 'Normal';
+  const newTask = {
+    category,
+    priority,
+    completed,
+    ...data,
+  };
+  console.log(newTask);
+  return newTask;
+}
+
+makeTask({}); // {completed: false, category: 'General', priority: 'Normal'}
+makeTask({ category: 'Homemade', priority: 'Low', text: 'Take out the trash' }); // {category: 'Homemade', priority: 'Low', completed: false, text: 'Take out the trash'}
+makeTask({ priority: 'Low', text: 'Choose shampoo' }); //{category: 'General', priority: 'Low', completed: false, text: 'Choose shampoo'}
+
 // ========================================================================================
-// rest - остаток, позволяет представлять неограниченное множество аргументов в виде массива
+// REST - остаток, позволяет представлять неограниченное множество аргументов в виде массива
 function f5(a, ...b) {
   console.log(a);
   console.log(b);
@@ -187,3 +249,51 @@ function f(...[a, b, c]) {
 f(1); // NaN => b и c равны undefined
 f(1, 2, 3); // 6
 f(1, 2, 3, 4); // 6 => 1 + 2+ 3, четвёртый параметр не деструктурирован
+
+// Using the rest operation, supplement the code of the add() function so that it accepts any number of arguments, counts and returns their sum.
+
+function add(...args) {
+  let total = 0;
+
+  for (const arg of args) {
+    total += arg;
+  }
+  console.log(total);
+  return total;
+}
+
+add(15, 27); // 42
+
+//The addOverNum() function counts the sum of all arguments. Change the parameters and the body of the addOverNum() function so that it counts the sum of only those arguments that are greater than a given number. This number should be the first parameter of the function.
+function addOverNum(currentNum, ...args) {
+  let total = 0;
+
+  for (const arg of args) {
+    if (arg > currentNum) {
+      total += arg;
+    }
+  }
+  console.log(total);
+  return total;
+}
+addOverNum(50, 15, 27); // 0
+addOverNum(10, 12, 4, 11, 48, 10, 8); // 71
+addOverNum(20, 74, 11, 62, 46, 12, 36); // 218
+
+//The findMatches() function takes an arbitrary number of arguments. The first argument will always be an array of numbers, and the rest of the arguments will be just numbers.","Complete the function code so that it returns a new array of matches, in which there will be only those arguments starting from the second,
+
+function findMatches(arr, ...numbers) {
+  const matches = [];
+  for (const num of numbers) {
+    if (arr.includes(num)) {
+      matches.push(num);
+    }
+  }
+  console.log(matches);
+  return matches;
+}
+
+findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7); //[1, 2]
+findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2); // [17, 89, 2]
+findMatches([10, 24, 41, 6, 9, 19], 24, 11, 9, 23, 41); //  [24, 9, 41]
+findMatches([63, 11, 8, 29], 4, 7, 16); // []
