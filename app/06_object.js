@@ -1812,6 +1812,7 @@ const atTheOldToad = {
   addPotion(potionName) {
     const { potions } = this;
     potions.push(potionName);
+    console.log(potions);
   },
   removePotion(potionName) {
     const { potions } = this;
@@ -1819,7 +1820,15 @@ const atTheOldToad = {
     potions.splice(indexPotionName, 1);
     console.log(potions);
   },
+  updatePotionName(oldName, newName) {
+    const { potions } = this;
+    const indexOldName = potions.indexOf(oldName);
+    potions.splice(indexOldName, 1, newName);
+    console.log(potions);
+  },
 };
 
-atTheOldToad.removePotion('Dragon breath'); //['Speed potion', 'Stone skin']
-atTheOldToad.removePotion('Speed potion'); // ['Stone skin']
+// atTheOldToad.removePotion('Dragon breath'); //['Speed potion', 'Stone skin']
+// atTheOldToad.removePotion('Speed potion'); // ['Stone skin']
+atTheOldToad.updatePotionName('Dragon breath', 'Polymorth'); //  ['Speed potion', 'Polymorth', 'Stone skin']
+atTheOldToad.updatePotionName('Stone skin', 'Invisibility'); //  ['Speed potion', 'Polymorth', 'Invisibility']
