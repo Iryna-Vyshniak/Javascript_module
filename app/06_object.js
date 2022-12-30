@@ -1832,3 +1832,52 @@ const atTheOldToad = {
 // atTheOldToad.removePotion('Speed potion'); // ['Stone skin']
 atTheOldToad.updatePotionName('Dragon breath', 'Polymorth'); //  ['Speed potion', 'Polymorth', 'Stone skin']
 atTheOldToad.updatePotionName('Stone skin', 'Invisibility'); //  ['Speed potion', 'Polymorth', 'Invisibility']
+
+const atTheOldToads = {
+  potions: [
+    { name: 'Speed potion', price: 460 },
+    { name: 'Dragon breath', price: 780 },
+    { name: 'Stone skin', price: 520 },
+  ],
+  getPotions() {
+    return this.potions;
+  },
+  addPotion(newPotion) {
+    const { potions } = this;
+
+    for (const potion of potions) {
+      if (potion.name === newPotion.name) {
+        return `Error! Potion ${newPotion.name} is already in your inventory!`;
+      }
+    }
+    potions.push(newPotion);
+    console.log(potions);
+  },
+  removePotion(potionName) {
+    const { potions } = this;
+
+    for (let i = 0; i < potions.length; i += 1) {
+      const { name } = potions[i];
+      if (name === potionName) {
+        potions.splice(i, 1);
+      }
+    }
+    return `Potion ${potionName} is not in inventory!`;
+  },
+  updatePotionName(oldName, newName) {
+    const { potions } = this;
+
+    for (const potion of potions) {
+      if (potion.name === oldName) {
+        potion.name = newName;
+      }
+    }
+    return `Potion ${oldName} is not in inventory!`;
+  },
+};
+
+console.log(atTheOldToads.addPotion({ name: 'Dragon breath', price: 700 }));
+//Error! Potion Dragon breath is already in your inventory!
+console.log(atTheOldToads.addPotion({ name: 'Stone skin', price: 240 }));
+//Error! Potion Stone skin is already in your inventory!
+console.log(atTheOldToads.removePotion('Dragon breath'));
