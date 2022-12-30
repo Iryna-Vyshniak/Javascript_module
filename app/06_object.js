@@ -1420,3 +1420,74 @@ function hkl() {
 function hkgl() {
   console.log(444);
 }
+
+//
+
+const emailInput = 'email';
+const pswInput = 'psw';
+
+const dataInfo = {
+  [emailInput]: 'spring@gmail.com',
+  [pswInput]: 'qwer',
+};
+
+console.log(dataInfo); // {email: 'spring@gmail.com', psw: 'qwer'}
+console.log(dataInfo[emailInput]); // spring@gmail.com
+console.log(dataInfo.email); // spring@gmail.com
+
+//Iterate over the apartment object using the for...in loop, and write all its keys in the keys array, and all the values ​​of its properties in the values ​​array.
+const apart = {
+  descr: 'Spacious apartment in the city center',
+  rating: 4,
+  price: 2153,
+};
+const keysAparts = ['descr', 'rating', 'price'];
+const valuesAparts = ['Spacious apartment in the city center', 4, 2153];
+
+for (const key in apart) {
+  console.log(key); // descr, rating, price
+  keysAparts;
+  console.log(keysAparts); // ['descr', 'rating', 'price']
+  valuesAparts;
+  console.log(valuesAparts); //  ['Spacious apartment in the city center', 4, 2153]
+}
+
+//Refactor the solution of the previous task by adding a check for its own property to the for...in loop.
+const keysA = [];
+const valuesA = [];
+const advertA = {
+  service: 'apt',
+};
+
+const apartA = Object.create(advertA);
+
+apartA.descr = 'Spacious apartment in the city center';
+apartA.rating = 4;
+apartA.price = 2153;
+
+for (const key in apartA) {
+  if (apartA.hasOwnProperty(key)) {
+    console.log(key); // descr// rating // price // service
+    console.log(apartA[key]); //  'Spacious apartment in the city center'// 4 // 2153
+
+    keysA.push(key);
+    valuesA.push(apartA[key]);
+  }
+}
+
+// Write the countProps(object) function, which counts and returns the number of the object's own properties in the object parameter. Use the propCount variable to store the number of object properties.
+function countQuality(object) {
+  let totalQuality = 0;
+  let props = [];
+  for (const key in object) {
+    if (object.hasOwnProperty(key)) {
+      props.push(key);
+      totalQuality = props.length;
+    }
+  }
+  console.log(totalQuality);
+  return totalQuality;
+}
+countQuality({ name: 'Mango', age: 2 }); // 2
+countQuality({ mail: 'poly@mail.com', isOnline: true, score: 500 }); // 3
+countQuality({}); // 0
