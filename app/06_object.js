@@ -1802,3 +1802,24 @@ const bookShelves = {
 };
 
 bookShelves.updateBook('Haze', 'Dungeon chronicles'); //
+
+//
+const atTheOldToad = {
+  potions: ['Speed potion', 'Dragon breath', 'Stone skin'],
+  getPotions() {
+    return this.potions;
+  },
+  addPotion(potionName) {
+    const { potions } = this;
+    potions.push(potionName);
+  },
+  removePotion(potionName) {
+    const { potions } = this;
+    const indexPotionName = potions.indexOf(potionName);
+    potions.splice(indexPotionName, 1);
+    console.log(potions);
+  },
+};
+
+atTheOldToad.removePotion('Dragon breath'); //['Speed potion', 'Stone skin']
+atTheOldToad.removePotion('Speed potion'); // ['Stone skin']
