@@ -408,7 +408,7 @@ const each = function (array, callback) {
   return newArray;
 };
 
-const eachReduce = each.reduce((acc, callback) => aac + callback, 0);
+//const eachReduce = each.reduce((acc, callback) => aac + callback, 0);
 
 // capitalize letter
 
@@ -445,3 +445,25 @@ function offerRoom(getClientsStatus, offerLuxuryRoom, offerStandartRoom) {
 const result7 = offerRoom(getClientsStatus, offerLuxuryRoom, offerStandartRoom);
 
 console.log(result7);
+
+//
+const filterData = (arr, test) => {
+  const filter = [];
+
+  for (const num of arr) {
+    const passed = test(num);
+    if (passed) {
+      filter.push(num);
+    }
+  }
+  console.log(filter);
+  return filter;
+};
+
+const checkIsTrue = value => value >= 3;
+const checkIs = value => value <= 4;
+
+console.log(checkIsTrue(3));
+
+console.log(filterData([2, 3, 56, 7, 1], checkIsTrue)); //[3, 56, 7]
+console.log(filterData([2, 3, 56, 7, 1], checkIs)); //[2, 3, 1]
