@@ -1769,4 +1769,20 @@ addOverNum(50, 15, 27); // 0
 addOverNum(10, 12, 4, 11, 48, 10, 8); // 71
 addOverNum(20, 74, 11, 62, 46, 12, 36); // 218
 
-//
+//The findMatches() function takes an arbitrary number of arguments. The first argument will always be an array of numbers, and the rest of the arguments will be just numbers.","Complete the function code so that it returns a new array of matches, in which there will be only those arguments starting from the second,
+
+function findMatches(arr, ...numbers) {
+  const matches = [];
+  for (const num of numbers) {
+    if (arr.includes(num)) {
+      matches.push(num);
+    }
+  }
+  console.log(matches);
+  return matches;
+}
+
+findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7); //[1, 2]
+findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2); // [17, 89, 2]
+findMatches([10, 24, 41, 6, 9, 19], 24, 11, 9, 23, 41); //  [24, 9, 41]
+findMatches([63, 11, 8, 29], 4, 7, 16); // []
