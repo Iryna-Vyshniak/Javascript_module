@@ -1716,3 +1716,23 @@ const overrideSetup = {
 
 const finalSetup = { ...defaultSetup, ...overrideSetup };
 console.log(finalSetup);
+
+//Write a function makeTask(data) that takes one parameter data - an object with the following properties.","text - the text of the task.","category - task category.","priority is the priority of the task.","The function must create and return a new task object without directly changing the data parameter.
+
+function makeTask(data) {
+  const completed = false;
+  const category = 'General';
+  const priority = 'Normal';
+  const newTask = {
+    category,
+    priority,
+    completed,
+    ...data,
+  };
+  console.log(newTask);
+  return newTask;
+}
+
+makeTask({}); // {completed: false, category: 'General', priority: 'Normal'}
+makeTask({ category: 'Homemade', priority: 'Low', text: 'Take out the trash' }); // {category: 'Homemade', priority: 'Low', completed: false, text: 'Take out the trash'}
+makeTask({ priority: 'Low', text: 'Choose shampoo' }); //{category: 'General', priority: 'Low', completed: false, text: 'Choose shampoo'}
