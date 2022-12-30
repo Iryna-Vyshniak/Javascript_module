@@ -1672,3 +1672,47 @@ function calculateMeanTemperature(forecast) {
   } = forecast;
   return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
 }
+
+// SPREAD ====================================
+
+function getScores(scores) {
+  const bestScore = Math.max(...scores);
+  console.log(bestScore);
+  const worstScore = Math.min(...scores);
+  console.log(worstScore);
+}
+
+getScores([89, 64, 42, 17, 93, 51, 26]); // 93 // 17
+
+//The firstGroupScores, secondGroupScores, and thirdGroupScores variables store the test results of individual groups. Using division, complete the code so that:
+
+// The variable allScores stored an array of all scores from the first to the third group.
+// The bestScore variable had the highest overall score.
+// The worstScore variable had the lowest overall score
+const firstGroupScores = [64, 42, 93];
+const secondGroupScores = [89, 14, 51, 26];
+const thirdGroupScores = [29, 47, 18, 97, 81];
+
+const allScores = [...firstGroupScores, ...secondGroupScores, ...thirdGroupScores];
+const bestScores = Math.max(...allScores);
+const worstScores = Math.min(...allScores);
+
+console.log(bestScores); // 97
+console.log(worstScores); // 14
+
+//take the default settings and apply overridden settings on top of them. Add the code in such a way that the final settings object of the test is created in the finalSettings variable.
+const defaultSetup = {
+  theme: 'light',
+  public: true,
+  withPassword: false,
+  minNumberOfQuestions: 10,
+  timePerQuestion: 60,
+};
+const overrideSetup = {
+  public: false,
+  withPassword: true,
+  timePerQuestion: 30,
+};
+
+const finalSetup = { ...defaultSetup, ...overrideSetup };
+console.log(finalSetup);
