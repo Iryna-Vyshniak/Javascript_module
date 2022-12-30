@@ -1736,3 +1736,37 @@ function makeTask(data) {
 makeTask({}); // {completed: false, category: 'General', priority: 'Normal'}
 makeTask({ category: 'Homemade', priority: 'Low', text: 'Take out the trash' }); // {category: 'Homemade', priority: 'Low', completed: false, text: 'Take out the trash'}
 makeTask({ priority: 'Low', text: 'Choose shampoo' }); //{category: 'General', priority: 'Low', completed: false, text: 'Choose shampoo'}
+
+// REST =======================================================
+
+// Using the rest operation, supplement the code of the add() function so that it accepts any number of arguments, counts and returns their sum.
+
+function add(...args) {
+  let total = 0;
+
+  for (const arg of args) {
+    total += arg;
+  }
+  console.log(total);
+  return total;
+}
+
+add(15, 27); // 42
+
+//The addOverNum() function counts the sum of all arguments. Change the parameters and the body of the addOverNum() function so that it counts the sum of only those arguments that are greater than a given number. This number should be the first parameter of the function.
+function addOverNum(currentNum, ...args) {
+  let total = 0;
+
+  for (const arg of args) {
+    if (arg > currentNum) {
+      total += arg;
+    }
+  }
+  console.log(total);
+  return total;
+}
+addOverNum(50, 15, 27); // 0
+addOverNum(10, 12, 4, 11, 48, 10, 8); // 71
+addOverNum(20, 74, 11, 62, 46, 12, 36); // 218
+
+//
