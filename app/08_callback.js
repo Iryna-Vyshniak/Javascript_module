@@ -500,3 +500,39 @@ const checkIsFresh = fruit => !fruit.isFresh;
 
 console.log(filterData(fruitBasket, getFruitWithQuantity)); // [{…}, {…}]
 console.log(filterData(fruitBasket, checkIsFresh)); // [{name: 'banana', color: 'yellow', weight: '116', delicious: '1', quantity: 150, …}]
+
+/// function to make Pizza
+
+function makePizza() {
+  return 'Your pizza is being prepared, please wait.';
+}
+
+const results = makePizza();
+const pointer = makePizza;
+
+///
+function deliverPizza(pizzaName) {
+  return `Delivering ${pizzaName} pizza.`;
+}
+
+function makePizza1(pizzaName) {
+  return `Pizza ${pizzaName} is being prepared, please wait...`;
+}
+
+function makeMessage(pizzaName, callback) {
+  return callback(pizzaName);
+}
+
+///
+function makePizza2(pizzaName, callback) {
+  console.log(`Pizza ${pizzaName} is being prepared, please wait...`);
+  callback(pizzaName);
+}
+
+makePizza2('Royal Grand', function deliverPizza(pizzaName) {
+  console.log(`Delivering pizza ${pizzaName}.`);
+});
+
+makePizza2('Ultracheese', function eatPizza(pizzaName) {
+  console.log(`Eating pizza ${pizzaName}.`);
+});
