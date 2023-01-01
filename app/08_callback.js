@@ -611,20 +611,20 @@ function processCall(recipient, onAvailable, onNotAvailable) {
   onAvailable(recipient);
 }
 
-function takeCall(name) {
+function takeCalls(name) {
   console.log(`Connect to ${name}, expect...`);
   // logic to take call
 }
 
-function activateAnsweringMachine(name) {
+function activateAnsweringMachines(name) {
   console.log(`Subscriber ${name} is not available, leave a message.`);
   // logic of activation answering machine
 }
 
-function leaveHoloMessage(name) {
+function leaveHoloMessages(name) {
   console.log(`Subscriber ${name} is not available, we record a hologram.`);
   // logic of leaving holo message
 }
 
-processCall('Alex Bordeaux', takeCall, activateAnsweringMachine);
-processCall('John Arnhold', takeCall, leaveHoloMessage);
+processCall('Alex Bordeaux', takeCalls, activateAnsweringMachines);
+processCall('John Arnhold', takeCalls, leaveHoloMessages);
