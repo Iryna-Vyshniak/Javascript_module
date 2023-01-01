@@ -544,7 +544,7 @@ const pizzaPalace = {
 };
 
 //logic of receiving calls for the phone
-function processCall(recipient, onAvailable, onNotAvailable) {
+function processCalls(recipient, onAvailable, onNotAvailable) {
   const isRecipientAvailable = Math.random() > 0.5;
 
   if (!isRecipientAvailable) {
@@ -567,8 +567,8 @@ function leaveHoloMessage(name) {
   console.log(`Абонент ${name} недоступний, записуємо голограму.`);
 }
 
-processCall('Mango', takeCall, activateAnsweringMachine);
-processCall('Poly', takeCall, leaveHoloMessage);
+processCalls('Mango', takeCall, activateAnsweringMachine);
+processCalls('Poly', takeCall, leaveHoloMessage);
 
 //
 const pizzaPalaces = {
@@ -583,7 +583,7 @@ const pizzaPalaces = {
 };
 
 // Callback for onSuccess
-function makePizza(pizzaName) {
+function makePizzas(pizzaName) {
   return `Your order is accepted. Cooking pizza ${pizzaName}.`;
 }
 
@@ -593,7 +593,38 @@ function onOrderError(error) {
 }
 
 // Method calls with callbacks
-pizzaPalace.order('Smoked', makePizza, onOrderError);
-pizzaPalace.order('Four meats', makePizza, onOrderError);
-pizzaPalace.order('Big Mike', makePizza, onOrderError);
-pizzaPalace.order('Vienna', makePizza, onOrderError);
+pizzaPalace.order('Smoked', makePizzas, onOrderError);
+pizzaPalace.order('Four meats', makePizzas, onOrderError);
+pizzaPalace.order('Big Mike', makePizzas, onOrderError);
+pizzaPalace.order('Vienna', makePizzas, onOrderError);
+
+//logic of receiving calls for the phone
+function processCall(recipient, onAvailable, onNotAvailable) {
+  // simulate the availability of a subscriber by a random number
+  const isRecipientAvailable = Math.random() > 0.5;
+
+  if (!isRecipientAvailable) {
+    onNotAvailable(recipient);
+    return;
+  }
+
+  onAvailable(recipient);
+}
+
+function takeCall(name) {
+  console.log(`Connect to ${name}, expect...`);
+  // logic to take call
+}
+
+function activateAnsweringMachine(name) {
+  console.log(`Subscriber ${name} is not available, leave a message.`);
+  // logic of activation answering machine
+}
+
+function leaveHoloMessage(name) {
+  console.log(`Subscriber ${name} is not available, we record a hologram.`);
+  // logic of leaving holo message
+}
+
+processCall('Alex Bordeaux', takeCall, activateAnsweringMachine);
+processCall('John Arnhold', takeCall, leaveHoloMessage);
