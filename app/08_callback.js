@@ -645,3 +645,29 @@ function calculateTotalPrice(orderedItems) {
 }
 calculateTotalPrice([12, 85, 37, 4]); //138
 calculateTotalPrice([412, 371, 94, 63, 176]); //1116
+
+//Simple, given a string of words, return the length of the shortest word(s).
+// String will never be empty and you do not need to account for different data types.
+function findShort(s) {
+  const words = s.split(' ');
+  console.log(words);
+  let shortestWord = words[0];
+
+  for (const word of words) {
+    if (word.length < shortestWord.length) {
+      shortestWord = word;
+    }
+  }
+  console.log(shortestWord.length);
+  return shortestWord.length;
+}
+findShort('bitcoin take over the world maybe who knows perhaps'); // 3
+findShort('turns out random test cases are easier than writing out basic ones'); // 3
+findShort("Let's travel abroad shall we"); // 2
+
+function findShortestWord(s) {
+  return Math.min(...s.split(' ').map(s => s.length));
+}
+console.log(findShortestWord('turns out random test cases are easier than writing out basic ones')); // 3
+console.log(findShortestWord("Let's travel abroad shall we")); // 2
+console.log(findShortestWord('bitcoin take over the world maybe who knows perhaps')); // 3
