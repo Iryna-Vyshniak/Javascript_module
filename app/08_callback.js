@@ -628,3 +628,20 @@ function leaveHoloMessages(name) {
 
 processCall('Alex Bordeaux', takeCalls, activateAnsweringMachines);
 processCall('John Arnhold', takeCalls, leaveHoloMessages);
+
+// .forEach(function (number, index) {}) ==================================================
+// Poentero sorts through the array.
+// Calls the callback function for each element of the array.
+// Does not return anything.
+
+function calculateTotalPrice(orderedItems) {
+  let totalPrice = 0;
+  // for (let i = 0; i < orderedItems.length; i += 1) {
+  //   totalPrice += orderedItems[i];
+  // }
+  orderedItems.forEach(item => (totalPrice += item));
+  console.log(totalPrice);
+  return totalPrice;
+}
+calculateTotalPrice([12, 85, 37, 4]); //138
+calculateTotalPrice([412, 371, 94, 63, 176]); //1116
