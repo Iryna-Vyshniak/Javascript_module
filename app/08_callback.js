@@ -671,3 +671,26 @@ function findShortestWord(s) {
 console.log(findShortestWord('turns out random test cases are easier than writing out basic ones')); // 3
 console.log(findShortestWord("Let's travel abroad shall we")); // 2
 console.log(findShortestWord('bitcoin take over the world maybe who knows perhaps')); // 3
+
+//Write a function which calculates the average of the numbers in a given list.
+// Note: Empty arrays should return 0.
+
+function findAverage(array) {
+  let total = 0;
+  if (array.length === 0) {
+    return 0;
+  }
+  for (const arr of array) {
+    total += arr;
+  }
+  console.log(total / array.length);
+  return total / array.length;
+}
+findAverage([1, 1, 1]); // 1
+findAverage([1, 2, 3]); // 2
+findAverage([1, 2, 3, 4]); // 2.5
+
+// next variant
+const findAverageNum = array => {
+  return array.length === 0 ? 0 : array.reduce((acc, ind) => acc + ind, 0) / array.length;
+};
