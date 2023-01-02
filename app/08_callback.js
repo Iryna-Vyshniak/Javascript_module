@@ -694,3 +694,23 @@ findAverage([1, 2, 3, 4]); // 2.5
 const findAverageNum = array => {
   return array.length === 0 ? 0 : array.reduce((acc, ind) => acc + ind, 0) / array.length;
 };
+
+function getCount(str) {
+  const total = [];
+  str.split('').forEach(item => {
+    if (item === 'a' || item === 'e' || item === 'i' || item === 'o' || item === 'u')
+      total.push(item);
+  });
+  console.log(total.length);
+  return total.length;
+}
+
+getCount('abracadabra'); // 5
+getCount('o kfodcomihz'); // 4
+
+// next variant
+function getCountVowels(str) {
+  return str.split('').filter(item => 'aeiouAEIOU'.includes(item)).length;
+}
+console.log(getCountVowels('abracadabra')); // 5
+console.log(getCountVowels('o kfodcomihz')); // 4
