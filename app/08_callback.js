@@ -695,6 +695,8 @@ const findAverageNum = array => {
   return array.length === 0 ? 0 : array.reduce((acc, ind) => acc + ind, 0) / array.length;
 };
 
+//Return the number (count) of vowels in the given string.We will consider a, e, i, o, u as vowels for this Kata (but not y).The input string will only consist of lower case letters and/or spaces
+
 function getCount(str) {
   const total = [];
   str.split('').forEach(item => {
@@ -714,3 +716,19 @@ function getCountVowels(str) {
 }
 console.log(getCountVowels('abracadabra')); // 5
 console.log(getCountVowels('o kfodcomihz')); // 4
+
+//Create a method each_cons that accepts a list and a number n, and returns cascading subsets of the list of size n, like so: each_cons([1,2,3,4], 2) #=> [[1,2], [2,3], [3,4]]
+
+function eachCons(array, n) {
+  const res = [];
+  for (let i = 0; i <= array.length - n; i += 1) {
+    let arr = array.slice(i, i + n);
+    res.push(arr);
+  }
+
+  console.log(res);
+  return res;
+}
+eachCons([3, 5, 8, 13], 1); // [[3], [5], [8], [13]]
+eachCons([3, 5, 8, 13], 2); // [[3,5], [5,8], [8,13]]
+eachCons([3, 5, 8, 13], 3); // [[3,5,8], [5,8,13]]
