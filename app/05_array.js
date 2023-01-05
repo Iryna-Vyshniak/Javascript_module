@@ -498,3 +498,12 @@ function addWordsLength(str) {
 
 console.log(addWordsLength('apple ban')); //["apple 5", "ban 3"]
 console.log(addWordsLength('you will win')); // ["you 3", "will 4", "win 3"]
+
+// Create a function called args_count that returns the number of arguments provided
+
+const args_count = (...args) => args.length;
+
+args_count(1, 2); // 2;
+args_count(); // 0
+args_count('A', 'B', 'C'); // 3;
+args_count(['foo', 'bar']); // 1
