@@ -37,7 +37,7 @@ console.log(90071992547409919999999n - 9007199254740991999999n);
 console.log(-90071992547409919999999n);
 // console.log(90071992547409919999999.23231n) // error
 
-console.log(10n - 4); // error
+//console.log(10n - 4); // error
 console.log(parseInt(10n) - 4);
 console.log(10n - BigInt(4));
 console.log(5n / 2n); // 2n
@@ -63,3 +63,28 @@ function getRandomBetween(min, max) {
 }
 
 console.log(getRandomBetween(10, 42));
+
+//Сalculate how many years ago the father was twice as old as his son (or in how many years he will be twice as old). The answer is always greater or equal to 0, no matter if it was in the past or it is in the future.
+
+function twiceAsOld(dadYearsOld, sonYearsOld) {
+  const newSonAge = sonYearsOld * 2;
+  const age = dadYearsOld - newSonAge;
+
+  console.log('years ago', Math.abs(age));
+  return Math.abs(age);
+}
+
+twiceAsOld(36, 7); // 22;
+twiceAsOld(55, 30); // 5;
+twiceAsOld(42, 21); // 0;
+twiceAsOld(22, 1); // 20;
+twiceAsOld(29, 0); // 29;
+
+//short variant
+const twiceAsOlds = (dadYearsOld, sonYearsOld) => Math.abs(dadYearsOld - sonYearsOld * 2);
+
+console.log(twiceAsOld(36, 7)); // 22;
+console.log(twiceAsOld(55, 30)); // 5
+console.log(twiceAsOld(42, 21)); // 0;
+console.log(twiceAsOld(22, 1)); // 20;
+console.log(twiceAsOld(29, 0)); // 29;
