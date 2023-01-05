@@ -464,3 +464,37 @@ function getSmallestNum(numbers) {
 
 getSmallestNum([51, 18, 13, 24, 7, 85, 19]); // smallestNumber:  7
 getSmallestNum([101, 455, 6724, 8676]); // smallestNumber:  101
+
+//write a function that takes a String and returns an Array/list with the length of each word added to each element .Note: String will have at least one element; words will always be separated by a space.
+function addLength(str) {
+  const words = str.split(' ');
+  console.log(words);
+  const res = [];
+
+  for (let word of words) {
+    word += ` ${word.length}`;
+    console.log(word);
+    res.push(word);
+  }
+  console.log(res);
+  return res;
+}
+
+addLength('apple ban'); //["apple 5", "ban 3"]
+addLength('you will win'); // ["you 3", "will 4", "win 3"]
+
+//next variant
+function addWordLength(str) {
+  return str.split(' ').map(word => word + ` ${word.length}`);
+}
+
+console.log(addWordLength('apple ban')); //["apple 5", "ban 3"]
+console.log(addWordLength('you will win')); // ["you 3", "will 4", "win 3"]
+
+//next variant
+function addWordsLength(str) {
+  return str.split(' ').map(word => `${word} ${word.length}`);
+}
+
+console.log(addWordsLength('apple ban')); //["apple 5", "ban 3"]
+console.log(addWordsLength('you will win')); // ["you 3", "will 4", "win 3"]
