@@ -507,3 +507,18 @@ args_count(1, 2); // 2;
 args_count(); // 0
 args_count('A', 'B', 'C'); // 3;
 args_count(['foo', 'bar']); // 1
+
+//Write a function that returns both the minimum and maximum number of the given list/array.
+
+const minMax = arr => [Math.min(...arr), Math.max(...arr)];
+// const max = Math.max(...arr);
+// const min = Math.min(...arr);
+// const minmax = [min, max];
+// console.log(minmax);
+// return minmax;
+
+console.log(minMax([1, 2, 3, 4, 5]));
+// [1,5]
+minMax([1, 2, 3, 4, 5]);
+minMax([2334454, 5]); // [5,2334454]
+minMax([1]); // [1,1]
