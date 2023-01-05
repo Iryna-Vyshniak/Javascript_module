@@ -732,3 +732,38 @@ function eachCons(array, n) {
 eachCons([3, 5, 8, 13], 1); // [[3], [5], [8], [13]]
 eachCons([3, 5, 8, 13], 2); // [[3,5], [5,8], [8,13]]
 eachCons([3, 5, 8, 13], 3); // [[3,5,8], [5,8,13]]
+
+//Write two functions max and min which returns the maximum and minimum value of the argument passed into them respectively.
+
+function max(...args) {
+  const numbers = args.flat(Infinity).map(num => Number(num));
+
+  if (!numbers.length) return 0;
+  if (numbers.includes(NaN)) return NaN;
+
+  const max = numbers.reduce((num1, num2) => (num1 > num2 ? num1 : num2));
+  console.log(max);
+  return max;
+}
+
+function min(...args) {
+  const numbers = args.flat(Infinity).map(num => Number(num));
+
+  if (!numbers.length) return 0;
+  if (numbers.includes(NaN)) return NaN;
+
+  const min = numbers.reduce((num1, num2) => (num1 < num2 ? num1 : num2));
+  console.log(min);
+  return min;
+}
+
+max([]); // 0
+max([[], [-4]]); // -4
+max(1, 2, [3, ['4r']]); // NaN
+max(1, 2, 3, ['4']); // 4
+max(1, 2, 3, 4); // 4;
+max(1, 2, [3, 4]); // 4;
+max(1, 2, [3, [4]]); // 4
+min(1, 2, 3, 4); // 1
+min([1, 2], 3, 4); // 1
+min(1, 2, [3, [4, 0]]); // 0
