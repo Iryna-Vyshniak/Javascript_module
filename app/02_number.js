@@ -88,3 +88,31 @@ console.log(twiceAsOld(55, 30)); // 5
 console.log(twiceAsOld(42, 21)); // 0;
 console.log(twiceAsOld(22, 1)); // 20;
 console.log(twiceAsOld(29, 0)); // 29;
+
+//unction accepts 1 parameter:n, n is the number of hotdogs a customer will buy, different numbers have different prices (refer to the following table), return how much money will the customer spend to buy that number of hotdogs.
+// number of hotdogs	price per unit (cents)
+// n < 5	            100
+// n >= 5 and n < 10	95
+// n >= 10	          90
+function saleHotdogs(n) {
+  return n < 5 ? n * 100 : n >= 5 && n < 10 ? n * 95 : n >= 10 ? n * 90 : n;
+}
+
+console.log(saleHotdogs(1)); // / 100
+console.log(saleHotdogs(4)); // 400
+console.log(saleHotdogs(5)); // 475
+console.log(saleHotdogs(9)); // 855
+console.log(saleHotdogs(10)); // 900
+console.log(saleHotdogs(100)); // 9000
+
+// refactor
+function saleHotdog(n) {
+  return n < 5 ? n * 100 : n < 10 ? n * 95 : n * 90;
+}
+
+console.log(saleHotdog(1)); // / 100
+console.log(saleHotdog(4)); // 400
+console.log(saleHotdog(5)); // 475
+console.log(saleHotdog(9)); // 855
+console.log(saleHotdog(10)); // 900
+console.log(saleHotdog(100)); // 9000
