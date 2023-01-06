@@ -50,3 +50,48 @@ console.log(output_4);
 function removeExclamationMarks(s) {
   return s.split('!').join('');
 }
+
+//reverse string and omit all non-alphabetic characters. For str = "krishan", the output should be "nahsirk". For str = "ultr53o?n", the output should be "nortlu".
+
+const reverseLetter = str =>
+  str
+    .replaceAll(/[^a-zа-яё]/gi, '')
+    .split('')
+    //.filter(x => isNaN(x))
+    .reverse()
+    .join('');
+
+console.log(reverseLetter('krishan')); // 'nahsirk'
+console.log(reverseLetter('ultr53o?n')); // 'nortlu'
+console.log(reverseLetter('ab23c')); // 'cba'
+console.log(reverseLetter('krish21an')); // 'nahsirk'
+
+// const str = '1. Как удалить пробелы из строки с помощью JavaScript?';
+// str = str.replace(/\s/g, '');
+// const str = '2. Как  удалить  двойные  пробелы  из  строки  с  помощью  JavaScript?';
+// str = str.replace(/\s+/g, ' ');
+// const str = '3. Как удалить все буквы из строки с помощью JavaScript?';
+// str = str.replace(/[a-zа-яё]/gi, '');
+// const str = '4. Как удалить всё, кроме букв с помощью JavaScript?';
+// str = str.replace(/[^a-zа-яё]/gi, '');
+// const str = '5. Как удалить всё, кроме букв и пробелов с помощью JavaScript?';
+// str = str.replace(/[^a-zа-яё\s]/gi, '');
+// const str = '6. Как удалить цифры из строки с помощью JavaScript?';
+// str = str.replace(/[0-9]/g, '');
+// const str = '7. Как удалить все, кроме цифр из строки с помощью JavaScript?';
+// str = str.replace(/[^0-9]/g, '');
+// const str = '8. Как удалить всё, кроме 0123456789, . и , из строки с помощью JavaScript?';
+// str = str.replace(/[^0-9,.]/g, ' ');
+// const str = '9. Как удалить всё, кроме цифр, букв и пробелов из строки с помощью JavaScript?';
+// str = str.replace(/[^a-zа-яё0-9\s]/gi, ' ');
+// const str = '10. Как удалить 😀😃😄😁😆😅😂🤣😇из строки с помощью JavaScript?';
+// str = str.replace(
+//   /([\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83[\uDD10-\uDDFF])/g,
+//   ''
+// );
+
+// next variant
+// Метод match() возвращает получившиеся совпадения при сопоставлении строки с регулярным выражением.
+function reverseLetters(str) {
+  return str.match(/[a-z]/gi).reverse().join('');
+}
