@@ -89,11 +89,13 @@ console.log(twiceAsOld(42, 21)); // 0;
 console.log(twiceAsOld(22, 1)); // 20;
 console.log(twiceAsOld(29, 0)); // 29;
 
-//unction accepts 1 parameter:n, n is the number of hotdogs a customer will buy, different numbers have different prices (refer to the following table), return how much money will the customer spend to buy that number of hotdogs.
+//function accepts 1 parameter:n, n is the number of hotdogs a customer will buy, different numbers have different prices (refer to the following table), return how much money will the customer spend to buy that number of hotdogs.
 // number of hotdogs	price per unit (cents)
 // n < 5	            100
 // n >= 5 and n < 10	95
 // n >= 10	          90
+
+// use ternary operator to complete it.
 function saleHotdogs(n) {
   return n < 5 ? n * 100 : n >= 5 && n < 10 ? n * 95 : n >= 10 ? n * 90 : n;
 }
@@ -116,3 +118,12 @@ console.log(saleHotdog(5)); // 475
 console.log(saleHotdog(9)); // 855
 console.log(saleHotdog(10)); // 900
 console.log(saleHotdog(100)); // 9000
+
+//Given a non-empty array of integers, return the result of multiplying the values together in order. Example:
+// [1, 2, 3, 4] => 1 * 2 * 3 * 4 = 24
+
+const grow = x => x.reduce((currentEl, nextEl) => currentEl * nextEl, 1);
+
+console.log(grow([1, 2, 3])); // 6
+console.log(grow([4, 1, 1, 1, 4])); // 16
+console.log(grow([2, 2, 2, 2, 2, 2])); // 64
