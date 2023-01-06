@@ -91,7 +91,24 @@ console.log(reverseLetter('krish21an')); // 'nahsirk'
 // );
 
 // next variant
-// Метод match() возвращает получившиеся совпадения при сопоставлении строки с регулярным выражением.
+// Метод match() возвращает получившиеся совпадения при сопоставлении строки с регулярным выражением. Возвращаемое значение array. Объект Array, содержащий результаты сопоставления, или null, если ничего не было сопоставлено.
 function reverseLetters(str) {
   return str.match(/[a-z]/gi).reverse().join('');
+}
+
+console.log(reverseLetters('krishan')); // 'nahsirk'
+console.log(reverseLetters('ultr53o?n')); // 'nortlu'
+console.log(reverseLetters('ab23c')); // 'cba'
+console.log(reverseLetters('krish21an')); // 'nahsirk'
+
+//Simple, remove the spaces from the string, then return the resultant string.
+const noSpace = x => x.match(/[^\s]/gi).join('');
+
+console.log(noSpace('8 j 8   mBliB8g  imjB8B8  jl  B')); // '8j8mBliB8gimjB8B8jlB'
+console.log(noSpace('8 8 Bi fk8h B 8 BB8B B B  B888 c hl8 BhB fd')); //'88Bifk8hB8BB8BBBB888chl8BhBfd'
+console.log(noSpace('8aaaaa dddd r     ')); // '8aaaaaddddr'
+
+//next variant
+function noSpaces(x) {
+  return x.split(' ').join('');
 }
