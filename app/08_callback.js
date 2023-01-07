@@ -939,12 +939,16 @@ const salary = (teacherName, salary = 0) => {
   // private variable
   let baseSalary = salary;
 
+  //interface
   return {
     raise(amount) {
+      if (amount > 1000) {
+        return `Are you awesome?`;
+      }
       baseSalary += amount;
     },
     lower(amount) {
-      baseSalary -= amount;
+      return (baseSalary -= amount);
     },
     currentSalary(amount) {
       return `${teacherName}'s current salary is ${baseSalary}$`;
@@ -957,8 +961,14 @@ console.log(mathTeacher); // {raise: ƒ, lower: ƒ, currentSalary: ƒ}
 mathTeacher.currentSalary(); // undefined
 console.log(mathTeacher.currentSalary()); // Oncu's current salary is 700$
 
-console.log(mathTeacher.raise(100)); // undefined
+mathTeacher.raise(100);
 console.log(mathTeacher.currentSalary()); // Oncu's current salary is 800$
 
-console.log(mathTeacher.lower(30)); // undefined
-console.log(mathTeacher.currentSalary()); // Oncu's current salary is 770$
+mathTeacher.lower(30); // undefined
+console.log(mathTeacher.lower(30)); // 740 => 800 - 30 - 30
+// console.log(mathTeacher.lower()); // NaN
+console.log(mathTeacher.currentSalary()); // Oncu's current salary is 740$
+
+mathTeacher.raise(15000);
+console.log(mathTeacher.raise(15000)); // Are you awesome?
+console.log(mathTeacher.currentSalary()); // Oncu's current salary is 740$
