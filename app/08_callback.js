@@ -932,3 +932,33 @@ myLib.getValue(); // undefined
 console.log(myLib.getValue()); // 1
 myLib.add(10);
 console.log(myLib.getValue()); // 11
+
+// closure salary
+
+const salary = (teacherName, salary = 0) => {
+  // private variable
+  let baseSalary = salary;
+
+  return {
+    raise(amount) {
+      baseSalary += amount;
+    },
+    lower(amount) {
+      baseSalary -= amount;
+    },
+    currentSalary(amount) {
+      return `${teacherName}'s current salary is ${baseSalary}$`;
+    },
+  };
+};
+
+const mathTeacher = salary('Oncu', 700);
+console.log(mathTeacher); // {raise: ƒ, lower: ƒ, currentSalary: ƒ}
+mathTeacher.currentSalary(); // undefined
+console.log(mathTeacher.currentSalary()); // Oncu's current salary is 700$
+
+console.log(mathTeacher.raise(100)); // undefined
+console.log(mathTeacher.currentSalary()); // Oncu's current salary is 800$
+
+console.log(mathTeacher.lower(30)); // undefined
+console.log(mathTeacher.currentSalary()); // Oncu's current salary is 770$
