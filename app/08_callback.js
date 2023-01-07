@@ -876,3 +876,34 @@ sheffStefan('potato'); // Stefan make potato
 
 const sheffNicholas = makeSheff('Nicholas');
 sheffNicholas('soup with cheese'); // Nicholas make soup with cheese
+
+// closure rounders
+
+function rounders(num, quantity) {
+  return Number(num.toFixed(quantity));
+}
+
+console.log(rounders(2.34565, 2)); //2.35
+
+function getRounder(quantity) {
+  function rounders(num) {
+    return Number(num.toFixed(quantity));
+  }
+  return rounders;
+}
+
+const rounder1 = getRounder(1);
+console.log(rounder1(3.342341)); // 3.3
+console.log(rounder1(8.042342)); // 8
+
+const rounder2 = getRounder(2);
+console.log(rounder2(3.342341)); // 3.34
+console.log(rounder2(8.042342)); // 8.04
+
+const rounder3 = getRounder(3);
+console.log(rounder3(3.342343)); // 3.342
+console.log(rounder3(8.042344)); // 8.042
+
+const rounder4 = getRounder(4);
+console.log(rounder4(3.342343)); // 3.3423
+console.log(rounder4(8.042344)); // 8.0423
