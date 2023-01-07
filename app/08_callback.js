@@ -853,3 +853,26 @@ const fnC = fnA('HI!');
 console.log(fnC); // () => {console.log(`${parameter} ${innerVaiableFnA} and it's call innerFnB`);}
 
 fnC(); // HI! It's inner fnA and it's call innerFnB
+
+// make dish
+
+// const makeDish = (sheffName, dish) => {
+// console.log(`${sheffName} make ${dish}`);
+// };
+
+const makeSheff = name => {
+  const makeDish = dish => {
+    console.log(`${name} make ${dish}`);
+  };
+  return makeDish;
+};
+
+makeSheff('Stefan'); // undefined
+
+const sheffStefan = makeSheff('Stefan');
+console.log(sheffStefan); // (sheffName, dish) => {console.log(`${sheffName} make ${dish}`);}
+sheffStefan(); // Stefan make undefined
+sheffStefan('potato'); // Stefan make potato
+
+const sheffNicholas = makeSheff('Nicholas');
+sheffNicholas('soup with cheese'); // Nicholas make soup with cheese
