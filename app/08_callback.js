@@ -907,3 +907,28 @@ console.log(rounder3(8.042344)); // 8.042
 const rounder4 = getRounder(4);
 console.log(rounder4(3.342343)); // 3.3423
 console.log(rounder4(8.042344)); // 8.0423
+
+// closure value
+
+function myLibFactory() {
+  let value = 1;
+
+  const add = num => {
+    value += num;
+  };
+
+  return {
+    add,
+    getValue() {
+      return value;
+    },
+  };
+}
+
+const myLib = myLibFactory();
+console.log(myLib); // {add: ƒ, getValue: ƒ}
+console.log(myLib.getValue); // getValue() {return value;}
+myLib.getValue(); // undefined
+console.log(myLib.getValue()); // 1
+myLib.add(10);
+console.log(myLib.getValue()); // 11
