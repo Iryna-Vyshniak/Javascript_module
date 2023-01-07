@@ -824,7 +824,7 @@ function getFruitPrice(fruit) {
 
 console.log(filterItem(fruitsCart, getFruitPrice)); //
 
-// CLOSURE FUNCTION
+// CLOSURE FUNCTION  ======================================================================================
 
 //Замыкание (англ. closure) в программировании — функция первого класса, в теле которой присутствуют ссылки на переменные, объявленные вне тела этой функции в окружающем коде и не являющиеся её параметрами.
 
@@ -972,3 +972,39 @@ console.log(mathTeacher.currentSalary()); // Oncu's current salary is 740$
 mathTeacher.raise(15000);
 console.log(mathTeacher.raise(15000)); // Are you awesome?
 console.log(mathTeacher.currentSalary()); // Oncu's current salary is 740$
+
+// ARROW FUNCTION ==============================================================================
+
+const arrowFn = () => {
+  return {
+    name: 'Harry',
+  };
+};
+
+console.log(arrowFn()); // {name: 'Harry'}
+
+const arrowFnA = () => ({ name: 'Harry' });
+console.log(arrowFnA()); // {name: 'Harry'}
+
+// INLINE FUNCTION ===============================================================================
+
+const fnD = (arr, test) => {
+  const filterArr = [];
+
+  for (const num of arr) {
+    const passed = test(num);
+
+    if (passed) {
+      filterArr.push(num);
+    }
+  }
+  return filterArr;
+};
+
+const getEqual = num => num > 12;
+
+const fnE = fnD([10, 5, 13, 234], getEqual);
+console.log(fnE); //  [13, 234]
+
+const fnF = fnD([10, 5, 13, 234], num => num > 12); // INLINE FUNCTION
+console.log(fnF); //[13, 234]
