@@ -822,7 +822,9 @@ function getFruitPrice(fruit) {
   return fruit.price >= 30;
 }
 
-console.log(filterItem(fruitsCart, getFruitPrice)); //
+console.log(filterItem(fruitsCart, getFruitPrice)); // [{…}, {…}, {…}]
+const fnFilter = filterItem(fruitsCart, fruit => fruit.price >= 30); // inline function
+console.log(fnFilter); // [{…}, {…}, {…}]
 
 // CLOSURE FUNCTION  ======================================================================================
 
