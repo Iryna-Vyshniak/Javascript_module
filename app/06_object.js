@@ -1881,3 +1881,96 @@ console.log(atTheOldToads.addPotion({ name: 'Dragon breath', price: 700 }));
 console.log(atTheOldToads.addPotion({ name: 'Stone skin', price: 240 }));
 //Error! Potion Stone skin is already in your inventory!
 console.log(atTheOldToads.removePotion('Dragon breath'));
+
+//
+const images = [
+  {
+    url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'White and Black Long Fur Cat',
+  },
+  {
+    url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+  },
+  {
+    url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Group of Horses Running',
+  },
+];
+
+const galleryMarkup = images
+  .map(image => `<li><img src="${image.url}" alt="${image.alt}" width = "300" height = auto></li>`)
+  .join('');
+
+console.log(galleryMarkup);
+
+const gallery = document.querySelector('.gallery');
+console.log(gallery);
+
+gallery.insertAdjacentHTML('afterbegin', galleryMarkup);
+
+//
+const us = {
+  name: 'mango',
+  age: 20,
+  hobby: 'html',
+  premium: true,
+};
+
+us.mood = 'happy';
+us.skydiving = 'skydiving';
+us.premium = !us.premium;
+
+const usKeys = Object.keys(us); // ['name', 'age', 'hobby', 'premium', 'mood', 'skydiving']
+
+for (const key of usKeys) {
+  const value = us[key];
+  //console.log(value);
+  console.log(`${key}: ${value}`);
+  //name: mango, age: 20, hobby: html, premium: false, mood: happy, skydiving: skydiving
+}
+
+console.log(usKeys);
+
+/*
+? Напишіть ф-цію calcTotalPrice(stones, stoneName), яка приймає масив об'єктів та рядок з назвою каменю.
+? Ф-ція рахує і повертає загальну вартість каміння з таким ім'ям.
+*/
+
+const stones = [
+  { name: 'Смарагд', price: 1300, quantity: 4 },
+  { name: 'Діамант', price: 2700, quantity: 3 },
+  { name: 'Сапфір', price: 400, quantity: 7 },
+  { name: 'Щебінь', price: 200, quantity: 2 },
+];
+
+const calcTotalPrice = function (stones, stoneName) {
+  for (const stone of stones) {
+    if (stone.name === stoneName) {
+      return stone.price * stone.quantity;
+    }
+  }
+
+  return `${stoneName} закінчився`;
+};
+
+console.log(calcTotalPrice(stones, 'Смарагд')); // 5200
+console.log(calcTotalPrice(stones, 'Діамант')); // 8100
+console.log(calcTotalPrice(stones, 'Аконіт')); // Каменя за такою назвою не знайдено
+
+// next variant
+const calcTotalPrices = function (array, stoneName) {
+  let stone;
+  for (const item of array) {
+    if (item.name === stoneName) {
+      stone = item;
+      break;
+    }
+  }
+  if (!stone) return `${stoneName} закінчився`;
+  return stone.price * stone.quantity;
+};
+
+console.log(calcTotalPrices(stones, 'Смарагд')); // 5200
+console.log(calcTotalPrices(stones, 'Діамант')); // 8100
+console.log(calcTotalPrices(stones, 'Аконіт')); // Каменя за такою назвою не знайдено
