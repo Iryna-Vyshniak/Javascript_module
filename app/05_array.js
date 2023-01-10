@@ -530,3 +530,22 @@ console.log(invert([1, 2, 3, 4, 5])); // [-1, -2, -3, -4, -5]
 console.log(invert([1, -2, 3, -4, 5])); // [-1, 2, -3, 4, -5]
 console.log(invert([])); // []
 console.log(invert([0])); // [-0]
+
+//find longest word
+const stringSimple = 'The brown fox jumps over lazy dog';
+
+function findLongestWord(string) {
+  const words = string.split(' ');
+  console.log(words); //['The', 'brown', 'fox', 'jumps', 'over', 'lazy', 'dog']
+
+  let longestWord = words[0];
+  console.log(longestWord); // the
+
+  for (const word of words) {
+    if (word.length > longestWord.length) {
+      longestWord = word;
+    }
+  }
+  return longestWord;
+}
+console.log(findLongestWord(stringSimple)); //brown
