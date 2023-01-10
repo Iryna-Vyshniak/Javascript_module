@@ -331,3 +331,15 @@ console.log(
     email: 'snow@mail.com',
   })
 ); // {id: null, createAt: null, list: 'default', name: 'Ariya', email: 'snow@mail.com'}
+
+function generateId() {
+  return '_' + Math.random().toString(36).slice(2, 9);
+}
+console.log(generateId()); // _ob06no3
+generateId();
+
+//toString() radix argument must be between 2 and 36
+function generatePsw() {
+  return '_' + Math.random().toString(12).substr(2, 9);
+}
+console.log(generatePsw()); //_68a2b07a8
