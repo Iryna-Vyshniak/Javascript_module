@@ -2201,3 +2201,40 @@ function getBotReports({ companyName, bots }) {
   const { repair, defence } = bots;
   return `${companyName} has ${repair + defence} bots in stock`;
 }
+
+//
+const stonesMarket = [
+  { name: 'Emerald', price: 1300, quantity: 4 },
+  { name: 'Diamond', price: 2700, quantity: 3 },
+  { name: 'Sapphire', price: 400, quantity: 7 },
+  { name: 'Rubble', price: 200, quantity: 2 },
+];
+
+function calcGoods(stones, stoneName) {
+  for (const { name, price, quantity } of stones) {
+    if (name === stoneName) {
+      return price * quantity;
+    }
+  }
+}
+
+console.log(calcGoods(stonesMarket, 'Rubble')); // 400
+
+// 1) Ask the user for the products that he wants to buy
+// 2 ) Add these products to the cart
+// 3) Ask the user until he clicks \"Cancel\" or \"ESC\"
+// 4) Display the list of products in the console
+
+const cart = [];
+let item = '';
+
+// do {
+//   item = prompt('enter products that you want to buy');
+//   if (item !== null) {
+//     console.log('old cart: ', [...cart]); //[]
+//     cart.push(item);
+//     console.log('new cart: ', [...cart]); // ['apple', 'banana', 'kiwi'];
+//   }
+// } while (item !== null);
+
+console.log(cart); //  ['apple', 'banana', 'kiwi'];
