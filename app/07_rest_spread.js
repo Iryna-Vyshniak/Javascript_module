@@ -172,11 +172,11 @@ f5(1, 2, [3, 4], 7, [10, 11], true);
 // 1
 //(5) [2, Array(2), 7, Array(2), true]
 
-const s1 = ([s10, ...s11] = [100, 200, 300, 400]);
-console.log(s11);
+const [first, ...second] = [100, 200, 300, 400];
+console.log(second);
 // (3) [200, 300, 400]
 
-function sum(a, b, ...args) {
+function sums(a, b, ...args) {
   let result = a + b;
   for (let i = 0; i < args.length; i += 1) {
     result += args[i];
@@ -184,9 +184,9 @@ function sum(a, b, ...args) {
   return result;
 }
 
-console.log(sum(1, 2));
+console.log(sums(1, 2));
 // 3
-console.log(sum(1, 2, 3));
+console.log(sums(1, 2, 3));
 // 6
 
 const allSum = (...args) => {
@@ -297,3 +297,37 @@ findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7); //[1, 2]
 findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2); // [17, 89, 2]
 findMatches([10, 24, 41, 6, 9, 19], 24, 11, 9, 23, 41); //  [24, 9, 41]
 findMatches([63, 11, 8, 29], 4, 7, 16); // []
+
+//Supplement the 'createContact(partialContact)' function so that it returns a new one contact object with the 'id' and 'createdAt' properties added, as well as the 'list' with the value "default" if there is no such property in 'partialContact'.
+function createContact(partialContact) {
+  return {
+    list: 'default',
+    ...partialContact,
+    id: Math.floor(Math.random() * 100),
+    createdAt: Date.now(),
+  };
+}
+
+console.log(
+  createContact({
+    name: 'Ariya',
+    email: 'snow@mail.com',
+    list: 'friends',
+  })
+); // {list: 'friends', name: 'Ariya', email: 'snow@mail.com', id: 52, createdAt: 1673379049265}
+
+function createContacts(contact) {
+  return {
+    id: null,
+    createAt: null,
+    list: 'default',
+    ...contact,
+  };
+}
+
+console.log(
+  createContacts({
+    name: 'Ariya',
+    email: 'snow@mail.com',
+  })
+); // {id: null, createAt: null, list: 'default', name: 'Ariya', email: 'snow@mail.com'}
