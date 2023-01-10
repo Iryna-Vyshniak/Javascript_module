@@ -343,3 +343,55 @@ function generatePsw() {
   return '_' + Math.random().toString(12).substr(2, 9);
 }
 console.log(generatePsw()); //_68a2b07a8
+
+//Write the 'transformUsername(user)' function so that it returns a new object, with the 'fullName' property instead of 'firstName' and 'lastName'.
+
+const transformUsername = ({ firstName, lastName, ...otherProps }) => {
+  return {
+    fullName: `${firstName} ${lastName}`,
+    ...otherProps,
+  };
+};
+console.log(
+  transformUsername({
+    id: 1,
+    firstName: 'Jacob',
+    lastName: 'Mercer',
+    email: 'j.mercer@mail.com',
+    friendCount: 40,
+  })
+); //{fullName: 'Jacob Mercer', id: 1, email: 'j.mercer@mail.com', friendCount: 40}
+
+const user = {
+  email: 'user@gmail.com',
+  age: 12,
+};
+
+const { email, age } = user;
+console.log(email); //user@gmail.com
+console.log(user); //{email: 'user@gmail.com', age: 12}
+
+const userEmail = user.email;
+console.log(userEmail); //user@gmail.com
+console.log('email: ', email); // email:  user@gmail.com
+
+//
+const userCurrent = {
+  emailU: 'userS@gmail.com',
+  ageU: 12,
+};
+
+const { emailU: userCurrentEmail } = userCurrent;
+console.log(userCurrent); // {emailU: 'userS@gmail.com', ageU: 12}
+console.log(userCurrentEmail); //userS@gmail.com
+
+//console.log('email: ', emailU); // Uncaught ReferenceError: emailU is not defined
+
+//
+function foo({ username } = {}) {
+  //{username: 'Bob'}
+  console.log(username); //Bob
+}
+
+foo(); //undefined
+foo({ username: 'Bob' });
