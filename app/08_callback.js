@@ -1010,3 +1010,56 @@ console.log(fnE); //  [13, 234]
 
 const fnF = fnD([10, 5, 13, 234], num => num > 12); // INLINE FUNCTION
 console.log(fnF); //[13, 234]
+
+// ARROW FUNCTION + THIS
+// EXPLICIT RETURN  явный возврат  { return ... }
+// IMPLICIT RETURN  неявный возврат
+
+const add = (...args) => args;
+add(1, 23, 45);
+console.log(add(1, 23, 45)); // [1, 23, 45]
+
+// context this
+//  якщо в стрілочній ф-ції в глобальному полі контексту this - window (undefined)
+const showThis = () => {
+  console.log('this is in showThis: ', this);
+};
+
+showThis(); // this is in showThis: window (undefined)
+// this.showThis(); //Uncaught TypeError:
+
+const showThatThis = function () {
+  console.log('this is in showThatThis: ', this);
+};
+
+showThatThis(); // this is in showThatThis:  undefined
+
+const anybody = { nameAnybody: 'Anybody' };
+
+anybody.showContext = showThis;
+anybody.showContext(); //this is in showThis: window (undefined)
+
+// this в методі
+// arrow how object methods
+const anybodyUser = {
+  fullName: 'Anybody',
+  showName() {
+    console.log('this: ', this); // {fullName: 'Anybody', showName{....}}
+    console.log('this.fullName: ', this.fullName); // 'Anybody'
+
+    const inner = function () {
+      console.log('this is in inner: ', this); // this is in inner:  undefined
+      // console.log('this.fullName: ', this.fullName); // Uncaught TypeError: Cannot read properties of undefined
+    };
+
+    inner();
+
+    const innerArrow = () => {
+      console.log('this is in innerArrow: ', this); // {fullName: 'Anybody', showName{....}}
+      console.log('this.fullName: ', this.fullName); // this.fullName:  Anybody
+    };
+
+    innerArrow();
+  },
+};
+anybodyUser.showName();
