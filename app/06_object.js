@@ -1974,3 +1974,139 @@ const calcTotalPrices = function (array, stoneName) {
 console.log(calcTotalPrices(stones, 'Смарагд')); // 5200
 console.log(calcTotalPrices(stones, 'Діамант')); // 8100
 console.log(calcTotalPrices(stones, 'Аконіт')); // Каменя за такою назвою не знайдено
+
+// Напиши скрипт управління особистим кабінетом інтернет банку. Є об'єкт `account`
+// в якому необхідно реалізувати методи для роботи з балансом та історією
+// транзакцій.
+
+//  * Типів транзакцій всього два.
+//  * Можна покласти чи зняти гроші з рахунку.
+
+const TransactionTypes = {
+  DEPOSIT: 'deposit',
+  WITHDRAW: 'withdraw',
+};
+
+//  * Кожна транзакція це об'єкт із властивостями: id, type та amount
+
+const account = {
+  balance: 0, // Залишок на поточному рахунку
+  transactions: [], // // Історія транзакцій
+
+  //* Метод створює та повертає об'єкт транзакції.
+  //* Приймає суму - amount та тип транзакції - type
+  createTransaction(amount, type) {
+    return {
+      amount,
+      type,
+      id: this.transactions.length,
+    };
+  },
+
+  // Метод, що відповідає за додавання суми до балансу.
+  // Приймає суму транзакції.
+  // Викликає createTransaction для створення об'єкта транзакції
+  // після чого додає його до історії транзакцій
+  deposit(amount) {
+    this.balance += amount;
+    const newTransaction = this.createTransaction(amount, TransactionTypes.DEPOSIT);
+    this.transactions.push(newTransaction);
+  },
+
+  /*
+   * Метод, що відповідає за зняття суми з балансу.
+   * Приймає суму транзакції.
+   * Викликає createTransaction для створення об'єкта транзакції
+   * після чого додає його до історії транзакцій.
+   *
+   * Якщо amount більше ніж поточний баланс, виводь повідомлення
+   * про те, що зняття такої суми не можливе, недостатньо коштів.
+   */
+  withdraw(amount) {
+    this.balance -= amount;
+    const newTransaction = this.createTransaction(amount, TransactionTypes.WITHDRAW);
+    const { amounts, balance } = this;
+    if (amounts > balance) {
+      return `Withdrawal of such an amount is not possible, not enough funds`;
+    }
+    this.transactions.push(newTransaction);
+  },
+
+  //  Метод повертає поточний баланс
+  getBalance() {
+    return this.balance;
+  },
+
+  // Метод шукає та повертає об'єкт транзакції по id
+  getTransactionDetails(id) {
+    for (const transaction of this.transactions) {
+      if (transaction.id === id) {
+        return transaction;
+      }
+    }
+  },
+
+  //  Метод повертає кількість коштів певного типу транзакції з усієї історії транзакцій
+  getTransactionTotal(type) {
+    let total = 0;
+
+    for (const transaction of this.transactions) {
+      if (transaction.type === type) {
+        total += transaction.amount;
+      }
+    }
+    return total;
+  },
+};
+
+console.log(account.getBalance()); // 0
+account.deposit(450);
+account.deposit(50);
+account.withdraw(100);
+account.deposit(100);
+account.withdraw(50);
+console.log(account.getBalance()); // 450
+
+console.log(account.getTransactionDetails(0)); // {amount: 450, type: 'deposit', id: 0}
+// transactions
+// {amount: 450, type: 'deposit', id: 0}
+// {amount: 50, type: 'deposit', id: 1}
+// {amount: 100, type: 'withdraw', id: 2}
+// {amount: 100, type: 'deposit', id: 3}
+// {amount: 50, type: 'withdraw', id: 4}
+console.log(account.getTransactionTotal(TransactionTypes.DEPOSIT)); // 600
+console.log(account.getTransactionTotal(TransactionTypes.WITHDRAW)); // 150
+
+console.log(account);
+/*
+{
+    "balance": 450,
+    "transactions": [
+        {
+            "amount": 450,
+            "type": "deposit",
+            "id": 0
+        },
+        {
+            "amount": 50,
+            "type": "deposit",
+            "id": 1
+        },
+        {
+            "amount": 100,
+            "type": "withdraw",
+            "id": 2
+        },
+        {
+            "amount": 100,
+            "type": "deposit",
+            "id": 3
+        },
+        {
+            "amount": 50,
+            "type": "withdraw",
+            "id": 4
+        }
+    ]
+}
+*/
