@@ -2110,3 +2110,94 @@ console.log(account);
     ]
 }
 */
+
+// DESTRUCTURING =========================================================
+
+/// Rewrite the function so that it takes a single parameter object instead of a set of independent arguments.
+// // was
+// console.log(computeBMI('1.75', '88,3));
+// console.log(computeBMI('68,3', '1.65'));
+// console.log(computeBMI('118,3', '1.95'));
+
+// must be
+console.log(
+  computeBMI({
+    weight: '88,3',
+    height: '1.75',
+  })
+); // 2.8
+
+function computeBMI({ weight, height }) {
+  const numericWeight = Number(weight.replace(',', '.'));
+  const numericHeight = Number(height.replace(',', '.'));
+  return Number((numericWeight / numericHeight ** 2).toFixed(1));
+}
+
+// Rewrite the function so that it takes a single parameter object instead of a set of independent arguments.
+// // was
+// // printContactsInfo(
+// //   'Jacob,William,Solomon,Artemis',
+// //   '89001234567,89001112233,890055566377,890055566300',
+// // );
+
+// // must be
+printContactsInfo({
+  names: 'Jacob,William,Solomon,Artemis',
+  phones: '89001234567,89001112233,890055566377,890055566300',
+});
+
+function printContactsInfo({ names, phones }) {
+  const namesList = names.split(',');
+  const phonesList = phones.split(',');
+  for (let i = 0; i < namesList.length; i += 1) {
+    return `${namesList[i]}: ${phonesList[i]}`;
+  }
+}
+
+const print = printContactsInfo({
+  names: 'Jacob,William,Solomon,Artemis',
+  phones: '89001234567,89001112233,890055566377,890055566300',
+});
+console.log(print); // Jacob: 89001234567;
+
+//next variant
+function printContactsData(data) {
+  const { names, phones } = data;
+  const namesList = names.split(',');
+  const phonesList = phones.split(',');
+  for (let i = 0; i < namesList.length; i += 1) {
+    return `${namesList[i]}: ${phonesList[i]}`;
+  }
+}
+const prints = printContactsData({
+  names: 'Jacob,William,Solomon,Artemis',
+  phones: '89001234567,89001112233,890055566377,890055566300',
+});
+console.log(prints); //Jacob: 89001234567
+
+// Deep destructuring ==========================================
+
+// Rewrite the function so that it takes a single parameter object instead of a set of independent arguments.
+// It was
+// console.log(getBotReport('Cyberdyne Systems', 150, 50));
+
+// wait
+console.log(
+  getBotReport({
+    companyName: 'Cyberdyne Systems',
+    bots: {
+      repair: 150,
+      defence: 50,
+    },
+  })
+); // "Cyberdyne Systems has 200 bots in stock"
+
+function getBotReport({ companyName, bots: { repair, defence } }) {
+  return `${companyName} has ${repair + defence} bots in stock`;
+}
+
+// next variant
+function getBotReports({ companyName, bots }) {
+  const { repair, defence } = bots;
+  return `${companyName} has ${repair + defence} bots in stock`;
+}
