@@ -486,3 +486,31 @@ outerShowThis(); // undefined
 
 const outerShowTitle = book.showTitle;
 // outerShowTitle(); // TypeError: Cannot read properties of undefined (reading 'title')
+
+const ingredients = ['Potatoes', 'Mushrooms', 'Garlic', 'Tomatos', 'Herbs', 'Condiments'];
+const ingredientsRef = document.querySelector('#ingredients');
+
+// const itemsRef = ingredients.map(ingredient => {
+//   const item = document.createElement('li');
+//   item.textContent = ingredient;
+//   item.classList.add('item');
+//   return item;
+// });
+
+// ingredientsRef.append(...itemsRef);
+// console.log(ingredientsRef); // <ul id="ingredients">...</ul>
+
+const ingredientsMarkup = [];
+
+function createIngredientsList(ingredients = []) {
+  ingredients.map(elem => {
+    const item = document.createElement('li');
+    item.textContent = elem;
+    item.classList.add('item');
+    ingredientsMarkup.push(item);
+  });
+  return ingredientsRef.append(...ingredientsMarkup);
+}
+
+createIngredientsList(ingredients);
+console.log(ingredientsRef); //<ul id="ingredients">...</ul>
