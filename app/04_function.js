@@ -26,7 +26,7 @@ const interval = setInterval(function () {
 }, 1000);
 
 // 3 Стрелочные функции
-function greet() {
+function greetUser() {
   console.log('Aloha - ');
 }
 
@@ -304,7 +304,7 @@ buttonClick();
 // 1
 (() => {
   let p = 0;
-  let q = document.querySelector('.b-1');
+  let q = document.querySelector('.js-b-1');
 
   q.onclick = () => {
     p += 1;
@@ -318,7 +318,7 @@ buttonClick();
 // 2
 (() => {
   let p = 10;
-  let q = document.querySelector('.b-2');
+  let q = document.querySelector('.js-b-2');
 
   q.onclick = () => {
     p += 1;
@@ -424,41 +424,65 @@ const people = [
   ['Olha', 'Nickol'],
 ];
 
-/*
-result = [
-{firstName: 'Mike', lastName: 'Anderson'}
-{firstName: 'Olha', lastName: 'Nickol'}
-]
-  */
-
 const mapDateBase = peopleArr =>
   peopleArr.map(person => ({ firstName: person[0], lastName: person[1] }));
 
 const newUsers = mapDateBase(people);
-console.log(newUsers);
+console.log(newUsers); //  [
+//   { firstName: 'Mike', lastName: 'Anderson' },
+//   { firstName: 'Olha', lastName: 'Nickol' },
+// ];
 
-// ===========================================================================================
+// ========================================================================================
 const ages = [18, 14, 22, 34, 43, 18, 20, 34, 24];
 
 // const getAvarageAges = arrAges => Math.round(arrArges.reduce((acc, age) => (acc + age) / arrAges.length));
 
-const getAvarageAges = arrAges =>
-  Math.round(arrArges.reduce((acc, age) => acc + age / arrAges.length, 0));
+const getAvarageAges = arrArges =>
+  Math.round(arrArges.reduce((acc, age) => acc + age / arrArges.length, 0));
 
-// ===========================================================================================
-const getObjectAges = arrAges => {
+console.log(getAvarageAges(ages)); // 25
+
+// =========================================================================================
+const getObjectAges = arrArges => {
   return arrArges.reduce((acc, age) => {
     const objAge = { age };
     acc.push(objAge);
     return acc;
   }, []);
 };
-// [{age: 18}, {age: 14}]
-console.log(getAvarageAge(ages));
 
-// ===============================================================================================
+console.log(getObjectAges(ages)); //  [{age: 18}, {age: 14}, {age: 22}, {…}, {…}, {…}, {…}, {…}, {…}]
+
+// ==========================================================================================
 // from object to sort array with filter names
+const peopleData = [
+  { firstName: 'Mike', lastName: 'Anderson' },
+  { firstName: 'Olha', lastName: 'Nickolson' },
+];
+
 const getArrayofNewPeople = arr =>
   arr
     .map(person => `${person.firstName} ${person.lastName}`)
     .sort((currentName, nextName) => currentName.localeCompare(nextName));
+
+console.log(getArrayofNewPeople(peopleData)); // ['Mike Anderson', 'Olha Nickolson']
+
+// contex this
+const book = {
+  title: 'React for beginners',
+  showThis() {
+    console.log('showThis -> this: ', this); // {title: 'React for beginners', showThis: ƒ, showTitle: ƒ}
+  },
+  showTitle() {
+    console.log('showTitle -> this.title: ', this.title); //
+  },
+};
+
+book.showThis(); // Какой this ???
+
+const outerShowThis = book.showThis;
+outerShowThis(); // undefined
+
+const outerShowTitle = book.showTitle;
+// outerShowTitle(); // TypeError: Cannot read properties of undefined (reading 'title')
