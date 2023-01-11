@@ -10,9 +10,8 @@
  * - Не в строгом режиме = window
  */
 
-
 // =================================== THIS ====================
-const btn = document.querySelector('.button');
+const btn = document.querySelector('button');
 
 btn.addEventListener('click', log);
 
@@ -20,9 +19,10 @@ function log() {
   console.log(this);
   // console.dir(this) => button
 
-  setTimeout(() => { console.log(this); }, 100);
+  setTimeout(() => {
+    console.log(this);
+  }, 100);
   // button, on click => button
-
 
   // setTimeout(function () {
   //   console.log(this);
@@ -35,9 +35,6 @@ log();
 // first => use strict => undefined
 // without use strict => window
 // when click =>  < button type = "button" class="button" > Click me</ >
-
-
-
 
 // ======================================================
 // const ladder = {
@@ -63,7 +60,6 @@ log();
 // console.log(ladder.up().up().up().up().up().showStep().down());
 
 // ========================================================
-
 
 // =======================================  BIND ==========================================================
 /* FULL VERSION
@@ -111,10 +107,10 @@ calcOrder(showMessage.bind(this, 'Get surprise!'), 5, 15, 'milk');
 const newUser = {
   name: 'Nick',
   getUserName(age, title) {
-    console.log(this.name);
+    // console.log(this.name); //TypeError: Cannot read properties of undefined (reading 'name')
     console.log(age);
     console.log(title);
-    this.age = age;
+    // this.age = age; //  TypeError: Cannot set properties of undefined (setting 'age')
     // console.log(this); //   window
   },
 };
@@ -169,7 +165,7 @@ console.log(this); //  window
 const nextUser = {
   name: 'Nick',
   getNextUserName: () => {
-    console.log(this.name); //   undefined
+    // console.log(this.name); //  TypeError: Cannot read properties of undefined (reading 'name')
     console.log(this); //  window
   },
 };
@@ -191,7 +187,6 @@ const nextUser2 = {
 };
 
 nextUser2.getNextUserName();
-
 
 // Rазведывательному управлению SI:7, нужно безопасно хранить добытые данные. Твоё задание абсолютно засекречено!
 // Создай функцию makeSecret, которая принимает строки secret и password и возвращает функцию storage с секретом.
@@ -231,3 +226,30 @@ function makeSecret(secret, pasw) {
   };
   return innerStorage;
 }
+
+///
+const objA = {
+  x: 5,
+  showThis() {
+    console.log('this in objA showThis: ', this); //  {x: 5, showThis: ƒ}
+    console.log('this in objA showThis: ', this.x); // 5
+
+    const objB = {
+      y: 10,
+      showThisB() {
+        console.log('this in objB showThisB: ', this); //  {y: 10, showThisB: ƒ}
+        console.log('this in objB showThisB: ', this.y); // 10
+      },
+      // don`t use below - useless (unhelpful)
+      showThisArrow: () => {
+        console.log('this in objB showThisArrow: ', this); //  {x: 5, showThis: ƒ}
+        console.log('this in objB showThisArrow: ', this.x); //5
+        console.log('this in objB showThisArrow: ', this.y); // undefined
+      },
+    };
+    objB.showThisB();
+    objB.showThisArrow();
+  },
+};
+
+objA.showThis();
