@@ -49,6 +49,7 @@ console.log(newNumbers); // undefined
 
 const numbersArr = [5, 10, 15, 20, 25];
 
+//=============================================================================================
 /*
  * Array.prototype.map()
  * - Поелементо перебирає оригінальний масив
@@ -118,3 +119,62 @@ console.log(updatedPlayers);
 // {id: 'player-3', name: 'Kiwi',   timePlayed: 330, points: 48, online: true}
 // {id: 'player-4', name: 'Ajax',   timePlayed: 150, points: 71, online: false}
 // {id: 'player-5', name: 'Chelsy', timePlayed: 80,  points: 48, online: true}
+
+//==============================================================================================
+/*
+ * Array.prototype.filter()
+- Поелементо перебирає оригінальний масив
+ * - Повертає новий масив (з елементами або порожнім)
+ * - Додає в повертається масив елементи, які задовольняють умові коллбек-функції: 
+ * - якщо коллбек повернув true елемент додається в масив, що повертається
+ * - якщо коллбек повернув false елемент НЕ додається в масив, що повертається
+ 
+* - element by element iterates over the original array
+ * - Returns a new array (with elements or empty)
+ * - Adds elements to the returned array that satisfy the condition of the callback function
+ * - if the callback returned true the element is added to the returned array
+ * - if the callback returned false the element is NOT added to the returned array
+ */
+
+const simpleNumbers = [5, 10, 15, 20, 25];
+
+const filteredNumbers = numbers.filter(number => number < 10 || number > 20);
+// console.log(filteredNumbers);
+
+const playersSocks = [
+  { id: 'player-1', name: 'Mango', timePlayed: 310, points: 54, online: false },
+  { id: 'player-2', name: 'Poly', timePlayed: 470, points: 92, online: true },
+  { id: 'player-3', name: 'Kiwi', timePlayed: 230, points: 48, online: true },
+  { id: 'player-4', name: 'Ajax', timePlayed: 150, points: 71, online: false },
+  { id: 'player-5', name: 'Chelsy', timePlayed: 280, points: 48, online: true },
+];
+
+/*
+ * Get an array of all online players
+ */
+
+const onlinePlayers = players.filter(({ online }) => online);
+// const onlinePlayers = players.filter(player.online => player.online);
+console.log(onlinePlayers);
+// {id: 'player-2', name: 'Poly', timePlayed: 470, points: 92, online: true}
+// {id: 'player-3', name: 'Kiwi', timePlayed: 230, points: 48, online: true}
+// {id: 'player-5', name: 'Chelsy', timePlayed: 80, points: 48, online: true}
+
+/*
+ * Get an array of all offline players
+ */
+
+// const offlinePlayers = players.filter(player => !player.online);
+const offlinePlayers = players.filter(({ online }) => !online);
+console.log(offlinePlayers);
+// {id: 'player-1', name: 'Mango', timePlayed: 310, points: 54, online: false}
+// {id: 'player-4', name: 'Ajax', timePlayed: 150, points: 71, online: false}
+
+/*
+ * Get a list of hardcore players with time over 250
+ */
+
+const hardcorePlayers = players.filter(({ timePlayed }) => timePlayed > 250);
+console.table(hardcorePlayers);
+// {id: 'player-1', name: 'Mango', timePlayed: 310, points: 54, online: false}
+// {id: 'player-2', name: 'Poly', timePlayed: 470, points: 92, online: true}
