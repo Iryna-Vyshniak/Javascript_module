@@ -230,3 +230,34 @@ console.log(findPlayerWithName(players, 'Chelsy'));
 //{id: 'player-5', name: 'Chelsy', timePlayed: 80, points: 48, online: true}
 console.log(findPlayerWithName(players, 'Roberts'));
 //undefined
+
+//================================================================================================
+/*
+ * Array.prototype.every()
+ * - Поелементо перебирає оригінальний масив
+ * - Повертає true якщо всі елементи масиву задовольняють умові
+ *
+ * - element by element iterates over the original array
+ * - Returns true if all elements of the array satisfy the condition
+ */
+
+//1
+// const isAllOnline = players.every(player => player.online);
+const isAllOnline = players.every(({ online }) => online);
+console.log('isAllOnline: ', isAllOnline); // false
+
+//2
+const isBelowThreshold = currentValue => currentValue < 40;
+const array1 = [1, 30, 39, 29, 10, 13];
+console.log(array1.every(isBelowThreshold)); // true
+
+//3
+function isBigEnough(element, index, array) {
+  return element >= 10;
+}
+[12, 5, 8, 130, 44].every(isBigEnough); // false
+[12, 54, 18, 130, 44].every(isBigEnough); // true
+
+//short arrow fn
+[12, 5, 8, 130, 44].every(elem => elem >= 10); // false
+[12, 54, 18, 130, 44].every(elem => elem >= 10); // true
