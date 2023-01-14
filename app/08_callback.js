@@ -1083,3 +1083,29 @@ outerShowThis(); // this undefined
 
 // const outerShowTitle = book.showTitle;
 // outerShowTitle(); // TypeError: Cannot read properties of undefined
+
+//context this
+const makeChangeColor = function () {
+  const changeColor = function (color) {
+    console.log('changeColor -> this', this);
+    //this.color = color;
+  };
+  changeColor(); // this undefined
+
+  const sweater = {
+    color: 'teal',
+  };
+
+  sweater.updateColor = changeColor;
+
+  sweater.updateColor('red'); // {color: 'teal', updateColor: ƒ}
+
+  return sweater.updateColor;
+};
+
+makeChangeColor(); //
+console.log(makeChangeColor());
+//  f (color) {
+//   console.log('changeColor -> this', this);
+//   //this.color = color;
+// }
