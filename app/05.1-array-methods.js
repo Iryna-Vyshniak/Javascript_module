@@ -348,3 +348,59 @@ getBooleanValue(1);
 console.log(getBooleanValue(1)); // true
 getBoolean('field');
 console.log(getBooleanValue('field')); // field
+
+// ==============================================================================================
+/*
+ * Array.prototype.reduce()
+ * - Поелементо перебирає оригінальний масив
+ * - Повертає будь-що 🤯
+ * - Замінює все на світі, але використовувати потрібно з розумом
+ 
+ * - element by element iterates over the original array
+ * - Returns anything 🤯
+ * - Replaces everything in the world, but you need to use it wisely
+ */
+
+//1
+[0, 1, 2, 3, 4].reduce(function (previousValue, currentValue, index, array) {
+  return previousValue + currentValue;
+}); // 10  => (0+1)=>(1+2)=>(3+3)=>(6+4) = 10
+
+// 2
+[0, 1, 2, 3, 4].reduce(function (accumulator, currentValue, index, array) {
+  return accumulator + currentValue;
+}, 10); // 20 => (10+0)=>(10+1)=>(11+2)=>(13+3)=>(16+4) = 20
+
+// 3
+const allNumbers = [5, 10, 15, 20, 25];
+
+const total = allNumbers.reduce((acc, number) => acc + number, 0);
+console.log(total); // 75
+
+// accumulator = 0 -> number = 5 -> return 0 + 5
+// accumulator = 5 -> number = 10 -> return 5 + 10
+// accumulator = 15 -> number = 15 -> return 15 + 15
+// accumulator = 30 -> number = 20 -> return 30 + 20
+// accumulator = 50 -> number = 25 -> return 50 + 25 => 75
+
+// 4  consider the total salary
+
+const salary = {
+  teacher: 100,
+  cooker: 50,
+  secretary: 150,
+};
+
+const totalSalary = Object.values(salary).reduce((acc, salary) => salary + acc, 0);
+console.log(totalSalary); // 300
+
+// 5 Summing values ​​in an array of objects
+const initialValue = 0;
+const arrOfObjects = [{ x: 1 }, { x: 2 }, { x: 3 }];
+
+const sum = arrOfObjects.reduce(
+  (accumulator, currentValue) => accumulator + currentValue.x,
+  initialValue
+);
+
+console.log(sum); // 6
