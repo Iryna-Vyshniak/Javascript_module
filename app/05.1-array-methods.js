@@ -434,3 +434,59 @@ const allbooks = friends.reduce(
 
 console.log(allbooks);
 // ["Alphabet", "Bible", "Harry Potter", "War and peace", "Romeo and Juliet", "The Lord of the Rings", "The Shining"]
+
+// 8 Count the total number of hours
+const totalTimePlayed = players.reduce((totalTime, { timePlayed }) => totalTime + timePlayed, 0);
+console.log(totalTimePlayed); // 1240
+
+// 9 calculate the total amount of goods in the basket
+const cart = [
+  { label: 'Apples', price: 100, quantity: 2 },
+  { label: 'Bananas', price: 120, quantity: 3 },
+  { label: 'Lemons', price: 70, quantity: 4 },
+];
+
+const totalAmount = cart.reduce(
+  (totalAmount, { price, quantity }) => totalAmount + price * quantity,
+  0
+);
+console.log(totalAmount); // 840
+
+// 10 Collecting all tags from tweets
+const tweets = [
+  { id: '000', likes: 5, tags: ['js', 'nodejs'] },
+  { id: '001', likes: 2, tags: ['html', 'css'] },
+  { id: '002', likes: 17, tags: ['html', 'js', 'nodejs'] },
+  { id: '003', likes: 8, tags: ['css', 'react'] },
+  { id: '004', likes: 0, tags: ['js', 'nodejs', 'react'] },
+];
+
+const allTags = tweets.reduce((acc, tweet) => [...acc, ...tweet.tags], []);
+console.log(allTags); //['js', 'nodejs', 'html', 'css', 'html', 'js', 'nodejs', 'css']
+
+// 11 Maintain tag statistics
+// if there is a property with the tag key, increase its value by 1
+// if there is no property with the same key as in tag, make and write 1
+
+// const tagsStats = allTags.reduce((acc, tag) => {
+//   console.log(acc);
+
+//   if (acc[tag]) {
+//     acc[tag] += 1;
+//     return acc;
+//   }
+
+//   acc[tag] = 1;
+
+//   return acc;
+// }, {});
+
+const tagsStats = allTags.reduce(
+  (acc, tag) => ({
+    ...acc,
+    [tag]: acc[tag] ? acc[tag] + 1 : 1,
+  }),
+  {}
+);
+
+console.log(tagsStats); //{js: 3, nodejs: 3, html: 2, css: 2, react: 2}
