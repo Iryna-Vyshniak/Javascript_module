@@ -570,3 +570,87 @@ console.table(byName); // A, C, K, M, P
 // refactor
 const byNames = [...players].sort((a, b) => (a.name[0] > b.name[0] ? 1 : -1));
 console.table(byNames); // A, C, K, M, P
+
+// ============================================================================================
+/*
+ * Array.prototype.flat(depth)
+ * - Розгладжує масив до вказаної глибини
+ * - За замовчуванням глибина 1
+    Метод flat() повертає новий масив, в якому всі елементи вкладених підмасивів були рекурсивно підняті на вказаний рівень depth.
+
+    Синтаксис
+    const newArray = arr.flat(depth);
+ 
+ * - Flattens the array to the specified depth
+ * - Default depth 1
+ */
+
+// 1
+const insertedArrays = [1, 2, [4, [5]], [6, [7, 8, [9]]]];
+console.log(insertedArrays.flat(3)); // [1, 2, 4, 5, 6, 7, 8, 9]
+
+//2
+const arr1 = [1, 2, [3, 4]];
+const arr1A = arr1.flat();
+console.log(arr1); // [1, 2, [3, 4]];
+console.log(arr1A); // [1, 2, 3, 4]
+
+//3
+const arr2 = [1, 2, [3, 4, [5, 6]]];
+const arr2A = arr2.flat();
+const arr2AB = arr2.flat(2);
+console.log(arr2); // [1, 2, [3, 4, [5, 6]]];
+console.log(arr2A); // [1, 2, 3, 4, [5, 6]]
+console.log(arr2AB); // [1, 2, 3, 4, 5, 6]
+
+//4
+const arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+const arr4A = arr4.flat(Infinity);
+console.log(arr4); //[1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+console.log(arr4A); //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+// Alternatives reduce and concat
+const arr = [1, 2, [3, 4]];
+const flatArr = arr.flat();
+console.log(flatArr); //[1, 2, 3, 4]
+
+// reduce
+const reduceArr = arr.reduce((acc, val) => acc.concat(val), []);
+console.log(arr); // [1, 2, [3, 4]];
+console.log(reduceArr); //[1, 2, 3, 4]
+
+// concat, ...spread
+const flatSingle = arr => [].concat(...arr);
+console.log(arr); // [1, 2, [3, 4]];
+console.log(flatSingle(arr)); //  [1, 2, 3, 4]
+
+//Write two functions max and min which returns the maximum and minimum value of the argument passed into them respectively.
+function max(...args) {
+  const numbers = args.flat(Infinity).map(num => Number(num));
+
+  if (!numbers.length) return 0;
+  if (numbers.includes(NaN)) return NaN;
+
+  const max = numbers.reduce((num1, num2) => (num1 > num2 ? num1 : num2));
+  console.log(max);
+  return max;
+}
+
+max(1, 2, 3, 4); // 4
+max(1, 2, 3, ['4']); // 4; note it returned 4 not '4'
+max(1, 2, [3, 4]); // 4
+max(1, 2, [3, [4]]); // 4
+max(1, 2, [3, ['4r']]); // NaN
+max([[], [-4]]); //  -4
+max(); // 0
+max([]); // 0
+
+function min() {
+  const arr = [...arguments].toString().split(',').map(Number);
+  const nan = arr.some(el => Number.isNaN(el));
+  if (!nan) {
+    arr.sort((a, b) => a - b);
+    return arr[0];
+  }
+  return NaN;
+}
