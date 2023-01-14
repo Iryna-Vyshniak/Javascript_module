@@ -2201,6 +2201,17 @@ function getBotReports({ companyName, bots }) {
   const { repair, defence } = bots;
   return `${companyName} has ${repair + defence} bots in stock`;
 }
+// next variant
+function getBotReported({ companyName, bots: { repair: repairBots = 0, defence: defenceBots } }) {
+  return `${companyName} has ${repairBots + defenceBots} bots in stock`;
+}
+getBotReported({
+  companyName: 'Cyberdyne Systems',
+  bots: {
+    repair: 150,
+    defence: 50,
+  },
+});
 
 //
 const stonesMarket = [
@@ -2237,4 +2248,4 @@ let item = '';
 //   }
 // } while (item !== null);
 
-console.log(cart); //  ['apple', 'banana', 'kiwi'];
+console.log(cart, 'color: red'); //  ['apple', 'banana', 'kiwi'];
