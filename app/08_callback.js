@@ -1063,3 +1063,23 @@ const anybodyUser = {
   },
 };
 anybodyUser.showName();
+
+// context this
+const book = {
+  title: 'React for beginners',
+  showThis() {
+    console.log('showThis -> this', this);
+  },
+  showTitle() {
+    console.log('showTitle -> this.title', this.title);
+  },
+};
+
+book.showThis(); // title: 'React for beginners', showThis: ƒ, showTitle: ƒ}
+book.showTitle(); // React for beginners
+
+const outerShowThis = book.showThis;
+outerShowThis(); // this undefined
+
+// const outerShowTitle = book.showTitle;
+// outerShowTitle(); // TypeError: Cannot read properties of undefined
