@@ -46,3 +46,24 @@ const newNumbers = numbers.forEach(number => {
 
 console.log(numbers); // [5, 10, 15, 20, 25]
 console.log(newNumbers); // undefined
+
+const numbersArr = [5, 10, 15, 20, 25];
+
+/*
+ * Array.prototype.map()
+ * - Поелементо перебирає оригінальний масив
+ * - Не змінює оригінальний масив
+ * - Повертає новий масив такої ж довжини
+ 
+ * - element by element iterates over the original array
+ * - Does not change the original array
+ * - Returns a new array of the same length
+ *
+ */
+
+const doubledNums = numbersArr.map(number => {
+  return number * 3;
+});
+
+console.log('numbers', numbersArr); // [5, 10, 15, 20, 25]
+console.log('doubledNums', doubledNums); // [15, 30, 45, 60, 75]
