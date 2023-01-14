@@ -67,3 +67,54 @@ const doubledNums = numbersArr.map(number => {
 
 console.log('numbers', numbersArr); // [5, 10, 15, 20, 25]
 console.log('doubledNums', doubledNums); // [15, 30, 45, 60, 75]
+
+//task 2
+const players = [
+  { id: 'player-1', name: 'Mango', timePlayed: 310, points: 54, online: false },
+  { id: 'player-2', name: 'Poly', timePlayed: 470, points: 92, online: true },
+  { id: 'player-3', name: 'Kiwi', timePlayed: 230, points: 48, online: true },
+  { id: 'player-4', name: 'Ajax', timePlayed: 150, points: 71, online: false },
+  { id: 'player-5', name: 'Chelsy', timePlayed: 80, points: 48, online: true },
+];
+
+// get an array of names of all players
+const playerNames = players.map(player => player.name);
+console.log('playerNames', playerNames); // ['Mango', 'Poly', 'Kiwi', 'Ajax', 'Chelsy']
+
+const playerIds = players.map(player => player.id);
+console.log('playerIds', playerIds); // ['player-1', 'player-2', 'player-3', 'player-4', 'player-5']
+
+const res = players.map(({ name, online }) => ({ name, online }));
+console.log('res', res);
+// {name: 'Mango', online: false}
+// {name: 'Poly', online: true}
+// {name: 'Kiwi', online: true}
+// {name: 'Ajax', online: false}
+// {name: 'Chelsy', online: true}
+
+// increase the number of points of each player by 10%
+const upatedPlayers = players.map(player => ({
+  ...player,
+  points: Number((player.points * 1.1).toFixed()),
+}));
+console.table(upatedPlayers);
+// (index)  id       name    timePlayed points  online
+// 0	'player-1'	'Mango'	  310 	     59	     false
+// 1	'player-2'	'Poly'	  470 	     101	 true
+// 2	'player-3'	'Kiwi'	  230 	     53	     true
+// 3	'player-4'	'Ajax'	  150 	     78	     false
+// 4	'player-5'	'Chelsy'  80	     53	     true
+
+//Increasing the number of player hours by id
+const playerIdToUpdate = 'player-3';
+
+const updatedPlayers = players.map(player =>
+  playerIdToUpdate === player.id ? { ...player, timePlayed: player.timePlayed + 100 } : player
+);
+
+console.log(updatedPlayers);
+// {id: 'player-1', name: 'Mango',  timePlayed: 310, points: 54, online: false}
+// {id: 'player-2', name: 'Poly',   timePlayed: 470, points: 92, online: true}
+// {id: 'player-3', name: 'Kiwi',   timePlayed: 330, points: 48, online: true}
+// {id: 'player-4', name: 'Ajax',   timePlayed: 150, points: 71, online: false}
+// {id: 'player-5', name: 'Chelsy', timePlayed: 80,  points: 48, online: true}
