@@ -404,3 +404,15 @@ const sum = arrOfObjects.reduce(
 );
 
 console.log(sum); // 6
+
+//6 Expanding an array of arrays => Розгортання масиву масивів
+
+const flattened = [
+  [0, 1],
+  [2, 3],
+  [4, 5],
+].reduce(function (previousArray, currentArray) {
+  return previousArray.concat(currentArray);
+});
+
+console.log(flattened); // [0, 1, 2, 3, 4, 5]
