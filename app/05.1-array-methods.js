@@ -178,3 +178,55 @@ const hardcorePlayers = players.filter(({ timePlayed }) => timePlayed > 250);
 console.table(hardcorePlayers);
 // {id: 'player-1', name: 'Mango', timePlayed: 310, points: 54, online: false}
 // {id: 'player-2', name: 'Poly', timePlayed: 470, points: 92, online: true}
+
+// ==============================================================================================
+/*
+ * Array.prototype.find()
+ * - Поелементо перебирає оригінальний масив
+ * - Повертає перший елемент, що задовольняє умові або undefined
+ 
+ * - element by element iterates over the original array
+ * - Returns the first element that satisfies the condition or is undefined
+ */
+
+const allNums = [5, 10, 15, 20, 25];
+
+const number = allNums.find(number => number === 10);
+console.log(allNums); //[5, 10, 15, 20, 25]
+console.log(number); // 10
+
+const playersSocers = [
+  { id: 'player-1', name: 'Roberto', timePlayed: 310, points: 54, online: false },
+  { id: 'player-2', name: 'Mersi', timePlayed: 470, points: 92, online: true },
+  { id: 'player-3', name: 'Pele', timePlayed: 230, points: 48, online: true },
+  { id: 'player-4', name: 'Zigun', timePlayed: 150, points: 71, online: false },
+  { id: 'player-5', name: 'Chelsy', timePlayed: 280, points: 48, online: true },
+];
+
+/*
+ * find player by id
+ */
+const playerIdToFind = 'player-3';
+// const playerWithId = playersSocers.find(player => player.id === playerIdToFind);
+const playerWithId = playersSocers.find(({ id }) => id === playerIdToFind);
+console.log(playerWithId); //{ id: 'player-3', name: 'Pele', timePlayed: 230, points: 48, online: true },
+
+const finPlayerById = (allPlayer, playerId) => allPlayer.find(({ id }) => id === playerId);
+
+console.log(finPlayerById(players, 'player-1')); // { id: 'player-1', name: 'Roberto', timePlayed: 310, points: 54, online: false },
+console.log(finPlayerById(players, 'player-6')); // undefined
+
+/*
+ * find player by name
+ */
+const playerNameToFind = 'Pele';
+const playerWithName = players.find(({ name }) => name === playerNameToFind);
+console.log(playerWithName); //{id: 'player-2', name: 'Pele', timePlayed: 470, points: 92, online: true}
+
+const findPlayerWithName = (allPlayers, playerName) =>
+  allPlayers.find(({ name }) => name === playerName);
+findPlayerWithName(players, 'Chelsy');
+console.log(findPlayerWithName(players, 'Chelsy'));
+//{id: 'player-5', name: 'Chelsy', timePlayed: 80, points: 48, online: true}
+console.log(findPlayerWithName(players, 'Roberts'));
+//undefined
