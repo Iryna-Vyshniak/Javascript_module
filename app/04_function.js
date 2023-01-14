@@ -490,27 +490,27 @@ const outerShowTitle = book.showTitle;
 const ingredients = ['Potatoes', 'Mushrooms', 'Garlic', 'Tomatos', 'Herbs', 'Condiments'];
 const ingredientsRef = document.querySelector('#ingredients');
 
-// const itemsRef = ingredients.map(ingredient => {
-//   const item = document.createElement('li');
-//   item.textContent = ingredient;
-//   item.classList.add('item');
-//   return item;
-// });
+const itemsRef = ingredients.map(ingredient => {
+  const item = document.createElement('li');
+  item.textContent = ingredient;
+  item.classList.add('item');
+  return item;
+});
+console.log(ingredientsRef); // <ul id="ingredients">...</ul>
+ingredientsRef.append(...itemsRef);
+//console.log(ingredientsRef); // <ul id="ingredients">...</ul>
 
-// ingredientsRef.append(...itemsRef);
-// console.log(ingredientsRef); // <ul id="ingredients">...</ul>
+// const ingredientsMarkup = [];
 
-const ingredientsMarkup = [];
+// function createIngredientsList(ingredients = []) {
+//   ingredients.map(elem => {
+//     const item = document.createElement('li');
+//     item.textContent = elem;
+//     item.classList.add('item');
+//     ingredientsMarkup.push(item);
+//   });
+//   return ingredientsRef.append(...ingredientsMarkup);
+// }
 
-function createIngredientsList(ingredients = []) {
-  ingredients.map(elem => {
-    const item = document.createElement('li');
-    item.textContent = elem;
-    item.classList.add('item');
-    ingredientsMarkup.push(item);
-  });
-  return ingredientsRef.append(...ingredientsMarkup);
-}
-
-createIngredientsList(ingredients);
-console.log(ingredientsRef); //<ul id="ingredients">...</ul>
+// createIngredientsList(ingredients);
+// console.log(ingredientsRef); //<ul id="ingredients">...</ul>
