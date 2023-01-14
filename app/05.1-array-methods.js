@@ -490,3 +490,83 @@ const tagsStats = allTags.reduce(
 );
 
 console.log(tagsStats); //{js: 3, nodejs: 3, html: 2, css: 2, react: 2}
+
+// ==========================================================================================
+/*
+ * Array.prototype.sort(callback(currentEl, nextEl){})
+ * - Сортує та ЗМІНЯЄ оригінальний масив
+ * - За замовчуванням:
+ * - сортує за зростанням
+ * - приводить елементи до рядка і сортує за [Unicode](https://unicode-table.com/en/)
+ *
+ * - Sort and MODIFY the original array
+ * - Default:
+ * - sorts in ascending order
+ * - casts elements to a string and sorts by [Unicode](https://unicode-table.com/en/)
+ */
+
+const primeNumbers = [1, 9, 6, 2, 3];
+primeNumbers.sort();
+console.log('numbers', primeNumbers); // [1, 2, 3, 6, 9]
+
+const letters = ['b', 'B', 'a', 'A'];
+letters.sort();
+console.log('letters', letters); // ['A', 'B', 'a', 'b']
+
+/*
+ * compareFunction - comparison function (callback)
+ * Array elements are sorted according to its return value
+ * - if compareFunction(A, B) is less than 0, sort will put A before B
+ * - if compareFunction(A, B) is greater than 0, sort will put B before A
+ * - if compareFunction(A, B) returns 0,
+sorting will leave A and B unchanged with respect to each other, but will sort them with respect to all other elements.
+ */
+
+primeNumbers.sort((currentEl, nextEl) => nextEl - currentEl);
+
+console.log(primeNumbers); // [9, 6, 3, 2, 1]
+
+/*
+ * Як зробити копію масиву щоб не сортувати оригінальний
+ * - Array.prototype.slice()
+ * - Операцiя ...spread
+ */
+
+const descSortedNumbers = [...primeNumbers].sort((a, b) => b - a); // [9, 6, 3, 2, 1]
+const ascSortedNumbers = [...primeNumbers].sort((a, b) => a - b); // [1, 2, 3, 6, 9]
+console.log('descSortedNumbers', descSortedNumbers);
+console.log('ascSortedNumbers', ascSortedNumbers);
+
+/*
+ * Кастомне сортування складних типів
+ */
+
+// By game time
+const sortedByBestPlayers = [...players].sort(
+  (prevPlayer, nextPlayer) => nextPlayer.timePlayed - prevPlayer.timePlayed
+);
+console.table(sortedByBestPlayers); // 470, 310, 230, 150, 80
+
+const sortedByWorstPlayers = [...players].sort(
+  (prevPlayer, nextPlayer) => prevPlayer.timePlayed - nextPlayer.timePlayed
+);
+console.table(sortedByWorstPlayers); // 80, 150, 230, 310, ...
+
+// by players` name
+const byName = [...players].sort((a, b) => {
+  const result = a.name[0] > b.name[0];
+
+  if (result) {
+    return 1;
+  }
+
+  if (!result) {
+    return -1;
+  }
+});
+
+console.table(byName); // A, C, K, M, P
+
+// refactor
+const byNames = [...players].sort((a, b) => (a.name[0] > b.name[0] ? 1 : -1));
+console.table(byNames); // A, C, K, M, P
