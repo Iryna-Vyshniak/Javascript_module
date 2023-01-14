@@ -414,3 +414,23 @@ const flattened = [
 ].reduce((previousArray, currentArray) => previousArray.concat(currentArray));
 
 console.log(flattened); // [0, 1, 2, 3, 4, 5]
+
+// 7 concatenating arrays contained in array objects using spread operator and initialValue
+
+// friends - list of objects (friends)
+// where the "books" field is a list of friend's favorite books
+const friends = [
+  { name: 'Anna', books: ['Bible', 'Harry Potter'], age: 21 },
+  { name: 'Bob', books: ['War and peace', 'Romeo and Juliet'], age: 26 },
+  { name: 'Alice', books: ['The Lord of the Rings', 'The Shining'], age: 18 },
+];
+
+// allbooks - list, which will contain all friends books +
+// additional list specified in initialValue
+const allbooks = friends.reduce(
+  (previousFriend, currentFriend) => [...previousFriend, ...currentFriend.books],
+  ['Alphabet']
+);
+
+console.log(allbooks);
+// ["Alphabet", "Bible", "Harry Potter", "War and peace", "Romeo and Juliet", "The Lord of the Rings", "The Shining"]
