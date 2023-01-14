@@ -261,3 +261,90 @@ function isBigEnough(element, index, array) {
 //short arrow fn
 [12, 5, 8, 130, 44].every(elem => elem >= 10); // false
 [12, 54, 18, 130, 44].every(elem => elem >= 10); // true
+
+//===============================================================================================
+/*
+ * Array.prototype.some()
+ * - Поелементо перебирає оригінальний масив
+ * - Повертає true якщо хоча б один елемент масиву задовольняє умову
+ *
+ * - element by element iterates over the original array
+ * - Returns true if at least one element of the array satisfies the condition
+ */
+
+//1
+// const isAnyOnline = players.some(player => player.online);
+const isAnyOnline = players.some(({ online }) => online);
+console.log('isAnyOnline: ', isAnyOnline); // true
+
+//2
+// const anyHardcorePlayers = players.some(player => player.timePlayed > 400);
+const anyHardcorePlayers = players.some(({ timePlayed }) => timePlayed > 400);
+console.log('anyHardcorePlayers: ', anyHardcorePlayers); // true
+const anyHardcorePlayersA = players.some(({ timePlayed }) => timePlayed > 600);
+console.log('anyHardcorePlayers: ', anyHardcorePlayersA); // false
+
+//3
+const array = [1, 2, 3, 4, 5];
+
+// Checks whether an element is even
+const even = element => element % 2 === 0;
+console.log(array.some(even)); //true, because 4 % 2 === 0
+
+const twin = array.some(item => item % 2 === 0);
+console.log(twin); // true, because 4 % 2 === 0
+
+//4
+[2, 5, 8, 1, 4].some(elem => elem > 10); // false
+[12, 5, 8, 1, 4].some(elem => elem > 10); // true, because 12 > 10
+
+// likes includes()
+const fruits = ['apple', 'banana', 'mango', 'guava'];
+
+function checkAvailability(arr, val) {
+  return arr.some(arrVal => val === arrVal);
+}
+
+checkAvailability(fruits, 'kela');
+console.log(checkAvailability(fruits, 'kela')); // false
+checkAvailability(fruits, 'banana');
+console.log(checkAvailability(fruits, 'banana')); // true
+
+const checkAvailabilities = (arr, val) => arr.some(arrVal => val === arrVal);
+console.log(checkAvailabilities(fruits, 'kela')); // false
+console.log(checkAvailabilities(fruits, 'banana')); // true
+
+//Casting a Value to a Boolean Type
+const TRUTHY_VALUES = [true, 'true', 1];
+
+function getBoolean(value) {
+  'use strict';
+  if (typeof value === 'string') {
+    value = value.toLowerCase().trim();
+  }
+  return TRUTHY_VALUES.some(t => t === value);
+}
+
+getBoolean(false);
+console.log(getBoolean(false)); // false
+getBoolean('false');
+console.log(getBoolean('false')); // false
+getBoolean(1);
+console.log(getBoolean(1)); // true
+getBoolean('true');
+console.log(getBoolean('true')); // true
+
+// arrow fn
+const getBooleanValue = value =>
+  typeof value === 'string'
+    ? (value = value.toLowerCase().trim())
+    : TRUTHY_VALUES.some(item => item === value);
+
+getBooleanValue(false);
+console.log(getBooleanValue(false)); // false
+getBooleanValue('false');
+console.log(getBooleanValue('false')); // false
+getBooleanValue(1);
+console.log(getBooleanValue(1)); // true
+getBoolean('field');
+console.log(getBooleanValue('field')); // field
