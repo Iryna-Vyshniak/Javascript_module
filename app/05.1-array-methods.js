@@ -660,7 +660,10 @@ function min() {
     flatMap(function (element, index, array)
 
  * - Комбiнацiя map + flat
- *
+ * - спочатку застосовує функцію для кожного елемента, а потім перетворює отриманий результат в плоску структуру і поміщає в новий масив.Значення, що повертається - Новий масив, кожен елемент якого є результатом виконання функції callback та "піднятий" на рівень 1.
+ 
+     const new_array = arr.flatMap(function callback(currentValue[, index[, array]]) { ... }[, thisArg])
+
  * - returns a new array formed by applying a given callback function to each element of the array
  * - flattening the result by one level.
  * - It is identical to a map() followed by a flat()
@@ -687,3 +690,64 @@ for (let i = 0; i < n; i += 1) {
   acc[i * 2] = x;
   acc[i * 2 + 1] = x * 2;
 }
+
+//2
+let arrCA = [1, 2, 3, 4];
+const arrCB = arrCA.map(x => [x * 2]);
+console.log(arrCB); // [[2], [4], [6], [8]]
+
+const arrCBA = arrCA.flatMap(x => [x * 2]);
+console.log(arrCBA); // [2, 4, 6, 8]
+
+// 2.1 Alternative Solution use reduce and concat
+const arrReduce = arrCA.reduce((acc, x) => acc.concat([x * 2]), []);
+console.log(arrReduce); // [2, 4, 6, 8]
+
+// вирівнюється лише один рівень
+const arrCCA = arrCA.flatMap(x => [[x * 2]]);
+console.log(arrCCA); // [[2], [4], [6], [8]]
+
+//3
+let arrD = ["it's Sunny in", '', 'California'];
+
+const arrMap = arrD.map(x => x.split(' '));
+console.log(arrMap); // [["it's","Sunny","in"],[""],["California"]]
+
+const flatMapArr = arrD.flatMap(x => x.split(' '));
+console.log(flatMapArr); // ["it's","Sunny","in", "", "California"]
+
+// 4 get string from arrays
+const getStringFromArrays = arr => arr.flatMap(item => item.split(' ')).join(' ');
+getStringFromArrays(arrD);
+console.log(getStringFromArrays(arrD)); // it's Sunny in  California
+
+//5
+const tweetsUsers = [
+  { id: '000', likes: 5, tags: ['js', 'nodejs'] },
+  { id: '001', likes: 2, tags: ['html', 'css'] },
+  { id: '002', likes: 17, tags: ['html', 'js', 'nodejs'] },
+  { id: '003', likes: 8, tags: ['css', 'react'] },
+  { id: '004', likes: 0, tags: ['js', 'nodejs', 'react'] },
+];
+
+// const tags = tweetsUsers.flatMap(t => t.tags);
+// console.log(tags);
+
+// const stats = tags.reduce((acc, tag) => {
+//     return {
+//         ...acc,
+//         [tag]: acc[tag] ? acc[tag] + 1 : 1,
+//     };
+// }, {});
+
+const stats = tweetsUsers
+  .flatMap(tweet => tweet.tags)
+  .reduce(
+    (acc, tag) => ({
+      ...acc,
+      [tag]: acc[tag] ? acc[tag] + 1 : 1,
+    }),
+    {}
+  );
+
+console.log(stats); // {js: 3, nodejs: 3, html: 2, css: 2, react: 2}
