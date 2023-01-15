@@ -632,7 +632,6 @@ function max(...args) {
   if (numbers.includes(NaN)) return NaN;
 
   const max = numbers.reduce((num1, num2) => (num1 > num2 ? num1 : num2));
-  console.log(max);
   return max;
 }
 
@@ -653,4 +652,38 @@ function min() {
     return arr[0];
   }
   return NaN;
+}
+
+//===============================================================================================
+/*
+ * Array.prototype.flatMap(callback)
+    flatMap(function (element, index, array)
+
+ * - Комбiнацiя map + flat
+ *
+ * - returns a new array formed by applying a given callback function to each element of the array
+ * - flattening the result by one level.
+ * - It is identical to a map() followed by a flat()
+ */
+
+//1
+const arr3 = [1, 2, [3], [4, 5], 6, []];
+
+const flattenedArr = arr3.flatMap(num => num);
+console.log(flattenedArr);
+[1, 2, 3, 4, 5, 6];
+
+//Pre-allocate and explicitly iterate - Попередньо виділити та явно повторити
+const arrC = [1, 2, 3, 4];
+const arrFlatMap = arrC.flatMap(x => [x, x * 2]);
+console.log(arrC); //  [1, 2, 3, 4]
+console.log(arrFlatMap); // [1, 2, 2, 4, 3, 6, 4, 8]
+
+// is equivalent to
+const n = arrC.length;
+const acc = new Array(n * 2);
+for (let i = 0; i < n; i += 1) {
+  const x = arr[i];
+  acc[i * 2] = x;
+  acc[i * 2 + 1] = x * 2;
 }
