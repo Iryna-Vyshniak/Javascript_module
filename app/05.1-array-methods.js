@@ -49,6 +49,53 @@ console.log(newNumbers); // undefined
 
 const numbersArr = [5, 10, 15, 20, 25];
 
+// .forEach(callback(currentValue, index, array), thisArg) - 2 аргумента: колбек та об'єкт thisArg, в контексті якого буде викликатися цей колбек
+
+// forEach - не змінює оришінальний масивю. Коли хочемо змінити його - використовуємо array та index
+
+// numbers.forEach((num, index, array) => (array[index] = 12));
+// console.log(numbers); // [12, 12, 12, 12, 12]
+
+// arrow function
+numbers.forEach(
+  number => {
+    console.log('number: ', number);
+    console.log('number this: ', this);
+  },
+  { a: 5, b: 6 }
+);
+console.log(numbers);
+// number:  5
+// number this:  undefined
+// number:  10
+// number this:  undefined
+// number:  15
+// number this:  undefined
+// number:  20
+// number this:  undefined
+// number:  25
+// number this:  undefined
+
+// function declaration
+numbers.forEach(
+  function (number) {
+    console.log('number: ', number);
+    console.log('number this: ', this);
+  },
+  { a: 5, b: 6 }
+);
+console.log(numbers);
+// number:  5
+// number this:  {a: 5, b: 6}
+// number:  10
+// number this:  {a: 5, b: 6}
+// number:  15
+// number this:  {a: 5, b: 6}
+// number:  20
+// number this:  {a: 5, b: 6}
+// number:  25
+// number this:  {a: 5, b: 6}
+
 //=============================================================================================
 /*
  * Array.prototype.map()
