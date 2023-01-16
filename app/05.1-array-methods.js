@@ -798,3 +798,32 @@ const stats = tweetsUsers
   );
 
 console.log(stats); // {js: 3, nodejs: 3, html: 2, css: 2, react: 2}
+
+// unique
+const books = [
+  {
+    title: 'The Last Kingdom',
+    author: 'Bernard Cornwell',
+    genres: ['adventure', 'history'],
+  },
+  {
+    title: 'Beside Still Waters',
+    author: 'Robert Sheckley',
+    genres: ['fiction', 'mysticism'],
+  },
+  {
+    title: 'Redder Than Blood',
+    author: 'Tanith Lee',
+    genres: ['horror', 'mysticism', 'adventure'],
+  },
+];
+// Change code below this line
+const allGenres = books.flatMap(book => book.genres);
+console.log(allGenres); //  ['adventure', 'history', 'fiction', 'mysticism', 'horror', 'mysticism', 'adventure']
+const uniqueGenres = allGenres.filter((genre, index, array) => array.indexOf(genre) === index);
+console.log(uniqueGenres); // ['adventure', 'history', 'fiction', 'mysticism', 'horror']
+
+//const allGenres = books.flatMap(book => book.genres);
+const unique = new Set(allGenres);
+const unigueCourse = [...unique];
+console.log(unigueCourse); // ['adventure', 'history', 'fiction', 'mysticism', 'horror']
