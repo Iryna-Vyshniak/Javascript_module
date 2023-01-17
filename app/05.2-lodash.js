@@ -17,7 +17,7 @@ _.isEmpty({ a: 1 });
 console.log(_.isEmpty({ a: 1 })); // false
 
 // ==========================================================================
-// ._get()
+//._get()
 //Gets the value at path of object. If the resolved value is undefined, the defaultValue is returned in its place.
 
 //Отримує значення на шляху до об’єкта. Якщо дозволене значення не визначено, замість нього повертається defaultValue.
@@ -110,7 +110,7 @@ console.log(_.union([1, 2, 3], [1, 3, 2, 4, 3, 5])); //[1, 2, 3, 4, 5]
 
 // ========================================================================
 
-//_.range([start=0], end, [step=1])
+//_.range([(start = 0)], end, [(step = 1)]);
 
 //Creates an array of numbers (positive and/or negative) progressing from start up to, but not including, end.
 //- A step of - 1 is used if a negative start is specified without an end or step.
@@ -154,3 +154,31 @@ _.rangeRight(0, -4, -1); // [-3, -2, -1, 0]
 _.rangeRight(1, 4, 0); //  [1, 1, 1]
 
 _.rangeRight(0); // []
+
+//=========================================================================
+//_.sortBy(collection, [(iteratees = [_.identity])]);
+
+//Creates an array of elements, sorted in ascending order by the results of running each element in a collection thru each iteratee. This method performs a stable sort, that is, it preserves the original sort order of equal elements. The iteratees are invoked with one argument: (value).
+
+//Створює масив елементів, відсортованих у порядку зростання за результатами виконання кожного елемента колекції через кожен ітератор. Цей метод виконує стабільне сортування, тобто зберігає початковий порядок сортування рівних елементів. Ітерації викликаються з одним аргументом: (значення).
+
+const users = [
+  { user: 'fred', age: 48 },
+  { user: 'barney', age: 36 },
+  { user: 'fred', age: 40 },
+  { user: 'barney', age: 34 },
+];
+
+const sortByAge = _.sortBy(users, user => user.age);
+console.log(sortByAge);
+// {user: 'barney', age: 34}
+// {user: 'barney', age: 36}
+// {user: 'fred', age: 40}
+// {user: 'fred', age: 48}
+
+const sortByUserAge = _.sortBy(users, ['user', 'age']);
+console.log(sortByUserAge);
+// [{user: 'barney', age: 34}
+// {user: 'barney', age: 36}
+// {user: 'fred', age: 40}
+// {user: 'fred', age: 48}]
