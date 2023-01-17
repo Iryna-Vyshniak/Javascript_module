@@ -107,3 +107,50 @@ const htmlAAA = document.querySelector('.elem')?.innerHTML; // буде undefine
 _.union([2], [1, 2]); //  [2, 1]
 console.log(_.union([1, 2, 3], [3, 4, 5])); //[1, 2, 3, 4, 5]
 console.log(_.union([1, 2, 3], [1, 3, 2, 4, 3, 5])); //[1, 2, 3, 4, 5]
+
+// ========================================================================
+
+//_.range([start=0], end, [step=1])
+
+//Creates an array of numbers (positive and/or negative) progressing from start up to, but not including, end.
+//- A step of - 1 is used if a negative start is specified without an end or step.
+//- If end is not specified, it's set to start with start then set to 0.
+
+//- Створює масив чисел (додатних і/або від’ємних), що просуваються від початку до кінця, але не включаючи його.
+//- Крок - 1 використовується, якщо вказано негативний початок без кінця або кроку.
+//- Якщо кінець не вказано, для нього встановлюється початок із початку, а потім значення 0.
+
+// [start=0] (number): The start of the range.
+// end (number): The end of the range.
+// [step=1] (number): The value to increment or decrement by.
+
+// Returns (Array): Returns the range of numbers.
+_.range(4); // [0, 1, 2, 3]
+
+_.range(-4); // [0, -1, -2, -3]
+
+_.range(1, 5); // [1, 2, 3, 4]
+
+_.range(0, 20, 5); // [0, 5, 10, 15]
+
+_.range(0, -4, -1); // [0, -1, -2, -3]
+
+_.range(1, 4, 0); // [1, 1, 1]
+
+_.range(0); // []
+
+//_.rangeRight([start=0], end, [step=1])
+
+_.rangeRight(4); //  [3, 2, 1, 0]
+
+_.rangeRight(-4); //  [-3, -2, -1, 0]
+
+_.rangeRight(1, 5); // [4, 3, 2, 1]
+
+_.rangeRight(0, 20, 5); //  [15, 10, 5, 0]
+
+_.rangeRight(0, -4, -1); // [-3, -2, -1, 0]
+
+_.rangeRight(1, 4, 0); //  [1, 1, 1]
+
+_.rangeRight(0); // []
