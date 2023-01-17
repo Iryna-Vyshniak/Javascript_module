@@ -16,6 +16,7 @@ console.log(_.isEmpty([1, 2, 3])); // false
 _.isEmpty({ a: 1 });
 console.log(_.isEmpty({ a: 1 })); // false
 
+// ==========================================================================
 // ._get()
 //Gets the value at path of object. If the resolved value is undefined, the defaultValue is returned in its place.
 
@@ -42,6 +43,8 @@ const user = {
 };
 
 console.log(_.get(user, 'location.city'));
+
+// ==========================================================================
 
 // ОПЦІАЛЬНИЙ ЛАНЦЮЖОК ?.
 // - припиняє обчислення, якщо значення перед ?. є undefined або null, і повертає undefined.
@@ -84,9 +87,23 @@ console.log(usersData?.address.street); // undefined
 // об’єкт котрий відповідає елементу на вебсторінці за допомогою спеціальних методів, наприклад: document.querySelector('.elem'). Проте якщо ми намагатимемось отримати елемент, якого немає на сторінці, то нам вернеться null.
 
 // document.querySelector('.elem') рівний null якщо такого елемента не існує
-const htmlA = document.querySelector('.elem').innerHTML;
+
+//const htmlA = document.querySelector('.elem').innerHTML;
 // помилка оскільки null
+
 // в деяких випадках, коли відсутність елемента для нас є нормою, ми хотіли б просто отримати .innerHTML = null (тобто html = null).
 const htmlAA = document.querySelector('.elem') ? document.querySelector('.elem').innerHTML : null;
 // ?.
 const htmlAAA = document.querySelector('.elem')?.innerHTML; // буде undefined, якщо немає елемента
+
+// =========================================================================
+/*
+ * union()
+ */
+
+// - Creates an array of unique values, in order, from all given arrays using SameValueZero for equality comparisons.
+// - Returns the new array of combined values.
+
+_.union([2], [1, 2]); //  [2, 1]
+console.log(_.union([1, 2, 3], [3, 4, 5])); //[1, 2, 3, 4, 5]
+console.log(_.union([1, 2, 3], [1, 3, 2, 4, 3, 5])); //[1, 2, 3, 4, 5]
