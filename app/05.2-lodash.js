@@ -274,3 +274,7 @@ console.log(minTimePlayed); // {id: 'player-4', name: 'Zigun', timePlayed: 150, 
 //_.maxBy(array, [iteratee=_.identity])
 const maxTimePlayed = _.maxBy(playersSocers, 'timePlayed');
 console.log(maxTimePlayed); // {id: 'player-2', name: 'Mersi', timePlayed: 470, points: 92, online: true}
+const maxTimePlayedName = _.maxBy(playersSocers, 'timePlayed').name;
+console.log(maxTimePlayedName); // Mersi
+const maxTimePlayedPoints = _.maxBy(playersSocers, 'timePlayed').points;
+console.log(maxTimePlayedPoints); // 92
