@@ -221,3 +221,39 @@ console.log(sumPoints); //313
 
 const sumTime = _.sumBy(playersSocers, player => player.timePlayed);
 console.log(sumTime); // 1440
+
+//======================================================================================================
+// _.uniq(array)
+
+// Creates a duplicate-free version of an array, using SameValueZero for equality comparisons, in which only the first occurrence of each element is kept. The order of result values is determined by the order they occur in the array.
+//Створює версію масиву без дублікатів, використовуючи SameValueZero для порівняння рівності, у якому зберігається лише перше входження кожного елемента. Порядок значень результату визначається порядком їх появи в масиві.
+const uniq = _.uniq([2, 1, 2]);
+console.log(uniq); //  [2, 1]
+
+// _.uniqBy(array, [iteratee=_.identity])
+
+// This method is like _.uniq except that it accepts iteratee which is invoked for each element in array to generate the criterion by which uniqueness is computed. The order of result values is determined by the order they occur in the array. The iteratee is invoked with one argument
+
+//Цей метод схожий на _.uniq, за винятком того, що він приймає iteratee, який викликається для кожного елемента в масиві для створення критерію, за яким обчислюється унікальність. Порядок значень результату визначається порядком їх появи в масиві. Iteratee викликається з одним аргументом
+
+const uniqBy = _.uniqBy([2.1, 1.2, 2.3], Math.floor);
+console.log(uniqBy); // [2.1, 1.2]
+
+// The `_.property` iteratee shorthand.
+const arr = [{ x: 1 }, { x: 2 }, { x: 1 }];
+const uniqByArray = _.uniqBy(arr, 'x');
+console.log(uniqByArray); // => [{ 'x': 1 }, { 'x': 2 }]
+
+//_.sortedUniq(array)
+//This method is like _.uniq except that it's designed and optimized for sorted arrays.
+
+const sortUniq = _.sortedUniq([1, 1, 2]);
+console.log(sortUniq); //  [1, 2]
+
+const sortUniqA = _.sortedUniq([2, 2, 3, 4, 4, 5]);
+console.log(sortUniqA); //  [2, 3, 4, 5]
+
+// _.sortedUniqBy(array, [iteratee]);
+//This method is like _.uniqBy except that it's designed and optimized for sorted arrays.
+_.sortedUniqBy([1.1, 1.2, 2.3, 2.4], Math.floor);
+// => [1.1, 2.3]
