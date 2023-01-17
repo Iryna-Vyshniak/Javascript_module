@@ -148,10 +148,10 @@ const upatedPlayers = players.map(player => ({
 console.table(upatedPlayers);
 // (index)  id       name    timePlayed points  online
 // 0	'player-1'	'Mango'	  310 	     59	     false
-// 1	'player-2'	'Poly'	  470 	     101	 true
+// 1	'player-2'	'Poly'	  470 	     101	   true
 // 2	'player-3'	'Kiwi'	  230 	     53	     true
 // 3	'player-4'	'Ajax'	  150 	     78	     false
-// 4	'player-5'	'Chelsy'  80	     53	     true
+// 4	'player-5'	'Chelsy'  80	       53	     true
 
 //Increasing the number of player hours by id
 const playerIdToUpdate = 'player-3';
@@ -700,6 +700,92 @@ function min() {
   }
   return NaN;
 }
+
+// find total balance users
+//
+const usersTweeter = [
+  {
+    name: 'Moore Hensley',
+    email: 'moorehensley@indexia.com',
+    eyeColor: 'blue',
+    friends: ['Sharron Pace'],
+    isActive: false,
+    balance: 2811,
+    gender: 'male',
+  },
+  {
+    name: 'Sharlene Bush',
+    email: 'sharlenebush@tubesys.com',
+    eyeColor: 'blue',
+    friends: ['Briana Decker', 'Sharron Pace'],
+    isActive: true,
+    balance: 3821,
+    gender: 'female',
+  },
+  {
+    name: 'Ross Vazquez',
+    email: 'rossvazquez@xinware.com',
+    eyeColor: 'green',
+    friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+    isActive: false,
+    balance: 3793,
+    gender: 'male',
+  },
+  {
+    name: 'Elma Head',
+    email: 'elmahead@omatom.com',
+    eyeColor: 'green',
+    friends: ['Goldie Gentry', 'Aisha Tran'],
+    isActive: true,
+    balance: 2278,
+    gender: 'female',
+  },
+  {
+    name: 'Carey Barr',
+    email: 'careybarr@nurali.com',
+    eyeColor: 'blue',
+    friends: ['Jordan Sampson', 'Eddie Strong'],
+    isActive: true,
+    balance: 3951,
+    gender: 'male',
+  },
+  {
+    name: 'Blackburn Dotson',
+    email: 'blackburndotson@furnigeer.com',
+    eyeColor: 'brown',
+    friends: ['Jacklyn Lucas', 'Linda Chapman'],
+    isActive: false,
+    balance: 1498,
+    gender: 'male',
+  },
+  {
+    name: 'Sheree Anthony',
+    email: 'shereeanthony@kog.com',
+    eyeColor: 'brown',
+    friends: ['Goldie Gentry', 'Briana Decker'],
+    isActive: true,
+    balance: 2764,
+    gender: 'female',
+  },
+];
+
+const calculateTotalBalance = users => {
+  const mapUser = users.map(({ balance }) => balance);
+  console.log(mapUser);
+  const res = mapUser.reduce((total, balance) => total + balance, 0);
+  return res;
+};
+calculateTotalBalance(usersTweeter);
+
+console.log(calculateTotalBalance(usersTweeter)); // 20916
+
+const calcTotalBalance = users =>
+  users.map(({ balance }) => balance).reduce((total, balance) => total + balance, 0);
+calcTotalBalance(usersTweeter);
+console.log(calcTotalBalance(usersTweeter)); // 20916
+
+const sumTotalBalance = users => users.reduce((total, { balance }) => total + balance, 0);
+console.log(sumTotalBalance(usersTweeter)); // 20916
 
 //===============================================================================================
 /*
