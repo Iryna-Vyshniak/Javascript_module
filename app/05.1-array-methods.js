@@ -285,8 +285,15 @@ const planetsLengths = planets.map(planet => planet.length);
 const simpleNumbers = [5, 10, 15, 20, 25];
 
 const filteredNumbers = numbers.filter(number => number < 10 || number > 20);
-// console.log(filteredNumbers);
+console.log(filteredNumbers); //[5, 25]
 
+//
+const evenNumbers = numbers.filter(num => !(num % 2));
+const oddNumbers = numbers.filter(num => num % 2);
+console.log(evenNumbers); // [10, 20]
+console.log(oddNumbers); // [5, 15, 25]
+
+//
 const playersSocks = [
   { id: 'player-1', name: 'Mango', timePlayed: 310, points: 54, online: false },
   { id: 'player-2', name: 'Poly', timePlayed: 470, points: 92, online: true },
@@ -294,6 +301,63 @@ const playersSocks = [
   { id: 'player-4', name: 'Ajax', timePlayed: 150, points: 71, online: false },
   { id: 'player-5', name: 'Chelsy', timePlayed: 280, points: 48, online: true },
 ];
+
+//
+const LOW_SCORE = 50;
+const HIGH_SCORE = 80;
+const studentsA = [
+  { name: 'Mango', score: 83 },
+  { name: 'Poly', score: 59 },
+  { name: 'Ajax', score: 37 },
+  { name: 'Kiwi', score: 94 },
+  { name: 'Houston', score: 64 },
+];
+
+const best = studentsA.filter(student => student.score >= HIGH_SCORE);
+console.log(best);
+// {name: 'Mango', score: 83}
+// {name: 'Kiwi', score: 94}
+
+const worst = studentsA.filter(student => student.score < LOW_SCORE);
+console.log(worst); //{name: 'Ajax', score: 37}
+
+const average = studentsA.filter(({ score }) => score >= LOW_SCORE && score < HIGH_SCORE);
+console.log(average);
+//{name: 'Poly', score: 59}
+//{name: 'Houston', score: 64}
+
+const booksA = [
+  {
+    title: 'The Last Kingdom',
+    author: 'Bernard Cornwell',
+    rating: 8.38,
+  },
+  {
+    title: 'Beside Still Waters',
+    author: 'Robert Sheckley',
+    rating: 8.51,
+  },
+  {
+    title: 'The Dream of a Ridiculous Man',
+    author: 'Fyodor Dostoevsky',
+    rating: 7.75,
+  },
+  { title: 'Redder Than Blood', author: 'Tanith Lee', rating: 7.94 },
+  { title: 'Enemy of God', author: 'Bernard Cornwell', rating: 8.67 },
+];
+
+const MIN_RATING = 8;
+const AUTHOR = 'Bernard Cornwell';
+
+const topRatedBooks = booksA.filter(({ rating }) => rating >= MIN_RATING);
+const booksByAuthor = booksA.filter(({ author }) => author === AUTHOR);
+console.log(topRatedBooks);
+// {title: 'The Last Kingdom', author: 'Bernard Cornwell', rating: 8.38}
+// {title: 'Beside Still Waters', author: 'Robert Sheckley', rating: 8.51}
+// {title: 'Enemy of God', author: 'Bernard Cornwell', rating: 8.67}
+console.log(booksByAuthor);
+// {title: 'The Last Kingdom', author: 'Bernard Cornwell', rating: 8.38}
+// {title: 'Enemy of God', author: 'Bernard Cornwell', rating: 8.67}
 
 /*
  * Get an array of all online players
