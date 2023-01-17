@@ -182,3 +182,42 @@ console.log(sortByUserAge);
 // {user: 'barney', age: 36}
 // {user: 'fred', age: 40}
 // {user: 'fred', age: 48}]
+
+const playersSocers = [
+  { id: 'player-1', name: 'Roberto', timePlayed: 310, points: 54, online: false },
+  { id: 'player-2', name: 'Mersi', timePlayed: 470, points: 92, online: true },
+  { id: 'player-3', name: 'Pele', timePlayed: 230, points: 48, online: true },
+  { id: 'player-4', name: 'Zigun', timePlayed: 150, points: 71, online: false },
+  { id: 'player-5', name: 'Chelsy', timePlayed: 280, points: 48, online: true },
+];
+
+const sortPlay = _.sortBy(playersSocers, 'points');
+console.log(sortPlay);
+
+// {id: 'player-5', name: 'Chelsy', timePlayed: 280,  points: 48,  online: true}
+// {id: 'player-1', name: 'Roberto', timePlayed: 310, points: 54,  online: false}
+// {id: 'player-4', name: 'Zigun', timePlayed: 150,   points: 71,  online: false}
+// {id: 'player-2', name: 'Mersi', timePlayed: 470,   points: 92,  online: true}
+
+// ==========================================================================
+// _.sum(array);
+// Computes the sum of the values in array.
+_.sum([4, 2, 8, 6]);
+// => 20
+
+//==========================================================================
+// _.sumBy(array, [(iteratee = _.identity)]);
+//Цей метод схожий на _.sum, за винятком того, що він приймає iteratee, який викликається для кожного елемента в масиві, щоб створити значення для підсумовування. Ітерований викликається з одним аргументом: (значення).
+const objects = [{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }];
+
+const sumByN = _.sumBy(objects, 'n');
+console.log(sumByN); // 20
+
+const sumPoints = _.sumBy(playersSocers, 'points');
+console.log(sumPoints); //313
+
+// const sumTime = _.sumBy(playersSocers, 'timePlayed');
+// console.log(sumTime); // 1440
+
+const sumTime = _.sumBy(playersSocers, player => player.timePlayed);
+console.log(sumTime); // 1440
