@@ -257,3 +257,20 @@ console.log(sortUniqA); //  [2, 3, 4, 5]
 //This method is like _.uniqBy except that it's designed and optimized for sorted arrays.
 _.sortedUniqBy([1.1, 1.2, 2.3, 2.4], Math.floor);
 // => [1.1, 2.3]
+
+//===========================================================================================================
+//_.minBy(array, [iteratee=_.identity])
+
+//his method is like _.min except that it accepts iteratee which is invoked for each element in array to generate the criterion by which the value is ranked. The iteratee is invoked with one argument: (value).
+const objectsA = [{ n: 1 }, { n: 2 }];
+
+// The `_.property` iteratee shorthand.
+_.minBy(objectsA, 'n');
+// => { 'n': 1 }
+
+const minTimePlayed = _.minBy(playersSocers, 'timePlayed');
+console.log(minTimePlayed); // {id: 'player-4', name: 'Zigun', timePlayed: 150, points: 71, online: false}
+
+//_.maxBy(array, [iteratee=_.identity])
+const maxTimePlayed = _.maxBy(playersSocers, 'timePlayed');
+console.log(maxTimePlayed); // {id: 'player-2', name: 'Mersi', timePlayed: 470, points: 92, online: true}
