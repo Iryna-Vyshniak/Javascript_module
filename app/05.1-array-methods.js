@@ -96,6 +96,32 @@ console.log(numbers);
 // number:  25
 // number this:  {a: 5, b: 6}
 
+//
+function filterArray(numbers, value) {
+  const filteredNumbers = [];
+
+  numbers.forEach(number => {
+    if (number > value) {
+      filteredNumbers.push(number);
+    }
+  });
+
+  return filteredNumbers;
+}
+
+//
+function getCommonElements(firstArray, secondArray) {
+  const commonElements = [];
+  firstArray.forEach(arr => {
+    if (secondArray.includes(arr)) {
+      commonElements.push(arr);
+    }
+  });
+  return commonElements;
+}
+
+//
+
 //=============================================================================================
 /*
  * Array.prototype.map()
