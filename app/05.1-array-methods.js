@@ -253,6 +253,19 @@ console.log(updatedPlayers);
 // {id: 'player-4', name: 'Ajax',   timePlayed: 150, points: 71, online: false}
 // {id: 'player-5', name: 'Chelsy', timePlayed: 80,  points: 48, online: true}
 
+//
+const allPlanets = ['Earth', 'Mars', 'Venus', 'Jupiter'];
+
+const planetsInUpperCase = allPlanets.map(planet => planet.toUpperCase());
+console.log(planetsInUpperCase); // ["EARTH", "MARS", "VENUS", "JUPITER"]
+
+const planetsInLowerCase = allPlanets.map(planet => planet.toLowerCase());
+console.log(planetsInLowerCase); // ["earth", "mars", "venus", "jupiter"]
+console.log(allPlanets); // ["Earth", "Mars", "Venus", "Jupiter"]
+
+const planets = ['Earth', 'Mars', 'Venus', 'Jupiter'];
+const planetsLengths = planets.map(planet => planet.length);
+
 //==============================================================================================
 /*
  * Array.prototype.filter()
@@ -989,7 +1002,7 @@ const books = [
     genres: ['horror', 'mysticism', 'adventure'],
   },
 ];
-// Change code below this line
+
 const allGenres = books.flatMap(book => book.genres);
 console.log(allGenres); //  ['adventure', 'history', 'fiction', 'mysticism', 'horror', 'mysticism', 'adventure']
 const uniqueGenres = allGenres.filter((genre, index, array) => array.indexOf(genre) === index);
@@ -1001,3 +1014,16 @@ const unigueCourse = [...unique];
 console.log(unigueCourse); // ['adventure', 'history', 'fiction', 'mysticism', 'horror']
 
 //
+const genres = books.flatMap(book => book.genres);
+//
+const students = [
+  { name: 'Mango', courses: ['mathematics', 'physics'] },
+  { name: 'Poly', courses: ['science', 'mathematics'] },
+  { name: 'Kiwi', courses: ['physics', 'biology'] },
+];
+
+students.map(student => student.courses);
+// [["mathematics", "physics"], ["science", "mathematics"], ["physics", "biology"]]
+
+students.flatMap(student => student.courses);
+// ["mathematics", "physics", "science", "mathematics", "physics", "biology"];
