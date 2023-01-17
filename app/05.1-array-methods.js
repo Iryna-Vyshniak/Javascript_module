@@ -121,6 +121,66 @@ function getCommonElements(firstArray, secondArray) {
 }
 
 //
+const calculateTotalPrice = orderedItems => {
+  let totalPrice = 0;
+
+  orderedItems.forEach(item => {
+    totalPrice += item;
+  });
+
+  return totalPrice;
+};
+
+//
+const logMessage = (number, index) => {
+  console.log(`Індекс ${index}, значення ${number}`);
+  // Індекс 0, значення 5
+  // Індекс 1, значення 10
+  // Індекс 2, значення 15
+  // Індекс 3, значення 20
+  // Індекс 4, значення 25
+};
+
+numbersArr.forEach(logMessage);
+
+//
+const pureMultiply = (array, value) => {
+  const newArray = [];
+
+  array.forEach(element => {
+    newArray.push(element * value);
+  });
+
+  return newArray;
+};
+
+const numbersA = [1, 2, 3, 4, 5];
+const doubledNumbers = pureMultiply(numbersA, 2);
+
+// Мутація вихідних даних не відбулася
+console.log(numbersA); // [1, 2, 3, 4, 5]
+// Функція повернула новий масив зі зміненими даними
+console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+
+//
+function changeEven(numbers, value) {
+  const newArray = [];
+  numbers.forEach(number =>
+    !(number % 2) ? newArray.push((number += value)) : newArray.push(number)
+  );
+  return newArray;
+}
+
+changeEven([1, 2, 3, 4, 5], 10); //[1, 12, 3, 14, 5]
+
+function exchangeEven(numbers, value) {
+  const newArray = [];
+  numbers.forEach(number =>
+    !(number % 2) ? newArray.push((number += value)) : newArray.push(number)
+  );
+  return newArray;
+}
+exchangeEven([1, 2, 3, 4, 5], 10); //[1, 12, 3, 14, 5]
 
 //=============================================================================================
 /*
@@ -939,3 +999,5 @@ console.log(uniqueGenres); // ['adventure', 'history', 'fiction', 'mysticism', 
 const unique = new Set(allGenres);
 const unigueCourse = [...unique];
 console.log(unigueCourse); // ['adventure', 'history', 'fiction', 'mysticism', 'horror']
+
+//
