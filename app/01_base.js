@@ -183,3 +183,84 @@ checkPassword('mangohackzor');
 checkPassword(null);
 checkPassword('polyhax');
 checkPassword('jqueryismyjam');
+
+// ternary operator and switch
+const name = 'John';
+const ageUser = 16;
+
+//ageUser >= 18 ? console.log(name + ' drinks beer.') : console.log(name + ' drinks juice.');
+ageUser >= 18 ? console.log(`${name} drinks beer.`) : console.log(`${name} drinks juice.`);
+
+//
+const age = 20;
+switch (true) {
+  case age < 13:
+    console.log(name + ' is a boy.');
+    break;
+  case age >= 13 && age < 20:
+    console.log(name + ' is a teenager.');
+    break;
+  case age >= 20 && age < 30:
+    console.log(name + ' is a young man.');
+    break;
+  default:
+    console.log(name + ' is a man.');
+    break;
+}
+
+//
+const drink = age > 18 ? 'beer' : 'juice';
+console.log(drink);
+
+//
+const job = 'teacher';
+
+//pass in the value we want to test
+switch (job) {
+  case 'teacher':
+    // (case 'instructor':) //also will work
+    console.log('teaches kids how to code.');
+    break;
+  case 'driver':
+    console.log('drives car in the city.');
+    break;
+  case 'designer':
+    console.log('design pretty website');
+    break;
+  default:
+    console.log('does something else');
+}
+
+//
+const number = prompt('Hello, enter please the number between  0 and 59');
+
+const answerNum = Number(parseInt(number));
+
+const quoter = Math.ceil(answerNum / 15);
+
+switch (true) {
+  case Number.isNaN(answerNum):
+    alert(`Please, enter valid value - number from 1 to 59`);
+    break;
+  case answerNum > 59 || answerNum < 0:
+    alert(`The ${answerNum} is outside 0 and 59`);
+    break;
+  default:
+    switch (quoter) {
+      case 1:
+        console.log(`Number ${answerNum} refers to 1 quarters`);
+        break;
+      case 2:
+        console.log(`Number ${answerNum} refers to 2 quarters`);
+        break;
+      case 3:
+        console.log(`Number ${answerNum} refers to 3 quarters`);
+        break;
+      case 4:
+        console.log(`Number ${answerNum} refers to 4 quarters`);
+        break;
+      default:
+        console.log(`The ${answerNum} is outside 0 and 59`);
+        break;
+    }
+}
