@@ -278,3 +278,55 @@ const maxTimePlayedName = _.maxBy(playersSocers, 'timePlayed').name;
 console.log(maxTimePlayedName); // Mersi
 const maxTimePlayedPoints = _.maxBy(playersSocers, 'timePlayed').points;
 console.log(maxTimePlayedPoints); // 92
+
+//============================================================================================================
+// _.camelCase([string=''])
+// Converts string to camel case.
+
+_.camelCase('Foo Bar');
+// => 'fooBar'
+
+_.camelCase('--foo-bar--');
+// => 'fooBar'
+
+_.camelCase('__FOO_BAR__');
+// => 'fooBar'
+
+//_.capitalize([string=''])
+// Converts the first character of string to upper case and the remaining to lower case.
+const capitalizeB = _.capitalize('FRED');
+console.log(capitalizeB); // 'Fred'
+
+const capitalizeA = _.capitalize('fred');
+console.log(capitalizeA); //  'Fred'
+
+const capitalizeC = _.capitalize('fReD iS Young');
+console.log(capitalizeC); //  Fred is young
+
+//_.kebabCase([string=''])
+// Converts string to kebab case.
+_.kebabCase('Foo Bar'); // => 'foo-bar'
+
+_.kebabCase('fooBar'); // => 'foo-bar'
+
+_.kebabCase('__FOO_BAR__'); // => 'foo-bar'
+
+//_.lowerCase([string=''])
+// Converts string, as space separated words, to lower case.
+_.lowerCase('--Foo-Bar--'); // => 'foo bar'
+
+_.lowerCase('fooBar'); // => 'foo bar'
+
+_.lowerCase('__FOO_BAR__'); // => 'foo bar'
+
+//_.upperCase([string=''])
+_.upperCase('--foo-bar'); // => 'FOO BAR'
+
+_.upperCase('fooBar'); // => 'FOO BAR'
+
+_.upperCase('__foo_bar__'); // => 'FOO BAR'
+
+//_.upperFirst([string=''])
+_.upperFirst('fred'); // => 'Fred'
+
+_.upperFirst('FRED'); // => 'FRED'
