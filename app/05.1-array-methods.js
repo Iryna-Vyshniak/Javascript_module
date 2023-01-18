@@ -617,6 +617,23 @@ function isBigEnough(element, index, array) {
 [12, 5, 8, 130, 44].every(elem => elem >= 10); // false
 [12, 54, 18, 130, 44].every(elem => elem >= 10); // true
 
+//
+const firstArray = [26, 94, 36, 18];
+const secondArray = [17, 61, 23];
+const thirdArray = [17, 26, 94, 61, 36, 23, 18];
+
+const eachElementInFirstIsEven = firstArray.every(el => !(el % 2));
+const eachElementInFirstIsOdd = firstArray.every(el => el % 2);
+
+const eachElementInSecondIsEven = secondArray.every(el => !(el % 2));
+const eachElementInSecondIsOdd = secondArray.every(el => el % 2);
+
+const eachElementInThirdIsEven = thirdArray.every(el => !(el % 2));
+const eachElementInThirdIsOdd = thirdArray.every(el => el % 2);
+
+//
+const isEveryUserActive = users => users.every(user => user.isActive);
+console.log(isEveryUserActive(people)); // false
 //===============================================================================================
 /*
  * Array.prototype.some()
