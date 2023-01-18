@@ -49,6 +49,51 @@ console.log(newNumbers); // undefined
 
 const numbersArr = [5, 10, 15, 20, 25];
 
+//
+function logItems(items) {
+  console.log(items); // ['🍎', '🍇', '🍑', '🍌', '🍋']
+
+  items.forEach((item, index) => console.log(`${index + 1}: ${item}`));
+
+  // for (let i = 0; i < items.length; i += 1) {
+  //   console.log(`${i + 1} - ${items[i]}`);
+  // }
+}
+
+logItems(['🍎', '🍇', '🍑', '🍌', '🍋']);
+// 1: 🍎
+// 2: 🍇
+// 3: 🍑
+// 4: 🍌
+// 5: 🍋
+logItems(['Mango', 'Poly', 'Ajax']);
+
+//
+function printContactsInfo({ names, phones }) {
+  const nameList = names.split(',');
+  const phoneList = phones.split(',');
+
+  // nameList.forEach((name, i) => {
+  //console.log(`${name}: ${phoneList[i]}`); //Jacob: 89001234567
+
+  //or
+  // name нам не потрібен, але він обовязковий пишемо: _,
+  nameList.forEach((_, i) => {
+    console.log(`${nameList[i]}: ${phoneList[i]}`); //Jacob: 89001234567
+  });
+
+  // for (let i = 0; i < nameList.length; i += 1) {
+  //   console.log(`${nameList[i]}: ${phoneList[i]}`);
+  // }
+}
+
+printContactsInfo({
+  names: 'Jacob,William,Solomon,Artemis',
+  phones: '89001234567,89001112233,890055566377,890055566300',
+});
+
+// ```
+
 // .forEach(callback(currentValue, index, array), thisArg) - 2 аргумента: колбек та об'єкт thisArg, в контексті якого буде викликатися цей колбек
 
 // forEach - не змінює оришінальний масивю. Коли хочемо змінити його - використовуємо array та index
