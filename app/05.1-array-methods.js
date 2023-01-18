@@ -734,6 +734,12 @@ console.log(getBooleanValue('field')); // field
 // ==============================================================================================
 /*
  * Array.prototype.reduce()
+
+  массив.reduce((previousValue, element, index, array) => {
+  // Тіло колбек-функції
+}, initialValue);
+
+
  * - Поелементо перебирає оригінальний масив
  * - Повертає будь-що 🤯
  * - Замінює все на світі, але використовувати потрібно з розумом
@@ -873,7 +879,60 @@ const tagsStats = allTags.reduce(
 
 console.log(tagsStats); //{js: 3, nodejs: 3, html: 2, css: 2, react: 2}
 
-// ==========================================================================================
+// 11
+const totalS = [2, 7, 3, 14, 6].reduce((previousValue, number) => {
+  return previousValue + number;
+}, 0);
+
+console.log(totalS); // 32
+
+//12 отримати середній бал.
+const studentsB = [
+  { name: 'Mango', score: 83 },
+  { name: 'Poly', score: 59 },
+  { name: 'Ajax', score: 37 },
+  { name: 'Kiwi', score: 94 },
+  { name: 'Houston', score: 64 },
+];
+
+const totalScore = studentsB.reduce((total, student) => {
+  return total + student.score;
+}, 0);
+const averageScore = totalScore / studentsB.length;
+
+//13
+const playersA = {
+  mango: 1270,
+  poly: 468,
+  ajax: 710,
+  kiwi: 244,
+};
+const playtimes = Object.values(players); // [1270, 468, 710, 244]
+const totalPlayTime = playtimes.reduce((acc, time) => acc + time);
+const averagePlayTime = totalPlayTime / playtimes.length;
+
+//14
+const playersC = [
+  { name: 'Mango', playtime: 1270, gamesPlayed: 4 },
+  { name: 'Poly', playtime: 469, gamesPlayed: 2 },
+  { name: 'Ajax', playtime: 690, gamesPlayed: 3 },
+  { name: 'Kiwi', playtime: 241, gamesPlayed: 1 },
+];
+const totalAveragePlaytimePerGame = playersC.reduce(
+  (acc, { playtime, gamesPlayed }) => acc + playtime / gamesPlayed,
+  0
+);
+
+//15
+const amountTotalBalance = users => users.reduce((acc, { balance }) => acc + balance, 0);
+console.log(amountTotalBalance(people)); // 20916
+
+//16
+// const getTotalFriendCount = users => users.reduce((allFriends, user) => allFriends + user.friends.length, 0);
+const getTotalFriendCount = users => users.reduce((acc, { friends }) => acc + friends.length, 0);
+console.log(getTotalFriendCount(people)); // 14
+
+//=========================================================================================================
 /*
  * Array.prototype.sort(callback(currentEl, nextEl){})
  * - Сортує та ЗМІНЯЄ оригінальний масив
