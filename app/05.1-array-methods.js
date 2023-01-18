@@ -954,6 +954,15 @@ const letters = ['b', 'B', 'a', 'A'];
 letters.sort();
 console.log('letters', letters); // ['A', 'B', 'a', 'b']
 
+//
+const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+const authors = ['Tanith Lee', 'Bernard Cornwell', 'Robert Sheckley', 'Fyodor Dostoevsky'];
+
+const ascendingReleaseDates = [...releaseDates].sort();
+const alphabeticalAuthors = [...authors].sort();
+
+//
+
 /*
  * compareFunction - comparison function (callback)
  * Array elements are sorted according to its return value
@@ -966,6 +975,11 @@ sorting will leave A and B unchanged with respect to each other, but will sort t
 primeNumbers.sort((currentEl, nextEl) => nextEl - currentEl);
 
 console.log(primeNumbers); // [9, 6, 3, 2, 1]
+
+//
+const releaseDatesA = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+const ascendingReleaseDatesA = [...releaseDates].sort((current, next) => current - next); // up
+const descendingReleaseDatesA = [...releaseDates].sort((current, next) => next - current); //down
 
 /*
  * Як зробити копію масиву щоб не сортувати оригінальний
@@ -981,6 +995,21 @@ console.log('ascSortedNumbers', ascSortedNumbers);
 /*
  * Кастомне сортування складних типів
  */
+
+// масив користувачів, відсортований за спаданням кількості їхніх друзів (властивість friends)
+const sortByDescendingFriendCount = users =>
+  [...users].sort((firstUser, secondUser) => secondUser.friends.length - firstUser.friends.length);
+
+// масив користувачів, відсортований за зростанням їх балансу
+const sortByAscendingBalance = users =>
+  users.sort((firstUser, secondUser) => firstUser.balance - secondUser.balance);
+console.log(sortByAscendingBalance(people));
+
+//масив користувачів, відсортований за їх ім'ям (властивість name) в алфавітному порядку.
+const sortByName = users =>
+  [...users].sort((firstUser, secondUser) => firstUser.name.localeCompare(secondUser.name));
+
+//
 
 // By game time
 const sortedByBestPlayers = [...players].sort(
@@ -1011,6 +1040,65 @@ console.table(byName); // A, C, K, M, P
 // refactor
 const byNames = [...players].sort((a, b) => (a.name[0] > b.name[0] ? 1 : -1));
 console.table(byNames); // A, C, K, M, P
+
+// Для сортування рядків в алфавітному порядку, за зростанням або спаданням, використовується метод рядків localeCompare().
+// firstString.localeCompare(secondString)
+// localeCompare
+const authorsB = [
+  'Tanith Lee',
+  'Bernard Cornwell',
+  'Robert Sheckley',
+  'Fyodor Dostoevsky',
+  'Howard Lovecraft',
+];
+const authorsInAlphabetOrder = [...authorsB].sort((a, b) => a.localeCompare(b));
+const authorsInReversedOrder = [...authorsB].sort((a, b) => b.localeCompare(a));
+
+//localeCompare
+const studentsD = ['Jacob', 'Artemis', 'Solomon', 'Adrian', 'Kai', 'Ganymede'];
+
+const inAlphabetOrder = [...studentsD].sort((a, b) => a.localeCompare(b)); // UP
+console.log(inAlphabetOrder); // [ "Adrian", "Artemis", "Ganymede", "Jacob", "Kai", "Solomon" ]
+
+const inReversedOrder = [...studentsD].sort((a, b) => b.localeCompare(a)); // DOWN
+console.log(inReversedOrder); // [ "Solomon", "Kai", "Jacob", "Ganymede", "Artemis", "Adrian" ]
+
+//
+const booksAB = [
+  {
+    title: 'The Last Kingdom',
+    author: 'Bernard Cornwell',
+    rating: 8.38,
+  },
+  {
+    title: 'Beside Still Waters',
+    author: 'Robert Sheckley',
+    rating: 8.51,
+  },
+  {
+    title: 'The Dream of a Ridiculous Man',
+    author: 'Fyodor Dostoevsky',
+    rating: 7.75,
+  },
+  { title: 'Redder Than Blood', author: 'Tanith Lee', rating: 7.94 },
+  { title: 'Enemy of God', author: 'Bernard Cornwell', rating: 8.67 },
+];
+
+const sortedByAuthorName = [...booksAB].sort((firstAuthor, secondAuthor) =>
+  firstAuthor.author.localeCompare(secondAuthor.author)
+);
+
+const sortedByReversedAuthorName = [...booksAB].sort((firstAuthor, secondAuthor) =>
+  secondAuthor.author.localeCompare(firstAuthor.author)
+);
+
+const sortedByAscendingRating = [...booksAB].sort(
+  (firstAuthor, secondAuthor) => firstAuthor.rating - secondAuthor.rating
+);
+
+const sortedByDescentingRating = [...booksAB].sort(
+  (firstAuthor, secondAuthor) => secondAuthor.rating - firstAuthor.rating
+);
 
 // ============================================================================================
 /*
