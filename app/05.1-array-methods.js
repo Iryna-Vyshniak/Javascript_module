@@ -670,6 +670,16 @@ console.log(twin); // true, because 4 % 2 === 0
 [2, 5, 8, 1, 4].some(elem => elem > 10); // false
 [12, 5, 8, 1, 4].some(elem => elem > 10); // true, because 12 > 10
 
+//5
+const anyElementInFirstIsEven = firstArray.some(el => !(el % 2));
+const anyElementInFirstIsOdd = firstArray.some(el => el % 2);
+
+const anyElementInSecondIsEven = secondArray.some(el => !(el % 2));
+const anyElementInSecondIsOdd = secondArray.some(el => el % 2);
+
+const anyElementInThirdIsEven = thirdArray.some(el => !(el % 2));
+const anyElementInThirdIsOdd = thirdArray.some(el => el % 2);
+
 // likes includes()
 const fruits = ['apple', 'banana', 'mango', 'guava'];
 
