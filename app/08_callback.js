@@ -1318,3 +1318,38 @@ account.deposit(1700, handleSuccess, handleError);
 account.deposit(0, handleSuccess, handleError);
 account.deposit(-600, handleSuccess, handleError);
 account.deposit(600, handleSuccess, handleError);
+
+//
+function eachA(array, callback) {
+  const newArr = [];
+  for (const el of array) {
+    newArr.push(callback(el));
+  }
+  return newArr;
+}
+
+console.log(eachA([64, 49, 36, 25, 16], value => value * 2)); //[128, 98, 72, 50, 32]
+console.log(eachA([64, 49, 36, 25, 16], value => value - 10)); //[54, 39, 26, 15, 6]
+
+console.log(
+  eachA([64, 49, 36, 25, 16], function (value) {
+    return Math.sqrt(value);
+  })
+); // [8, 7, 6, 5, 4]
+
+//
+const usersA = [
+  {
+    name: 'artem',
+    age: 30,
+  },
+];
+
+const resA = eachA(usersA, user => {
+  return {
+    ...user,
+    name: user.name.toUpperCase(),
+  };
+});
+
+console.log(resA); // {name: 'ARTEM', age: 30}
