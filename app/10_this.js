@@ -258,6 +258,7 @@ objA.showThis();
 const incrementBtn = document.querySelector('.js-increment');
 const decrementBtn = document.querySelector('.js-decrement');
 const value = document.querySelector('.js-value');
+const soundBtn = document.querySelector('.js-sound');
 const audio = document.querySelector('.js-audio');
 
 const counter = {
@@ -282,3 +283,19 @@ decrementBtn.addEventListener('click', e => {
   counter.decrement();
   value.textContent = counter.value;
 });
+
+//AUDIO
+soundBtn.addEventListener('click', e => {
+  soundBtn.classList.toggle('paused');
+  audio.paused ? audio.play() : audio.pause();
+});
+
+// when focusing on this an open page in the browser
+window.onfocus = function () {
+  soundBtn.classList.contains('paused') ? audio.pause() : audio.play();
+};
+
+//when we open a new tab in the browser - the audio is turned off
+window.onblur = function () {
+  audio.pause();
+};
