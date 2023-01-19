@@ -253,3 +253,32 @@ const objA = {
 };
 
 objA.showThis();
+
+// COUNTER
+const incrementBtn = document.querySelector('.js-increment');
+const decrementBtn = document.querySelector('.js-decrement');
+const value = document.querySelector('.js-value');
+const audio = document.querySelector('.js-audio');
+
+const counter = {
+  value: 0,
+  increment() {
+    console.log('this: click on increment: ', this);
+    this.value += 1;
+  },
+  decrement() {
+    console.log('this: click on decrement: ', this);
+    this.value -= 1;
+  },
+};
+
+incrementBtn.addEventListener('click', e => {
+  e.preventDefault();
+  counter.increment();
+  value.textContent = counter.value;
+});
+decrementBtn.addEventListener('click', e => {
+  e.preventDefault();
+  counter.decrement();
+  value.textContent = counter.value;
+});
