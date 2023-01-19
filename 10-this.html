@@ -12,13 +12,22 @@
     />
   </head>
   <body>
+    <ul class="main-list-links">
+      <li class="main-item">
+        <a class="main-link" href="./index.html">Card Fate</a>
+      </li>
+      <li class="main-item">
+        <a class="main-link" href="./flex-panel.html">Flex Panel</a>
+      </li>
+    </ul>
     <div class="counter">
       <div class="counter__container">
         <div class="counter__content">
           <button class="js-increment" type="button">UP</button>
           <p class="js-value">0</p>
           <button class="js-decrement" type="button">DOWN</button>
-          <button class="js-audio" type="button">Sound</button>
+          <button class="js-sound paused" type="button">Sound</button>
+          <audio src="./media/audio/hard.mp3" class="js-audio" loop></audio>
         </div>
       </div>
     </div>
