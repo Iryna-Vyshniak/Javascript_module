@@ -135,6 +135,19 @@ console.log(getUserName); // getUserName(age) {this.age = age; console.log(this.
 // getUserName(); // Alex
 
 //============================ CALL =====================================================
+function greetGuest(greeting) {
+  console.log(`${greeting}, ${this.username}.`);
+}
+
+const mangoUser = {
+  username: 'Манго',
+};
+const polyUser = {
+  username: 'Полі',
+};
+
+greetGuest.call(mangoUser, 'Ласкаво просимо'); // Ласкаво просимо, Манго.
+greetGuest.call(polyUser, 'З прибуттям'); // З прибуттям, Полі.
 
 // getUserName = getUserName.call(newUser, 25, 'developer');
 // Nick
