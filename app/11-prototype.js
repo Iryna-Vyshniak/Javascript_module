@@ -1,7 +1,7 @@
 // 1. Кожен об'єкт має властивість __proto__
 // 2. У цій властивості лежить посилання на його ПРОТОТИП, тобто інший об'єкт
 // 3. При створенні літера об'єкта, як __proto__ записується посилання на Функція.prototype
-// 4. Функція-конструктор це функція :)
+// 4. Функція-конструктор - це функція :)
 // 5. Всю магію робить оператор new
 // 6. Якщо функція викликається через new, створюється порожній об'єкт
 // 7. Функція викликається у тих створеного об'єкта
@@ -45,7 +45,7 @@ console.log('objD: ', objD); // {a: 777} a: 777 [[Prototype]]: Object a: 5 [[Pro
 objE.a = 888;
 console.log('objE: ', objE); // {a: 888} a: 888 [[Prototype]]: Object a:777 [[Prototype]]: Object a: 5 [[Prototype]]: Object
 
-//==============================================================================================
+//===================================================================================================================================
 /*
  * ООП: КЛАС, ЕКЗЕМПЛЯР (об'єкт), ІНТЕРФЕЙС
  */
@@ -151,7 +151,10 @@ console.log(myCarAudi1); //Car {brand: 'Audi', model: 'Q3', price: 27000}
 const myCar2 = new Supercar();
 console.log(myCar2); // Car {brand: undefined, model: undefined, price: undefined}
 
+// =========================================================================================================================================
+
 // Function.prototype property
+
 Supercar.prototype.sayHi = function () {
   console.log('Car.prototype.sayHi: -> this', this); // Car.prototype.sayHi: -> this Supercar {brand: 'Audi', model: 'Q3', price: 27000}
   console.log('Hello'); //
@@ -185,3 +188,37 @@ console.log(userNick);
 
 userNick.changeEmail('nick@gmail.com'); // User {email: 'oks@gmail.com', psw: 'df456'}
 console.log(userNick); // User {email: 'nick@gmail.com', psw: 'df456'}
+
+//========================================================================================================================================
+
+//static
+
+/*
+ * Статичні властивості та методи
+ * - Статичні властивості та методи доступні тільки на самому конструкторі
+ * - У статичних методах не потрібен this
+ */
+
+User.message = `I'm a static property, I'm not on instances or prototypes.`;
+console.dir(User);
+//User({ email, psw } = {})
+//message: `I'm a static property, I'm not on instances or prototypes.`
+//prototype: changeEmail: ƒ (newEmail) constructor: ƒ ({ email, psw } = {})
+//[[Prototype]]: ƒ ()  => __proto__
+// apply: ƒ apply()
+// arguments: (...)
+
+console.log(userNick);
+// User {email: 'nick@gmail.com', psw: 'df456'} email: "nick@gmail.com" psw: "df456" [[Prototype]]: Object => not message
+
+//
+User.logInfo = function (obj) {
+  console.log('User.logInfo -> obj', obj);
+  console.log('Почта: ', obj.email);
+  console.log('Пароль: ', obj.psw);
+};
+
+User.logInfo(userNick);
+//User {email: 'nick@gmail.com', psw: 'df456'} email: "nick@gmail.com"psw: "df456"  [[Prototype]]: Object
+// Почта:  nick@gmail.com
+// Пароль:  df456
