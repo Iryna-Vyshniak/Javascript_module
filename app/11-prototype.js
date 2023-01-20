@@ -55,11 +55,133 @@ console.log('objE: ', objE); // {a: 888} a: 888 [[Prototype]]: Object a:777 [[Pr
  * - Іменування
  * - Оператор new
  * - Властивість Function.prototype
+ * 
+ * Constructor functions
+ * - Naming
+ * - operator new
+ * - Function.prototype property
  */
-
-const Car = function () {
-  console.log('function Car: ', this); //Car {}
+// 1
+const CarC = function () {
+  console.log('function Car: ', this); //CarC {}
+  this.a = 555;
 };
 
-const myCar = new Car();
-console.log(myCar); // Car {}
+const myCarC = new CarC();
+//console.log(myCarC); // CarC {}
+console.log(myCarC); // тепер CarC {a: 555}, так як додали в const CarC {  this.a = 555;}
+
+// 2
+const CarA = function (value) {
+  console.log('function CarA: ', this); //CarA {}
+  this.a = value;
+};
+
+const myCarA = new CarA(10);
+console.log(myCarA); // CarA {a: 10}
+
+const myCarB = new CarA(777);
+console.log(myCarB); // CarB {a: 777}
+
+// 3
+const CarBMW = function (brand, model, price) {
+  console.log('function CarBMW: ', this); //CarBMW {}
+  this.brand = brand;
+  this.model = model;
+  this.price = price;
+};
+
+const myCarBMW = new CarBMW('BMW', 'X6', '35000');
+console.log(myCarBMW); // Car {brand: 'BMW', model: 'X6', price: '35000'}
+
+//4
+const Car = function (confiq = {}) {
+  console.log('function Car: ', this); //Car {}
+  console.log(confiq); // Car {brand: 'BMW', model: 'X6', price: '35000'}
+  // {brand: 'Audi', model: 'Q3', price: 27000}
+  //   this.brand = confiq.brand;
+  //   this.model = confiq.model;
+  //   this.price = confiq.price;
+
+  const { brand, model, price } = confiq;
+  this.brand = brand;
+  this.model = model;
+  this.price = price;
+};
+
+const myCar = new Car({
+  brand: 'BMW',
+  model: 'X6',
+  price: '35000',
+});
+console.log(myCar); // Car {brand: 'BMW', model: 'X6', price: '35000'}
+
+const myCarAudi = new Car({
+  brand: 'Audi',
+  model: 'Q3',
+  price: 27000,
+});
+console.log(myCarAudi); //Car {brand: 'Audi', model: 'Q3', price: 27000}
+
+const myCar3 = new Car();
+console.log(myCar3); // Car {brand: undefined, model: undefined, price: undefined}
+
+//5 EXCELLENT VARIANT
+const Supercar = function ({ brand, model, price } = {}) {
+  console.log('function Supercar: ', this); //Car {}
+  this.brand = brand;
+  this.model = model;
+  this.price = price;
+};
+
+const myCar1 = new Supercar({
+  brand: 'BMW',
+  model: 'X6',
+  price: '35000',
+});
+console.log(myCar1); // Car {brand: 'BMW', model: 'X6', price: '35000'}
+
+const myCarAudi1 = new Supercar({
+  brand: 'Audi',
+  model: 'Q3',
+  price: 27000,
+});
+console.log(myCarAudi1); //Car {brand: 'Audi', model: 'Q3', price: 27000}
+
+const myCar2 = new Supercar();
+console.log(myCar2); // Car {brand: undefined, model: undefined, price: undefined}
+
+// Function.prototype property
+Supercar.prototype.sayHi = function () {
+  console.log('Car.prototype.sayHi: -> this', this); // Car.prototype.sayHi: -> this Supercar {brand: 'Audi', model: 'Q3', price: 27000}
+  console.log('Hello'); //
+};
+
+myCarAudi1.sayHi(); // Hello
+
+Supercar.prototype.changePrice = function (newPrice) {
+  this.price = newPrice;
+};
+
+myCarAudi1.changePrice(85000);
+console.log(myCarAudi1); //Supercar {brand: 'Audi', model: 'Q3', price: 85000}
+
+// user
+const User = function ({ email, psw } = {}) {
+  this.email = email;
+  this.psw = psw;
+};
+
+User.prototype.changeEmail = function (newEmail) {
+  this.email = newEmail;
+};
+
+const userNick = new User({
+  email: 'oks@gmail.com',
+  psw: 'df456',
+});
+
+console.log(userNick);
+
+userNick.changeEmail('nick@gmail.com'); // User {email: 'oks@gmail.com', psw: 'df456'}
+console.log(userNick); // User {email: 'nick@gmail.com', psw: 'df456'}
