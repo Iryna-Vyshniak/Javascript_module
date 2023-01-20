@@ -62,6 +62,22 @@ log();
 // ========================================================
 
 // =======================================  BIND ==========================================================
+const customer = {
+  firstName: 'Jacob',
+  lastName: 'Mercer',
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
+
+function makeMessage(callback) {
+  // callback() - це виклик методу getFullName без об'єкта
+  console.log(`Обробляємо заявку від ${callback()}.`);
+}
+
+makeMessage(customer.getFullName.bind(customer)); // Обробляємо заявку від Jacob Mercer.
+// Метод bind використовується для прив'язування контексту, передаючи методи об'єкта як колбек-функції. Передамо колбеком не оригінальний метод getFullName, а його копію з прив'язаним контекстом об'єкту customer.
+
 /* FULL VERSION
  
 const calcOrder = (func, num, price, drink) => {
@@ -155,6 +171,9 @@ greetGuest.call(polyUser, 'З прибуттям'); // З прибуттям, П
 // developer
 
 // ========================== APPLY =====================================================
+greetGuest.apply(mangoUser, ['Ласкаво просимо']); // Ласкаво просимо, Манго.
+greetGuest.apply(polyUser, ['З прибуттям']); // З прибуттям, Полі.
+
 getUserName = getUserName.apply(newUser, [25, 'developer']);
 // Nick
 // 25
