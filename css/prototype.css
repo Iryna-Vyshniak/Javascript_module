@@ -92,28 +92,28 @@ button:active {
   border-radius: 20rem;
 
   background-color: transparent;
-  text-shadow: 0.0313rem 0.0313rem 0 #fff;
+  text-shadow: 1px 1px 1px #fff, 0.1px 0.1px 0px #774e2e;
   backdrop-filter: shadow(0.625rem);
 
   font-size: 0.875rem;
   font: inherit;
   font-weight: bold;
 
-  color: #9fa8c7;
-  box-shadow: -0.125rem -0.125rem 1.25rem #fff, 0.125rem 0.125rem 0.125rem #babecc;
+  color: #e0b694;
+  box-shadow: -0.125rem -0.125rem 1.25rem #fff, 0.125rem 0.125rem 0.125rem #e0b694;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .main-link:focus,
 .main-link:hover {
-  box-shadow: -0.125rem -0.125rem 0.3125rem #fff, 0.125rem 0.125rem 0.125rem #babecc;
+  box-shadow: -0.125rem -0.125rem 0.3125rem #fff, 0.125rem 0.125rem 0.125rem #e0b694;
   text-decoration: none;
-  color: #61677c;
+  color: #fed2ad;
 }
 
 .main-link:active {
-  box-shadow: inset 0.0625rem 0.0625rem 0.125rem #babecc, inset -0.0625rem -0.0625rem 0.125rem #fff;
+  box-shadow: inset 0.0625rem 0.0625rem 0.125rem #e0b694, inset -0.0625rem -0.0625rem 0.125rem #fff;
   text-decoration: none;
-  color: #61677c;
+  color: #fed2ad;
 }
