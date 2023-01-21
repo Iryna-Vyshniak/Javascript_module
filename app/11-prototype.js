@@ -239,4 +239,56 @@ User.logInfo(userNick);
 // prev.addEventListener('click', () => mySiema.prev());
 // next.addEventListener('click', () => mySiema.next());
 
-//
+// COUNTER PLUGIN
+const CounterPlugin = function ({ step = 1, rootSelector, initialValue = 0 } = {}) {
+  this._step = step;
+  this._value = initialValue;
+
+  this._refs = this.getRefs(rootSelector);
+  this.bindEvents();
+  this.updateValueUI();
+};
+
+CounterPlugin.prototype.increment = function () {
+  this._value += this._step;
+};
+CounterPlugin.prototype.decrement = function () {
+  this._value -= this._step;
+};
+
+CounterPlugin.prototype.getRefs = function (rootSelector) {
+  const refs = {};
+  refs.container = document.querySelector(rootSelector);
+  refs.incrementBtn = refs.container.querySelector('[data-increment]');
+  refs.decrementBtn = refs.container.querySelector('[data-decrement]');
+  refs.value = refs.container.querySelector('[data-value]');
+  refs.audioDecrease = refs.container.querySelector('.js-audio-decrease');
+  refs.audioAdd = refs.container.querySelector('.js-audio-add');
+  return refs;
+};
+
+CounterPlugin.prototype.bindEvents = function () {
+  this._refs.incrementBtn.addEventListener('click', () => {
+    this._refs.incrementBtn.classList.toggle('paused');
+    this._refs.audioAdd.paused ? this._refs.audioAdd.play() : this._refs.audioAdd.pause();
+    this.increment();
+    this.updateValueUI();
+  });
+  this._refs.decrementBtn.addEventListener('click', () => {
+    this._refs.decrementBtn.classList.toggle('paused');
+    this._refs.audioDecrease.paused
+      ? this._refs.audioDecrease.play()
+      : this._refs.audioDecrease.pause();
+    this.decrement();
+    this.updateValueUI();
+  });
+};
+
+CounterPlugin.prototype.updateValueUI = function () {
+  this._refs.value.textContent = this._value;
+};
+
+const counter1 = new CounterPlugin({ step: 10, rootSelector: '#counter-1', initialValue: 0 });
+const counter2 = new CounterPlugin({ step: 2, rootSelector: '#counter-2', initialValue: 10 });
+console.log('🚀 ~ file: 11-prototype.js:287 ~ counter1', counter1);
+console.log('🚀 ~ file: 11-prototype.js:288 ~ counter2', counter2);
