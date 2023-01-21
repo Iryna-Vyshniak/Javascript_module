@@ -224,17 +224,19 @@ User.logInfo(userNick);
 // Пароль:  df456
 
 //=======================================================================================================
-//SIEMA
+//SIEMA DOESN`T WORKING WITHOUT PLUGIN
 
-const mySiema = new Siema({
-  selector: '#siema',
-  perPage: 2,
-  duration: 200,
-  easing: 'ease-out',
-  loop: true,
-});
-const prev = document.querySelector('.prev');
-const next = document.querySelector('.next');
+// const mySiema = new Siema({
+//   selector: '#siema',
+//   perPage: 2,
+//   duration: 200,
+//   easing: 'ease-out',
+//   loop: true,
+// });
+// const prev = document.querySelector('.prev');
+// const next = document.querySelector('.next');
 
-prev.addEventListener('click', () => mySiema.prev());
-next.addEventListener('click', () => mySiema.next());
+// prev.addEventListener('click', () => mySiema.prev());
+// next.addEventListener('click', () => mySiema.next());
+
+//
