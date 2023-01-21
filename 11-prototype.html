@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prototype</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Sofia+Sans:regular,500,700,800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/prototype.css" />
   </head>
   <body>
@@ -15,7 +19,28 @@
       <li class="main-item">
         <a class="main-link" href="./flex-panel.html">Flex Panel</a>
       </li>
+      <li class="main-item">
+        <a class="main-link" href="./10-this.html">Counter</a>
+      </li>
     </ul>
+    <!-- PLUGIN COUNTER -->
+    <div class="counter">
+      <div id="counter-1" class="button-wrapper">
+        <button data-increment type="button" class="js-sound paused">ADD</button>
+        <audio src="./media/audio/add.mp3" class="js-audio-add"></audio>
+        <span data-value>0</span>
+        <button data-decrement type="button" class="js-sound paused">DECREASE</button>
+        <audio src="./media/audio/decrease.mp3" class="js-audio-decrease"></audio>
+      </div>
+
+      <div id="counter-2" class="button-wrapper">
+        <button data-increment type="button" class="paused">ADD</button>
+        <audio src="./media/audio/add.mp3" class="js-audio-add"></audio>
+        <span data-value>0</span>
+        <button data-decrement type="button" class="paused">DECREASE</button>
+        <audio src="./media/audio/decrease.mp3" class="js-audio-decrease"></audio>
+      </div>
+    </div>
 
     <!-- SIEMA -->
 
