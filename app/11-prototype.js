@@ -222,3 +222,19 @@ User.logInfo(userNick);
 //User {email: 'nick@gmail.com', psw: 'df456'} email: "nick@gmail.com"psw: "df456"  [[Prototype]]: Object
 // Почта:  nick@gmail.com
 // Пароль:  df456
+
+//=======================================================================================================
+//SIEMA
+
+const mySiema = new Siema({
+  selector: '#siema',
+  perPage: 2,
+  duration: 200,
+  easing: 'ease-out',
+  loop: true,
+});
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+
+prev.addEventListener('click', () => mySiema.prev());
+next.addEventListener('click', () => mySiema.next());
