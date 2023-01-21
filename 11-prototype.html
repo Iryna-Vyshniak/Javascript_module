@@ -5,8 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prototype</title>
+    <link rel="stylesheet" href="./css/prototype.css" />
   </head>
   <body>
+    <ul class="main-list-links">
+      <li class="main-item">
+        <a class="main-link" href="./index.html">Card Fate</a>
+      </li>
+      <li class="main-item">
+        <a class="main-link" href="./flex-panel.html">Flex Panel</a>
+      </li>
+    </ul>
+    <div class="siema">
+      <img src="./media/1.jpg" width=" 500" height="auto" class="siema-img" />
+      <img src="./media/2.jpg" width=" 500" height="auto" class="siema-img" />
+      <img src="./media/3.jpg" width=" 500" height="auto" class="siema-img" />
+      <img src="./media/4.jpg" width=" 500" height="auto" class="siema-img" />
+      <img src="./media/5.jpg" width=" 500" height="auto" class="siema-img" />
+    </div>
+    <div class="button-wrapper">
+      <button class="prev">prev</button>
+      <button class="next">next</button>
+    </div>
+    <script src="siema.min.js"></script>
+    <script>
+      new Siema();
+    </script>
     <script src="./app/11-prototype.js" type="module"></script>
   </body>
 </html>
