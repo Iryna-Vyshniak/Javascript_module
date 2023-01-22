@@ -480,3 +480,63 @@ console.log(
   "🚀 ~ file: 10_this.js:482 ~ pizzaPalace.order('Viennese');",
   pizzaPalace.order('Viennese')
 );
+
+//-------------------------------------------------------------------------------
+const client = {
+  username: 'Mango',
+  balance: 24000,
+  discount: 0.1,
+  orders: ['Burger', 'Pizza', 'Salad'],
+
+  getBalance() {
+    return this.balance;
+  },
+  getDiscount() {
+    return this.discount;
+  },
+  setDiscount(value) {
+    this.discount = value;
+  },
+  getOrders() {
+    return this.orders;
+  },
+  addOrder(cost, order) {
+    this.balance -= cost - cost * this.discount;
+    this.orders.push(order);
+  },
+};
+client.setDiscount(0.15);
+console.log(client.getDiscount()); // 0.15
+
+client.addOrder(5000, 'Steak');
+console.log(client.getBalance()); // 19750
+console.log(client.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
+
+//----------------------------------------------------------------------------------
+const historyService = {
+  orders: [
+    { email: 'jacob@hotmail.com', dish: 'Burrito' },
+    { email: 'solomon@topmail.net', dish: 'Burger' },
+    { email: 'artemis@coldmail.net', dish: 'Pizza' },
+    { email: 'solomon@topmail.net', dish: 'Apple pie' },
+    { email: 'jacob@hotmail.com', dish: 'Taco' },
+  ],
+
+  getOrdersLog() {
+    return this.orders.map(order => `email: ${order.email} dish: ${order.dish}`).join(' - ');
+  },
+  getEmails() {
+    const emails = this.orders.map(order => order.email);
+    const uniqueEmails = new Set(emails);
+    return [...uniqueEmails];
+  },
+  getOrdersByEmail(email) {
+    return this.orders.filter(order => order.email === email);
+  },
+};
+
+historyService.getOrdersByEmail('solomon@topmail.net'); //  [{ email: "solomon@topmail.net", dish: "Burger" }, { email: "solomon@topmail.net", dish: "Apple pie" }]
+historyService.getOrdersByEmail('artemis@coldmail.net'); // [{ email: "artemis@coldmail.net", dish: "Pizza" }]
+
+console.log(historyService.getEmails()); // ['jacob@hotmail.com', 'solomon@topmail.net', 'artemis@coldmail.net']
+//-----------------------------------------------------------------------------------
