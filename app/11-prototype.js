@@ -292,3 +292,24 @@ const counter1 = new CounterPlugin({ step: 10, rootSelector: '#counter-1', initi
 const counter2 = new CounterPlugin({ step: 2, rootSelector: '#counter-2', initialValue: 10 });
 console.log('🚀 ~ file: 11-prototype.js:287 ~ counter1', counter1);
 console.log('🚀 ~ file: 11-prototype.js:288 ~ counter2', counter2);
+
+//----------------------------------------------------------------------
+const parent = {
+  name: 'Stacey',
+  surname: 'Moore',
+  age: 54,
+  heritage: 'Irish',
+};
+
+const child = Object.create(parent);
+
+child.name = 'Jason';
+child.age = 27;
+
+parent.hasOwnProperty('surname'); // true
+parent.hasOwnProperty('heritage'); // true
+child.hasOwnProperty('name'); // true
+child.name; // "Jason"
+child.hasOwnProperty('age'); // true
+
+// ----------------------------------------------------------------------
