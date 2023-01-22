@@ -307,3 +307,32 @@ builder.padEnd('^');
 console.log(builder.getValue()); // "^.^"
 builder.padBoth('=');
 console.log(builder.getValue()); // "=^.^="
+
+//---------------------------------------------------------------------
+//Encapsulation is a concept that allows you to hide how a class is organized. The user of the class should have access only to the public interface - a set of public properties and methods of the class. The rest of the methods and properties (not public) should be unavailable.
+
+class StringBuilders {
+  #value;
+  constructor(initialValue) {
+    this.#value = initialValue;
+  }
+
+  getValue() {
+    return this.#value;
+  }
+
+  padEnd(str) {
+    this.#value += str;
+  }
+
+  padStart(str) {
+    this.#value = str + this.#value;
+  }
+
+  padBoth(str) {
+    this.padStart(str);
+    this.padEnd(str);
+  }
+}
+
+const builders = new StringBuilders('.');
