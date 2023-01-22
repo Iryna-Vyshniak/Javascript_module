@@ -172,3 +172,44 @@ mango.gainXp(1000);
 //     'Hero.prototype.__proto__ === Object.prototype ',
 //     Hero.prototype.__proto__ === Object.prototype,
 // );
+
+//--------------------------------------------------------------------
+
+class User {
+  // Синтаксис оголошення методу класу
+  constructor(name, email) {
+    // Ініціалізація властивостей екземпляра, public value: name, email
+    this.name = name;
+    this.email = email;
+  }
+}
+
+const mangust = new User('Mangust', 'mango@mail.com');
+console.log(mangust); // { name: 'Mangust', email: 'mango@mail.com' }
+
+const poly = new User('Poly', 'poly@mail.com');
+console.log(poly); // { name: 'Poly', email: 'poly@mail.com' }
+
+//---------------------------------------------------------------------
+class User {
+  // Деструктуризуємо об'єкт
+  // constructor({ name, email }) - сигнатурa (підпис) конструктора.
+  constructor({ name, email }) {
+    this.name = name;
+    this.email = email;
+  }
+}
+
+const mall = new User({
+  name: 'Mall',
+  email: 'mall@mail.com',
+});
+console.log(mall); // { name: "Mall", email: "mall@mail.com" }
+
+const magicman = new User({
+  name: 'Magicman',
+  email: 'mag@mail.com',
+});
+console.log(poly); // { name: "Magicman", email: "mag@mail.com" }
+
+//------------------------------------------------------------------
