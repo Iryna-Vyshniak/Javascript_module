@@ -281,14 +281,14 @@ class StringBuilder {
   }
   // ??
   // padEnd(str) {
-  //   this.value.padEnd(this.value, str);
+  //   this.value.padEnd(str);
   // }
   padEnd(str) {
     this.value += str;
   }
   // ??
   // padStart(str) {
-  //   this.value.padStart(this.value, str);
+  //   this.value.padStart(str);
   // }
   padStart(str) {
     this.value = str + this.value;
@@ -367,3 +367,44 @@ audi.price = 51000;
 console.dir(audi.price); // 49000
 
 console.log(audi);
+
+//---------------------------------------------------------------------
+// static method
+
+class UserFox {
+  static #takenEmails = [];
+
+  static isEmailTaken(email) {
+    return UserFox.#takenEmails.includes(email);
+  }
+
+  #email;
+
+  constructor({ email }) {
+    this.#email = email;
+    UserFox.#takenEmails.push(email);
+  }
+}
+
+const fox = new UserFox({ email: 'fox@mail.com' });
+console.log(UserFox.isEmailTaken('cat@mail.com')); //false
+console.log(UserFox.isEmailTaken('fox@mail.com')); //true
+
+//-------------------------------------------------------------
+class CarBX {
+  static #MAX_PRICE = 50000;
+  static checkPrice(price) {
+    return price > this.#MAX_PRICE
+      ? 'Error! Price exceeds the maximum'
+      : 'Success! Price is within acceptable limits';
+  }
+  constructor({ price }) {
+    this.price = price;
+  }
+}
+
+const audiBX = new CarBX({ price: 36000 });
+const bmwBX = new CarBX({ price: 64000 });
+
+console.log(CarBX.checkPrice(audiBX.price)); // "Success! Price is within acceptable limits"
+console.log(CarBX.checkPrice(bmwBX.price)); // "Error! Price exceeds the maximum"
