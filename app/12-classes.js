@@ -11,6 +11,14 @@
  * - getters and setters - гетери та сетери
  */
 
+// Клас - ескіз(шаблон) обєкта з яким маємо працювати (машина) Атрибути класа це колеса, двигун і тд
+// Методи - завестися, відкрити двері, збільшити швидкість
+// Обєкт - екземпляр класа який створили з шаблона
+// Інтерфейс - набір методів доступних для вмкористання іншими класами (приборна панель автомобіля, кнопки на автоматі з видачі вкусняшок)
+// Абстракція - виділеня головних характеристик обєкту і відкидання незначних не вдаючисть в роздуми як методи працюють зсередини. (map, filter, sort)
+// Інкапсуляція - приховання всіх внутрішніх процесів від користувача
+// Наслідування - створення нового класу на базі існуюучого
+
 // Declaration
 class Rectangle {
   constructor(height, width) {
@@ -191,7 +199,7 @@ const poly = new User('Poly', 'poly@mail.com');
 console.log(poly); // { name: 'Poly', email: 'poly@mail.com' }
 
 //---------------------------------------------------------------------
-class User {
+class UserA {
   // Деструктуризуємо об'єкт
   // constructor({ name, email }) - сигнатурa (підпис) конструктора.
   constructor({ name, email }) {
@@ -200,13 +208,13 @@ class User {
   }
 }
 
-const mall = new User({
+const mall = new UserA({
   name: 'Mall',
   email: 'mall@mail.com',
 });
 console.log(mall); // { name: "Mall", email: "mall@mail.com" }
 
-const magicman = new User({
+const magicman = new UserA({
   name: 'Magicman',
   email: 'mag@mail.com',
 });
@@ -215,7 +223,7 @@ console.log(poly); // { name: "Magicman", email: "mag@mail.com" }
 //------------------------------------------------------------------
 // METHODS
 
-class User {
+class UserB {
   constructor({ name, email }) {
     this.name = name;
     this.email = email;
@@ -263,3 +271,39 @@ storage.removeItem('Prolonger');
 console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Flox"]
 
 //-------------------------------------------------------------------
+class StringBuilder {
+  constructor(initialValue) {
+    this.value = initialValue;
+  }
+
+  getValue() {
+    return this.value;
+  }
+  // ??
+  // padEnd(str) {
+  //   this.value.padEnd(this.value, str);
+  // }
+  padEnd(str) {
+    this.value += str;
+  }
+  // ??
+  // padStart(str) {
+  //   this.value.padStart(this.value, str);
+  // }
+  padStart(str) {
+    this.value = str + this.value;
+  }
+  padBoth(str) {
+    this.padStart(str);
+    this.padEnd(str);
+  }
+}
+
+const builder = new StringBuilder('.');
+console.log(builder.getValue()); // "."
+builder.padStart('^');
+console.log(builder.getValue()); // "^."
+builder.padEnd('^');
+console.log(builder.getValue()); // "^.^"
+builder.padBoth('=');
+console.log(builder.getValue()); // "=^.^="
