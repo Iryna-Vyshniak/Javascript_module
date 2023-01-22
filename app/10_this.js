@@ -591,3 +591,15 @@ setTimeout(logThis, 1000); // undefined
 //-----------------------------------------------------------------------------------
 
 [1, 2, 3].forEach(logThis, { name: 'obj' }); // { name: 'obj' }, { name: 'obj' }, { name: 'obj' }
+
+//--------------------------------------------------------------
+
+console.log('global this: ', this); //global this:  undefined
+
+const arrow = () => {
+  console.log('arrow this: ', this);
+};
+
+arrow(); // arrow this:  undefined
+// в type="module" arrow function this посилається на глобальний this:  undefined.
+// Без type="module" in 'use strict' and without 'use strict" -> global object window
