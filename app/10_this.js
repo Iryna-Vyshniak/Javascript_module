@@ -540,3 +540,54 @@ historyService.getOrdersByEmail('artemis@coldmail.net'); // [{ email: "artemis@c
 
 console.log(historyService.getEmails()); // ['jacob@hotmail.com', 'solomon@topmail.net', 'artemis@coldmail.net']
 //-----------------------------------------------------------------------------------
+
+const test = {
+  prop: 42,
+  func: function () {
+    return this.prop;
+  },
+};
+
+console.log(test.func());
+// 42
+
+//-----------------------------------------------------------------------------------
+function getThis() {
+  return this;
+}
+
+const obj1 = { name: 'obj1' };
+const obj2 = { name: 'obj2' };
+
+obj1.getThis = getThis;
+obj2.getThis = getThis;
+
+console.log(obj1.getThis()); // { name: 'obj1', getThis: [Function: getThis] }
+console.log(obj2.getThis()); // { name: 'obj2', getThis: [Function: getThis] }
+
+//------------------------------------------------------------------------------------
+
+const obj4 = {
+  name: 'obj4',
+  getThis() {
+    return this;
+  },
+};
+
+const obj5 = { name: 'obj5' };
+
+obj5.getThis = obj4.getThis;
+console.log(obj5.getThis()); // { name: 'obj5', getThis: [Function: getThis] }
+
+//----------------------------------------------------------------------------------
+function logThis() {
+  'use strict';
+  console.log(this);
+}
+
+[1, 2, 3].forEach(logThis); // undefined, undefined, undefined
+setTimeout(logThis, 1000); // undefined
+
+//-----------------------------------------------------------------------------------
+
+[1, 2, 3].forEach(logThis, { name: 'obj' }); // { name: 'obj' }, { name: 'obj' }, { name: 'obj' }
