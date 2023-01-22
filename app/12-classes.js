@@ -408,3 +408,82 @@ const bmwBX = new CarBX({ price: 64000 });
 
 console.log(CarBX.checkPrice(audiBX.price)); // "Success! Price is within acceptable limits"
 console.log(CarBX.checkPrice(bmwBX.price)); // "Error! Price exceeds the maximum"
+
+//------------------------------------------------------------------------
+// The extends keyword allows you to implement class inheritance, when one class (child, derived) inherits the properties and methods of another class (parent).
+//First of all, in the constructor of the child class, you need to call the special function super(arguments) - this is an alias for the constructor of the parent class. Otherwise, an attempt to refer to this in the constructor of the child class will result in an error.
+// When calling the constructor of the parent class, we pass the arguments it needs to initialize the properties.
+
+// class UserX {
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+
+// class ContentEditor extends UserX {
+//  Тіло класу ContentEditor
+// static AccessLevel = {
+// BASIC: "basic",
+// SUPERUSER: "superuser"
+// }
+// }
+
+// const editorX = new ContentEditor('remi@mail.com');
+
+class UserX {
+  _email;
+
+  constructor(email) {
+    this._email = email;
+  }
+
+  get email() {
+    return this._email;
+  }
+
+  set email(newEmail) {
+    this._email = newEmail;
+  }
+}
+class Admin extends UserX {
+  static AccessLevel = {
+    BASIC: 'basic',
+    SUPERUSER: 'superuser',
+  };
+
+  constructor({ email, accessLevel }) {
+    super(email);
+    this.accessLevel = accessLevel;
+  }
+
+  blacklistedEmails = [];
+
+  blacklist(email) {
+    this.blacklistedEmails.push(email);
+  }
+
+  isBlacklisted(email) {
+    return this.blacklistedEmails.includes(email);
+  }
+}
+
+const remiAdmin = new Admin({
+  email: 'remi@mail.com',
+  accessLevel: Admin.AccessLevel.SUPERUSER,
+});
+
+console.log(remiAdmin.email); // "remi@mail.com"
+console.log(remiAdmin.accessLevel); // "superuser"
+
+remiAdmin.blacklist('rat@mail.com');
+console.log(remiAdmin.blacklistedEmails); // ['rat@mail.com'
+console.log(remiAdmin.isBlacklisted('remi@mail.com')); // false
+console.log(remiAdmin.isBlacklisted('rat@mail.com')); // true
