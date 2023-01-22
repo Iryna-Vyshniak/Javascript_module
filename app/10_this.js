@@ -331,3 +331,152 @@ window.onfocus = function () {
 window.onblur = function () {
   audio.pause();
 };
+
+// task -----------------------------------------------------------------------------------------
+function fnD() {
+  console.log(this);
+}
+
+const objD = {
+  draw: fnD,
+};
+objD.draw();
+console.log(objD.draw()); //{draw: ƒ}draw: ƒ fnD()[[Prototype]]: Object
+
+//task -----------------------------------------------------------------------------------------
+const objUser = {
+  name: 'testUser',
+  getName() {
+    console.log(this.name);
+  },
+};
+
+objUser.getName(); // testUser
+
+const objUserA = {
+  name: 'UserA',
+  method: objUser.getName,
+};
+
+objUserA.method(); // UserA
+
+//-------------------------------------------------------------------------------------------------
+// TASK
+const objUserB = {
+  name: 'testUser',
+  data: {
+    getName() {
+      console.log(this.name);
+    },
+  },
+};
+
+//objUserB.getName(); // Uncaught TypeError: objUserB.getName is not a function
+
+const objUserC = {
+  name: 'UserA',
+  method: objUserB.getName,
+};
+
+// objUserC.method(); //Uncaught TypeError: objUserC.method is not a function
+
+// TASK -----------------------------------------------------------------------------------------
+const objUserD = {
+  name: 'testUser',
+  data: {
+    email: 'a@jmail.com',
+    age: 36,
+    getMail() {
+      console.log(this.email);
+    },
+  },
+  getUserName() {
+    console.log(this.name);
+  },
+};
+
+objUserD.getUserName(); // testUser
+objUserD.data.getMail(); // a@jmail.com
+
+const objUserCD = {
+  name: 'UserrCD',
+  firstMethod: objUserD.getUserName,
+  secondMethod: objUserD.data.getMail,
+};
+
+objUserCD.firstMethod(); //UserrCD
+objUserCD.secondMethod(); //undefined
+
+// ARROW THIS -------------------------------------------------------------------------------
+
+const userBlog = () => {
+  console.log('userBlog: ', this);
+};
+
+userBlog(); // userBlog:  undefined / window
+
+const blog = {
+  name: 'userBlogName',
+  getName: () => {
+    console.log('blog.getName: ', this.name);
+  },
+};
+
+// blog.getName(); // TypeError: Cannot read properties of undefined
+
+const blogA = {
+  name: 'userBlogName',
+  getName: userBlog,
+};
+
+// blog.getName(); // TypeError: Cannot read properties of undefined
+
+//-----------------------------------------------------------------
+
+const bookShelf = {
+  authors: ['Bernard Cornwell', 'Robert Sheckley'],
+  getAuthors() {
+    return this.authors;
+  },
+  addAuthor(authorName) {
+    this.authors.push(authorName);
+  },
+};
+
+console.log(bookShelf.getAuthors()); // ["Bernard Cornwell", "Robert Sheckley"]
+bookShelf.addAuthor('Tanith Lee');
+console.log(bookShelf.getAuthors()); // ["Bernard Cornwell", "Robert Sheckley", "Tanith Lee"]
+
+//------------------------------------------------------------------------
+
+const pizzaPalace = {
+  pizzas: ['Supercheese', 'Smoked', 'Four meats'],
+
+  checkPizza(pizzaName) {
+    return this.pizzas.includes(pizzaName);
+  },
+  order(pizzaName) {
+    const isPizzaAvailable = this.checkPizza(pizzaName);
+    return !isPizzaAvailable
+      ? `Sorry, there is no pizza named «${pizzaName}»`
+      : `Order accepted, preparing «${pizzaName}» pizza`;
+  },
+};
+
+pizzaPalace.order('Smoked'); // "Order accepted, preparing «Smoked» pizza"
+console.log("🚀 ~ file: 10_this.js:470 ~ pizzaPalace.order('Smoked')", pizzaPalace.order('Smoked'));
+pizzaPalace.order('Four meats'); // "Order accepted, preparing «Four meats» pizza"
+console.log(
+  "🚀 ~ file: 10_this.js:472 ~ pizzaPalace.order('Four meats')",
+  pizzaPalace.order('Four meats')
+);
+pizzaPalace.order('Big Mike'); // "Sorry, there is no pizza named «Big Mike»"
+console.log(
+  "🚀 ~ file: 10_this.js:477 ~ pizzaPalace.order('Big Mike')",
+  pizzaPalace.order('Big Mike')
+);
+pizzaPalace.order('Viennese'); // "Sorry, there is no pizza named «Viennese»"
+console.log(
+  "🚀 ~ file: 10_this.js:482 ~ pizzaPalace.order('Viennese');",
+  pizzaPalace.order('Viennese')
+);
