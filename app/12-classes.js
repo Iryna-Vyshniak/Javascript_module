@@ -336,3 +336,34 @@ class StringBuilders {
 }
 
 const builders = new StringBuilders('.');
+
+//------------------------------------------------------------------
+// get and set
+
+class CarAD {
+  static MAX_PRICE = 50000;
+  #price;
+
+  constructor({ price }) {
+    this.#price = price;
+  }
+
+  get price() {
+    return this.#price;
+  }
+
+  set price(newPrice) {
+    newPrice <= Car.MAX_PRICE ? (this.#price = newPrice) : this.#price;
+  }
+}
+
+const audi = new CarAD({ price: 35000 });
+console.dir(audi.price); // 35000
+
+audi.price = 49000;
+console.dir(audi.price); // 49000
+
+audi.price = 51000;
+console.dir(audi.price); // 49000
+
+console.log(audi);
