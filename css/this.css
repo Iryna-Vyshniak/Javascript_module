@@ -50,6 +50,7 @@ button {
   cursor: pointer;
   color: #f7eff4;
   text-shadow: 0.0313rem 0.0313rem 0rem #baa2c5, -0.0313rem -0.0313rem 0rem #ffffff;
+  transition: 0.05s ease;
 }
 
 button:hover {
@@ -67,6 +68,10 @@ button:active {
   text-shadow: 0 4px 5px #c4b59d, 0rem -2px 1px #fff;
   font-size: 2.125rem;
   font-weight: 700;
+}
+
+.paused {
+  transition: 0.05s ease;
 }
 
 /* link */
