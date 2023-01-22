@@ -213,3 +213,53 @@ const magicman = new User({
 console.log(poly); // { name: "Magicman", email: "mag@mail.com" }
 
 //------------------------------------------------------------------
+// METHODS
+
+class User {
+  constructor({ name, email }) {
+    this.name = name;
+    this.email = email;
+  }
+
+  // Метод getEmail
+  getEmail() {
+    return this.email;
+  }
+
+  // Метод changeEmail
+  changeEmail(newEmail) {
+    this.email = newEmail;
+  }
+}
+
+//-------------------------------------------------------------------
+// Write a Storage class that will create objects for managing the warehouse of goods. The class expects only one argument - the initial array of goods, which is written into the items property of the object being created.
+
+class Storage {
+  constructor(items) {
+    this.items = items;
+  }
+
+  getItems() {
+    return this.items;
+  }
+  addItem(newItem) {
+    this.items.push(newItem);
+  }
+  removeItem(itemToRemove) {
+    this.items = this.items.filter(item => item !== itemToRemove);
+  }
+}
+
+new Storage();
+const storage = new Storage(['Nanitoids', 'Prolonger', 'Antigravitator']);
+
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+
+storage.addItem('Flox');
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Flox"]
+
+storage.removeItem('Prolonger');
+console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Flox"]
+
+//-------------------------------------------------------------------
