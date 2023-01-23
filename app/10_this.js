@@ -20,15 +20,19 @@ const arrow = () => {
 
 arrow(); // arrow this:  undefined
 
-/* - function declaration and function expression втрачають window global this в  type="module"
+/*
 
-* - в type="module" arrow function this посилається на батьківський this:  undefined. --> console.log(' this: ', this);, так як глобальний this втрачається.
+- function declaration and function expression втрачають window global this в  type="module";
 
-* - arrow function не має власного this, this визначається місцем його написання, тобто він бере this з фізичного місця написання і піднімається на рівень вгору і бере батьківський this;
+- в function declaration і function expression хто викликав, той і є контекстом this;
 
-* - Без type="module" in 'use strict' and without 'use strict" -> global object window, в  type="module" this втрачає глобальний this window, глобальний this взагалі зникає для усіх
+ - в type="module" arrow function this посилається на батьківський this:  undefined. --> console.log(' this: ', this);, так як глобальний this втрачається.
+
+ - arrow function не має власного this, this визначається місцем його написання, тобто він бере this з фізичного місця написання і піднімається на рівень вгору і бере батьківський this;
+
+ - Без type="module" in 'use strict' and without 'use strict" -> global object window, в  type="module" this втрачає глобальний this window, глобальний this взагалі зникає для усіх
  
-* - в arrow function this завжди визначається місцем його виклику, посилається на батьківський this
+ - в arrow function this завжди визначається місцем його виклику, посилається на батьківський this
 */
 
 const btn = document.querySelector('button');
@@ -632,7 +636,7 @@ const objBAB1 = {
 };
 
 objABC1.getNickName(); // Hi, I'm UserABC, I'm from undefined and have got undefined followers
-// objDAB.getNickName(); //TypeError: objDAB.getName is not a function
+// objDAB1.getNickName(); //TypeError: objDAB.getName is not a function
 
 objABC1.getNickName.call(objDAB1, 'Ukraine', 12000); // Hi, I'm UserDAB, I'm from Ukraine and have got 12000 followers
 
@@ -654,7 +658,15 @@ console.log(abcbind1); // копія функції
 //   );
 // }
 abcbind1(); // функція прив'язана до objDAB1, => Hi, I'm UserDAB, I'm from BIND COUNTRY and have got 789678 followers
+abcbind1('Italy', 23); // нічого не зміниться, залишуться параметри, які були прив'язані
+// Hi, I'm UserDAB, I'm from BIND COUNTRY and have got 789678 followers
+
 // вже не керуємося правилом, хто викликав, той і контекст this. За рахунок саме методу bind він наш об'єкт objDAB1 прив'язує вже назавжди. Тепер скільки раз не будемо викликати копію функціїї abcbind1() у нас this вже буде постійно прив'язаний
+// вже не керуємося правилом, хто викликав, той і контекст this. За рахунок саме методу bind він наш об'єкт calc2 прив'язує вже назавжди. Тепер скільки раз не будемо викликати bindedRead у нас this вже буде постійно прив'язаний до calc2
+
+// приклад без прив'язки параметрів
+const bind = objABC1.getNickName.bind(objDAB1);
+bind('Italy', 23); // Hi, I'm UserDAB, I'm from Italy and have got 23 followers
 
 // ------------------------------------------------------------------
 
