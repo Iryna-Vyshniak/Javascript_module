@@ -572,6 +572,15 @@ function makeMessage(callback) {
 makeMessage(customer.getFullName.bind(customer)); // Обробляємо заявку від Jacob Mercer.
 
 // ------------------CALL APPLY BIND -----------------------------------------------------
+/*
+    apply - A
+    bind - B
+    call - C
+    A - .apply({}, [a, b]);
+    B - .bind({}, a, b);
+    C - .call({}, a, b);
+    .aplly, .call викликають функцію на місці, . .bind - повертає копію функції
+*/
 
 const objABC = {
   nickName: 'UserABC',
@@ -692,3 +701,14 @@ const showMessage = (text, orderPrice) => {
 calcOrder(showMessage.bind(this, 'Get ice!'), 3, 20, 'coffee');
 calcOrder(showMessage.bind(this, 'Get cake!'), 2, 10, 'tea');
 calcOrder(showMessage.bind(this, 'Get surprise!'), 5, 15, 'milk');
+
+//------------------------------------------------------------------
+/*
+    apply - A
+    bind - B
+    call - C
+    A - .apply({}, [a, b]);
+    B - .bind({}, a, b);
+    C - .call({}, a, b);
+    .aplly, .call викликають функцію на місці, . .bind - повертає копію функції
+*/
