@@ -338,6 +338,16 @@ const oddNumbers = numbers.filter(num => num % 2);
 console.log(evenNumbers); // [10, 20]
 console.log(oddNumbers); // [5, 15, 25]
 
+// function that takes a list of strings as an argument and returns a filtered list containing the same elements but with the 'geese' removed.
+// The geese are any strings in the following array, which is pre-populated in your solution:
+// ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
+
+function gooseFilter(birds) {
+  const geese = ['African', 'Roman Tufted', 'Toulouse', 'Pilgrim', 'Steinbacher'];
+  return birds.filter(bird => !geese.includes(bird));
+  // return an array containing all of the strings in the input array except those that match strings in geese
+}
+
 //
 const playersSocks = [
   { id: 'player-1', name: 'Mango', timePlayed: 310, points: 54, online: false },
