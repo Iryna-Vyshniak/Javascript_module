@@ -11,6 +11,26 @@
  */
 
 // =================================== THIS ====================
+
+console.log('global this: ', this); //global this:  undefined
+
+const arrow = () => {
+  console.log('arrow this: ', this);
+};
+
+arrow(); // arrow this:  undefined
+
+/* - function declaration and function expression втрачають window global this в  type="module"
+
+* - в type="module" arrow function this посилається на батьківський this:  undefined. --> console.log(' this: ', this);, так як глобальний this втрачається.
+
+* - arrow function не має власного this, this визначається місцем його написання, тобто він бере this з фізичного місця написання і піднімається на рівень вгору і бере батьківський this;
+
+* - Без type="module" in 'use strict' and without 'use strict" -> global object window, в  type="module" this втрачає глобальний this window, глобальний this взагалі зникає для усіх
+ 
+* - в arrow function this завжди визначається місцем його виклику, посилається на батьківський this
+*/
+
 const btn = document.querySelector('button');
 
 btn.addEventListener('click', log);
@@ -58,126 +78,6 @@ log();
 
 //Змініть код методів up, down і showStep таким чином, щоб їх виклик можна було зробити ланцюжком, наприклад так:
 // console.log(ladder.up().up().up().up().up().showStep().down());
-
-// ========================================================
-
-// =======================================  BIND ==========================================================
-const customer = {
-  firstName: 'Jacob',
-  lastName: 'Mercer',
-  getFullName() {
-    return `${this.firstName} ${this.lastName}`;
-  },
-};
-
-function makeMessage(callback) {
-  // callback() - це виклик методу getFullName без об'єкта
-  console.log(`Обробляємо заявку від ${callback()}.`);
-}
-
-makeMessage(customer.getFullName.bind(customer)); // Обробляємо заявку від Jacob Mercer.
-// Метод bind використовується для прив'язування контексту, передаючи методи об'єкта як колбек-функції. Передамо колбеком не оригінальний метод getFullName, а його копію з прив'язаним контекстом об'єкту customer.
-
-/* FULL VERSION
- 
-const calcOrder = (func, num, price, drink) => {
-  let sum = num * price;
-  let text = '';
- 
-  if (drink === 'coffee') {
-    text = 'Get ice!';
-  } else if (drink === 'tea') {
-    text = 'Get cake!';
-  } else {
-    text = 'Get free order!';
-  }
- 
-  func(sum, text);
-};
- 
-const showMessage = (text, orderPrice) => {
-  console.log(text);
-  console.log(`Your order price: ${orderPrice}`);
-};
- 
-calcOrder(showMessage, 3, 30, 'coffee');
-*/
-
-const calcOrder = (func, num, price, drink) => {
-  const sum = num * price;
-
-  func(sum);
-};
-
-const showMessage = (text, orderPrice) => {
-  console.log(text);
-  console.log(`Your order price: ${orderPrice}`);
-};
-
-calcOrder(showMessage.bind(this, 'Get ice!'), 3, 20, 'coffee');
-calcOrder(showMessage.bind(this, 'Get cake!'), 2, 10, 'tea');
-calcOrder(showMessage.bind(this, 'Get surprise!'), 5, 15, 'milk');
-
-// ================== FUNC METHODS  IN OBJ =====================================================
-
-const newUser = {
-  name: 'Nick',
-  getUserName(age, title) {
-    // console.log(this.name); //TypeError: Cannot read properties of undefined (reading 'name')
-    console.log(age);
-    console.log(title);
-    // this.age = age; //  TypeError: Cannot set properties of undefined (setting 'age')
-    // console.log(this); //   window
-  },
-};
-
-const user = {
-  name: 'Alex',
-};
-
-let { getUserName } = newUser;
-
-getUserName(); // undefined, find .this from right => this.getUserName()
-console.log(getUserName()); // undefined
-console.log(getUserName); // getUserName(age) {this.age = age; console.log(this.name)}
-
-// without user name Alex
-
-// getUserName = getUserName.bind(newUser, 12);
-// getUserName(); // Nick, 12 undefined
-
-// with user name Alex
-// getUserName = getUserName.bind(user, 12);
-// getUserName(); // Alex
-
-//============================ CALL =====================================================
-function greetGuest(greeting) {
-  console.log(`${greeting}, ${this.username}.`);
-}
-
-const mangoUser = {
-  username: 'Манго',
-};
-const polyUser = {
-  username: 'Полі',
-};
-
-greetGuest.call(mangoUser, 'Ласкаво просимо'); // Ласкаво просимо, Манго.
-greetGuest.call(polyUser, 'З прибуттям'); // З прибуттям, Полі.
-
-// getUserName = getUserName.call(newUser, 25, 'developer');
-// Nick
-// 25
-// developer
-
-// ========================== APPLY =====================================================
-greetGuest.apply(mangoUser, ['Ласкаво просимо']); // Ласкаво просимо, Манго.
-greetGuest.apply(polyUser, ['З прибуттям']); // З прибуттям, Полі.
-
-getUserName = getUserName.apply(newUser, [25, 'developer']);
-// Nick
-// 25
-// developer
 
 // ====================================== in FUNC =======================================
 function currentUser() {
@@ -259,7 +159,7 @@ function makeSecret(secret, pasw) {
   return innerStorage;
 }
 
-///
+//
 const objA = {
   x: 5,
   showThis() {
@@ -594,12 +494,201 @@ setTimeout(logThis, 1000); // undefined
 
 //--------------------------------------------------------------
 
-console.log('global this: ', this); //global this:  undefined
+// ================== FUNC METHODS  IN OBJ =====================================================
 
-const arrow = () => {
-  console.log('arrow this: ', this);
+const newUser = {
+  name: 'Nick',
+  getUserName(age, title) {
+    // console.log(this.name); //TypeError: Cannot read properties of undefined (reading 'name')
+    console.log(age);
+    console.log(title);
+    // this.age = age; //  TypeError: Cannot set properties of undefined (setting 'age')
+    // console.log(this); //   window
+  },
 };
 
-arrow(); // arrow this:  undefined
-// в type="module" arrow function this посилається на глобальний this:  undefined.
-// Без type="module" in 'use strict' and without 'use strict" -> global object window
+const user = {
+  name: 'Alex',
+};
+
+let { getUserName } = newUser;
+
+getUserName(); // undefined, find .this from right => this.getUserName()
+console.log(getUserName()); // undefined
+console.log(getUserName); // getUserName(age) {this.age = age; console.log(this.name)}
+
+// without user name Alex
+
+// getUserName = getUserName.bind(newUser, 12);
+// getUserName(); // Nick, 12 undefined
+
+// with user name Alex
+// getUserName = getUserName.bind(user, 12);
+// getUserName(); // Alex
+
+//============================ CALL =====================================================
+function greetGuest(greeting) {
+  console.log(`${greeting}, ${this.username}.`);
+}
+
+const mangoUser = {
+  username: 'Манго',
+};
+const polyUser = {
+  username: 'Полі',
+};
+
+greetGuest.call(mangoUser, 'Ласкаво просимо'); // Ласкаво просимо, Манго.
+greetGuest.call(polyUser, 'З прибуттям'); // З прибуттям, Полі.
+
+// getUserName = getUserName.call(newUser, 25, 'developer');
+// Nick
+// 25
+// developer
+
+// ========================== APPLY =====================================================
+greetGuest.apply(mangoUser, ['Ласкаво просимо']); // Ласкаво просимо, Манго.
+greetGuest.apply(polyUser, ['З прибуттям']); // З прибуттям, Полі.
+
+getUserName = getUserName.apply(newUser, [25, 'developer']);
+// Nick
+// 25
+// developer
+
+// =======================================  BIND ==========================================================
+const customer = {
+  firstName: 'Jacob',
+  lastName: 'Mercer',
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
+
+function makeMessage(callback) {
+  // callback() - це виклик методу getFullName без об'єкта
+  console.log(`Обробляємо заявку від ${callback()}.`);
+}
+
+makeMessage(customer.getFullName.bind(customer)); // Обробляємо заявку від Jacob Mercer.
+
+// ------------------CALL APPLY BIND -----------------------------------------------------
+
+const objABC = {
+  nickName: 'UserABC',
+  getNickName() {
+    console.log(this.nickName);
+  },
+};
+
+const objDAB = {
+  nickName: 'UserDAB',
+};
+
+const objBAB = {
+  nickName: 'UserBAB',
+};
+
+objABC.getNickName(); // UserABC
+// objDAB.getNickName(); //TypeError: objDAB.getName is not a function
+
+objABC.getNickName.call(objDAB); // UserDAB
+objABC.getNickName.call(objDAB); // UserDAB
+
+objABC.getNickName.apply(objDAB); // UserDAB
+
+objABC.getNickName.call(objBAB); // UserBAB
+
+objABC.getNickName.apply(objBAB); // UserBAB
+
+const abcbind = objABC.getNickName.bind(objDAB);
+const abcBind = objABC.getNickName.bind(objBAB);
+
+//------------- FULL VARIANT -------------------------------------------------------------------
+
+const objABC1 = {
+  nickName: 'UserABC',
+  getNickName(country, followers) {
+    console.log(
+      `Hi, I'm ${this.nickName}, I'm from ${country} and have got ${followers} followers`
+    );
+  },
+};
+
+const objDAB1 = {
+  nickName: 'UserDAB',
+};
+
+const objBAB1 = {
+  nickName: 'UserBAB',
+};
+
+objABC1.getNickName(); // Hi, I'm UserABC, I'm from undefined and have got undefined followers
+// objDAB.getNickName(); //TypeError: objDAB.getName is not a function
+
+objABC1.getNickName.call(objDAB1, 'Ukraine', 12000); // Hi, I'm UserDAB, I'm from Ukraine and have got 12000 followers
+
+const arrDAB = ['Ukraine', 12000];
+objABC1.getNickName.call(objDAB1, ...arrDAB); // Hi, I'm UserDAB, I'm from Ukraine and have got 12000 followers
+
+objABC1.getNickName.call(objBAB1, 'USA', 357689); // Hi, I'm UserDAB, I'm from USA and have got 357689 followers
+
+objABC1.getNickName.apply(objDAB1, ['Ukraine', 12000]); // Hi, I'm UserDAB, I'm from Ukraine and have got 12000 followers
+objABC1.getNickName.apply(objBAB1, ['USA', 357689]); // Hi, I'm UserBAB, I'm from USA and have got 357689 followers
+const arrBAB = ['USA', 357689];
+objABC1.getNickName.apply(objBAB1, arrBAB); // Hi, I'm UserBAB, I'm from USA and have got 357689 followers
+
+const abcbind1 = objABC1.getNickName.bind(objDAB1, 'BIND COUNTRY', 789678);
+console.log(abcbind1); // копія функції
+//getNickName(country, followers) {
+//   console.log(
+//     `Hi, I'm ${this.nickName}, I'm from ${country} and have got ${followers} followers`
+//   );
+// }
+abcbind1(); // функція прив'язана до objDAB1, => Hi, I'm UserDAB, I'm from BIND COUNTRY and have got 789678 followers
+// вже не керуємося правилом, хто викликав, той і контекст this. За рахунок саме методу bind він наш об'єкт objDAB1 прив'язує вже назавжди. Тепер скільки раз не будемо викликати копію функціїї abcbind1() у нас this вже буде постійно прив'язаний
+
+// ------------------------------------------------------------------
+
+// const abcBind1 = objABC1.getNickName.bind(objBAB1);
+
+// Метод bind використовується для прив'язування контексту, передаючи методи об'єкта як колбек-функції. Передамо колбеком не оригінальний метод getFullName, а його копію з прив'язаним контекстом об'єкту customer.
+
+/* FULL VERSION
+ 
+const calcOrder = (func, num, price, drink) => {
+  let sum = num * price;
+  let text = '';
+ 
+  if (drink === 'coffee') {
+    text = 'Get ice!';
+  } else if (drink === 'tea') {
+    text = 'Get cake!';
+  } else {
+    text = 'Get free order!';
+  }
+ 
+  func(sum, text);
+};
+ 
+const showMessage = (text, orderPrice) => {
+  console.log(text);
+  console.log(`Your order price: ${orderPrice}`);
+};
+ 
+calcOrder(showMessage, 3, 30, 'coffee');
+*/
+
+const calcOrder = (func, num, price, drink) => {
+  const sum = num * price;
+
+  func(sum);
+};
+
+const showMessage = (text, orderPrice) => {
+  console.log(text);
+  console.log(`Your order price: ${orderPrice}`);
+};
+
+calcOrder(showMessage.bind(this, 'Get ice!'), 3, 20, 'coffee');
+calcOrder(showMessage.bind(this, 'Get cake!'), 2, 10, 'tea');
+calcOrder(showMessage.bind(this, 'Get surprise!'), 5, 15, 'milk');
