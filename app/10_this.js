@@ -724,3 +724,28 @@ calcOrder(showMessage.bind(this, 'Get surprise!'), 5, 15, 'milk');
     C - .call({}, a, b);
     .aplly, .call викликають функцію на місці, . .bind - повертає копію функції
 */
+
+// task
+
+const usA = {
+  name: 'John',
+  sayHi() {
+    console.log(`Hi, Mr ${this.name}`);
+  },
+  sayBye() {
+    console.log(`Bye, Mr`);
+  },
+};
+
+//usA.sayHi(); //Hi, Mr John
+//usA.sayBye(); //Bye, Mr
+
+// (usA.name === 'John' ? usA.sayHi : usA.sayBye)(); //Uncaught TypeError: Cannot read properties of undefined (reading 'name') this - undefined
+
+// В коді використовуємо умовний оператор ?, який визначає, який буде викликаний метод (user.sayHi або user.sayBye) в залежності від виконання умови. В даному випадку буде обрано user.sayHi
+// Потім метод відразу викликається за допомогою дужок (). Але виклик не працює як належить!
+// Під час виклику буде помилка, тому що значенням "this" всередині функції стає undefined (застосований type='module').
+
+// next variant -> OK
+usA.name === 'John' ? usA.sayHi() : usA.sayBye(); //Hi, Mr John
+usA.name === 'Jack' ? usA.sayHi() : usA.sayBye(); //Bye, Mr
