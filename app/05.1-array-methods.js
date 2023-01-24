@@ -1630,3 +1630,17 @@ getGroupStudents(studentsDRN);
 
 console.log(getGroupStudents(studentsDRN));
 //{lawrence: [{name: 'lawrence', age: 32}], james: [{name: 'james', age: 22}, {name: 'james', age: 42}], loveth: [{name: 'loveth', age: 16}]}
+
+// ---------------------------------------------------------------------------------------------
+//Flatten a List of Arrays
+// Flattening an array simply means breaking or transforming nested arrays into a single array. And the reduce() method can be used to accomplish that task
+
+const twoDimArry = [
+  ['james', 'mark', 'becky', 'great'],
+  ['adam', 'ben', 'bright'],
+  ['sarah', 'lisa'],
+];
+
+const flattenedArry = arr => arr.reduce((acc, currentArray) => acc.concat(currentArray));
+
+console.log(flattenedArry(twoDimArry)); //['james', 'mark', 'becky', 'great', 'adam', 'ben', 'bright', 'sarah', 'lisa']
