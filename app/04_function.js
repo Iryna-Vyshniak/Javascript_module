@@ -557,3 +557,32 @@ function showRes(num) {
 
 const resA = showRes(10);
 resA(5, 3); // 80
+
+// task
+const makeTeacher = name => {
+  return function makeLesson(lesson, time) {
+    console.log(`${name} teaches the ${lesson} lesson at ${time}AM`);
+  };
+};
+
+const timeTableFox = makeTeacher(`Mr Fox`);
+timeTableFox('English', 10); // Mr Fox teaches the English lesson at 10AM
+const timeTableHarrison = makeTeacher(`Mrs Harrison`);
+timeTableHarrison('Music', 11); // Mrs Harrison teaches the Music lesson at 11AM
+console.dir(timeTableHarrison);
+console.dir(timeTableFox);
+// console.dir => [[scopes]]: -> it`s a place, where we can see closure parameter
+
+// task
+function rounder(amount) {
+  return function (num) {
+    return Number(num.toFixed(amount));
+  };
+}
+
+const floatingPoint = 75.387658;
+
+const numbersFloatingPoint = rounder(3);
+numbersFloatingPoint(floatingPoint);
+console.log(numbersFloatingPoint(floatingPoint)); //75.388
+console.log(numbersFloatingPoint(Math.PI)); //3.142
