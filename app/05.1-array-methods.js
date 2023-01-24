@@ -1644,3 +1644,32 @@ const twoDimArry = [
 const flattenedArry = arr => arr.reduce((acc, currentArray) => acc.concat(currentArray));
 
 console.log(flattenedArry(twoDimArry)); //['james', 'mark', 'becky', 'great', 'adam', 'ben', 'bright', 'sarah', 'lisa']
+
+//---------------------------------------------------------------------------------
+// Remove duplicates in an array. The reduce() method can also be used to remove duplicate values in an array
+
+const duplicatedsArr = [
+  'rice',
+  'beans',
+  'plantain',
+  'yam',
+  'rice',
+  'egg',
+  'beans',
+  'meat',
+  'beef',
+  'rice',
+];
+
+const removeDuplicatedArr = arr => {
+  return arr.reduce((acc, item) => {
+    if (!acc.includes(item)) {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
+};
+
+console.log(removeDuplicatedArr(duplicatedsArr));
+
+// ['rice', 'beans', 'plantain', 'yam', 'egg', 'meat', 'beef'];
