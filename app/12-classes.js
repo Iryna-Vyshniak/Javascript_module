@@ -17,7 +17,7 @@
 // Методи - можуть бути приватними; приватні методи, як властивості, оголошувати ДО constructor не потрібно(завестися, відкрити двері, збільшити швидкість)
 // Приватні доступні лише в середині класу, публічні - будь-де
 // Приватні властивості - окремо оголошуються ДО constructor. Example: #email; Можемо змінити, але при якійсь конкретній чіткій умові, яка нас влаштовує і яку прописуємо: можемо достукатись лише через геттер та сеттер
-// Cтатичні властивості - властивості, які не додаються в екземпляри (інстанси) при створенні
+// Cтатичні властивості - властивості, які не додаються в екземпляри (інстанси) при створенні. Можемо отримати доступ, звернувшись лише до самого класу. (часто для підрахування екземплярів класу, продуктів - instock or outstock - 100% стала величина) this в середині static буде звертатись до самого класу, саме до його властивостей,  на відміну від конструктора. Теоретично, в екземплярі класа не можемо звертатись до статичних властивостей, вони йому не доступні, але, якщо  в екземплярі класу звернемось до властивості конструктор, яка доступна нам по прототипному наслідуванню, з цього конструктора можемо зчитати значення
 // Extends - реалізує спадкування класів
 // super() - викликає конструктор батьківського класу
 // Об'єкт - екземпляр класу, який створили з шаблона
@@ -501,12 +501,25 @@ console.log(remiAdmin.isBlacklisted('rat@mail.com')); // true
 
 // -------------- SET GET # ------------------------------------
 class MainAdmin {
+  static counter = 0;
+  static addUser() {
+    this.counter += 1; // counter буде оновлюватись з кожним інстанс
+    console.log(this.counter);
+  }
+  static stock = {
+    inStock: 'Product in stock',
+    outStock: 'Product out of stock',
+  };
+
   #email;
-  constructor({ email, name, age } = {}) {
+  constructor({ email, name, age, stock } = {}) {
     this.#email = email;
     this.name = name;
     this.age = age;
+    this.stock = stock;
+    MainAdmin.addUser();
   }
+
   getName() {
     console.log(this.name);
   }
@@ -524,7 +537,8 @@ class MainAdmin {
   }
 
   #checkAge() {
-    this.age >= 18 ? true : false;
+    // this.age >= 18 ? true : false;
+    this.age >= 18;
   }
 }
 
@@ -532,9 +546,11 @@ const adm = new MainAdmin({
   name: 'Fox',
   email: 'fox@gmail.com',
   age: 27,
+  stock: MainAdmin.stock.inStock,
 });
 
-console.log(adm); //
+console.log(adm); // MainAdmin {name: 'Fox', age: 27, stock: 'Product in stock', #checkAge: ƒ, #email: 'fox@gmail.com'}
+
 // console.log(adm.#email); //SyntaxError: Private field '#email' must be declared in an enclosing class
 adm.getName(); //Fox
 adm.getEmail; //fox@gmail.com
@@ -543,4 +559,26 @@ adm.getEmail = 'red@gmail.com';
 console.log(adm);
 // adm.#checkAge(); //SyntaxError: Private field '#checkAge' must be declared in an enclosing class BECAUSE PRIVATE
 
+const admA = new MainAdmin({
+  name: 'Remmy',
+  email: 'rat@gmail.com',
+  age: 5,
+  stock: MainAdmin.stock.outStock,
+});
+console.log(admA); //MainAdmin {name: 'Remmy', age: 5, stock: 'Product out of stock', #checkAge: ƒ, #email: 'rat@gmail.com'}
+
+const admB = new MainAdmin({
+  name: 'Rabbit',
+  email: 'rabbit@gmail.com',
+  age: 15,
+});
+const admC = new MainAdmin({
+  name: 'Pat',
+  email: 'patt@gmail.com',
+  age: 24,
+});
+
+//console.log(MainAdmin.counter); // 4
+MainAdmin.counter;
+console.log(admC.constructor.counter); //4
 //------------------------------------------------------------
