@@ -537,6 +537,7 @@ class MainAdmin {
   }
 
   #checkAge() {
+    this.getName();
     // this.age >= 18 ? true : false;
     this.age >= 18;
   }
@@ -631,3 +632,33 @@ const magStudent = new Student({
 });
 
 console.log(magStudent); // Student {name: 'MagStudent', age: 15, stock: 'Product out of stock', #checkAge: ƒ, #email: 'manas@gmail.com', …}
+
+// --------------------------------------------------------------------------------
+
+class Film {
+  #isWatched;
+  #id;
+  constructor(id, title, isWatched = false) {
+    this.#isWatched = isWatched;
+    this.#id = id;
+    this.title = title;
+  }
+
+  get isWatched() {
+    return this.#isWatched;
+  }
+
+  set isWatched(value) {
+    if (value) {
+      this.#isWatched = true; //ключ має мати назву, відмінну від сеттера
+    } else {
+      console.log('Ваші дії недоступні');
+    }
+  }
+}
+const film1 = new Film(1, 'Interceptor');
+console.log(film1);
+// new Film(2, "Fantastic Beasts: The Secrets of Dumbledore");
+// new Film(3, "Last Seen Alive");
+film1.isWatched = true;
+console.log(film1.isWatched); // Film {title: 'Interceptor', #isWatched: false, #id: 1}
