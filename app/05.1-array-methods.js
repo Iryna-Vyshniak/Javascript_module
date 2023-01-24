@@ -1602,3 +1602,31 @@ getReduce(result);
 console.log(getReduce(result));
 // {fail: [{name: 'James', score: 41},{ name: 'Judith', score: 36 }]
 // pass: [{name: 'Mattew', score: 59},{ name: 'John', score: 90 }, { name: 'Mark', score: 64 }]}
+
+// ----------------------------------------------------------------------------------------
+//Grouping objects by a property
+// Based on the properties of an object, we can group the object array into several groups using the reduce() method.
+
+const studentsDRN = [
+  { name: 'lawrence', age: 32 },
+  { name: 'james', age: 22 },
+  { name: 'loveth', age: 16 },
+  { name: 'james', age: 42 },
+];
+
+function getGroupStudents(arr) {
+  return arr.reduce((groupedStudents, person) => {
+    const { name } = person;
+    if (groupedStudents[name] == null) {
+      groupedStudents[name] = [];
+    }
+
+    groupedStudents[name].push(person);
+    return groupedStudents;
+  }, {});
+}
+
+getGroupStudents(studentsDRN);
+
+console.log(getGroupStudents(studentsDRN));
+//{lawrence: [{name: 'lawrence', age: 32}], james: [{name: 'james', age: 22}, {name: 'james', age: 42}], loveth: [{name: 'loveth', age: 16}]}
