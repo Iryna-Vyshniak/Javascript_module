@@ -14,7 +14,9 @@
 // Клас - ескіз(шаблон) об'єкта з яким маємо працювати (машина) Атрибути класа це колеса, двигун і тд
 // Конструктор - автоматично створюється, можна не оголошувати, не може бути статичним методом
 // Екземпляр класу - інстанс
-// Методи - можуть бути приватними; (завестися, відкрити двері, збільшити швидкість)
+// Методи - можуть бути приватними; приватні методи, як властивості, оголошувати ДО constructor не потрібно(завестися, відкрити двері, збільшити швидкість)
+// Приватні доступні лише в середині класу, публічні - будь-де
+// Приватні властивості - окремо оголошуються ДО constructor. Example: #email; Можемо змінити, але при якійсь конкретній чіткій умові, яка нас влаштовує і яку прописуємо: можемо достукатись лише через геттер та сеттер
 // Cтатичні властивості - властивості, які не додаються в екземпляри (інстанси) при створенні
 // Extends - реалізує спадкування класів
 // super() - викликає конструктор батьківського класу
@@ -23,8 +25,8 @@
 // Абстракція - виділеня головних характеристик об'єкту і відкидання незначних, не вдаючисть в роздуми, як методи працюють зсередини. (map, filter, sort)
 // Інкапсуляція - # приховання всіх внутрішніх процесів від користувача, оголошуються за межами конструктора, хороший тон - перед ним
 // Наслідування - створення нового класу на базі існуюучого
-// get ніколи не має значення параметра
-// set завжди має лише один параметр, щоб змінити властивість. Якщо властивість приватна - зміна при умові
+// get ніколи не має значення параметра; виклик get через . і без (). Example: User.email
+// set завжди має лише один параметр, щоб змінити властивість. Якщо властивість приватна - зміна при умові; виклик set відбувається через . , без (), через присвоювання = . Example: User.email = 'fox@gmail.com"
 // new - оператор для створення інстанс
 // [[Prototype]] - __proto__  - властивість об'єкта, де зберігається посилання на його об'єкт-прототип (prototype)
 
@@ -498,3 +500,47 @@ console.log(remiAdmin.isBlacklisted('remi@mail.com')); // false
 console.log(remiAdmin.isBlacklisted('rat@mail.com')); // true
 
 // -------------- SET GET # ------------------------------------
+class MainAdmin {
+  #email;
+  constructor({ email, name, age } = {}) {
+    this.#email = email;
+    this.name = name;
+    this.age = age;
+  }
+  getName() {
+    console.log(this.name);
+  }
+
+  get getEmail() {
+    const password = prompt('Enter your password');
+    password === 'forest' && this.#checkAge()
+      ? console.log(this.#email)
+      : console.log('Ooops, no...');
+  }
+  set getEmail(newEmail) {
+    newEmail.includes('@') && newEmail.includes('.')
+      ? (this.#email = newEmail)
+      : console.log('Ooops, no...');
+  }
+
+  #checkAge() {
+    this.age >= 18 ? true : false;
+  }
+}
+
+const adm = new MainAdmin({
+  name: 'Fox',
+  email: 'fox@gmail.com',
+  age: 27,
+});
+
+console.log(adm); //
+// console.log(adm.#email); //SyntaxError: Private field '#email' must be declared in an enclosing class
+adm.getName(); //Fox
+adm.getEmail; //fox@gmail.com
+adm.getEmail = 'red'; //Ooops, no...
+adm.getEmail = 'red@gmail.com';
+console.log(adm);
+// adm.#checkAge(); //SyntaxError: Private field '#checkAge' must be declared in an enclosing class BECAUSE PRIVATE
+
+//------------------------------------------------------------
