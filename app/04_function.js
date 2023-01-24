@@ -514,3 +514,46 @@ ingredientsRef.append(...itemsRef);
 
 // createIngredientsList(ingredients);
 // console.log(ingredientsRef); //<ul id="ingredients">...</ul>
+
+// CLOSURE FUNCTION  ======================================================================================
+
+//Замыкание (англ. closure) в программировании — функция первого класса, в теле которой присутствуют ссылки на переменные, объявленные вне тела этой функции в окружающем коде и не являющиеся её параметрами. Возвращаемая ф-ция во время вызова будет иметь доступ ко всем локальным переменным области видимости родительской ф-ции, той из которой ее вернули. Это и есть ЗАМЫКАНИЕ.
+
+//Относительно javascrtipt замыкание - это копирование родительской области видимости (а стало быть всех переменных в ней) в дочернюю. А область видимости в javascript ограничивается функциями.
+
+//выполняющаяся функция - это обьект в памяти
+// свойства этого обьекта - это переменные функции
+// внутри обьекта одной функции можно запустить другую функцию которая может использовать свойства обьекта внешней функции
+// обычно после выполнения функции ее обьект удаляется из памяти атоматически сборщиком мусора
+// но если свойства этого обекта используются например внутренней функцией, то обьект не исчезает
+
+function showName(lastName) {
+  let name = 'Jacob';
+  const greeting = () => {
+    console.log(`How're you, ${name} ${lastName}? Welcome to our club`);
+  };
+  return greeting;
+}
+
+const result = showName('Nickolson');
+result(); // How're you, Jacob Nickolson? Welcome to our club
+
+//task 2
+function showGreeting(name) {
+  return function greetingUser(lastName) {
+    console.log(`How're you, ${name} ${lastName}? Welcome to our club`);
+  };
+}
+
+const greetings = showGreeting('Nick');
+greetings('Oncu'); // How're you, Nick Oncu? Welcome to our club
+
+//task 3
+function showRes(num) {
+  return function (a, b) {
+    console.log(num * (a + b));
+  };
+}
+
+const resA = showRes(10);
+resA(5, 3); // 80
