@@ -578,7 +578,56 @@ const admC = new MainAdmin({
   age: 24,
 });
 
-//console.log(MainAdmin.counter); // 4
+console.log(MainAdmin.counter); // 7
 MainAdmin.counter;
-console.log(admC.constructor.counter); //4
-//------------------------------------------------------------
+//console.log(admC.constructor.counter); // 7
+
+class WarriorFox extends MainAdmin {
+  constructor({ XP, ...restProps } = {}) {
+    super(restProps);
+    this.xp = XP;
+  }
+}
+
+const foxWarrior = new WarriorFox({
+  name: 'FoxWarrior',
+  email: 'wars@gmail.com',
+  age: 35,
+  stock: MainAdmin.stock.outStock,
+  XP: 2000,
+});
+console.log(foxWarrior); //WarriorFox {name: 'FoxWarrior', age: 35, stock: 'Product out of stock', #checkAge: ƒ, #email: 'wars@gmail.com', …}
+
+class Mag extends MainAdmin {
+  constructor({ mana, ...restProps } = {}) {
+    super(restProps);
+    this.mana = mana;
+  }
+}
+
+const mag = new Mag({
+  name: 'MagMana',
+  email: 'manas@gmail.com',
+  age: 31,
+  stock: MainAdmin.stock.outStock,
+  mana: 34000,
+});
+console.log(mag); //Mag {name: 'MagMana', age: 35, stock: 'Product out of stock', #checkAge: ƒ, #email: 'wars@gmail.com', …}
+
+class Student extends Mag {
+  constructor({ element, ...restProps } = {}) {
+    super(restProps);
+    this.element = element;
+  }
+}
+
+const magStudent = new Student({
+  name: 'MagStudent',
+  email: 'manas@gmail.com',
+  age: 15,
+  stock: MainAdmin.stock.outStock,
+  mana: 13700,
+  element: '🔥',
+});
+
+console.log(magStudent); // Student {name: 'MagStudent', age: 15, stock: 'Product out of stock', #checkAge: ƒ, #email: 'manas@gmail.com', …}
