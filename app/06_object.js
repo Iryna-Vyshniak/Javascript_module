@@ -2249,3 +2249,7 @@ let item = '';
 // } while (item !== null);
 
 console.log(cart, 'color: red'); //  ['apple', 'banana', 'kiwi'];
+
+// -----------------------------------------------------------------------------------
+const quiz = { first: 20, second: 30, first: 50 };
+console.log(quiz); // {first: 50 second: 30}
