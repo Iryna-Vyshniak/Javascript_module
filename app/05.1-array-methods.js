@@ -1560,3 +1560,45 @@ const getTotalBalanceByGender = (users, gender) =>
 
 console.log(getTotalBalanceByGender(usersF, 'male')); // 12053
 console.log(getTotalBalanceByGender(usersF, 'female')); // 8863
+
+//--------------------- TASK FOR REDUCE -----------------------------------
+
+const ages = [2, 10, 12, 4, 6];
+
+const totalAge = ages.reduce((total, age) => {
+  return total + age;
+}, 0);
+
+console.log(totalAge); // 34
+
+//--------------------------------------------------------------------------
+
+const result = [
+  { name: 'James', score: 41 },
+  { name: 'Mattew', score: 59 },
+  { name: 'Judith', score: 36 },
+  { name: 'John', score: 90 },
+  { name: 'Mark', score: 64 },
+];
+
+function getReduce(arr) {
+  let initialValue = {
+    pass: [],
+    fail: [],
+  };
+
+  return arr.reduce((total, item) => {
+    const score = item.score;
+    if (score >= 50) {
+      total.pass.push(item);
+    } else {
+      total.fail.push(item);
+    }
+
+    return total;
+  }, initialValue);
+}
+getReduce(result);
+console.log(getReduce(result));
+// {fail: [{name: 'James', score: 41},{ name: 'Judith', score: 36 }]
+// pass: [{name: 'Mattew', score: 59},{ name: 'John', score: 90 }, { name: 'Mark', score: 64 }]}
