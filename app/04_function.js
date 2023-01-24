@@ -586,3 +586,37 @@ const numbersFloatingPoint = rounder(3);
 numbersFloatingPoint(floatingPoint);
 console.log(numbersFloatingPoint(floatingPoint)); //75.388
 console.log(numbersFloatingPoint(Math.PI)); //3.142
+
+// task
+const salaryTeachersSchool = function (teacherName, baseSalary) {
+  let salary = baseSalary; // private value, nobody changes
+
+  // function changeSalary(amount) {
+  //   salary += amount;
+  // }
+  return {
+    raiseSalary(amount) {
+      salary += amount;
+    },
+    lowerSalary(amount) {
+      salary -= amount;
+    },
+    currentSallary() {
+      return `Current salary ${teacherName}: ${salary}`;
+    },
+  };
+};
+
+const salary = salaryTeachersSchool('Mr Green', 34000);
+console.dir(salary); //currentSallary:ƒ currentSallary() lowerSalary: ƒ lowerSalary(amount) raiseSalary: ƒ raiseSalary(amount)
+salary.lowerSalary(100);
+console.log(salary.currentSallary()); //Current salary Mr Green: 33900
+salary.raiseSalary(500);
+console.log(salary.currentSallary()); //Current salary Mr Green: 34400
+
+const salaryBrown = salaryTeachersSchool('Mrs Brown', 45000);
+console.dir(salaryBrown); //currentSallary:ƒ currentSallary() lowerSalary: ƒ lowerSalary(amount) raiseSalary: ƒ raiseSalary(amount)
+salaryBrown.lowerSalary(100);
+console.log(salaryBrown.currentSallary()); //Current salary Mrs Brown: 44900
+salaryBrown.raiseSalary(500);
+console.log(salaryBrown.currentSallary()); //Current salary Mrs Brown: 45400
