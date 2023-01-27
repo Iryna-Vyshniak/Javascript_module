@@ -144,3 +144,16 @@ console.log(sameCase('A', 'C')); // 1
 console.log(sameCase('b', 'G')); // 0
 console.log(sameCase('B', 'g')); // 0
 console.log(sameCase('0', '?')); // -1
+
+//Return the number (count) of vowels in the given string.
+// We will consider a, e, i, o, u as vowels for this Kata (but not y).
+// The input string will only consist of lower case letters and/or spaces.
+
+const getCount = str => str.replace(/[^aeiou]/g, '').length;
+console.log(getCount('abracadabra')); // 5
+
+//next variant
+function getCounts(str) {
+  return str.split('').filter(item => 'aeiou'.includes(item)).length;
+}
+console.log(getCounts('abracadabra')); // 5
