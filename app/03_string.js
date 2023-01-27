@@ -112,3 +112,35 @@ console.log(noSpace('8aaaaa dddd r     ')); // '8aaaaaddddr'
 function noSpaces(x) {
   return x.split(' ').join('');
 }
+
+//Write a function that will check if two given characters are the same case.
+// If either of the characters is not a letter, return -1
+// If both characters are the same case, return 1
+// If both characters are letters, but not the same case, return 0
+// Examples
+// 'a' and 'g' returns 1
+// 'A' and 'C' returns 1
+// 'b' and 'G' returns 0
+// 'B' and 'g' returns 0
+// '0' and '?' returns -1
+function sameCase(a, b) {
+  if (a.match(/[a-z]/) && b.match(/[a-z]/)) {
+    return 1;
+  }
+  if (a.match(/[A-Z]/) && b.match(/[A-Z]/)) {
+    return 1;
+  }
+  if (b.match(/[a-z]/) && a.match(/[A-Z]/)) {
+    return 0;
+  }
+  if (a.match(/[a-z]/) && b.match(/[A-Z]/)) {
+    return 0;
+  }
+  return -1;
+}
+
+console.log(sameCase('a', 'g')); // 1
+console.log(sameCase('A', 'C')); // 1
+console.log(sameCase('b', 'G')); // 0
+console.log(sameCase('B', 'g')); // 0
+console.log(sameCase('0', '?')); // -1
