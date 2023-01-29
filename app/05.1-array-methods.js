@@ -1704,8 +1704,10 @@ console.log(Number.isNaN(string)); // false
 console.log(isNaN(string)); // true
 //check undefind or null or number: ?? if left (a) undefind or null - then will not go further (next, forward) a ?? b, but better check isNaN
 
+const arrFind = [{ name: 'name' }];
 const calculator = {
   read(a = 0, b = 0) {
+    console.log('a', a, 'b', b);
     if (!isNaN(a) && !isNaN(b)) {
       this.a = Number(a);
       this.b = Number(b);
@@ -1713,7 +1715,6 @@ const calculator = {
       return null;
     }
   },
-
   sum() {
     return this.a + this.b;
   },
@@ -1725,3 +1726,12 @@ const calculator = {
 console.log(calculator.read(12, 10));
 console.log(calculator.sum()); // 22
 console.log(calculator.mult()); // 120
+console.log(
+  calculator.read(
+    12,
+    arrFind.find(({ name }) => name === 'Artem')
+  )
+);
+console.log(arrFind.find(({ name }) => name === 'Artem')); // undefind
+
+// task
