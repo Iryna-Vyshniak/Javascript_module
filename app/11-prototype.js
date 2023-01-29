@@ -328,3 +328,26 @@ parent.age = 54;
 const child1 = Object.create(parent);
 child1.name = 'Jason';
 child1.age = 27;
+
+// ------------- MAIN EXAMPLES ----------------------------
+let a = { value: 18 };
+let b = { age: a };
+let c = a;
+
+console.log(a === b.age); // true
+console.log(a === c); // true
+
+b.age.value = 21;
+console.log(a.value === 21); // true
+console.log(c.value === 21); // true
+
+console.log({} !== {}); // true
+
+let man = {};
+man.__proto__;
+
+let users = [];
+users.__proto__;
+
+let age = 18;
+age.__proto__;
