@@ -1690,3 +1690,38 @@ const calcTotalPriceStones = (arr, stonesName) => {
 };
 
 console.log(calcTotalPriceStones(stones, 'emerald')); // 5200
+
+//Створіть об'єкт calculator з трьома методами
+//read(a, b) - приймає два аргумента та зберігає їх як властивості об'єкта під ключами a та b
+//sum() перевіряє чи присутні  властивості a/b та повертає їх суму, в противному випадку повертає null
+//mult() перевіряє чи присутні  властивості a/b та повертає їх добуток, в противному випадку повертає null
+// Не забудьте, що математичні оператори працюють коректно тільки з числовими значеннями
+// Number.isNaN(); - НЕ примусово перетворює до числа
+// isNaN(); ПРИМУСОВО ПРЕРЕТВОРЮЄ ДО ЧИСЛА
+
+const string = 'abc';
+console.log(Number.isNaN(string)); // false
+console.log(isNaN(string)); // true
+//check undefind or null or number: ?? if left (a) undefind or null - then will not go further (next, forward) a ?? b, but better check isNaN
+
+const calculator = {
+  read(a = 0, b = 0) {
+    if (!isNaN(a) && !isNaN(b)) {
+      this.a = Number(a);
+      this.b = Number(b);
+    } else {
+      return null;
+    }
+  },
+
+  sum() {
+    return this.a + this.b;
+  },
+  mult() {
+    return this.a * this.b;
+  },
+};
+
+console.log(calculator.read(12, 10));
+console.log(calculator.sum()); // 22
+console.log(calculator.mult()); // 120
