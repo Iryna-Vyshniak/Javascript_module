@@ -2318,3 +2318,29 @@ const updateObjectA = function (object, removeKey) {
 };
 
 console.log(updateObjectA({ a: 1, b: 2, c: 3 }, 'b')); // {a: 1, c: 3}
+
+// Напишіть функцію changeObject, яка приймає як параметр об'єкт
+// та повертає масив, в якому кожен елемент це масив, який складається з двох елементів [key, value]
+// Очікуваний результат console.log(changeObject({ a: 1, b: 2, c: 3 })) // [["a", 1], ["b", 2], ["c", 3]]
+
+const changeObject = object =>
+  Object.keys(object).reduce((acc, key) => [...acc, [...key, object[key]]], []);
+
+console.log(changeObject({ a: 1, b: 2, c: 3 })); // [["a", 1], ["b", 2], ["c", 3]]
+
+const user = {
+  name: 'John',
+  surName: 'Stones',
+  age: 20,
+  hobby: 'tenis',
+  haveCar: true,
+  merried: false,
+};
+const changeObjectB = user => Object.entries(user);
+console.log(changeObjectB(user));
+// [['name', 'John']
+// ['surName', 'Stones']
+// ['age', 20]
+// ['hobby', 'tenis']
+// ['haveCar', true]
+// ['merried', false]]
