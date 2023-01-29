@@ -2286,3 +2286,35 @@ console.log(keysUserX); // ['name', 'age', 'hobby',
 for (const key of keysUserX) {
   console.log(`${key}: ${userX[key]}`);
 }
+
+//---------------------------------------------------------------------------------
+// Напишіть функцію updateObject, яка приймає об'єкт та перелік ключів
+//і повертає новий об'єкт без вказаних властивостей
+//Очікуваний результат ({ a: 1, b: 2, c: 3 }, 'b', 'c') => {a: 1}
+
+function updateObject(data, ...values) {
+  const obj = {};
+  const keys = Object.keys(data);
+  for (const key of keys) {
+    if (!values.includes(key)) {
+      obj[key] = data[key];
+    }
+  }
+  return obj;
+}
+console.log(updateObject({ a: 1, b: 2, c: 3 }, 'b', 'c')); // {a: 1}
+console.log(updateObject({ a: 1, b: 2, c: 3 })); // {a: 1, b: 2, c: 3}
+
+//Напишіть функцію updateObject, яка приймає об'єкт та ключ і повертає новий об'єкт без вказаної властивості
+//Очікуваний результат ({ a: 1, b: 2, c: 3 }, 'b') => {a: 1, c: 3}
+const updateObjectA = function (object, removeKey) {
+  const obj = {};
+  Object.keys(object).forEach(key => {
+    if (key !== removeKey) {
+      obj[key] = object[key];
+    }
+  });
+  return obj;
+};
+
+console.log(updateObjectA({ a: 1, b: 2, c: 3 }, 'b')); // {a: 1, c: 3}
