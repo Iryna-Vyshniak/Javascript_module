@@ -1748,3 +1748,12 @@ const updateObject = function (object, removeKey) {
 };
 
 console.log(updateObject({ a: 1, b: 2, c: 3 }, 'b')); // {a: 1, c: 3}
+
+const updateObjectX = (object, removeKey) =>
+  Object.keys(object).reduce(
+    (acc, key) => (key !== removeKey ? { ...acc, [key]: object[key] } : acc),
+    {}
+  );
+
+console.log(updateObjectX({ a: 1, b: 2, c: 3 }, 'b')); // {a: 1, c: 3}
+console.log(updateObjectX({ a: 1, b: 2, c: 3 }, 'a')); // {b: 2, c: 3}
