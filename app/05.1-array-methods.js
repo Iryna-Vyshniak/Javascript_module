@@ -1735,3 +1735,16 @@ console.log(
 console.log(arrFind.find(({ name }) => name === 'Artem')); // undefind
 
 // task
+//Напишіть функцію updateObject, яка приймає об'єкт та ключ і повертає новий об'єкт без вказаної властивості
+//Очікуваний результат ({ a: 1, b: 2, c: 3 }, 'b') => {a: 1, c: 3}
+const updateObject = function (object, removeKey) {
+  const obj = {};
+  Object.keys(object).forEach(key => {
+    if (key !== removeKey) {
+      obj[key] = object[key];
+    }
+  });
+  return obj;
+};
+
+console.log(updateObject({ a: 1, b: 2, c: 3 }, 'b')); // {a: 1, c: 3}
