@@ -2253,3 +2253,36 @@ console.log(cart, 'color: red'); //  ['apple', 'banana', 'kiwi'];
 // -----------------------------------------------------------------------------------
 const quiz = { first: 20, second: 30, first: 50 };
 console.log(quiz); // {first: 50 second: 30}
+
+//-----------------------------------------------------------------------------------
+// task blended
+
+//1. Напишіть скрипт, який для об'єкта user, послідовно:
+//1 додасть властивість mood зі значенням 'happy'
+//2 замінить значення властивості hobby на 'skydiving'
+//3 замінить значення властивості premium на false
+//4 використовуючи Object.keys() и for...of, виведе у консоль зміст об'єкта users у форматі:
+//name: John
+//"age: 20"
+//"hobby: skydiving"
+//"premium: false"
+//"mood: happy"
+
+const userX = {
+  name: 'John',
+  age: 20,
+  hobby: 'tenis',
+  premium: true,
+};
+
+userX.hobby = 'skydiving';
+userX.mood = 'happy';
+userX.premium = false;
+
+console.log(userX);
+
+const keysUserX = Object.keys(userX);
+console.log(keysUserX); // ['name', 'age', 'hobby',
+for (const key of keysUserX) {
+  console.log(`${key}: ${userX[key]}`);
+}
