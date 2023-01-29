@@ -1673,3 +1673,20 @@ const removeDuplicatedArr = arr => {
 console.log(removeDuplicatedArr(duplicatedsArr));
 
 // ['rice', 'beans', 'plantain', 'yam', 'egg', 'meat', 'beef'];
+
+// task blended
+// Напишіть фукцію calcTotalPrice(stones, stonesName), яка приймає масив об'єктів і рядок з назвою каменю.
+// Функція обчислює і повертає загальну вартість каменів з таким іменем
+const stones = [
+  { name: 'emerald', price: 1300, quantity: 4 },
+  { name: 'diamond', price: 2700, quantity: 6 },
+  { name: 'sapphire', price: 400, quantity: 7 },
+  { name: 'rubble', price: 150, quantity: 100 },
+];
+
+const calcTotalPriceStones = (arr, stonesName) => {
+  const nameStone = arr.find(item => item.name.toLowerCase() === stonesName.toLowerCase());
+  return nameStone ? nameStone.price * nameStone.quantity : `Didn't find ${stonesName} stone`;
+};
+
+console.log(calcTotalPriceStones(stones, 'emerald')); // 5200
