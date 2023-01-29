@@ -2319,6 +2319,16 @@ const updateObjectA = function (object, removeKey) {
 
 console.log(updateObjectA({ a: 1, b: 2, c: 3 }, 'b')); // {a: 1, c: 3}
 
+// refactor
+const updateObjectX = (object, removeKey) =>
+  Object.keys(object).reduce(
+    (acc, key) => (key !== removeKey ? { ...acc, [key]: object[key] } : acc),
+    {}
+  );
+
+console.log(updateObjectX({ a: 1, b: 2, c: 3 }, 'b')); // {a: 1, c: 3}
+console.log(updateObjectX({ a: 1, b: 2, c: 3 }, 'a')); // {b: 2, c: 3}
+
 // Напишіть функцію changeObject, яка приймає як параметр об'єкт
 // та повертає масив, в якому кожен елемент це масив, який складається з двох елементів [key, value]
 // Очікуваний результат console.log(changeObject({ a: 1, b: 2, c: 3 })) // [["a", 1], ["b", 2], ["c", 3]]
