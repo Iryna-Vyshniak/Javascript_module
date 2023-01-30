@@ -749,3 +749,15 @@ const usA = {
 // next variant -> OK
 usA.name === 'John' ? usA.sayHi() : usA.sayBye(); //Hi, Mr John
 usA.name === 'Jack' ? usA.sayHi() : usA.sayBye(); //Bye, Mr
+
+// -----------------------------------------------------------
+const shape = {
+  radius: 10,
+  getDiameter() {
+    return this.radius * 2;
+  },
+  getPerimeter: () => 2 * Math.PI * this.radius,
+};
+
+console.log(shape.getDiameter()); // 20
+//console.log(shape.getPerimeter()); // TypeError: Cannot read properties of undefined (reading 'radius')
