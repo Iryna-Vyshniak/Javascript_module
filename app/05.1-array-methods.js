@@ -1851,3 +1851,31 @@ const getUniqueBooksListsByAge = arr => {
 console.log(getUniqueBooksListsByAge(allFriends));
 // {young: ['Bible', 'Harry Potter'],
 //  adult: ['War and peace', 'Romeo and Juliet', 'Bible', 'Harry Potter'] }
+
+// --------------------------------------------------------------------------------------------------------------------
+// refactor function to get a list of unique books by age.
+const getUniqueBooksListsByAges = arr => {
+  const booksByAge = {
+    young: [],
+    adult: [],
+  };
+
+  return arr.reduce((acc, item, index) => {
+    if (item.hasOwnProperty('age')) {
+      if (item.age >= 18) {
+        acc.adult.push(...item.books);
+        const uniqueAdult = new Set(acc.adult);
+        acc.adult = [...uniqueAdult];
+      } else {
+        acc.young.push(...item.books);
+        const uniqueYoung = new Set(acc.young);
+        acc.young = [...uniqueYoung];
+      }
+    }
+    return acc;
+  }, booksByAge);
+};
+
+console.log(getUniqueBooksListsByAges(allFriends));
+// {young: ['Bible', 'Harry Potter'],
+//  adult: ['War and peace', 'Romeo and Juliet', 'Bible', 'Harry Potter'] }
