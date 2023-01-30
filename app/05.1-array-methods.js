@@ -1737,6 +1737,7 @@ console.log(arrFind.find(({ name }) => name === 'Artem')); // undefind
 // task
 //Напишіть функцію updateObject, яка приймає об'єкт та ключ і повертає новий об'єкт без вказаної властивості
 //Очікуваний результат ({ a: 1, b: 2, c: 3 }, 'b') => {a: 1, c: 3}
+// Updates an object with the given values.
 const updateObject = function (object, removeKey) {
   const obj = {};
   Object.keys(object).forEach(key => {
@@ -1749,6 +1750,7 @@ const updateObject = function (object, removeKey) {
 
 console.log(updateObject({ a: 1, b: 2, c: 3 }, 'b')); // {a: 1, c: 3}
 
+//next variant of function update
 const updateObjectX = (object, removeKey) =>
   Object.keys(object).reduce(
     (acc, key) => (key !== removeKey ? { ...acc, [key]: object[key] } : acc),
@@ -1757,3 +1759,20 @@ const updateObjectX = (object, removeKey) =>
 
 console.log(updateObjectX({ a: 1, b: 2, c: 3 }, 'b')); // {a: 1, c: 3}
 console.log(updateObjectX({ a: 1, b: 2, c: 3 }, 'a')); // {b: 2, c: 3}
+
+// find sum age
+const allFriends = [
+  { name: 'Anna', books: ['Bible', 'Harry Potter'], age: 21 },
+  { name: 'Bob', books: ['War and peace', 'Romeo and Juliet'], age: 26 },
+  { name: 'Alice', books: ['War and peace', 'Romeo and Juliet'] },
+  {
+    name: 'Oleksii',
+    books: ['Bible', 'War and peace', 'Harry Potter', 'Romeo and Juliet'],
+    age: 26,
+  },
+];
+
+const findSumAge = arr =>
+  arr.reduce((acc, item) => (item.hasOwnProperty('age') ? acc + item.age : acc), 0);
+
+console.log(findSumAge(allFriends)); // 73
