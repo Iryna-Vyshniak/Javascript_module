@@ -1,4 +1,5 @@
 // forEach => likes loop for..for
+
 /*
  * Array.prototype.forEach(callback(currentValue, index, array), thisArg)
  * - Поелементо перебирає оригінальний масив
@@ -1800,8 +1801,8 @@ const getUniqueBooksLists = arr =>
 console.log(getUniqueBooksLists(allFriends)); // ['Bible', 'Harry Potter', 'War and peace', 'Romeo and Juliet']
 
 //-----------------------------------------------------------
-// Get unique books lists by age.
-const getUniqueBooksListsByAge = arr => {
+// Get books lists by age.
+const getBooksListsByAge = arr => {
   const booksByAge = {
     young: [],
     adult: [],
@@ -1815,4 +1816,38 @@ const getUniqueBooksListsByAge = arr => {
   }, booksByAge);
 };
 
-console.log(getUniqueBooksListsByAge(allFriends)); // {young: ['Bible', 'Harry Potter'], adult: ['War and peace', 'Romeo and Juliet', 'Bible', 'War and peace',...] }
+console.log(getBooksListsByAge(allFriends)); // {young: ['Bible', 'Harry Potter'], adult: ['War and peace', 'Romeo and Juliet', 'Bible', 'War and peace',...] }
+
+// Get a list of unique books by age.
+const getUniqueBooksListsByAge = arr => {
+  const booksByAge = {
+    young: [],
+    adult: [],
+  };
+
+  arr.reduce((acc, item, index) => {
+    if (item.hasOwnProperty('age')) {
+      item.age >= 18
+        ? acc.adult.push(...item.books)
+        : acc.adult
+        ? acc.young.push(item.books)
+        : acc.young;
+    }
+    return acc;
+  }, booksByAge);
+  console.log('young: ', booksByAge.young); // ['Bible', 'Harry Potter'];
+  console.log('adult: ', booksByAge.adult); // ['War and peace', 'Romeo and Juliet', 'Bible', 'War and peace', 'Harry Potter', 'Romeo and Juliet']
+
+  // Creates a set of unique books for young  and adult.
+  const uniqueYoung = new Set(booksByAge.young);
+  booksByAge.young = [...uniqueYoung];
+  const uniqueAdult = new Set(booksByAge.adult);
+  booksByAge.adult = [...uniqueAdult];
+
+  // Returns a list of unique books by age.
+  return booksByAge;
+};
+
+console.log(getUniqueBooksListsByAge(allFriends));
+// {young: ['Bible', 'Harry Potter'],
+//  adult: ['War and peace', 'Romeo and Juliet', 'Bible', 'Harry Potter'] }
