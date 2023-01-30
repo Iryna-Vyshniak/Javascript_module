@@ -1860,7 +1860,7 @@ const getUniqueBooksListsByAges = arr => {
     adult: [],
   };
 
-  return arr.reduce((acc, item, index) => {
+  return arr.reduce((acc, item) => {
     if (item.hasOwnProperty('age')) {
       if (item.age >= 18) {
         acc.adult.push(...item.books);
@@ -1879,3 +1879,20 @@ const getUniqueBooksListsByAges = arr => {
 console.log(getUniqueBooksListsByAges(allFriends));
 // {young: ['Bible', 'Harry Potter'],
 //  adult: ['War and peace', 'Romeo and Juliet', 'Bible', 'Harry Potter'] }
+
+const allCloseFriends = [
+  { name: 'Anna', books: ['Bible', 'Harry Potter', 'Horse in Fog'], age: 14 },
+  { name: 'John', books: ['Bible', 'Harry Potter', 'Jungle', 'Horse in Fog'], age: 17 },
+  { name: 'Bob', books: ['War and peace', 'Romeo and Juliet'], age: 23 },
+  { name: 'Alice', books: ['War and peace', 'Romeo and Juliet'] },
+  {
+    name: 'Alex',
+    books: ['Bible', 'War and peace', 'Harry Potter', 'Romeo and Juliet', 'Horse in Fog'],
+    age: 26,
+  },
+];
+
+// Get a list of unique books for all close friends.
+console.log(getUniqueBooksListsByAges(allCloseFriends));
+// {young: ['Bible', 'Harry Potter', 'Horse in Fog', 'Jungle'],
+//  adult:['War and peace', 'Romeo and Juliet', 'Bible', 'Harry Potter', 'Horse in Fog'] }
