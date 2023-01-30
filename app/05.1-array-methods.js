@@ -1791,3 +1791,12 @@ const getUniqueBooksList = arr =>
     .filter((item, index, array) => array.indexOf(item) === index);
 
 console.log(getUniqueBooksList(allFriends)); // ['Bible', 'Harry Potter', 'War and peace', 'Romeo and Juliet']
+
+const getUniqueBooksLists = arr =>
+  arr
+    .flatMap(item => item.books)
+    .reduce((acc, book) => (!acc.includes(book) ? [...acc, book] : acc), []);
+
+console.log(getUniqueBooksLists(allFriends)); // ['Bible', 'Harry Potter', 'War and peace', 'Romeo and Juliet']
+
+//------------------------------------------------------------------
