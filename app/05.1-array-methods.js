@@ -1776,3 +1776,18 @@ const findSumAge = arr =>
   arr.reduce((acc, item) => (item.hasOwnProperty('age') ? acc + item.age : acc), 0);
 
 console.log(findSumAge(allFriends)); // 73
+
+// ------------------------------------------------------------------
+
+// Get a list of unique books
+const getUniqueBooks = arr =>
+  arr.flatMap(item => item.books).filter((item, index, array) => array.indexOf(item) === index);
+
+console.log(getUniqueBooks(allFriends)); // ['Bible', 'Harry Potter', 'War and peace', 'Romeo and Juliet']
+
+const getUniqueBooksList = arr =>
+  arr
+    .reduce((acc, { books }) => acc.concat(books), [])
+    .filter((item, index, array) => array.indexOf(item) === index);
+
+console.log(getUniqueBooksList(allFriends)); // ['Bible', 'Harry Potter', 'War and peace', 'Romeo and Juliet']
