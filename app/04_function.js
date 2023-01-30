@@ -620,3 +620,20 @@ salaryBrown.lowerSalary(100);
 console.log(salaryBrown.currentSallary()); //Current salary Mrs Brown: 44900
 salaryBrown.raiseSalary(500);
 console.log(salaryBrown.currentSallary()); //Current salary Mrs Brown: 45400
+
+//---------------------------------------------------------------------------------
+
+// !!arguments.length => boolean 0 => false, !(!!arguments.length) => true
+// if don`t arguments => do this
+
+function fooA() {
+  //if (!(!!arguments.length)) { //кастомізація значення до булевого типу
+  if (!arguments.length) {
+    console.log(`Don't have arguments`);
+  } else if (arguments.length === 2) {
+    console.log(`arguments[0] + arguments[1]:`, arguments[0] + arguments[1]);
+  }
+}
+
+console.log(fooA()); // Don't have arguments
+console.log(fooA(1, 2)); // 3
