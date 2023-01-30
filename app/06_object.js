@@ -2354,3 +2354,59 @@ console.log(changeObjectB(user));
 // ['hobby', 'tenis']
 // ['haveCar', true]
 // ['merried', false]]
+
+// 1 Створити метод об'єкту який буде приймати 1 параметр назву факультету та повертати списoк імен учнів факультету
+// 2 Створити метод об'єкту який буде приймати 1 параметр назву факультету та повертати кількість очків факультета
+// 3 Створити метод об'єкту який буде виводити ім'я факультету в якого більше очків
+
+// add the methods for the given facultets.
+const hogvarts = {
+  griffindor: [
+    {
+      name: 'Harry',
+      points: 17,
+    },
+    {
+      name: 'Hermiona',
+      points: 19,
+    },
+    {
+      name: 'Ron',
+      points: 14,
+    },
+  ],
+  sliserin: [
+    {
+      name: 'Draco',
+      points: 17,
+    },
+    {
+      name: 'Goyl',
+      points: 14,
+    },
+    {
+      name: 'Crabbe',
+      points: 5,
+    },
+  ],
+  getStudentList(facultet) {
+    return this[facultet].reduce((arr, { name }) => [...arr, name], []);
+  },
+
+  getTotalPoints(facultet) {
+    return this[facultet].reduce((acc, { points }) => acc + points, 0);
+  },
+  getBest() {
+    // Calculates the griffindor and sliserin constants.
+    const griffindor = this.getTotalPoints('griffindor');
+    const sliserin = this.getTotalPoints('sliserin');
+    // Calculates the best facultet.
+    return griffindor > sliserin ? 'griffindor' : 'sliserin';
+  },
+};
+
+console.log(hogvarts.getStudentList('sliserin')); // ['Draco', 'Goyl', 'Crabbe']
+console.log(hogvarts.getStudentList('griffindor')); //  ['Harry', 'Hermiona', 'Ron']
+console.log(hogvarts.getTotalPoints('griffindor')); // 50
+console.log(hogvarts.getTotalPoints('sliserin')); // 36
+console.log(hogvarts.getBest()); // griffindor
