@@ -1762,7 +1762,7 @@ console.log(updateObjectX({ a: 1, b: 2, c: 3 }, 'a')); // {b: 2, c: 3}
 
 // find sum age
 const allFriends = [
-  { name: 'Anna', books: ['Bible', 'Harry Potter'], age: 21 },
+  { name: 'Anna', books: ['Bible', 'Harry Potter'], age: 14 },
   { name: 'Bob', books: ['War and peace', 'Romeo and Juliet'], age: 26 },
   { name: 'Alice', books: ['War and peace', 'Romeo and Juliet'] },
   {
@@ -1775,7 +1775,7 @@ const allFriends = [
 const findSumAge = arr =>
   arr.reduce((acc, item) => (item.hasOwnProperty('age') ? acc + item.age : acc), 0);
 
-console.log(findSumAge(allFriends)); // 73
+console.log(findSumAge(allFriends)); // 66
 
 // ------------------------------------------------------------------
 
@@ -1799,4 +1799,20 @@ const getUniqueBooksLists = arr =>
 
 console.log(getUniqueBooksLists(allFriends)); // ['Bible', 'Harry Potter', 'War and peace', 'Romeo and Juliet']
 
-//------------------------------------------------------------------
+//-----------------------------------------------------------
+// Get unique books lists by age.
+const getUniqueBooksListsByAge = arr => {
+  const booksByAge = {
+    young: [],
+    adult: [],
+  };
+
+  return arr.reduce((acc, item) => {
+    if (item.hasOwnProperty('age')) {
+      item.age >= 18 ? acc.adult.push(...item.books) : acc.young.push(...item.books);
+    }
+    return acc;
+  }, booksByAge);
+};
+
+console.log(getUniqueBooksListsByAge(allFriends)); // {young: ['Bible', 'Harry Potter'], adult: ['War and peace', 'Romeo and Juliet', 'Bible', 'War and peace',...] }
