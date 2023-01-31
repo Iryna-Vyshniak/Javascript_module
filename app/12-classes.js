@@ -721,3 +721,53 @@ console.log(student.getCourse());
 console.log(student.getFullName()); //поверне 'Петрик Пяточкин'
 console.log(student.getCourse()); //поверне 3 (третій курс)
 console.log(student); //StudentCollege {year: 2020, #name: 'Yuliya', #surname: 'Nikiforova'}
+
+//-----------------------------------------------------------------
+// Write the `Blogger` class to create a blogger object with the following properties:
+
+// - `email` - mail, string
+// - `age` - age, number
+// - `numberOfPosts` - number of posts, number
+// - `topics` - an array of topics on which the blogger specializes
+
+// The class expects one parameter - a settings object with properties of the same name.
+
+// Add `getInfo()` method, which returns the string:
+// `User ${post} is ${age} years old and has ${number of posts} posts`.
+
+// Add the `updatePostCount(value)` method, which accepts the `value` parameter
+// number of posts to add to the user.
+//ex: {
+//   name: 'mango@mail.com',
+//   age: 24,
+//   numberOfPosts: 20,
+//   topics: ['tech', 'cooking'],
+// }
+
+class Bloger {
+  constructor({ email, age, numberOfPosts, topics } = {}) {
+    this.email = email;
+    this.age = age;
+    this.numberOfPosts = numberOfPosts;
+    this.topics = topics;
+  }
+
+  getInfo() {
+    return `User ${this.email} is ${this.age} years old and has ${this.numberOfPosts} posts.`;
+  }
+
+  updatePostCount(value) {
+    return (this.numberOfPosts += value);
+  }
+}
+
+const blogger = new Bloger({
+  email: 'blogger@mail.com',
+  age: 24,
+  numberOfPosts: 20,
+  topics: ['tech', 'cooking'],
+});
+
+console.log(blogger.getInfo()); //User blogger@mail.com is 24 years old and has 20 posts.
+console.log(blogger.updatePostCount(25)); // 45
+console.log(blogger.getInfo()); // User blogger@mail.com is 24 years old and has 45 posts.
