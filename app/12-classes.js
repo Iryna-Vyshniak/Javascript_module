@@ -811,3 +811,54 @@ console.log(storageA.removeItem('🍇')); // ['🍇']
 console.log(storageA.getItems()); // ['🍎', '🍋', '🍑', '🍏']
 
 //-----------------------------------------------------------------------------
+// Write a `User` class that creates an object with `login` and `email` properties.
+// Declare private properties `#login` and `#email` to be accessed via
+// getter and setter of `login` and `email`.
+
+class UserS {
+  #login;
+  #email;
+  constructor({ login, email } = {}) {
+    this.#login = login;
+    this.#email = email;
+  }
+
+  get _login() {
+    const checkLogin = prompt('Please, enter your login name');
+    if (checkLogin === this.#login) {
+      return this.#login;
+    }
+  }
+
+  set _login(newLogin) {
+    if (newLogin.length > 5) {
+      return (this.#login = newLogin);
+    }
+    return `Login is private`;
+  }
+
+  get _email() {
+    const checkEmail = prompt('Please, enter your email');
+    if (checkEmail === this.#email) {
+      return this.#email;
+    }
+    return `Email is private`;
+  }
+  set _email(newEmail) {
+    if (newEmail.includes(`@`) && newEmail.includes(`.`)) {
+      return (this.#email = newEmail);
+    }
+  }
+}
+
+const userS = new UserS({
+  login: 'helenFox',
+  email: 'helen@gmail.com',
+});
+
+console.log(userS);
+console.log(userS.email); // undefined
+console.log(userS._email); // helen@gmail.com
+console.log((userS._email = 'fox@gmail.com')); // fox@gmail.com
+console.log(userS._login); // 'helenFox'
+console.log((userS._login = 'fox')); // fox
