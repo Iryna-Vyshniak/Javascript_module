@@ -771,3 +771,43 @@ const blogger = new Bloger({
 console.log(blogger.getInfo()); //User blogger@mail.com is 24 years old and has 20 posts.
 console.log(blogger.updatePostCount(25)); // 45
 console.log(blogger.getInfo()); // User blogger@mail.com is 24 years old and has 45 posts.
+
+//--------------------------------------------------------------------------------------
+// Write a `Storage' class that creates objects for managing the warehouse of goods.
+// When called, it will receive one argument - the initial array of goods and write it down
+// its `items` property.
+
+// Add class methods:
+
+// - `getItems()` - returns an array of items.
+// - `addItem(item)` - gets a new item and adds it to the current items.
+// -
+// `removeItem(item)` - gets the item and, if it exists, removes it from the current ones.
+
+class StorageA {
+  constructor(goods) {
+    this._items = goods;
+  }
+  getItems() {
+    return this._items;
+  }
+  addItem(item) {
+    return this._items.push(item);
+  }
+  removeItem(item) {
+    const findIndex = this._items.indexOf(item);
+
+    if (findIndex > -1) {
+      return this._items.splice(findIndex, 1);
+    }
+  }
+}
+
+const storageA = new StorageA(['🍎', '🍋', '🍇', '🍑']);
+console.log(storageA.getItems()); // ['🍎', '🍋', '🍇', '🍑']
+console.log(storageA.addItem('🍏')); //5
+console.log(storageA.getItems()); // ['🍎', '🍋', '🍇', '🍑', '🍏']
+console.log(storageA.removeItem('🍇')); // ['🍇']
+console.log(storageA.getItems()); // ['🍎', '🍋', '🍑', '🍏']
+
+//-----------------------------------------------------------------------------
