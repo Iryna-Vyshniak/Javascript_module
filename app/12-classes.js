@@ -747,7 +747,7 @@ console.log(student); //StudentCollege {year: 2020, #name: 'Yuliya', #surname: 
 class Bloger {
   constructor({ email, age, numberOfPosts, topics } = {}) {
     this.email = email;
-    this.age = age;
+    this.age = !Number(age) ? 0 : Number(age);
     this.numberOfPosts = numberOfPosts;
     this.topics = topics;
   }
@@ -790,6 +790,7 @@ class StorageA {
   }
   getItems() {
     return this._items;
+    // return [...this._items]; // if modification array for future
   }
   addItem(item) {
     return this._items.push(item);
@@ -823,28 +824,28 @@ class UserS {
     this.#email = email;
   }
 
-  get _login() {
+  get login() {
     const checkLogin = prompt('Please, enter your login name');
     if (checkLogin === this.#login) {
       return this.#login;
     }
   }
 
-  set _login(newLogin) {
+  set login(newLogin) {
     if (newLogin.length > 5) {
       return (this.#login = newLogin);
     }
     return `Login is private`;
   }
 
-  get _email() {
+  get email() {
     const checkEmail = prompt('Please, enter your email');
     if (checkEmail === this.#email) {
       return this.#email;
     }
     return `Email is private`;
   }
-  set _email(newEmail) {
+  set email(newEmail) {
     if (newEmail.includes(`@`) && newEmail.includes(`.`)) {
       return (this.#email = newEmail);
     }
@@ -858,7 +859,95 @@ const userS = new UserS({
 
 console.log(userS);
 console.log(userS.email); // undefined
-console.log(userS._email); // helen@gmail.com
-console.log((userS._email = 'fox@gmail.com')); // fox@gmail.com
-console.log(userS._login); // 'helenFox'
-console.log((userS._login = 'fox')); // fox
+console.log(userS.email); // helen@gmail.com
+console.log((userS.email = 'fox@gmail.com')); // fox@gmail.com
+console.log(userS.login); // 'helenFox'
+console.log((userS.login = 'fox')); // fox
+
+//---------------------------------------------------------------------------------
+// EXAMPLE items = [
+// {
+// text: 'asdsadsa',
+// priority: 'LOW'
+// },
+// {
+// text: 'asdsadsa',
+// priority: 'LOW'
+// }
+// ]
+
+// Write a `Notes` class that manages the collection of notes in the `items` property.
+// Note is an object with `text` and `priority` properties. Add static to the class
+// property `Priority`,
+// in which the priority object will be stored.
+
+class Notes {
+  static Priority = {
+    LOW: 'low',
+    NORMAL: 'normal',
+    HIGH: 'high',
+  };
+
+  static findNoteByIndex(text, items) {
+    return items.findIndex(note => note.text.toLowerCase() === text.toLowerCase());
+  }
+
+  constructor() {
+    this.items = [];
+  }
+  // next variant if in new Notes([])
+  // constructor(arr) {
+  //   this.items = arr;
+  // }
+
+  addNote(note) {
+    this.items.push(note);
+  }
+
+  removeNote(text) {
+    const index = Notes.findNoteByIndex(text, this.items);
+    this.items.splice(index, 1);
+  }
+  updateNote(text, newPriority) {
+    const index = Notes.findNoteByIndex(text, this.items);
+    this.items[index].priority = newPriority;
+  }
+}
+
+const oneNote = new Notes();
+// next variant
+// const oneNote = new Notes([]);
+
+console.log(oneNote);
+oneNote.addNote({
+  text: 'One Note',
+  priority: Notes.Priority.LOW,
+});
+console.log(oneNote.items); //{text: 'One Note', priority: 'low'}
+
+oneNote.addNote({
+  text: 'Article',
+  priority: Notes.Priority.NORMAL,
+});
+
+console.log(oneNote.items);
+// [{text: 'One Note', priority: 'low'} {text: 'Article', priority: 'normal'}]
+
+oneNote.removeNote('One note');
+console.log(oneNote.items); // {text: 'Article', priority: 'normal'}
+
+oneNote.addNote(
+  {
+    text: 'asdsadsa',
+    priority: Notes.Priority.NORMAL,
+  },
+  {
+    text: 'asdsadsa',
+    priority: Notes.Priority.LOW,
+  }
+);
+
+console.log(oneNote.items);
+
+oneNote.updateNote('Article', Notes.Priority.HIGH);
+console.log(oneNote.items); // [{text: 'Article', priority: 'high'} {text: 'asdsadsa', priority: 'normal'}]
