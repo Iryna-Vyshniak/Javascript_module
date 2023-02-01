@@ -951,3 +951,34 @@ console.log(oneNote.items);
 
 oneNote.updateNote('Article', Notes.Priority.HIGH);
 console.log(oneNote.items); // [{text: 'Article', priority: 'high'} {text: 'asdsadsa', priority: 'normal'}]
+
+//----------------------------------------------------------------------------------------------
+//---Toggle----------------------------------------------------------------
+// Write a class `Toggle` that accepts a settings object `{isOpen: boolean}` and
+// declares one `on' property - on/off state (true/false). Default
+// the value of the `on` property must be `false`.
+
+class Toggle {
+  constructor({ isOpen = false } = {}) {
+    this.on = isOpen;
+  }
+
+  toggle() {
+    this.on = !this.on;
+  }
+}
+
+const toggle = new Toggle();
+console.group(toggle); // on: false
+toggle.toggle();
+console.group(toggle.on); // on: true
+console.groupEnd('toggle');
+
+const toggle2 = new Toggle({ isOpen: true });
+console.group(toggle2); // on: true
+toggle2.toggle();
+console.group(toggle2.on); // on: false
+console.groupEnd('toggle2');
+
+// conditional rendering
+// toggle.on && <div></div> -> if toggle.on === true - render div
