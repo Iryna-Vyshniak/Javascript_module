@@ -1896,3 +1896,43 @@ const allCloseFriends = [
 console.log(getUniqueBooksListsByAges(allCloseFriends));
 // {young: ['Bible', 'Harry Potter', 'Horse in Fog', 'Jungle'],
 //  adult:['War and peace', 'Romeo and Juliet', 'Bible', 'Harry Potter', 'Horse in Fog'] }
+
+//------------------------------------------------------------------------------------------------
+//скільки типів кожного елемента знаходиться у колекції
+const fruitBasket = [
+  'banana',
+  'cherry',
+  'orange',
+  'apple',
+  'cherry',
+  'orange',
+  'apple',
+  'banana',
+  'cherry',
+  'orange',
+  'fig',
+];
+
+const countFruits = arr =>
+  arr.reduce((acc, item) => {
+    acc[item] = (acc[item] || 0) + 1;
+    return acc;
+  }, {});
+
+console.log(countFruits(fruitBasket)); // {banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1}
+
+//-----------------------------------------------------------------------------
+// отримати всі кольори в змінній data
+const data = [
+  { a: 'happy', b: 'robin', c: ['blue', 'green'] },
+  { a: 'tired', b: 'panther', c: ['green', 'black', 'orange', 'blue'] },
+  { a: 'sad', b: 'goldfish', c: ['green', 'red'] },
+];
+
+const getColours = arr => arr.map(item => item.c).reduce((acc, item) => acc.concat(item), []);
+
+console.log(getColours(data)); //['blue', 'green', 'green', 'black', 'orange', 'blue', 'green', 'red']
+
+// next variant
+const getColours2 = arr => arr.reduce((acc, item) => item.c.map(color => acc.push(color)), []);
+console.log(getColours(data)); //['blue', 'green', 'green', 'black', 'orange', 'blue', 'green', 'red']
