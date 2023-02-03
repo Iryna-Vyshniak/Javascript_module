@@ -1934,5 +1934,39 @@ const getColours = arr => arr.map(item => item.c).reduce((acc, item) => acc.conc
 console.log(getColours(data)); //['blue', 'green', 'green', 'black', 'orange', 'blue', 'green', 'red']
 
 // next variant
-const getColours2 = arr => arr.reduce((acc, item) => item.c.map(color => acc.push(color)), []);
-console.log(getColours(data)); //['blue', 'green', 'green', 'black', 'orange', 'blue', 'green', 'red']
+const getColours2 = arr =>
+  arr.reduce((acc, item) => {
+    item.c.map(color => acc.push(color));
+    return acc;
+  }, []);
+console.log(getColours2(data)); //['blue', 'green', 'green', 'black', 'orange', 'blue', 'green', 'red']
+
+//next variant with unique colors
+const getColours3 = arr =>
+  arr.reduce((acc, item) => {
+    item.c.map(color => (acc.indexOf(color) === -1 ? acc.push(color) : acc));
+    return acc;
+  }, []);
+console.log(getColours3(data)); //['blue', 'green', 'black', 'orange', 'red']
+
+//-----------------------------------------------------------------------------
+function increment(input) {
+  return input + 1;
+}
+function decrement(input) {
+  return input - 1;
+}
+function double(input) {
+  return input * 2;
+}
+function halve(input) {
+  return input / 2;
+}
+
+const pipeline = [increment, double, decrement];
+const pipeline1 = [increment, double, decrement, halve];
+
+const getPipeline = arr => arr.reduce((total, func) => func(total), 1);
+
+console.log(getPipeline(pipeline)); // 3
+console.log(getPipeline(pipeline1)); // 1.5
