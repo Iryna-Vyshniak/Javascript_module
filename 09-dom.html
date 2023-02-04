@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <button type="button" class="magic-btn js-magic-btn">
+      Click me
+      <span class="icon">🧙‍♂️</span>
+    </button>
+
+    <ul class="site-nav js-site-nav">
+      <li class="site-nav__item"><a href="#" class="site-nav__link"> About us</a></li>
+
+      <li class="site-nav__item"><a href="#" class="site-nav__link">Reviews</a></li>
+
+      <li class="site-nav__item"><a href="#" class="site-nav__link">Contacts</a></li>
+    </ul>
+
+    <textarea id="message" class="materialize-text-area" rows="5">Text default</textarea>
+
+    <section class="hero">
+      <h1 class="hero__title">Cat`s Life</h1>
+      <img
+        class="hero__image"
+        src="https://images.pexels.com/photos/57416/cat-sweet-kitty-animals-57416.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=480"
+        alt="It's me"
+        width="320"
+      />
+    </section>
+
+    <div class="js-actions">
+      <button type="button" data-action="add">Add</button>
+      <button type="button" data-action="remove">Remove</button>
+      <button type="button" data-action="edit">Edit</button>
+    </div>
+    <script src="./app/09_dom_query-selectors.js" type="module"></script>
+  </body>
+</html>
