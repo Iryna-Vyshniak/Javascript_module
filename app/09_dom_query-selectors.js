@@ -259,3 +259,58 @@ const pictureEl = document.querySelector('.picture');
 // better practice than some apendChild
 pictureEl.append(imgTitleEl, imgEl);
 console.log(pictureEl);
+
+//--------------------------------------------------------------------
+//---------- CREATE COLLECTIONS ------------------------------------
+const colorPickerOptions = [
+  { label: 'red', color: '#F44336' },
+  { label: 'green', color: '#4CAF50' },
+  { label: 'blue', color: '#2196F3' },
+  { label: 'grey', color: '#607D8B' },
+  { label: 'pink', color: '#E91E63' },
+  { label: 'indigo', color: '#3F51B5' },
+];
+
+const colorPickerContainerEl = document.querySelector('.js-color-picker');
+
+const buttonsArr = colorPickerOptions.map(({ label, color }) => {
+  const buttonEl = document.createElement('button');
+  buttonEl.type = 'button';
+  buttonEl.classList.add('color-picker__option');
+  buttonEl.textContent = label;
+  buttonEl.style.backgroundColor = color;
+  return buttonEl;
+});
+console.log(buttonsArr);
+// [
+//   button.color-picker__option,
+//   button.color-picker__option,
+//   button.color-picker__option,
+//   button.color-picker__option,
+//   button.color-picker__option,
+//   button.color-picker__option,
+// ];
+
+colorPickerContainerEl.append(...buttonsArr);
+
+/*
+ Writing a function to create colorpicker markup
+ */
+const makeColorPickerOptions = options => {
+  return options.map(({ label, color }) => {
+    const buttonEl = document.createElement('button');
+    buttonEl.type = 'button';
+    buttonEl.classList.add('color-picker__option');
+    buttonEl.textContent = label;
+    buttonEl.style.backgroundColor = color;
+
+    return buttonEl;
+  });
+};
+
+const colorPickerContainerRef = document.querySelector('.js-color-picker--row');
+
+// result of function appropriate to const buttonSet
+const buttonsSet = makeColorPickerOptions(colorPickerOptions);
+
+colorPickerContainerRef.append(...buttonsSet);
