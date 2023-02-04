@@ -514,3 +514,51 @@ const renderIngredients = arr =>
 const liMarkup = renderIngredients(ingredients);
 console.log(liMarkup);
 ulIngredientsEl.append(...liMarkup);
+
+//----------------------------------------------------------------
+//------------- GALLERY --------------------------------
+const images = [
+  {
+    url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260',
+    alt: 'White and Black Long Fur Cat',
+  },
+  {
+    url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260',
+    alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+  },
+  {
+    url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260',
+    alt: 'Group of Horses Running',
+  },
+];
+
+const galleryEl = document.querySelector('.gallery');
+
+// 1st variant
+const renderGallery = arr => {
+  return arr.map(({ url, alt }) => {
+    const li = document.createElement('li');
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = alt;
+    img.width = 200;
+    li.append(img);
+    return li;
+  });
+};
+
+const galleryMarkup = renderGallery(images);
+console.log(galleryMarkup);
+
+galleryEl.append(...galleryMarkup);
+console.log(galleryEl);
+
+// 2nd variant
+const galleryEl2 = document.querySelector('.gallery2');
+
+const renderGallery2 = ({ url, alt }) =>
+  `<li><img src="${url}" alt="${alt}" width = "200" height = "auto"></li>`;
+
+const galleryMarkup2 = images.map(renderGallery2);
+
+galleryEl2.insertAdjacentHTML('beforeend', galleryMarkup2);
