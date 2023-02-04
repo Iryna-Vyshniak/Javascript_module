@@ -398,3 +398,26 @@ console.log(articlesArr);
 //  [article.product, article.product, article.product, article.product, article.product]
 
 productsContainerEl.append(...articlesArr);
+
+//---------------------------------------------------------------------
+/*
+  innerHTML => write new content (change old content) or clear all content
+  - reading
+  - writing
+ */
+
+const titleEl = document.querySelector('.title');
+console.log(titleEl.textContent); // This title => only text
+console.log(titleEl.innerHTML); // This <span>title</span> => all content inside the title
+titleEl.innerHTML = '<a href="#">It`s link</a>';
+console.log(titleEl.innerHTML); // <a href="#">It`s link</a>
+console.log(titleEl); // <h2 class="title">...</h2>
+//clear content
+titleEl.innerHTML = '';
+
+/*
+   markup with insertAdjacentHTML() => add new content
+   http://fecore.net.ua/books/m5ph3r-javascript/module-07/dom-manipulation.html#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-insertadjacenthtml
+ */
+
+titleEl.insertAdjacentHTML('beforeend', '<a href="" class="title__link">It`s link</a>');
