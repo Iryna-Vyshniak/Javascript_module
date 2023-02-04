@@ -1,3 +1,6 @@
+import products from './productsArr.js';
+console.log(products);
+
 /*
 document.querySelector(selector) => if didn`t find return => null и document.querySelectorAll(selector) => if didn`t find return []
  */
@@ -314,3 +317,84 @@ const colorPickerContainerRef = document.querySelector('.js-color-picker--row');
 const buttonsSet = makeColorPickerOptions(colorPickerOptions);
 
 colorPickerContainerRef.append(...buttonsSet);
+
+// ------------------------------------------------------------------
+//------- CREATE CARD PRODUCT -------------------------------------
+
+/*
+1st - create product card  like this: 
+<article class="product">
+img src = 'http://example'
+  <h2 class="product__name">Название</h2>
+  <p class="product__descr">Описание</p>
+  <p class="product__price">Цена: 1111 кредитов</p>
+</article>
+ - classList will be  product--on-sale product--not-available
+*/
+
+const productsContainerEl = document.querySelector('.js-products');
+
+// write a function that get one object and from this object create one article
+const makeProductsCard = ({ image, name, detail, price }) => {
+  const articleEl = document.createElement('article');
+  articleEl.classList.add('product');
+
+  const imgEl = document.createElement('img');
+  imgEl.src = image;
+  imgEl.alt = name;
+  imgEl.width = 100;
+
+  const titleArticle = document.createElement('h2');
+  titleArticle.classList.add('product-name');
+  titleArticle.textContent = name;
+
+  const descrArticle = document.createElement('p');
+  descrArticle.classList.add('product__descr');
+  descrArticle.textContent = detail;
+
+  const priceArticle = document.createElement('p');
+  priceArticle.classList.add('product__price');
+  priceArticle.textContent = `Price: ${price}$`;
+
+  articleEl.append(imgEl, titleArticle, descrArticle, priceArticle);
+  console.log(articleEl);
+  // return one article
+  return articleEl;
+};
+
+console.log(makeProductsCard(products[0]));
+
+// const articlesArr1 = products.map(product => {
+//   const articleEl = document.createElement('article');
+//   articleEl.classList.add('product');
+
+//   const imgEl = document.createElement('img');
+//   imgEl.src = product.image;
+//   imgEl.alt = product.name;
+//   imgEl.width = 100;
+
+//   const titleArticle = document.createElement('h2');
+//   titleArticle.classList.add('product-name');
+//   titleArticle.textContent = product.name;
+
+//   const descrArticle = document.createElement('p');
+//   descrArticle.classList.add('product__descr');
+//   descrArticle.textContent = product.detail;
+
+//   const priceArticle = document.createElement('p');
+//   priceArticle.classList.add('product__price');
+//   priceArticle.textContent = `Price: ${product.price}$`;
+
+//   articleEl.append(imgEl, titleArticle, descrArticle, priceArticle);
+//   console.log(articleEl);
+//   // return one article
+//   return articleEl;
+// });
+// console.log(articlesArr1); // [article.product, article.product, article.product, article.product, article.product]
+
+// best variant with callback
+const articlesArr = products.map(makeProductsCard);
+console.log(articlesArr);
+//  [article.product, article.product, article.product, article.product, article.product]
+
+productsContainerEl.append(...articlesArr);
