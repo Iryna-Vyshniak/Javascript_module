@@ -1,0 +1,22 @@
+.site-nav__link--current {
+  color: rgb(255, 3, 3);
+}
+
+.color-picker__option {
+  display: block;
+  max-width: 50px;
+  min-width: 20px;
+  padding: 5px;
+}
+
+.color-picker__option:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.js-color-picker {
+  margin-bottom: 10px;
+}
+.js-color-picker--row {
+  display: flex;
+  gap: 10px;
+}
