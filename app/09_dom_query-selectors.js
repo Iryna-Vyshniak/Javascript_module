@@ -113,237 +113,33 @@ console.log(actions[2].dataset); // {action: 'edit', name: 'example'}
 console.log(actions[2].dataset.action); // edit
 console.log(actions[2].dataset.name); // example
 
-// // 3
-// /*
-//  * Интерфейс classList
-//  * - add(класс)
-//  * - remove(класс)
-//  * - toggle(класс)
-//  * - replace(старыйКласс, новыйКЛасс)
-//  * - contains(класс)
-//  */
+// 3
+/*
+ classList interface
+ - add(class)
+ - remove(class)
+ - toggle(class)
+ - replace(oldClass, newClass)
+ - contains(class) => true/false
+ */
 
-// /*
-// <ul class="site-nav">
-//       <li class="site-nav__item">
-//         <a href="/about" class="site-nav__link">О нас</a>
-//       </li>
-//       <li class="site-nav__item">
-//         <a href="/portfolio" class="site-nav__link">Портфолио</a>
-//       </li>
-//       <li class="site-nav__item">
-//         <a href="/contact" class="site-nav__link">Контакты</a>
-//       </li>
-//     </ul>
-// */
+const nav = document.querySelector('.js-site-nav');
+console.log(nav); // <ul class="site-nav js-site-nav">...</ul>
 
-// const currentPageUrl = '/contact';
+magicBtn.addEventListener('click', () => {
+  nav.classList.add('navigation', 'main-navigation');
+  console.log(nav); //<ul class="site-nav js-site-nav navigation main-navigation">...</ul>
+  nav.classList.remove('navigation');
+  console.log(nav); //<ul class="site-nav js-site-nav main-navigation">...</ul>
+  nav.classList.toggle('nav');
+  console.log(nav); //<ul class="site-nav js-site-nav main-navigation">...</ul>
+  nav.classList.contains('nav') ? (nav.style.display = 'flex') : (nav.style.display = 'none');
+  nav.classList.replace('main-navigation', 'main-nav');
+  console.log(nav);
+});
 
-// const linkEl = document.querySelector(`.site-nav__link[href="${currentPageUrl}"]`);
-
-// console.log(linkEl);
-// linkEl.classList.add('site-nav__link--current');
-
-// // 4
-// /*
-//  * Свойства «навигации» по DOM-узлам (взять список)
-//  * http://fecore.net.ua/books/m5ph3r-javascript/module-07/dom-traversal.html
-//  */
-
-// /*
-// <p><a href="/index.html">На главную</a></p>
-
-//     <ul class="site-nav">
-//       <li class="site-nav__item">
-//         <a href="" class="site-nav__link">О нас</a>
-//       </li>
-//       <li class="site-nav__item">
-//         <a href="" class="site-nav__link">Портфолио</a>
-//       </li>
-//       <li class="site-nav__item">
-//         <a href="" class="site-nav__link">Контакты</a>
-//       </li>
-//     </ul>
-// */
-// const navElem = document.querySelector('.site-nav');
-
-// // const firstNavItemEl = navEl.querySelector('.site-nav__item');
-// const firstNavItemEl = navElem.firstElementChild;
-// console.log(firstNavItemEl);
-// console.log(navElem.children);
-// console.log(navElem.lastElementChild);
-
-// // 5
-// /*
-//  * - Создание элементов
-//  * - Вставка узлов: appendChild(elem), insertBefore(elem, nextSibling), append(...elems), prepend(...elems)
-//  */
-
-// /*
-// <ul class="site-nav">
-//       <li class="site-nav__item">
-//         <a href="" class="site-nav__link">О нас</a>
-//       </li>
-//       <li class="site-nav__item">
-//         <a href="" class="site-nav__link">Портфолио</a>
-//       </li>
-//       <li class="site-nav__item">
-//         <a href="" class="site-nav__link">Контакты</a>
-//       </li>
-//     </ul>
-// */
-
-// /*
-//  * Создаём заголовок
-//  */
-// const titleEl = document.createElement('h1');
-// titleEl.classList.add('page-title');
-// titleEl.textContent = 'Это заголовок страницы :)';
-// // console.log(titleEl);
-
-// // document.body.appendChild(titleEl);
-
-// /*
-//  * Создаём изображение
-//  * https://cdn.pixabay.com/photo/2018/07/26/07/45/valais-3562988_1280.jpg
-//  * valais-alpine-mountains-glacier
-//  */
-// const imageRef = document.createElement('img');
-// imageRef.src = 'https://cdn.pixabay.com/photo/2018/07/26/07/45/valais-3562988_1280.jpg';
-// imageRef.alt = 'valais-alpine-mountains-glacier';
-// imageRef.width = 320;
-// // console.log('imageEl', imageEl);
-
-// // document.body.appendChild(imageEl);
-
-// const heroEl = document.querySelector('.hero');
-// // heroEl.appendChild(titleEl);
-// // heroEl.appendChild(imageEl);
-// heroEl.append(titleEl, imageEl);
-
-// /*
-//  * Создаём и добавляем новый пункт меню
-//  */
-// const navItemEl = document.createElement('li');
-// navItemEl.classList.add('site-nav__item');
-
-// const navLinkEl = document.createElement('a');
-// navLinkEl.classList.add('site-nav__link');
-// navLinkEl.textContent = 'Личный кабинет';
-// navLinkEl.href = '/profile';
-
-// navItemEl.appendChild(navLinkEl);
-// // console.log(navItemEl);
-
-// const navEln = document.querySelector('.site-nav');
-
-// // navEln.appendChild(navItemEl);
-// navEl.insertBefore(navItemEl, navEln.firstElementChild);
-
-// // 6
-// /*
-//  * Создём и добавляем коллекцию
-//  */
-// /*
-//   <div class="color-picker js-color-picker"></div>
-// */
-
-// const colorPickerOptions = [
-//   { label: 'red', color: '#F44336' },
-//   { label: 'green', color: '#4CAF50' },
-//   { label: 'blue', color: '#2196F3' },
-//   { label: 'grey', color: '#607D8B' },
-//   { label: 'pink', color: '#E91E63' },
-//   { label: 'indigo', color: '#3F51B5' },
-// ];
-
-// const colorPickerContainerEl = document.querySelector('.js-color-picker');
-
-// // const elements = colorPickerOptions.map(option => {
-// //   const buttonEl = document.createElement('button');
-// //   buttonEl.type = 'button';
-// //   buttonEl.classList.add('color-picker__option');
-// //   buttonEl.textContent = option.label;
-// //   buttonEl.style.backgroundColor = option.color;
-
-// //   return buttonEl;
-// // });
-
-// // console.log(elements);
-
-// /*
-//  * Пишем функцию для создания разметки колорпикера
-//  */
-// const makeColorPickerOptions = options => {
-//   return options.map(option => {
-//     const buttonEl = document.createElement('button');
-//     buttonEl.type = 'button';
-//     buttonEl.classList.add('color-picker__option');
-//     buttonEl.textContent = option.label;
-//     buttonEl.style.backgroundColor = option.color;
-
-//     return buttonEl;
-//   });
-// };
-
-// const elements = makeColorPickerOptions(colorPickerOptions);
-// colorPickerContainerEl.append(...elements);
-
-// // var 1
-// const categoriesRef = document.getElementById('categories');
-// const listCategories = categoriesRef.children;
-// const lengthAmountCategories = listCategories.length;
-// console.log('Number of categories: ', lengthAmountCategories);
-
-// for (let category of listCategories) {
-//   console.log('Category: ', category.firstElementChild.textContent);
-//   console.log('Elements: ', category.lastElementChild.children.length);
-// }
-
-// // var 2
-// const categoriesAll = document.querySelector('#categories');
-// const categoriesLength = categoriesAll.children.length;
-// console.log(`Number of categories: ${categoriesLength}`);
-
-// const itemsElement = document.querySelectorAll('.item');
-// itemsElement.forEach(item => {
-//   console.log('Category: ', item.firstElementChild.textContent);
-//   console.log('Elements: ', item.lastElementChild.children.length);
-// });
-
-// // var 3
-// const categoriesEl = document.getElementById('categories').children.length;
-// console.log(`Number of categories: ${categoriesEl}`);
-
-// const arrayTitlesCategoriesRef = document.querySelectorAll('h2');
-// arrayTitlesCategoriesRef.forEach(title => {
-//   console.log('Category:', title.textContent);
-//   console.log('Elements:', title.nextElementSibling.children.length);
-// });
-
-// // 4
-// const categories = document.querySelectorAll('li.item');
-// console.log('Number of categories: ' + categories.length);
-
-// for (const category of categories) {
-//   console.log('Category: ' + category.firstElementChild.innerHTML);
-//   console.log('Elements: ' + category.lastElementChild.children.length);
-// }
-
-// // 5
-// const categoriesAllRef = document.querySelectorAll('li.item');
-// console.log('Number of categories: ', categoriesAllRef.length);
-// const infoOfItem = [...categoriesAllRef].map(item => {
-//   console.log(`Category: ${item.firstElementChild.textContent}`);
-//   console.log(`Elements: ${item.lastElementChild.children.length}`);
-// });
-
-// console.log('Number of categories: ', categoriesAllRef.length);
-// const getInfoOfItems = [...categoriesAllRef]
-//   .map(
-//     item =>
-//       `Category: ${item.firstElementChild.textContent}
-//     Elements: ${item.lastElementChild.children.length}`
-//   )
-//   .join('\n');
-// console.log(getInfoOfItems);
+const currentPageUrl = '/reviews';
+const currentLink = document.querySelector(`.site-nav__link[href="${currentPageUrl}"]`);
+console.log(currentLink); // <a href="/reviews" class="site-nav__link">Reviews</a>
+currentLink.classList.add('site-nav__link--current'); // reviews link is red
+console.log(currentLink); // <a href="/reviews" class="site-nav__link site-nav__link--current">Reviews</a>
