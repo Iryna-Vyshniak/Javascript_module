@@ -417,6 +417,15 @@ console.log(titleEl); // <h2 class="title">...</h2>
 //clear content
 titleEl.innerHTML = '';
 
+// ------
+const titleRef = document.createElement('h2');
+titleRef.classList.add('title-improved');
+titleRef.innerHTML = 'New and <span class="accent">improved</span> title';
+console.log(titleRef);
+titleEl.insertAdjacentElement('beforeend', titleRef);
+const titleSpan = document.querySelector('.accent');
+console.log(titleSpan); //<span class="accent">improved</span>
+titleSpan.style.color = 'magenta';
 /*
    markup with insertAdjacentHTML() => add new content
    http://fecore.net.ua/books/m5ph3r-javascript/module-07/dom-manipulation.html#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-insertadjacenthtml
@@ -439,8 +448,8 @@ titleEl.insertAdjacentHTML('beforeend', '<a href="" class="title__link">It`s lin
 //   </tr>
 
 const tableEl = document.querySelector('.js-transaction-table');
-const makeTransactionTableRowMarkup = transition => {
-  const { id, amount, date, business, name, type, account } = transition;
+const makeTransactionTableRowMarkup = transaction => {
+  const { id, amount, date, business, name, type, account } = transaction;
   return `
  <tr>
     <td>${id}</td>
