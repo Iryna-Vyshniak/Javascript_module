@@ -468,3 +468,18 @@ console.log(transactionTableRowsMarkup);
 
 tableEl.insertAdjacentHTML('beforeend', transactionTableRowsMarkup);
 console.log(tableEl); // <table class="transaction-table js-transaction-table">...</table>
+
+//----------------------------------------------------------------
+//------------- CATEGORIES --------------------------------
+
+const ulEl = document.querySelector('#categories');
+console.log(ulEl);
+const ulArr = ulEl.querySelectorAll('.item');
+console.log(ulArr);
+console.log(`Number of categories: ${ulArr.length}`);
+
+const renderCategories = ulArr.forEach(item => {
+  const titleCategory = item.querySelector('.item-class');
+  console.log(`Category: ${titleCategory.textContent}`);
+  console.log(`Elements: ${titleCategory.nextElementSibling.children.length}`);
+});
