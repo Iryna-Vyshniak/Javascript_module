@@ -562,3 +562,76 @@ const renderGallery2 = ({ url, alt }) =>
 const galleryMarkup2 = images.map(renderGallery2);
 
 galleryEl2.insertAdjacentHTML('beforeend', galleryMarkup2);
+
+// ----------------------------------------------------------------
+// ---------- COUNTER --------------------------------
+
+const counterEl = document.querySelector('.js-counter');
+counterEl.style.display = 'flex';
+counterEl.style.justifyContent = 'center';
+counterEl.style.alignItems = 'center';
+counterEl.style.gap = '15px';
+
+const btnPlusEl = document.createElement('button');
+btnPlusEl.type = 'button';
+btnPlusEl.textContent = '+';
+
+const valueEl = document.createElement('div');
+valueEl.textContent = '0';
+valueEl.classList.add('js-counter-value');
+
+const btnMinusEl = document.createElement('button');
+btnMinusEl.type = 'button';
+btnMinusEl.textContent = '-';
+
+counterEl.append(btnPlusEl, valueEl, btnMinusEl);
+
+btnPlusEl.addEventListener('click', () => {
+  valueEl.textContent = parseInt(valueEl.textContent) + 1;
+});
+
+btnMinusEl.addEventListener('click', () => {
+  valueEl.textContent = parseInt(valueEl.textContent) - 1;
+});
+
+// next  variant with use class
+class Counter {
+  constructor({ step = 0, value = 0 }) {
+    this.value = value;
+    this.step = step;
+  }
+
+  getIncrement() {
+    this.value += this.step;
+  }
+
+  getDecrement() {
+    this.value -= this.step;
+  }
+}
+
+// const counter = new Counter({ step: 10, value: 0 });
+const counter2 = new Counter({ step: 5, value: 2 });
+
+const btnPlus = document.querySelector('.btn-plus');
+const btnMin = document.querySelector('.btn-min');
+const value = document.querySelector('.value');
+
+// btnPlus.addEventListener('click', () => {
+//   counter.getIncrement();
+//   value.textContent = counter.value;
+// });
+
+// btnMin.addEventListener('click', () => {
+//   counter.getDecrement();
+//   value.textContent = counter.value;
+// });
+btnPlus.addEventListener('click', () => {
+  counter2.getIncrement();
+  value.textContent = counter2.value;
+});
+
+btnMin.addEventListener('click', () => {
+  counter2.getDecrement();
+  value.textContent = counter2.value;
+});
