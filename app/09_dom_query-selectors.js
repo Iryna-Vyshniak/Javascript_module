@@ -474,6 +474,7 @@ console.log(tableEl); // <table class="transaction-table js-transaction-table">.
 
 const ulEl = document.querySelector('#categories');
 console.log(ulEl);
+ulEl.style.marginBottom = '20px';
 const ulArr = ulEl.querySelectorAll('.item');
 console.log(ulArr);
 console.log(`Number of categories: ${ulArr.length}`);
@@ -483,3 +484,33 @@ const renderCategories = ulArr.forEach(item => {
   console.log(`Category: ${titleCategory.textContent}`);
   console.log(`Elements: ${titleCategory.nextElementSibling.children.length}`);
 });
+
+const titleArr = document.querySelectorAll('.item-class');
+const renderCategories1 = titleArr.forEach(title => {
+  console.log(`Category: ${title.textContent}`);
+  console.log(`Elements: ${title.nextElementSibling.children.length}`);
+});
+
+const itemsArr = document.querySelectorAll('.item');
+console.log(itemsArr);
+const renderCategories2 = itemsArr.forEach(item => {
+  console.log(`Category: ${item.firstElementChild.textContent}`);
+  console.log(`Elements: ${item.lastElementChild.children.length}`);
+});
+//----------------------------------------------------------------
+//------------- INGREDIENTS --------------------------------
+const ingredients = ['Potatoes', 'Mushrooms', 'Garlic', 'Tomatos', 'Herbs', 'Condiments'];
+
+const ulIngredientsEl = document.querySelector('ul#ingredients');
+console.log(ulIngredientsEl);
+
+const renderIngredients = arr =>
+  arr.map(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    li.classList.add('item');
+    return li;
+  });
+const liMarkup = renderIngredients(ingredients);
+console.log(liMarkup);
+ulIngredientsEl.append(...liMarkup);
