@@ -1,5 +1,7 @@
 import products from './productsArr.js';
 console.log(products);
+import transactionHistory from './transactions.js';
+console.log(transactionHistory);
 
 /*
 document.querySelector(selector) => if didn`t find return => null и document.querySelectorAll(selector) => if didn`t find return []
@@ -421,3 +423,39 @@ titleEl.innerHTML = '';
  */
 
 titleEl.insertAdjacentHTML('beforeend', '<a href="" class="title__link">It`s link</a>');
+
+//----------------------------------------------------------------
+// ---------- TRANSACTIONS ---------------------------------------
+// markup => string
+// transactionHistory
+// <tr>
+//     <td>id</td>
+//     <td>amount</td>
+//     <td>date</td>
+//     <td>business</td>
+//     <td>type</td>
+//     <td>name</td>
+//     <td>account</td>
+//   </tr>
+
+const tableEl = document.querySelector('.js-transaction-table');
+const makeTransactionTableRowMarkup = transition => {
+  const { id, amount, date, business, name, type, account } = transition;
+  return `
+ <tr>
+    <td>${id}</td>
+    <td>${amount}</td>
+    <td>${date}</td>
+    <td>${business}</td>
+    <td>${type}</td>
+    <td>${name}</td>
+    <td>${account}</td>
+  </tr>
+  `;
+};
+
+const transactionTableRowsMarkup = transactionHistory.map(makeTransactionTableRowMarkup).join('');
+console.log(transactionTableRowsMarkup);
+
+tableEl.insertAdjacentHTML('beforeend', transactionTableRowsMarkup);
+console.log(tableEl); // <table class="transaction-table js-transaction-table">...</table>
