@@ -1,6 +1,9 @@
 /*
 document.querySelector(selector) => if didn`t find return => null и document.querySelectorAll(selector) => if didn`t find return []
  */
+console.log(document); // #document
+console.log(document.body); // <body>...</body>
+console.log(document.head); // <head>...</head>
 
 const magicBtn = document.querySelector('.js-magic-btn');
 
@@ -172,3 +175,87 @@ console.log(previousElSibling); // <li class="site-nav__item">...Reviews...</li>
 
 const nextElSibling = firstLi.nextElementSibling;
 console.log(nextElSibling); //// <li class="site-nav__item">...Reviews...</li> => елемент «праворуч» від elem (його наступного сусіда)
+
+//--------------------------------------------------------------------
+// ---------CREATE ELEMENT -------------------------------------------
+//1st - create in memory
+const titleEL = document.createElement('h2');
+console.log(titleEL); // <h2>...</h2>
+titleEL.textContent = 'It`s create title';
+console.log(titleEL); // <h2>It`s create title</h2>
+titleEL.classList.add('title');
+console.log(titleEL); // <h2 class="title">It`s create</h2>
+
+//2nd add to page
+/*
+ - parentEl.appendChild(el); => додасть в кінець add to end after <script></script>
+
+ - parentEl.insertBefore(el, nextSibling); => add before nextSibling element
+ - parentEl.insertBefore(el, null); => add to end parent element like appendChild
+
+ - parentEl.append(el1, el2, ...); => add to end parent element like appendChild
+ - parentEl.prepend(el1, el2, ...); => add to begin parent element
+*/
+
+document.body.appendChild(titleEL);
+console.log(document.body); // <script></script> <h2 class="title">It`s create</h2>
+
+const imageRef = document.createElement('img');
+imageRef.src = 'https://cdn.pixabay.com/photo/2023/01/29/12/53/red-panda-7753226_960_720.jpg';
+imageRef.alt = 'red panda';
+console.log(imageRef.width); // 0
+imageRef.width = 250;
+console.log(imageRef); // <img src="https://cdn.pixabay.com/photo/2023/01/29/12/53/red-panda-7753226_960_720.jpg" alt="red panda" width="100"></img>
+
+document.body.appendChild(imageRef);
+currentLink.appendChild(imageRef);
+console.log(document.body);
+
+// create new menu in memory
+//create 1st element
+const liItemEl = document.createElement('li');
+liItemEl.classList.add('menu-item');
+console.log(liItemEl); //<li class="menu-item"></li>
+
+//create 2nd element
+const aLinkEl = document.createElement('a');
+aLinkEl.href = '/link';
+aLinkEl.textContent = 'Link';
+aLinkEl.classList.add('menu-link');
+console.log(aLinkEl); // <a href="/link" class="menu-link">Link</a>
+
+// in memory connect together and then all send to document.body => likes for grape
+// connect 1st and 2nd elements
+liItemEl.appendChild(aLinkEl);
+console.log(liItemEl);
+// <li class="menu-item"><a href="/link" class="menu-link">Link</a></li>
+// add to ul
+nav.appendChild(liItemEl);
+nav.insertBefore(liItemEl, nav.firstElementChild); // before first child About Us
+// nav.insertBefore(liItemEl, null); // add to the end of the nav
+nav.insertBefore(liItemEl, nav.lastElementChild); // before last child Contacts
+nav.insertBefore(liItemEl, nav.children[1]); // before 2rd child Reviews
+//nav.appendChild(...liItemEl.children);
+console.log(nav);
+
+// create img and then add to div
+const imgEl = document.createElement('img');
+console.log(imgEl);
+imgEl.src = 'https://cdn.pixabay.com/photo/2018/04/16/16/16/sunset-3325080__340.jpg';
+imgEl.alt = 'hill';
+imgEl.width = 300;
+
+// Create title to img
+const imgTitleEl = document.createElement('h2');
+imgTitleEl.textContent = 'Hill Fields';
+imgTitleEl.classList.add('img-title');
+
+const pictureEl = document.querySelector('.picture');
+//  doesn`t good practice because use DOM twice
+// pictureEl.appendChild(imgTitleEl);
+// pictureEl.appendChild(imgEl);
+// console.log(pictureEl);
+
+// better practice than some apendChild
+pictureEl.append(imgTitleEl, imgEl);
+console.log(pictureEl);
