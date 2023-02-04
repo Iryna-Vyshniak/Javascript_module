@@ -37,6 +37,7 @@ magicBtn.addEventListener('click', () => {
 });
 
 // ------------------------------------------------------------------
+// ----------- VALUE ------------------------------------------------
 // value => likes for textContent
 
 const message = document.querySelector('#message');
@@ -50,7 +51,8 @@ message.addEventListener('input', () => {
   console.log(message.value); //Hello World
 });
 
-// 2 ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+// ---------------- ELEMENT PROTERTIES ------------------------------------------
 /*
   Element Properties (hero)
   - img
@@ -70,9 +72,16 @@ magicBtn.addEventListener('click', () => {
   imageEl.src =
     'https://images.pexels.com/photos/57416/cat-sweet-kitty-animals-57416.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=480';
   imageEl.alt = 'New cat';
+  // hero title selector
+  const heroTitleEl = document.querySelector('.hero__title');
+  console.log('heroTitleEl', heroTitleEl); // <h1 class="hero__title">Cat`s Life</h1>
+
+  heroTitleEl.textContent = 'Cat`s Life'; // <h1 class="hero__title">Kitten</h1>
+  console.log(imageEl.getAttribute('src'));
 });
 
 //-----------------------------------------------------------------------------
+// ------------------ ATTRIBUTES ----------------------------------------------
 /*
  * Attributes
  * - get(attribute-name)
@@ -81,12 +90,6 @@ magicBtn.addEventListener('click', () => {
  * - has(attribute-name)
  */
 
-// hero title selector
-const heroTitleEl = document.querySelector('.hero__title');
-console.log('heroTitleEl', heroTitleEl); // <h1 class="hero__title">Cat`s Life</h1>
-
-heroTitleEl.textContent = 'Kitten'; // <h1 class="hero__title">Kitten</h1>
-console.log(imageEl.getAttribute('src'));
 console.log(imageEl.src);
 console.log(imageEl.hasAttribute('src')); // true
 imageEl.removeAttribute('src');
@@ -97,6 +100,7 @@ console.log(imageEl);
 imageEl.width = 420;
 
 // -----------------------------------------------------------------------------
+// -------------- DATA-ATTRIBUTES ----------------------------------------------
 
 /*
  * Data-аttributes
@@ -113,7 +117,8 @@ console.log(actions[2].dataset); // {action: 'edit', name: 'example'}
 console.log(actions[2].dataset.action); // edit
 console.log(actions[2].dataset.name); // example
 
-// 3
+// --------------------------------------------------------------------------------
+//-------------- CLASSLIST ------------------------------------------------------
 /*
  classList interface
  - add(class)
@@ -143,3 +148,27 @@ const currentLink = document.querySelector(`.site-nav__link[href="${currentPageU
 console.log(currentLink); // <a href="/reviews" class="site-nav__link">Reviews</a>
 currentLink.classList.add('site-nav__link--current'); // reviews link is red
 console.log(currentLink); // <a href="/reviews" class="site-nav__link site-nav__link--current">Reviews</a>
+
+// ------------------------------------------------------------------------
+// ---------- DOM navigation ---------------------------------------------
+// --------- quickly access to the element instead of querySelector ------
+const navDOM = document.querySelector('.js-site-nav');
+const firstNavItem = navDOM.querySelector('.site-nav__item');
+console.log(firstNavItem); // <li class="site-nav__item">...</li> => first li
+
+const firstLi = navDOM.firstElementChild;
+console.log(firstLi); // <li class="site-nav__item">...About us...</li> => first li
+
+const allLi = navDOM.children;
+console.log(allLi); // [li.site-nav__item, li.site-nav__item, li.site-nav__item]
+console.log(allLi[1]); // <li class="site-nav__item">...Reviews...</li> => 2nd element
+console.log(navDOM.children[1]); // <li class="site-nav__item">...Reviews...</li> => 2nd element
+
+const lastLi = navDOM.lastElementChild;
+console.log(lastLi); // <li class="site-nav__item">...Contacts...</li> => last li
+
+const previousElSibling = lastLi.previousElementSibling;
+console.log(previousElSibling); // <li class="site-nav__item">...Reviews...</li> => «зліва» від elem (його попереднього сусіда)
+
+const nextElSibling = firstLi.nextElementSibling;
+console.log(nextElSibling); //// <li class="site-nav__item">...Reviews...</li> => елемент «праворуч» від elem (його наступного сусіда)
