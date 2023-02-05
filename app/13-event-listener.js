@@ -255,3 +255,34 @@ function onKeypress(event) {
 function onClearOutput() {
   refs2.output.textContent = '';
 }
+
+//----------------------------------------------------------------
+//----------  MOUSE EVENTS -----------------------------------------------------------
+/*
+Mouse Events
+- mouseenter & mouseleave => hover
+- mouseover & mouseout
+- mousemove (chatty event - болтливое событие)
+- Mouse position: https://nerdparadise.com/programming/javascriptmouseposition
+- task - https://learn.javascript.ru/task/move-ball-field
+ */
+
+const boxRef = document.querySelector('.js-box');
+
+boxRef.addEventListener('mouseover', onMouseEnter); // hover
+boxRef.addEventListener('mouseout', onMouseLeave); // hover
+boxRef.addEventListener('mousemove', onMouseMove);
+
+function onMouseEnter(event) {
+  const box = event.currentTarget;
+  box.classList.add('box--active');
+}
+
+function onMouseLeave(event) {
+  const box = event.currentTarget;
+  box.classList.remove('box--active');
+}
+
+function onMouseMove(event) {
+  console.log(event);
+}
