@@ -82,3 +82,88 @@ function onTargetBtnClick(event) {
   console.log(event);
   console.log('click on target btn');
 }
+
+//--------------------------------------------------------------------------------
+// ---------- FORM -------------------------------------------------------------
+
+/*
+    - Подія submit
+    - Дії браузера за замовчуванням
+    - Властивість elements
+    - Клас FormData - https://developer.mozilla.org/en-US/docs/Web/API/FormData
+    formData --> для сбора и отправки данных на сервер: на сервер необходимо отправлять и имя name, и значение value, чтобы сервер знал что ему отправляют и что куда записывать
+ */
+
+const form = document.querySelector('.js-register-form');
+
+form.addEventListener('submit', onFormSubmit);
+
+function onFormSubmit(event) {
+  event.preventDefault();
+  console.log('it`s submit form');
+  console.log(event); // SubmitEvent
+  console.log(event.currentTarget);
+  // <form class="js-register-form" autocomplete="off">...</form> --> current target ссылается на тот элемент, который прослушивает событие. В этом случае --> form.addEventListener; form подписалась на submit, во время submit current target будет ссылка на form
+  console.dir(event.currentTarget);
+  /*
+  object form.js-register-form form.js-register-form
+        input
+        input
+        input
+        input
+        input
+        button
+  elements HTMLFormControlsCollection(6)
+        input
+        input
+        input
+        input
+        input
+        button
+        email: input
+        password: input
+        subscription: RadioNodeList(3) [input, input, input, value: '']
+  */
+
+  // ---------------------------------------------------------------------
+  //----------DETAILED DESCRIPTION formData-------------------------------
+
+  /*
+  console.dir(event.currentTarget.elements.subscription.value); //basic
+
+  const formElements = event.currentTarget.elements;
+  console.log(formElements);
+
+  const mail = formElements.email;
+  console.log(mail); // <input type="email" name="email">
+
+  const password = formElements.password;
+  console.log(password); // <input type="password" name="password);
+
+  const mailValue = mail.value;
+  console.log(mailValue); // sds@dhdks.com
+
+  const passwordValue = password.value;
+  console.log(passwordValue); // sfsfds
+  
+  const subscriptionValue = formElements.subscription.value;
+  console.log(subscriptionValue); // basic
+
+  const formData = {
+    mailValue,
+    passwordValue,
+    subscriptionValue,
+  };
+
+  console.log(formData); // {mailValue: 'dsd@dfdf.com', passwordValue: '3243vdf', subscriptionValue: 'free'}
+*/
+
+  const formData = new FormData(event.currentTarget); // event.currentTarget --> передаем ссылку на сам DOM element: собирает значение ВСЕХ полей формы
+
+  console.log(formData); // FormData {} --> [[Prototype]]: FormData --> forEach, entries, keys, values...
+
+  formData.forEach((value, name) => {
+    console.log('onFormSubmit -> key name: ', name); //  key name:  email
+    console.log('onFormSubmit -> value: ', value); // value: sada@sd.com
+  });
+}
