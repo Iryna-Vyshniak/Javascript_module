@@ -271,7 +271,7 @@ const boxRef = document.querySelector('.js-box');
 
 boxRef.addEventListener('mouseover', onMouseEnter); // hover
 boxRef.addEventListener('mouseout', onMouseLeave); // hover
-boxRef.addEventListener('mousemove', onMouseMove);
+// boxRef.addEventListener('mousemove', onMouseMove);
 
 function onMouseEnter(event) {
   const box = event.currentTarget;
@@ -338,4 +338,18 @@ function onEscKeyPress(event) {
   if (isEscKey) {
     onCloseModal();
   }
+}
+
+// --------------------------------------------------------------------------------
+//----------  Anonymous -----------------------------------------------------------
+
+const refs4 = {
+  nameInput: document.querySelector('#name-input'),
+  nameOutput: document.querySelector('#name-output'),
+};
+
+refs4.nameInput.addEventListener('input', onNameInput);
+
+function onNameInput(event) {
+  refs4.nameOutput.textContent = event.currentTarget.value;
 }
