@@ -402,3 +402,27 @@ function onFontSizeControl(e) {
   console.log(e.currentTarget.value);
   text.style.fontSize = `${e.currentTarget.value}px`;
 }
+
+//------------------------------------------------------------------------------------------------
+// ---------- form.login-form --------------------------------------------------------------------
+// login form management script
+const loginForm = document.querySelector('.login-form');
+loginForm.addEventListener('submit', handleFormSubmit);
+
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const {
+    elements: { email, password },
+  } = e.currentTarget;
+
+  if (email.value === '' || password.value === '') {
+    return alert('Please fill in all the fields!');
+  }
+
+  const formData = new FormData(e.currentTarget);
+
+  formData.forEach((value, name) => {
+    console.log(`${name} ${value}`);
+  });
+  e.currentTarget.reset();
+}
