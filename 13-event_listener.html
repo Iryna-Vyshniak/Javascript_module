@@ -10,6 +10,25 @@
   </head>
 
   <body>
+    <!-- modal -->
+    <button class="button" data-action="open-modal">Open modal</button>
+
+    <div class="backdrop js-backdrop">
+      <div class="modal">
+        <h2>Modal window</h2>
+        <p>
+          In user interface design for computer applications, a modal window is a graphical control
+          element subordinate to an application's main window. It creates a mode that disables the
+          main window but keeps it visible, with the modal window as a child window in front of it.
+          Users must interact with the modal window before they can return to the parent
+          application. This avoids interrupting the workflow on the main window. Modal windows are
+          sometimes called heavy windows or modal dialogs because they often display a dialog box.
+        </p>
+        <button type="button" class="button-modal" data-action="close-modal">Закрыть</button>
+      </div>
+    </div>
+
+    <!-- btns -->
     <div class="btn-wrapper">
       <button class="js-target-btn" type="button">Target btn</button>
       <button class="js-add-listener-btn" type="button">Add event listener</button>
@@ -62,10 +81,17 @@
       </label>
     </p>
 
-    <button type="submit" disabled class="js-button">
+    <button type="submit" disabled class="js-button btn-submit">
       Зарегистрироваться как <span>Аноним</span>
     </button>
     <!-- </form> -->
+    <!-- keypress -->
+    <button class="js-clear">Очистить</button>
+    <p class="output js-output"></p>
+    <!-- mouse events -->
+    <div class="box js-box">
+      <div class="inner-box"></div>
+    </div>
 
     <script src="./app/13-event-listener.js" type="module"></script>
   </body>
