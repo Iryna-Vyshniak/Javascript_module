@@ -59,3 +59,26 @@ function OnTargetBtnClick(event) {
 }
 
 //--------------------------------------------------------------------------------
+// ---------- EVENT -------------------------------------------------------------
+
+targetBtn.addEventListener('click', event => {
+  console.log(event);
+  console.log('click on target btn');
+});
+
+addListenerBtn.addEventListener('click', event => {
+  console.log(event);
+  console.log('add event listener on target btn');
+  targetBtn.addEventListener('click', onTargetBtnClick);
+});
+
+removeListenerBtn.addEventListener('click', event => {
+  console.log(event);
+  console.log('remove event listener from target btn');
+  targetBtn.removeEventListener('click', onTargetBtnClick);
+});
+
+function onTargetBtnClick(event) {
+  console.log(event);
+  console.log('click on target btn');
+}
