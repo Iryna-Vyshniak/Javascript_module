@@ -224,3 +224,34 @@ function onLicenseChange(event) {
   // кнопка выключена, когда checkbox НЕ выбран
   refs.btn.disabled = !event.currentTarget.checked;
 }
+
+// --------------------------------------------------------------------------------
+//----------  KEYPRESS, KEYDOWN, KEYUP --------------------------------------------
+/*
+Type Events: keypress, keydown, keyup
+- keydown, keyup - реагируют на события всех клавиш, тоесть и на служебные Escape, Alt, Enter
+- keypress - реагируют на события тех клавиш, которые генерят какой-то символ
+- Restrictions keypress
+- KeyboardEvent.key
+- KeyboardEvent.code
+ */
+
+const refs2 = {
+  output: document.querySelector('.js-output'),
+  clearBtn: document.querySelector('.js-clear'),
+};
+
+window.addEventListener('keypress', onKeypress);
+refs2.clearBtn.addEventListener('click', onClearOutput);
+
+function onKeypress(event) {
+  console.log(event);
+  console.log('event.key: ', event.key); // g / п-- буква, которую набираем на каком-либо языке
+  console.log('event.code: ', event.code); // KeyG --> физическая кнопка
+
+  refs2.output.textContent += event.key; // на єкране именно символ клавиши k/л ...
+}
+
+function onClearOutput() {
+  refs2.output.textContent = '';
+}
