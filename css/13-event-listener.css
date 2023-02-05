@@ -2,6 +2,8 @@
   display: flex;
   margin: 0 -10px;
   margin-top: 20px;
+  margin-bottom: 50px;
+  gap: 10px;
 }
 
 .btn-item {
@@ -20,4 +22,8 @@
 .btn:hover,
 .btn:focus {
   transform: scale(1.05);
+}
+
+.form-wrapper {
+  margin-bottom: 50px;
 }
