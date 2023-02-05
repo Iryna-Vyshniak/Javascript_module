@@ -342,7 +342,7 @@ function onEscKeyPress(event) {
 
 // --------------------------------------------------------------------------------
 //----------  Anonymous -----------------------------------------------------------
-
+//script that, when typing text in the input input#name-input (input event), substitutes its current value in span#name-output
 const refs4 = {
   nameInput: document.querySelector('#name-input'),
   nameOutput: document.querySelector('#name-output'),
@@ -352,4 +352,38 @@ refs4.nameInput.addEventListener('input', onNameInput);
 
 function onNameInput(event) {
   refs4.nameOutput.textContent = event.currentTarget.value;
+}
+
+// --------------------------------------------------------------------------------
+//----------  check validation-input -----------------------------------------------------------
+// script that, when input loses focus (blur event), checks its content for the correct number of input characters.
+const validationInput = document.querySelector('#validation-input');
+const dataLength = document.querySelector('[data-length]');
+console.log(dataLength.dataset.length);
+console.log(validationInput);
+
+validationInput.addEventListener('blur', onValidationInput);
+
+function onValidationInput(event) {
+  event.preventDefault();
+  const inputContentLength = event.currentTarget.value.length;
+  const validLength = dataLength.dataset.length;
+  console.log(validLength);
+  console.log(inputContentLength);
+
+  if (Number(inputContentLength) === Number(validLength)) {
+    validationInput.classList.add('valid');
+    console.log(validationInput);
+    validationInput.classList.remove('invalid');
+  }
+  if (Number(inputContentLength) !== Number(validLength) && Number(inputContentLength) !== 0) {
+    validationInput.classList.remove('valid');
+    validationInput.classList.add('invalid');
+    console.log(validationInput);
+  }
+  if (Number(inputContentLength) === 0) {
+    validationInput.classList.remove('valid');
+    validationInput.classList.remove('invalid');
+    console.log(validationInput);
+  }
 }
