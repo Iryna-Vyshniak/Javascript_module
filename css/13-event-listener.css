@@ -73,7 +73,9 @@ button {
 .btn-submit,
 .output,
 span#text,
-.login-form {
+.login-form,
+.widget,
+#controls {
   display: block;
   margin-bottom: 50px;
 }
@@ -125,4 +127,11 @@ button[type='submit'] {
   display: block;
   max-width: 200px;
   align-self: center;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
