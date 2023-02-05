@@ -10,21 +10,45 @@
   </head>
 
   <body>
-    <button class="js-target-btn" type="button">Target btn</button>
-    <button class="js-add-listener-btn" type="button">Add event listener</button>
-    <button class="js-remove-listener-btn" type="button">Remove event listener</button>
+    <div class="btn-wrapper">
+      <button class="js-target-btn" type="button">Target btn</button>
+      <button class="js-add-listener-btn" type="button">Add event listener</button>
+      <button class="js-remove-listener-btn" type="button">Remove event listener</button>
+    </div>
 
-    <!-- <div class="container">
-        <img src="https://picsum.photos/id/237/200/300" alt="Labrador" class="js-img" />
-        <ul class="btn-wrapper list">
-            <li class="btn-item">
-                <button type="button" class="btn js-swap-btn">Змінити зображення</button>
-            </li>
-            <li class="btn-item">
-                <button type="button" class="btn js-remove-listener">Прибрати слухача події</button>
-            </li>
-        </ul>
-    </div> -->
+    <!-- forms -->
+    <div class="form-wrapper">
+      <form class="js-register-form" autocomplete="off">
+        <div role="group">
+          <label>
+            Email
+            <input type="email" name="email" />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" />
+          </label>
+        </div>
+        <br />
+        <div role="group">
+          <b>Type of subscription:</b>
+          <label>
+            <input type="radio" name="subscription" value="free" />
+            Free
+          </label>
+          <label>
+            <input type="radio" name="subscription" value="basic" />
+            Basic
+          </label>
+          <label>
+            <input type="radio" name="subscription" value="pro" />
+            Pro
+          </label>
+        </div>
+        <br />
+        <button type="submit">Sign in</button>
+      </form>
+    </div>
 
     <script src="./app/13-event-listener.js" type="module"></script>
   </body>
