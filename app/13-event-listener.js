@@ -426,3 +426,23 @@ function handleFormSubmit(e) {
   });
   e.currentTarget.reset();
 }
+
+//------------------------------------------------------------------------------------------------
+//--------- change-color -------------------------------------------------------------------------
+//a script that changes the background colors of the <body> element via inline styling when button.change-color is clicked and outputs the color value in span.color
+const color = document.querySelector('span.color');
+const changeColorBtn = document.querySelector('.change-color');
+
+changeColorBtn.addEventListener('click', changeColor);
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
+
+function changeColor() {
+  color.textContent = getRandomHexColor();
+  console.log(color.textContent);
+  document.body.style.backgroundColor = color.textContent;
+}
