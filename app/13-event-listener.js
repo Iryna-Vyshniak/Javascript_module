@@ -286,3 +286,56 @@ function onMouseLeave(event) {
 function onMouseMove(event) {
   console.log(event);
 }
+
+// --------------------------------------------------------------------------------
+// ----------  MODAL -----------------------------------------------------------
+/*
+ 1. open and close on click btn
+ 2. close on click backdrop: onBackDropClick
+ 3. close on click ESC: onEscapeKeypress
+
+Все що вкладене - найближче до очей по осі z
+
+   BUBLING  backdrop ------------------------------------------ => event.currentTarget ЛОВИМО ТУТ
+                      modal --------------------- /modal
+                          CLICK p -------- /p  <--> найближче до очей => event.target
+
+ * В CSS есть класс show-modal, который необходимо добавить на body при открытии модалки
+ */
+
+const refs3 = {
+  openModalBtn: document.querySelector('[data-action="open-modal"]'),
+  closeModalBtn: document.querySelector('[data-action="close-modal"]'),
+  backdrop: document.querySelector('.js-backdrop'),
+};
+
+refs3.openModalBtn.addEventListener('click', onOpenModal);
+refs3.closeModalBtn.addEventListener('click', onCloseModal);
+refs3.backdrop.addEventListener('click', onBackdropClick); // => refs3.backdrop event.currentTarget
+
+function onOpenModal() {
+  window.addEventListener('keydown', onEscKeyPress);
+  document.body.classList.add('show-modal');
+}
+
+function onCloseModal() {
+  window.removeEventListener('keydown', onEscKeyPress);
+  document.body.classList.remove('show-modal');
+}
+
+function onBackdropClick(event) {
+  if (event.currentTarget === event.target) {
+    // сheck click on backdrop or not on backdrop
+    console.log('Click on Backdrop!');
+    onCloseModal();
+  }
+}
+
+function onEscKeyPress(event) {
+  const ESC_KEY_CODE = 'Escape';
+  const isEscKey = event.code === ESC_KEY_CODE;
+
+  if (isEscKey) {
+    onCloseModal();
+  }
+}
