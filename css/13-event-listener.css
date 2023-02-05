@@ -71,7 +71,9 @@ button {
 
 .form-wrapper,
 .btn-submit,
-.output {
+.output,
+span#text,
+.login-form {
   display: block;
   margin-bottom: 50px;
 }
@@ -111,4 +113,16 @@ button {
 
 #validation-input.invalid {
   border-color: #f44336;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+button[type='submit'] {
+  display: block;
+  max-width: 200px;
+  align-self: center;
 }
