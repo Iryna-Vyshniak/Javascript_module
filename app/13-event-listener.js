@@ -446,3 +446,43 @@ function changeColor() {
   console.log(color.textContent);
   document.body.style.backgroundColor = color.textContent;
 }
+
+//----------------------------------------------------------------
+// ----------- create elements -----------------------------------
+//script for creating and cleaning a collection of elements. The user enters the number of elements in input and clicks the Create button, after which the collection is rendered. Clicking the Clear button clears the collection of items
+const boxes = document.querySelector('div#boxes');
+const inputNumber = document.querySelector('input[type="number"]');
+console.log(inputNumber.max);
+const createBtn = document.querySelector('button[data-create]');
+const destroyBtn = document.querySelector('button[data-destroy]');
+
+createBtn.addEventListener('click', () => {
+  console.log(inputNumber.value);
+  Number(inputNumber.value) > Number(inputNumber.max) ||
+  Number(inputNumber.value) < Number(inputNumber.min)
+    ? alert('Please enter number from 1 to 100')
+    : createBoxes(inputNumber.value);
+  inputNumber.value = '';
+});
+
+destroyBtn.addEventListener('click', destroyBoxes);
+
+function createBoxes(amount) {
+  let defaultSize = 30;
+  const boxesArr = [];
+  for (let i = 0; i < amount; i += 1) {
+    defaultSize += 10 * i;
+    const div = document.createElement('div');
+    div.style.width = `${defaultSize}px`;
+    div.style.height = `${defaultSize}px`;
+    div.style.backgroundColor = getRandomHexColor();
+    boxesArr.push(div);
+    console.log('arr length', boxesArr.length);
+  }
+  return boxes.append(...boxesArr);
+}
+
+function destroyBoxes() {
+  inputNumber.value = '';
+  boxes.innerHTML = '';
+}
