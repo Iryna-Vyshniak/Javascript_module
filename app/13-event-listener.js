@@ -167,3 +167,60 @@ function onFormSubmit(event) {
     console.log('onFormSubmit -> value: ', value); // value: sada@sd.com
   });
 }
+
+// ----------------------------------------------------------------
+//---------- INPUT-------------------------------------------------
+
+/*
+ * Pattern «Object links» --> refs{...}, elements {...}, ...
+ 
+ * Events
+ * - focus & blur
+ * - input & change, input --> only text, change --> checkbox and radio
+ * - checkboxes & value checked --> value -- on, cheked -- true --> if checked
+ */
+
+const refs = {
+  input: document.querySelector('.js-input'),
+  nameLabel: document.querySelector('.js-button > span'),
+  licenseCheckbox: document.querySelector('.js-license'),
+  btn: document.querySelector('.js-button'),
+};
+
+refs.input.addEventListener('focus', onInputFocus);
+refs.input.addEventListener('blur', onInputBlur);
+// refs.input.addEventListener('change', onInputChangeEventChange); // --> CHANGE DON`T USE ON INPUT, ONLY CHECKBOX & TYPE BUTTON
+refs.input.addEventListener('input', onInputChangeEventInput);
+refs.licenseCheckbox.addEventListener('change', onLicenseChange);
+
+function onInputFocus() {
+  console.log('Инпут получил фокус - событие focus');
+}
+
+// потеря фокуса
+function onInputBlur() {
+  console.log('Инпут потерял фокус - событие blur');
+}
+
+// получить значение события -- получаем при потере фокуса --> использовать только на чекбоксах и radio button -- DON`T ON INPUT
+function onInputChangeEventChange(event) {
+  console.log(event); // Event {isTrusted: true, type: 'change', target: input.js-input, currentTarget: input.js-input, eventPhase: 2, …}
+  console.log(event.currentTarget.value); // Helen --> получаем при потере фокуса
+}
+
+function onInputChangeEventInput(event) {
+  // выведет в консоль каждую введенное значение в input
+  console.log(event.currentTarget.value);
+  refs.nameLabel.textContent = event.currentTarget.value;
+}
+
+function onLicenseChange(event) {
+  console.log('hello world');
+  //refs.input.value = 'License changed';
+  console.log(event.currentTarget); // <input type="checkbox" class="js-license">
+  console.log(event.currentTarget.value); // on
+  console.log(event.currentTarget.checked); // true if checked
+  console.log(refs.btn.disabled); // true
+  // кнопка выключена, когда checkbox НЕ выбран
+  refs.btn.disabled = !event.currentTarget.checked;
+}
