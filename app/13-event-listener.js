@@ -387,3 +387,18 @@ function onValidationInput(event) {
     console.log(validationInput);
   }
 }
+
+//------------------------------------------------------------------------------------------------
+//----------  check validation-input -----------------------------------------------------------
+//script that responds to a change in the value of input#font-size-control (input event) and changes the inline style of span#text by updating the font-size property. As a result, dragging the slider will change the size of the text.
+
+const fontSizeControl = document.querySelector('#font-size-control');
+const text = document.querySelector('span#text');
+console.log(text.textContent); //Abracadabra!
+
+fontSizeControl.addEventListener('input', onFontSizeControl);
+
+function onFontSizeControl(e) {
+  console.log(e.currentTarget.value);
+  text.style.fontSize = `${e.currentTarget.value}px`;
+}
