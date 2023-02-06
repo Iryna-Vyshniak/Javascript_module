@@ -702,3 +702,70 @@ colors.forEach(({ color, label }) => {
 container.append(buttonsContainer);
 
 //---------------------------------------------------------------------
+const data = {
+  title: '- Michel Legrand -',
+  imgUrl:
+    'https://i.discogs.com/LGcISJRXQR30Q--KBtFgh8nf5bAY-UT9PfVp4mPM4_8/rs:fit/g:sm/q:90/h:788/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTg0MjM2/LTE0Nzc2ODIxNDgt/NDUyOC5qcGVn.jpeg',
+  imgCaption: 'Michel Legrand conducting his orcherstra.',
+  facts: [
+    'He was born in Paris, France on February 24<sup>th</sup>, 1932',
+    'His father was himself a conductor and composer, and his mother, who was Armenian, was the sister of a conductor',
+    'His sister was a Soprano and a member of the Swingle Singers',
+    'Along his career, he composed more than two hundred film and television scores',
+    'He was also a Jazz player and worked with giants like Miles Davis or Stan Getz',
+    'He won a huge amount of awards, including Oscars, Grammy Awards and Golden Globes',
+    'He died of sepsis during the night of the 25<sup>th</sup> to 26<sup>th</sup> January 2019 in the American Hospital of Paris',
+    'He was interred at the P&egrave;re Lachaise Cemetery in Paris, France',
+  ],
+};
+
+const asideContainer = document.querySelector('#article');
+
+//1 Створти елемент
+const title = document.createElement('h1');
+const figure = document.createElement('figure');
+const image = document.createElement('img');
+const caption = document.createElement('figcaption');
+
+//2 Модифікувати елемент
+title.textContent = data.title;
+title.setAttribute('id', 'title');
+
+figure.setAttribute('id', 'img-div');
+
+image.setAttribute('id', 'image');
+image.src = data.imgUrl;
+image.alt = data.imgCaption;
+
+caption.id = 'img-caption';
+caption.textContent = data.imgCaption;
+
+//3 Додати елемент в DOM
+asideContainer.append(title);
+figure.append(image, caption);
+asideContainer.append(figure);
+
+asideContainer.insertAdjacentHTML(
+  'beforeend',
+  `<article id="tribute-info">
+        <div id="intro">
+            <p>&bull; Michel Legrand (1932 - 2019) was a famous French musician. &bull;</p>
+        </div>
+        <p><u>Here are some major facts about him:</u></p>
+        <ul>
+            ${data.facts.reduce((acum, factItem) => (acum += `<li>${factItem}</li>`), '')}
+        </ul>
+        <blockquote id="quote">
+            <p>Writing is a mental thing, while playing is essentially a physical feeling.</p>
+            <cite>-- Michel Legrand</cite>
+        </blockquote>
+        <hr>
+        <p>To find out more about him, feel free to have a look at his biography on <a id="tribute-link"
+                href="https://en.wikipedia.org/wiki/Michel_Legrand" target="_blank">Wikipedia</a>.</p>
+    </article>`
+);
+
+const article = document.querySelector('#tribute-info');
+
+console.log(article.firstChild); // текст
+console.log(article.firstElementChild); // елемент
