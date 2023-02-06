@@ -348,10 +348,17 @@ const refs4 = {
   nameOutput: document.querySelector('#name-output'),
 };
 
-refs4.nameInput.addEventListener('input', onNameInput);
+// refs4.nameInput.addEventListener('input', onNameInput);
 
-function onNameInput(event) {
-  refs4.nameOutput.textContent = event.currentTarget.value;
+// function onNameInput(event) {
+//   refs4.nameOutput.textContent = event.currentTarget.value.trim();
+// }
+refs4.nameInput.addEventListener('input', getNameInput);
+
+function getNameInput({ currentTarget }) {
+  return (refs4.nameOutput.textContent = currentTarget.value.trim()
+    ? currentTarget.value.trim()
+    : 'Anonymous');
 }
 
 // --------------------------------------------------------------------------------
@@ -450,39 +457,72 @@ function changeColor() {
 //----------------------------------------------------------------
 // ----------- create elements -----------------------------------
 //script for creating and cleaning a collection of elements. The user enters the number of elements in input and clicks the Create button, after which the collection is rendered. Clicking the Clear button clears the collection of items
-const boxes = document.querySelector('div#boxes');
-const inputNumber = document.querySelector('input[type="number"]');
-console.log(inputNumber.max);
-const createBtn = document.querySelector('button[data-create]');
-const destroyBtn = document.querySelector('button[data-destroy]');
+// const boxes = document.querySelector('div#boxes');
+// const inputNumber = document.querySelector('input[type="number"]');
+// console.log(inputNumber.max);
+// const createBtn = document.querySelector('button[data-create]');
+// const destroyBtn = document.querySelector('button[data-destroy]');
 
-createBtn.addEventListener('click', () => {
-  console.log(inputNumber.value);
-  Number(inputNumber.value) > Number(inputNumber.max) ||
-  Number(inputNumber.value) < Number(inputNumber.min)
-    ? alert('Please enter number from 1 to 100')
-    : createBoxes(inputNumber.value);
-  inputNumber.value = '';
+// createBtn.addEventListener('click', () => {
+//   console.log(inputNumber.value);
+//   Number(inputNumber.value) > Number(inputNumber.max) ||
+//   Number(inputNumber.value) < Number(inputNumber.min)
+//     ? alert('Please enter number from 1 to 100')
+//     : createBoxes(inputNumber.value);
+//   inputNumber.value = '';
+// });
+
+// destroyBtn.addEventListener('click', destroyBoxes);
+
+// function createBoxes(amount) {
+//   let defaultSize = 30;
+//   const boxesArr = [];
+//   for (let i = 0; i < amount; i += 1) {
+//     defaultSize += 10 * i;
+//     const div = document.createElement('div');
+//     div.style.width = `${defaultSize}px`;
+//     div.style.height = `${defaultSize}px`;
+//     div.style.backgroundColor = getRandomHexColor();
+//     boxesArr.push(div);
+//     console.log('arr length', boxesArr.length);
+//   }
+//   return boxes.append(...boxesArr);
+// }
+
+// function destroyBoxes() {
+//   inputNumber.value = '';
+//   boxes.innerHTML = '';
+// }
+
+// next variant----------------------------
+const boxesDiv = document.querySelector('div#boxes');
+const inputNumbers = document.querySelector('input[type="number"]');
+console.log(inputNumbers.max);
+const createBtn1 = document.querySelector('button[data-create]');
+const destroyBtn1 = document.querySelector('button[data-destroy]');
+
+createBtn1.addEventListener('click', () => {
+  Number(inputNumbers.value.trim()) > Number(inputNumbers.max) ||
+  Number(inputNumbers.value.trim()) < Number(inputNumbers.min)
+    ? alert('Please select number from 1 to 100')
+    : createBoxes(Number(inputNumbers.value));
+  inputNumbers.value = '';
 });
 
-destroyBtn.addEventListener('click', destroyBoxes);
-
 function createBoxes(amount) {
-  let defaultSize = 30;
+  let size = 30;
   const boxesArr = [];
   for (let i = 0; i < amount; i += 1) {
-    defaultSize += 10 * i;
-    const div = document.createElement('div');
-    div.style.width = `${defaultSize}px`;
-    div.style.height = `${defaultSize}px`;
-    div.style.backgroundColor = getRandomHexColor();
+    size += 10 * i;
+    const div = `<div class="box" style="display: block; background-color: ${getRandomHexColor()}; width: ${size}px; height: ${size}px;"></div>`;
     boxesArr.push(div);
-    console.log('arr length', boxesArr.length);
+    console.log(boxesArr);
   }
-  return boxes.append(...boxesArr);
+  boxesDiv.insertAdjacentHTML('beforeend', boxesArr.join(''));
 }
 
+destroyBtn1.addEventListener('click', destroyBoxes);
 function destroyBoxes() {
-  inputNumber.value = '';
-  boxes.innerHTML = '';
+  inputNumbers.value = '';
+  boxesDiv.innerHTML = '';
 }
