@@ -635,3 +635,70 @@ btnMin.addEventListener('click', () => {
   counter2.getDecrement();
   value.textContent = counter2.value;
 });
+
+//----------------------------------------------------------------
+const technologies = ['HTML', 'CSS', 'JavaScript', 'React', 'Node'];
+
+const container = document.querySelector('#main-container');
+const ulRef = document.createElement('ul');
+
+// const techElements = technologies
+//   .map((el) => `<li>${el}</li>`)
+//   .join('');
+
+technologies.forEach(technologyItem => {
+  // const liEl = document.createElement('li');
+  // liEl.textContent = technologyItem;
+  // ulRef.append(liEl)
+
+  const liEl = `<li>${technologyItem}</li>`;
+  ulRef.insertAdjacentHTML('afterbegin', liEl);
+});
+
+// const techElements = technologies.reduce(
+//   (acum, el) => (acum += `<li>${el}</li>`),
+//   ''
+// );
+
+//ulRef.innerHTML = techElements;
+
+container.append(ulRef);
+// --------------------------------------------------------------------
+
+const colors = [
+  {
+    label: 'red',
+    color: '#FF0000',
+  },
+  {
+    label: 'green',
+    color: '#00FF00',
+  },
+  {
+    label: 'blue',
+    color: '#0000FF',
+  },
+  {
+    label: 'yellow',
+    color: '#FFFF00',
+  },
+];
+
+const buttonsContainer = document.createElement('div');
+buttonsContainer.classList = 'btn-container';
+buttonsContainer.classList.add('visible', 'green');
+// buttonsContainer.classList = 'btn-container-new';
+
+colors.forEach(({ color, label }) => {
+  const btnEl = document.createElement('button');
+  btnEl.textContent = label;
+  btnEl.style.backgroundColor = color;
+  btnEl.style.margin = '10px';
+  btnEl.style.padding = '10px';
+
+  buttonsContainer.append(btnEl);
+});
+
+container.append(buttonsContainer);
+
+//---------------------------------------------------------------------
