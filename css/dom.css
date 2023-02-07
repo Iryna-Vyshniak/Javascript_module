@@ -1,6 +1,4 @@
-/* ====================================== 
-1 - Imported Fonts
- ===================================== */
+/* ----------------------- 1 - Imported Fonts ---------------------------------*/
 
 @import url('https://fonts.googleapis.com/css?family=Pinyon+Script&display=swap');
 
@@ -9,9 +7,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 
-/* ====================================== 
-2 - General Properties
- ===================================== */
+/* -------------------------  2 - General Properties ----------------------------------*/
 
 body {
   font-family: 'Playfair Display', serif;
@@ -32,9 +28,7 @@ hr {
   border: 0.5px dotted #bbbbbb;
 }
 
-/* ====================================== 
-3 - Element-specific properties
- ===================================== */
+/* --------------------------------- 3 - Element-specific properties ------------------------------- */
 
 #article {
   width: 85%;
@@ -80,9 +74,9 @@ hr {
   text-align: left;
 }
 
-#tribute-info li {
-  /* css goes here */
-}
+/* #tribute-info li {
+
+} */
 
 #intro {
   margin: 30px auto 30px auto;
@@ -98,9 +92,7 @@ hr {
   background-size: contain;
 }
 
-/* ====================================== 
-4 - Media queries
- ===================================== */
+/* -------------------------------- 4 - Media queries --------------------------------- */
 
 @media screen and (max-width: 440px) {
   #title {
