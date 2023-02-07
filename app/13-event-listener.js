@@ -546,3 +546,25 @@ function randomMove(e) {
   let randomY = Math.floor(Math.random() * (window.innerHeight / 8 - step));
   e.currentTarget.style.transform = `translate(${randomX}px, ${-randomY}px)`;
 }
+
+//--------------- REMOVE EVENT LISTENER --------------------------------
+const btnExp = document.querySelector('.btn-exp');
+const titleClick = document.querySelector('.title-click');
+
+btnExp.addEventListener('click', getTitleClickBtn);
+
+function getTitleClickBtn(e) {
+  titleClick.textContent = `Expand`;
+  // e.currentTarget.disabled = true;
+  console.log(e.currentTarget);
+  // знімаємо слухача подій
+  btnExp.removeEventListener('click', getTitleClickBtn);
+}
+
+// ----------------------------------------------------------------
+// next variant remove event listener
+btnExp.addEventListener('click', getTitleClickBtn, { once: true }); // викликати слухача подій лише один раз
+
+// якщо подію необхідно зняти з декількох варіантів (backdrop, Escape, modal close btn)- use removeEventListener, якщо з чогось одного - { once: true }
+// в середині addEventListener ми звертаємось до (наприклад) btn через event.currentTarget
+// коли необхідно зняти прослуховувач подій .removeEventListener в середині .addEventListener тоді звертаємось до btn => так загально прийнято(але можна і через event.currentTarget.removeEventListener)
