@@ -177,7 +177,7 @@ function onFormSubmit(event) {
  * Events
  * - focus & blur
  * - input & change, input --> only text, change --> checkbox and radio
- * - checkboxes & value checked --> value -- on, cheked -- true --> if checked
+ * - checkboxes & value checked --> value -- on, checked -- true --> if checked
  */
 
 const refs = {
@@ -525,4 +525,24 @@ destroyBtn1.addEventListener('click', destroyBoxes);
 function destroyBoxes() {
   inputNumbers.value = '';
   boxesDiv.innerHTML = '';
+}
+
+//------------------------------------------------------------------------------------------------
+// ----- BOX MOVE ----------------------------------------------------
+
+const box = document.querySelector('.js-box-move');
+console.log(box);
+let step = 30;
+
+box.addEventListener('click', e => randomMove(e));
+
+// function onBoxClick(e) {
+//   step += 30;
+//   e.currentTarget.style.margin = `${step}px`;
+// }
+
+function randomMove(e) {
+  let randomX = Math.floor(Math.random() * (window.innerWidth / 8 - step));
+  let randomY = Math.floor(Math.random() * (window.innerHeight / 8 - step));
+  e.currentTarget.style.transform = `translate(${randomX}px, ${-randomY}px)`;
 }
