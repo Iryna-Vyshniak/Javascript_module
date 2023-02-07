@@ -653,3 +653,31 @@ function onSearch(e) {
 
   listSearch.innerHTML = markupSearch;
 }
+
+// -------------------------------------------------------------------
+//------- FORM input--------------------------------------------------
+const input = document.querySelector('.js-input-exp');
+
+input.addEventListener('focus', onFocus);
+function onFocus(e) {
+  // console.log(e);
+  console.log('Write, please');
+}
+
+input.addEventListener('blur', onBlur);
+function onBlur(e) {
+  // console.log(e);
+  console.log('Have you already writting???');
+}
+
+input.addEventListener('input', onInput);
+function onInput(e) {
+  const query = e.currentTarget.value;
+  console.log(query);
+  // '' => false; query ==== '' => query === false => !query
+  //  "asd" => true => !true => false
+  //  query => !false => true
+  if (!query) {
+    console.log('Empty string');
+  }
+}
