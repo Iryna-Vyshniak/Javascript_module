@@ -14,6 +14,7 @@
  * - Reference identity of callback
  * - Event object
  */
+//  НА СТОРІНЦІ ДВІЧІ ОДНОЧАСНО 2 РІЗНИХ ІВЕНТИ НЕ  ВІДПРАЦЬОВУЮТЬ ЗА РАХУНОК ТОГО, ЩО JS АСИНХРОННИЙ, АЛЕ ОДНОПОТОЧНИЙ
 
 const targetBtn = document.querySelector('.js-target-btn');
 const addListenerBtn = document.querySelector('.js-add-listener-btn');
@@ -229,8 +230,10 @@ function onLicenseChange(event) {
 //----------  KEYPRESS, KEYDOWN, KEYUP --------------------------------------------
 /*
 Type Events: keypress, keydown, keyup
-- keydown, keyup - реагируют на события всех клавиш, тоесть и на служебные Escape, Alt, Enter
-- keypress - реагируют на события тех клавиш, которые генерят какой-то символ
+- keydown - натискаємо; код з'являється, коли натискаємо клавішу
+- keyup - відпускаємо; код з'являється, коли відпускаємо клавішу; коли затискаємо - не з'являються 
+- keydown, keyup - реагируют на события всех клавиш, тоесть и на системные Escape, Alt, Enter, Tab, Shift, Ctrl, Capslock
+- keypress - реагируют на события только тех клавиш, которые генерят какой-то символ => a, b, c, d, e, f, g, h, i, j, k
 - Restrictions keypress
 - KeyboardEvent.key
 - KeyboardEvent.code
@@ -254,6 +257,34 @@ function onKeypress(event) {
 
 function onClearOutput() {
   refs2.output.textContent = '';
+}
+
+//------ keyDown Ctrl + C Shift----------------------------------------
+document.addEventListener('keydown', onPress);
+// document.addEventListener('') // =>
+
+function onPress(e) {
+  e.preventDefault(); // використовуємо лише коли працюємо з модифікаторами клавіш, коли хочемо обробити декілька подій: наприклад зловити Ctrl + C
+  const keyName = 'KeyA';
+  if (e.code === keyName) {
+    console.log('YEP');
+  }
+  console.log(e);
+
+  // if (e.code === 'ControlLeft' && e.code === 'KeyV') { => don`t work, we must use ctrlKey instead e.code === 'ControlLeft' for combitation; ctrlKey: true; ctrlKey: false; or altKey: true etc
+  // if pressed alone keyV => ctrlKey: false; If pressed Ctrl, than keyV -> keyV has ctrlKey: true
+  if (e.ctrlKey && e.code === 'KeyV') {
+    console.log('You pressed Сtrl + V');
+  }
+
+  // блокуємо можливість копіювання через Ctrl + C
+  if (e.ctrlKey && e.code === 'KeyC') {
+    alert('NO no no');
+    return;
+  }
+  if (e.shiftKey) {
+    console.log('Print Caps lock?');
+  }
 }
 
 //----------------------------------------------------------------
@@ -681,3 +712,5 @@ function onInput(e) {
     console.log('Empty string');
   }
 }
+
+//----------------------------------------------------------------
