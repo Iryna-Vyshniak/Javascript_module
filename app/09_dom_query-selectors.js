@@ -769,3 +769,33 @@ const article = document.querySelector('#tribute-info');
 
 console.log(article.firstChild); // текст
 console.log(article.firstElementChild); // елемент
+
+// -----------------------------------------------------------------------------------------------------------------------
+// ---------------- markup ---------------------------------------------------------------------------------------------
+
+const list = document.querySelector('.js-list');
+const markup1 = `<li class="text"><span>Hello from <a>JS</a></span></li>`;
+
+// list.innerHTML = markup; --> use for pagination for every page when redraw every info
+list.insertAdjacentHTML('beforeend', markup1); // use for infinity scroll
+
+const listExample = document.querySelector('.js-list-example');
+const listStatic = document.querySelectorAll('.js-item-example');
+const listDynemic = document.getElementsByClassName('js-item-example'); // FOR INFINITY SCROLL, return dynemic array
+
+console.log('listStatic', listStatic);
+console.log('listDynemic', listDynemic);
+console.log(listDynemic.length); // 4
+console.log('before', listDynemic[listDynemic.length - 1].textContent); // 4
+
+let markup2 = '';
+const lastItem = Number(listExample.lastElementChild.textContent);
+console.log(lastItem); // 4
+for (let i = 0; i < 5; i += 1) {
+  markup2 += ` <li class="js-item-example">${lastItem + i}</li>`;
+}
+console.log(markup2);
+listExample.insertAdjacentHTML('beforeend', markup2); // 1 2 3 4 5 6 7 8
+// listExample.innerHTML = markup2; // 4 5 6 7 8
+const lastElementText = listDynemic[listDynemic.length - 1].textContent;
+console.log(lastElementText); // 8
