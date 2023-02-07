@@ -135,3 +135,10 @@ button[type='submit'] {
   align-items: center;
   gap: 15px;
 }
+
+.box-move {
+  width: 100px;
+  height: 100px;
+  background-color: #ff0000;
+  border-radius: 50%;
+}
