@@ -541,7 +541,7 @@ const renderGallery = arr => {
     const img = document.createElement('img');
     img.src = url;
     img.alt = alt;
-    img.width = 200;
+    img.width = 150;
     li.append(img);
     return li;
   });
@@ -559,9 +559,44 @@ const galleryEl2 = document.querySelector('.gallery2');
 const renderGallery2 = ({ url, alt }) =>
   `<li><img src="${url}" alt="${alt}" width = "200" height = "auto"></li>`;
 
-const galleryMarkup2 = images.map(renderGallery2);
+const galleryMarkup2 = images.map(renderGallery2).join('');
 
 galleryEl2.insertAdjacentHTML('beforeend', galleryMarkup2);
+
+// 3rd variant
+const galleryEl3 = document.querySelector('.gallery3');
+
+const galleryMarkup3 = images
+  .map(({ url, alt }) => `<li><img src="${url}" alt="${alt}" width = "250" height = "auto"></li>`)
+  .join('');
+
+galleryEl3.insertAdjacentHTML('beforeend', galleryMarkup3);
+
+// 4rd variant
+const galleryEl4 = document.querySelector('.gallery4');
+
+const galleryMarkup4 = images.reduce(
+  (acc, { alt, url }) =>
+    (acc += `<li><img src="${url}" alt="${alt}" width = "300" height = "auto"></li>`),
+  ''
+);
+
+galleryEl4.insertAdjacentHTML('beforeend', galleryMarkup4);
+
+// 5rd variant
+const galleryEl5 = document.querySelector('.gallery5');
+
+const galleryMarkup5 = images
+  .reduce(
+    (acc, image) =>
+      acc.concat(
+        `<li><img src="${image.url}" alt="${image.alt}" width = "350" height = "auto"></li>`
+      ),
+    []
+  )
+  .join('');
+
+galleryEl5.insertAdjacentHTML('beforeend', galleryMarkup5);
 
 // ----------------------------------------------------------------
 // ---------- COUNTER --------------------------------
