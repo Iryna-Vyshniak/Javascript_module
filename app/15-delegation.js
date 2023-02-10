@@ -1,5 +1,5 @@
 /*
-* паттерн делегирования событий -> когда есть однотипная коллекция элементов, хотим обработать какое-то одно событие для всех элементов одинаково, чтобы всем не вешать слушателя addEventListener
+ * паттерн делегирования событий -> когда есть однотипная коллекция элементов, хотим обработать какое-то одно событие для всех элементов одинаково, чтобы всем не вешать слушателя addEventListener
  * - общий слушатель
  * - фильтр цели клика
  * - nodeName - свойство, которое показывает строку названия, куда кликаем -> BUTTON, DIV
@@ -15,10 +15,10 @@ function onClick(event) {
 
     // console.log(event.target.textContent); // Кнопка 5
     // но если кликаем по div получаем список всеех кнопок вместе  Кнопка 1
-    // Кнопка 2
-    // Кнопка 3
-    // Кнопка 4
-    // Кнопка 5
+    // Button 2
+    // Button 3
+    // Button 4
+    // Button 5
 
     // фильтр цели клика
     // console.log(event.target.nodeName);
@@ -34,13 +34,13 @@ const container = document.querySelector('.js-container');
 container.addEventListener('click', onClick);
 
 function onClick(event) {
-    // console.log(event.target.nodeName);
-    if (event.target.nodeName !== 'BUTTON') {
-        return;
-    }
+  console.log(event.target.textContent);
+  if (event.target.nodeName !== 'BUTTON') {
     console.log(event.target.nodeName);
+    return;
+  }
+  console.log(event.target.nodeName);
 }
-
 
 /*
  * Код добавления кнопок
@@ -50,11 +50,11 @@ let labelCounter = 6; // у нас есть 5 кнопок, поэтому пи�
 
 addBtn.addEventListener('click', onAddBtnClick);
 
-function onAddBtnClick(event) {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.textContent = `Кнопка ${labelCounter}`;
+function onAddBtnClick(e) {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.textContent = `Button ${labelCounter}`;
 
-    container.appendChild(btn);
-    labelCounter += 1;
+  container.appendChild(btn);
+  labelCounter += 1;
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Делегирование событий</title>
+    <!-- <link rel="stylesheet" href="./css/styles.css" /> -->
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        outline: 2px solid tomato;
+      }
+
+      button {
+        margin: 4px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button class="js-add-btn">Add button</button>
+    <hr />
+
+    <div class="container js-container">
+      <button type="button">Button 1</button>
+      <button type="button">Button 2</button>
+      <button type="button">Button 3</button>
+      <button type="button">Button 4</button>
+      <button type="button">Button 5</button>
+    </div>
+
+    <script src="./app/15-delegation.js" type="module"></script>
+  </body>
+</html>
