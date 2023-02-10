@@ -232,6 +232,48 @@ switch (job) {
 }
 
 //
+
+// const number = prompt('Hello, enter please the number between  0 and 59');
+// const answerNum = Number(parseInt(number));
+
+// if (answerNum > 59 || answerNum < 0) {
+//   alert(`The ${answerNum} is outside 0 and 59`);
+//   console.log(answerNum);
+// } else if (answerNum <= 15) {
+//   console.log(`Number ${answerNum} refers to 1 quarters`);
+// } else if (answerNum <= 30) {
+//   console.log(`Number ${answerNum} refers to 2 quarters`);
+// } else if (answerNum <= 45) {
+//   console.log(`Number ${answerNum} refers to 3 quarters`);
+// } else {
+//   console.log(`Number ${answerNum} refers to 4 quarters`);
+// }
+// const quoter = Math.ceil(answerNum / 15);
+
+// if (Number.isNaN(answerNum)) {
+//   alert(`Please, enter valid value - number from 1 to 59`);
+// } else if (answerNum > 59 || answerNum < 0) {
+//   alert(`The ${answerNum} is outside 0 and 59`);
+// } else {
+//   switch (quoter) {
+//     case 1:
+//       console.log(`Number ${answerNum} refers to 1 quarters`);
+//       break;
+//     case 2:
+//       console.log(`Number ${answerNum} refers to 2 quarters`);
+//       break;
+//     case 3:
+//       console.log(`Number ${answerNum} refers to 3 quarters`);
+//       break;
+//     case 4:
+//       console.log(`Number ${answerNum} refers to 4 quarters`);
+//       break;
+//     default:
+//       console.log(`The ${answerNum} is outside 0 and 59`);
+//       break;
+//   }
+// }
+
 const number = prompt('Hello, enter please the number between  0 and 59');
 
 const answerNum = Number(parseInt(number));
@@ -264,3 +306,66 @@ switch (true) {
         break;
     }
 }
+
+// ----------------------------------------------
+// ? Виведіть методом console.log() зірочки від 1 до 7 штук у вигляді трикутника таким чином:
+//  ? *
+//  ? **
+//  ? ***
+//  ? ****
+//  ? *****
+//  ? ******
+//  ? *******
+
+function stars(howManyTimes) {
+  let star = '';
+  for (let i = 0; i < howManyTimes; i += 1) {
+    console.log((star += '*'));
+  }
+}
+
+stars(7);
+stars(12);
+
+// Напиши функцію getRectArea(dimensions) для обчислення площі прямокутника зі сторонами,
+// ? значення яких будуть передані до параметра dimensions у вигляді рядка.
+// ? Значення гарантовано розділені пробілом.
+
+function getRectArea(dimensions) {
+  const sizesArr = dimensions.split(' ');
+  console.log(sizesArr);
+  return sizesArr[0] * sizesArr[1];
+}
+
+console.log(getRectArea('8 11')); // 88
+console.log(getRectArea('18 11')); //  198
+console.log(getRectArea('8 21')); //  168
+
+// 7. Призначити знижку 20% на фрукти в масиві,
+// Присвоїти ID для кожного продукту
+const fruits = [
+  { name: 'apple', price: 200 },
+  { name: 'orange', price: 300 },
+  { name: 'grapes', price: 750 },
+];
+
+// function createProduct(obj, callback) {
+//   const object = {
+//     ...obj,
+//     id: Date.now(),
+//   };
+
+//   callback(object);
+// }
+
+const fruitsSale = (arr, sale) =>
+  arr.map(item => {
+    return {
+      ...item,
+      id: new Date(),
+      price: item.price - item.price * sale,
+    };
+  });
+
+console.table(fruitsSale(fruits, 0.2));
+console.table(fruitsSale(fruits, 0.5));
