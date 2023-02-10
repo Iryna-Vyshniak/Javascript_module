@@ -1,40 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Мастерская: модальное окно</title>
+    <title>Modal</title>
     <!-- <link rel="stylesheet" href="./css/styles.css" /> -->
     <link rel="stylesheet" href="./css/modal.css" />
-</head>
+    <style>
+      .login-form {
+        margin: 0 auto;
+        max-width: 480px;
+        display: flex;
+        flex-direction: column;
+      }
 
-<body>
-    <p><a href="/">На главную</a></p>
+      .login-form span {
+        display: block;
+        margin-bottom: 10px;
+      }
 
-    <button class="button" data-action="open-modal">Открыть модалку</button>
+      .login-form input,
+      .login-form button {
+        width: 100%;
+        padding: 14px;
+        font: inherit;
+      }
+
+      label {
+        margin-bottom: 10px;
+      }
+
+      button[type='submit'] {
+        margin: 0 auto;
+        max-width: 100px;
+        text-align: center;
+      }
+
+      input {
+        border: 2px solid #bdbdbd;
+      }
+
+      .valid {
+        border-color: #4caf50;
+      }
+
+      .invalid {
+        border-color: #f44336;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button class="button" data-action="open-modal">Open modal</button>
 
     <div class="backdrop js-backdrop">
-        <div class="modal">
-            <h2>Modal window</h2>
-            <p>
-                In user interface design for computer applications, a modal window is
-                a graphical control element subordinate to an application's main
-                window. It creates a mode that disables the main window but keeps it
-                visible, with the modal window as a child window in front of it. Users
-                must interact with the modal window before they can return to the
-                parent application. This avoids interrupting the workflow on the main
-                window. Modal windows are sometimes called heavy windows or modal
-                dialogs because they often display a dialog box.
-            </p>
-            <button type="button" class="button" data-action="close-modal">
-                Закрыть
-            </button>
-        </div>
+      <div class="modal js-modal">
+        <h2>Sign In</h2>
+        <button type="button" class="button" data-action="close-modal">Close</button>
+      </div>
     </div>
 
     <script src="./app/modal.js" type="module"></script>
-</body>
-
+  </body>
 </html>
