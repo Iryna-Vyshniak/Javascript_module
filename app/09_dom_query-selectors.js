@@ -609,7 +609,7 @@ counterEl.style.gap = '15px';
 
 const btnPlusEl = document.createElement('button');
 btnPlusEl.type = 'button';
-btnPlusEl.textContent = '+';
+btnPlusEl.textContent = '+1';
 
 const valueEl = document.createElement('div');
 valueEl.textContent = '0';
@@ -617,16 +617,16 @@ valueEl.classList.add('js-counter-value');
 
 const btnMinusEl = document.createElement('button');
 btnMinusEl.type = 'button';
-btnMinusEl.textContent = '-';
+btnMinusEl.textContent = '-1';
 
 counterEl.append(btnPlusEl, valueEl, btnMinusEl);
 
 btnPlusEl.addEventListener('click', () => {
-  valueEl.textContent = parseInt(valueEl.textContent) + 1;
+  valueEl.textContent = Number(valueEl.textContent) + Number(btnPlusEl.textContent);
 });
 
 btnMinusEl.addEventListener('click', () => {
-  valueEl.textContent = parseInt(valueEl.textContent) - 1;
+  valueEl.textContent = Number(valueEl.textContent) + Number(btnMinusEl.textContent);
 });
 
 // next  variant with use class
