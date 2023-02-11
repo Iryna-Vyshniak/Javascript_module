@@ -87,10 +87,10 @@ const refs2 = {
 const markup = renderListMarkup(subjects);
 markupList(markup);
 
-refs2.input.addEventListener('input', onSearchFilter);
+refs2.input.addEventListener('input', _.debounce(onSearchFilter, 300));
 
 function onSearchFilter(e) {
-  const filter = e.currentTarget.value.toLowerCase();
+  const filter = e.target.value.toLowerCase();
 
   const filterList = subjects.filter(subject => subject.label.toLowerCase().includes(filter));
 
