@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Мастерская: фильтр (поиск)</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <!-- tech -->
+    <label>
+      What`re you looking for?
+      <input type="text" id="filter" />
+    </label>
+
+    <ul class="js-list"></ul>
+    <!-- subjects -->
+    <label>
+      What subjects are you looking for?
+      <input type="text" id="filter-subj" />
+    </label>
+
+    <ul class="js-list-subj"></ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/lodash.debounce@4.0.8/index.min.js"></script> -->
+    <script src="./app/19-filter-input.js" type="module"></script>
+  </body>
+</html>
