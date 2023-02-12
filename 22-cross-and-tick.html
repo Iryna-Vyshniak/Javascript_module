@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        border: 1px solid black;
+        margin: 0 auto;
+      }
+
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 200px;
+        line-height: 50px;
+
+        font-size: 80px;
+        border: 1px solid black;
+        cursor: pointer;
+
+        transition: background-color 0.1s;
+      }
+
+      .item:hover {
+        background-color: #aef6f664;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"><div class="content"></div></div>
+
+    <script src="./app/22-cross-and-tick.js"></script>
+  </body>
+</html>
