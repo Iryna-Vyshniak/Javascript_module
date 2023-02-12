@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crazy Buttons</title>
+    <style>
+      .btn {
+        position: absolute;
+        padding: 20px 30px;
+        border-radius: 5px;
+        border: none;
+        top: 30px;
+        left: 50%;
+        color: #fff;
+        background-color: blue;
+        outline: none;
+        text-transform: capitalize;
+        font-size: 30px;
+        transition: 0.3s ease all;
+      }
+
+      .win {
+        background-color: green;
+      }
+
+      .faill {
+        background-color: red;
+      }
+
+      .danger {
+        background-color: brown;
+      }
+
+      .atention {
+        background-color: yellowgreen;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <button class="btn win">Click me</button>
+      <button class="btn faill">Click me</button>
+      <button class="btn danger">Click me</button>
+      <button class="btn atention">Click me</button>
+      <button class="btn">Click me</button>
+    </div>
+    <script src="./app/20-crazy-buttons.js" type="module"></script>
+  </body>
+</html>
