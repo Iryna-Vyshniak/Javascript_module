@@ -12,6 +12,13 @@
 /*
  * Mousemove и throttle
 
+Arguments
+func (Function): The function to throttle.
+[wait=0] (number): The number of milliseconds to throttle invocations to.
+[options={}] (Object): The options object.
+[options.leading=true] (boolean): Specify invoking on the leading edge of the timeout.
+[options.trailing=true] (boolean): Specify invoking on the trailing edge of the timeout.
+
 Throttling — функция будет выполняться не чаще одного раза в указанный период, даже если она будет вызвана много раз в течение этого периода. Например если повесить throttle на onscroll с временем 100ms, то функция будет выполнятся каждые 100ms пока происходит скролинг.
 
 Прием throttle обеспечивает контроль над количеством раз, которое функция может быть вызвана в течение промежутка времени. То есть позволяет выполнять функцию не чаще чем один раз в N миллисекунд, гарантируя ее регулярное выполнение.
@@ -53,6 +60,14 @@ function onMouseMove(event) {
 
 /*
  * Input и debounce,
+
+Arguments
+func (Function): The function to debounce.
+[wait=0] (number): The number of milliseconds to delay.
+[options={}] (Object): The options object.
+[options.leading=false] (boolean): Specify invoking on the leading edge of the timeout.
+[options.maxWait] (number): The maximum time func is allowed to be delayed before it’s invoked.
+[options.trailing=true] (boolean): Specify invoking on the trailing edge of the timeout.
 
 Debounce — функция будет выполнена только тогда, когда после последней попытки вызова прошло определённое время. Задержка начинает заново отсчитываться с каждой новой попыткой вызова. Например если повесить debounce на onscroll с временем 100ms, то функция выполнится через 100ms после прекращения скрола.
 
