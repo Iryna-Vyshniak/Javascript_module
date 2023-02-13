@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Library: lazysizes</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      body {
+        background: #fff;
+      }
+      .feed {
+        list-style: none;
+      }
+
+      .feed li:not(:last-child) {
+        margin-bottom: 32px;
+      }
+
+      .feed img {
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: all 1000ms linear;
+        width: 640px;
+        height: 480px;
+        object-fit: cover;
+      }
+
+      .feed img.appear {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul class="feed">
+      <li class="feed__item">
+        <img
+          loading="lazy"
+          class="lazyload"
+          data-src="https://w0.peakpx.com/wallpaper/214/646/HD-wallpaper-delicious-food-iteam-spicey-food-tasty-food-yummy-food-food-delicious-food.jpg"
+          alt="avocado-cooked-delicious-dish"
+          width="640"
+          height="480"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit minus soluta sed ea rem,
+          debitis nulla ratione eos quia exercitationem perspiciatis! Nam tenetur doloremque libero,
+          fuga aperiam delectus fugit dolor deserunt, rerum aliquid animi error nobis quae mollitia
+          tempore ab eos? Pariatur enim saepe nostrum aspernatur ea quam labore dolores, excepturi
+          ex necessitatibus aliquam numquam, illum harum minima eveniet atque sit. Optio,
+          consequatur. Nam facere culpa tenetur laudantium eaque nesciunt repellat alias iure.
+          Maxime quos consectetur quas cum doloremque maiores recusandae, assumenda similique cumque
+          in. Consequuntur corrupti vero atque, nam facilis blanditiis saepe similique, quisquam
+          doloribus asperiores officiis ab distinctio.
+        </p>
+      </li>
+      <li class="feed__item">
+        <img
+          loading="lazy"
+          class="lazyload"
+          data-src="https://www.teahub.io/photos/full/352-3526942_meat-beautiful-food-delicious-sauce-desktop-background-beautiful.jpg"
+          alt="black-frying-pan-with-spaghetti-sauce-near-brown-wooden"
+          width="640"
+          height="480"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit minus soluta sed ea rem,
+          debitis nulla ratione eos quia exercitationem perspiciatis! Nam tenetur doloremque libero,
+          fuga aperiam delectus fugit dolor deserunt, rerum aliquid animi error nobis quae mollitia
+          tempore ab eos? Pariatur enim saepe nostrum aspernatur ea quam labore dolores, excepturi
+          ex necessitatibus aliquam numquam, illum harum minima eveniet atque sit. Optio,
+          consequatur. Nam facere culpa tenetur laudantium eaque nesciunt repellat alias iure.
+          Maxime quos consectetur quas cum doloremque maiores recusandae, assumenda similique cumque
+          in. Consequuntur corrupti vero atque, nam facilis blanditiis saepe similique, quisquam
+          doloribus asperiores officiis ab distinctio.
+        </p>
+      </li>
+      <li class="feed__item">
+        <img
+          loading="lazy"
+          class="lazyload"
+          data-src="https://cdn.wallpapersafari.com/32/42/FJxHYb.jpg"
+          alt="blueberries-cake-chocolate-chocolate-cake"
+          width="640"
+          height="480"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit minus soluta sed ea rem,
+          debitis nulla ratione eos quia exercitationem perspiciatis! Nam tenetur doloremque libero,
+          fuga aperiam delectus fugit dolor deserunt, rerum aliquid animi error nobis quae mollitia
+          tempore ab eos? Pariatur enim saepe nostrum aspernatur ea quam labore dolores, excepturi
+          ex necessitatibus aliquam numquam, illum harum minima eveniet atque sit. Optio,
+          consequatur. Nam facere culpa tenetur laudantium eaque nesciunt repellat alias iure.
+          Maxime quos consectetur quas cum doloremque maiores recusandae, assumenda similique cumque
+          in. Consequuntur corrupti vero atque, nam facilis blanditiis saepe similique, quisquam
+          doloribus asperiores officiis ab distinctio.
+        </p>
+      </li>
+      <li class="feed__item">
+        <img
+          loading="lazy"
+          class="lazyload"
+          data-src="https://s.itl.cat/pngfile/s/114-1141611_chicken-food-wallpapers-desktop-background-food-dishes-images.jpg"
+          alt="blur-breakfast-close-up-dairy-product"
+          width="640"
+          height="480"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit minus soluta sed ea rem,
+          debitis nulla ratione eos quia exercitationem perspiciatis! Nam tenetur doloremque libero,
+          fuga aperiam delectus fugit dolor deserunt, rerum aliquid animi error nobis quae mollitia
+          tempore ab eos? Pariatur enim saepe nostrum aspernatur ea quam labore dolores, excepturi
+          ex necessitatibus aliquam numquam, illum harum minima eveniet atque sit. Optio,
+          consequatur. Nam facere culpa tenetur laudantium eaque nesciunt repellat alias iure.
+          Maxime quos consectetur quas cum doloremque maiores recusandae, assumenda similique cumque
+          in. Consequuntur corrupti vero atque, nam facilis blanditiis saepe similique, quisquam
+          doloribus asperiores officiis ab distinctio.
+        </p>
+      </li>
+      <li class="feed__item">
+        <img
+          loading="lazy"
+          class="lazyload"
+          data-src="https://c.ndtvimg.com/2019-04/qj6scnfg_pancakes_625x300_03_April_19.jpg"
+          alt="flat-lay-photography-of-vegetable-salad-on-plate"
+          width="640"
+          height="480"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit minus soluta sed ea rem,
+          debitis nulla ratione eos quia exercitationem perspiciatis! Nam tenetur doloremque libero,
+          fuga aperiam delectus fugit dolor deserunt, rerum aliquid animi error nobis quae mollitia
+          tempore ab eos? Pariatur enim saepe nostrum aspernatur ea quam labore dolores, excepturi
+          ex necessitatibus aliquam numquam, illum harum minima eveniet atque sit. Optio,
+          consequatur. Nam facere culpa tenetur laudantium eaque nesciunt repellat alias iure.
+          Maxime quos consectetur quas cum doloremque maiores recusandae, assumenda similique cumque
+          in. Consequuntur corrupti vero atque, nam facilis blanditiis saepe similique, quisquam
+          doloribus asperiores officiis ab distinctio.
+        </p>
+      </li>
+      <li class="feed__item">
+        <img
+          loading="lazy"
+          class="lazyload"
+          data-src="https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/9ca9adfae4a04ecf8ac3275fcef25e7b.png"
+          alt="food-dinner-lunch-unhealthy"
+          width="640"
+          height="480"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit minus soluta sed ea rem,
+          debitis nulla ratione eos quia exercitationem perspiciatis! Nam tenetur doloremque libero,
+          fuga aperiam delectus fugit dolor deserunt, rerum aliquid animi error nobis quae mollitia
+          tempore ab eos? Pariatur enim saepe nostrum aspernatur ea quam labore dolores, excepturi
+          ex necessitatibus aliquam numquam, illum harum minima eveniet atque sit. Optio,
+          consequatur. Nam facere culpa tenetur laudantium eaque nesciunt repellat alias iure.
+          Maxime quos consectetur quas cum doloremque maiores recusandae, assumenda similique cumque
+          in. Consequuntur corrupti vero atque, nam facilis blanditiis saepe similique, quisquam
+          doloribus asperiores officiis ab distinctio.
+        </p>
+      </li>
+      <li class="feed__item">
+        <img
+          loading="lazy"
+          class="lazyload"
+          data-src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2010/4/26/0/FNM_060110-Weeknight-001_s4x3.jpg.rend.hgtvcom.616.462.suffix/1371591159264.jpeg"
+          alt="food-plate-chocolate-dessert"
+          width="640"
+          height="480"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit minus soluta sed ea rem,
+          debitis nulla ratione eos quia exercitationem perspiciatis! Nam tenetur doloremque libero,
+          fuga aperiam delectus fugit dolor deserunt, rerum aliquid animi error nobis quae mollitia
+          tempore ab eos? Pariatur enim saepe nostrum aspernatur ea quam labore dolores, excepturi
+          ex necessitatibus aliquam numquam, illum harum minima eveniet atque sit. Optio,
+          consequatur. Nam facere culpa tenetur laudantium eaque nesciunt repellat alias iure.
+          Maxime quos consectetur quas cum doloremque maiores recusandae, assumenda similique cumque
+          in. Consequuntur corrupti vero atque, nam facilis blanditiis saepe similique, quisquam
+          doloribus asperiores officiis ab distinctio.
+        </p>
+      </li>
+      <li class="feed__item">
+        <img
+          loading="lazy"
+          class="lazyload"
+          data-src="https://thumbs.dreamstime.com/b/christmas-delicious-food-box-french-dessert-macaroons-festive-decoration-top-view-paper-gray-concrete-table-197077988.jpg"
+          alt="beef-steak-with-sauce"
+          width="640"
+          height="480"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit minus soluta sed ea rem,
+          debitis nulla ratione eos quia exercitationem perspiciatis! Nam tenetur doloremque libero,
+          fuga aperiam delectus fugit dolor deserunt, rerum aliquid animi error nobis quae mollitia
+          tempore ab eos? Pariatur enim saepe nostrum aspernatur ea quam labore dolores, excepturi
+          ex necessitatibus aliquam numquam, illum harum minima eveniet atque sit. Optio,
+          consequatur. Nam facere culpa tenetur laudantium eaque nesciunt repellat alias iure.
+          Maxime quos consectetur quas cum doloremque maiores recusandae, assumenda similique cumque
+          in. Consequuntur corrupti vero atque, nam facilis blanditiis saepe similique, quisquam
+          doloribus asperiores officiis ab distinctio.
+        </p>
+      </li>
+      <li class="feed__item">
+        <img
+          loading="lazy"
+          class="lazyload"
+          data-src="https://img.buzzfeed.com/buzzfeed-static/static/2017-07/28/12/asset/buzzfeed-prod-fastlane-01/sub-buzz-17222-1501259613-1.jpg"
+          alt="pasta-with-tomato-and-basil"
+          width="640"
+          height="480"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit minus soluta sed ea rem,
+          debitis nulla ratione eos quia exercitationem perspiciatis! Nam tenetur doloremque libero,
+          fuga aperiam delectus fugit dolor deserunt, rerum aliquid animi error nobis quae mollitia
+          tempore ab eos? Pariatur enim saepe nostrum aspernatur ea quam labore dolores, excepturi
+          ex necessitatibus aliquam numquam, illum harum minima eveniet atque sit. Optio,
+          consequatur. Nam facere culpa tenetur laudantium eaque nesciunt repellat alias iure.
+          Maxime quos consectetur quas cum doloremque maiores recusandae, assumenda similique cumque
+          in. Consequuntur corrupti vero atque, nam facilis blanditiis saepe similique, quisquam
+          doloribus asperiores officiis ab distinctio.
+        </p>
+      </li>
+      <li class="feed__item">
+        <img
+          loading="lazy"
+          class="lazyload"
+          data-src="https://hips.hearstapps.com/hmg-prod/images/rainbow-waffle-wiches-1593100233.jpeg"
+          alt="sliced-vegetable-and-cooked-food-on-white-ceramic-plate"
+          width="640"
+          height="480"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit minus soluta sed ea rem,
+          debitis nulla ratione eos quia exercitationem perspiciatis! Nam tenetur doloremque libero,
+          fuga aperiam delectus fugit dolor deserunt, rerum aliquid animi error nobis quae mollitia
+          tempore ab eos? Pariatur enim saepe nostrum aspernatur ea quam labore dolores, excepturi
+          ex necessitatibus aliquam numquam, illum harum minima eveniet atque sit. Optio,
+          consequatur. Nam facere culpa tenetur laudantium eaque nesciunt repellat alias iure.
+          Maxime quos consectetur quas cum doloremque maiores recusandae, assumenda similique cumque
+          in. Consequuntur corrupti vero atque, nam facilis blanditiis saepe similique, quisquam
+          doloribus asperiores officiis ab distinctio.
+        </p>
+      </li>
+      <li class="feed__item">
+        <img
+          loading="lazy"
+          class="lazyload"
+          data-src="https://icecreamfromscratch.com/wp-content/uploads/2022/05/Ice-Cream-Sundae-1.2-735x1103.jpg"
+          alt="steak-food"
+          width="640"
+          height="480"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit minus soluta sed ea rem,
+          debitis nulla ratione eos quia exercitationem perspiciatis! Nam tenetur doloremque libero,
+          fuga aperiam delectus fugit dolor deserunt, rerum aliquid animi error nobis quae mollitia
+          tempore ab eos? Pariatur enim saepe nostrum aspernatur ea quam labore dolores, excepturi
+          ex necessitatibus aliquam numquam, illum harum minima eveniet atque sit. Optio,
+          consequatur. Nam facere culpa tenetur laudantium eaque nesciunt repellat alias iure.
+          Maxime quos consectetur quas cum doloremque maiores recusandae, assumenda similique cumque
+          in. Consequuntur corrupti vero atque, nam facilis blanditiis saepe similique, quisquam
+          doloribus asperiores officiis ab distinctio.
+        </p>
+      </li>
+      <li class="feed__item">
+        <img
+          loading="lazy"
+          class="lazyload"
+          data-src="https://static.thehoneycombers.com/wp-content/uploads/sites/2/2021/03/Best-ice-cream-in-Singapore-Photography-Courtney-Cook-via-Unsplash-900x643.png"
+          alt="top-view-photo-of-food-dessert"
+          width="640"
+          height="480"
+        />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit minus soluta sed ea rem,
+          debitis nulla ratione eos quia exercitationem perspiciatis! Nam tenetur doloremque libero,
+          fuga aperiam delectus fugit dolor deserunt, rerum aliquid animi error nobis quae mollitia
+          tempore ab eos? Pariatur enim saepe nostrum aspernatur ea quam labore dolores, excepturi
+          ex necessitatibus aliquam numquam, illum harum minima eveniet atque sit. Optio,
+          consequatur. Nam facere culpa tenetur laudantium eaque nesciunt repellat alias iure.
+          Maxime quos consectetur quas cum doloremque maiores recusandae, assumenda similique cumque
+          in. Consequuntur corrupti vero atque, nam facilis blanditiis saepe similique, quisquam
+          doloribus asperiores officiis ab distinctio.
+        </p>
+      </li>
+    </ul>
+
+    <script src="./app/27-lazysizes.js" type="module"></script>
+  </body>
+</html>
