@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form events</title>
+    <link rel="stylesheet" href="./css/form-events.css" />
+  </head>
+
+  <body>
+    <!-- Событие сабмита формы -->
+    <form class="js-register-form" autocomplete="off">
+      <div role="group">
+        <label>
+          Почта
+          <input type="email" name="email" />
+        </label>
+        <label>
+          Пароль
+          <input name="password" type="password" />
+        </label>
+      </div>
+
+      <br />
+      <div role="group">
+        <b>Тип подписки:</b>
+        <label>
+          <input type="radio" name="subscription" value="free" />
+          Free
+        </label>
+        <label>
+          <input type="radio" name="subscription" value="basic" />
+          Basic
+        </label>
+        <label>
+          <input type="radio" name="subscription" value="pro" />
+          Pro
+        </label>
+      </div>
+
+      <br />
+      <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <div class="container">
+      <form class="contact-form js-contact-form">
+        <input
+          name="name"
+          type="text"
+          class="contact-form-input js-username-input"
+          data-length="8"
+          placeholder="Your name"
+        />
+        <label class="js-policy-label">
+          <input
+            type="checkbox"
+            name="accept"
+            value="true"
+            class="contact-form-checkbox js-policy-checkbox"
+          />
+          Я <span class="js-username-output"></span> погоджуюсь із політикою конфіденційності
+        </label>
+        <button disabled type="submit" class="contact-form-btn js-contact-form-submit">
+          <span>Відправити</span>
+        </button>
+      </form>
+    </div>
+
+    <script src="./app/23-forms-new_FormData.js" type="module"></script>
+  </body>
+</html>
