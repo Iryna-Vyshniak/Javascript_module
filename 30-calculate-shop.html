@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+width: 300px;
+background-color: rgb(169, 167, 167);
+margin: auto;
+padding: 30px;
+}
+
+.title {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+  display: block;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid black;
+  padding: 5px;
+  margin-top: 10px;
+}
+#price {
+  margin-bottom: 10px;
+}
+
+.text-right {
+  text-align: right;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.amount {
+  background-color:blue;
+  display: inline-block;
+  padding: 1px 5px;
+  margin: 0 5px;
+  border-radius: 3px;
+  color: #fff;
+}
+  </style>
+  <body>
+    <div class="task__solution">
+        <div class="container">
+          <h2 class="title">How Much Meat Do You Need?</h2>
+          <form action="#" class="form">
+              <label for="price">Price $</label>
+              <input type="number" id="price" name="price" value="50">
+              <label for="quantity">Quantity<span class="amount">1</span>pounds </label>
+              <input type="range" id="quantity" name="quantity" min="1" max="100" value="1">
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./app/30-calculate-shop.js"></script>
+  </body>
+</html>
