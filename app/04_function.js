@@ -652,3 +652,19 @@ const size16 = makeSizer(16);
 // document.getElementById('size-12').onclick = size12;
 // document.getElementById('size-14').onclick = size14;
 // document.getElementById('size-16').onclick = size16;
+
+//----------------------------------------------------------------
+//функція savePassword(password) яка приймає
+//пароль і повертає внутрішню функцію, що приймає
+//рядок і повертає буль true, якщо рядок збігається зі збереженим
+//паролем і false - якщо не збігається
+
+function savePassword(orgPassword) {
+  function checkPassword(newPassword) {
+    console.log(orgPassword === newPassword);
+  }
+  return checkPassword;
+}
+const adminPassword = savePassword('admin');
+adminPassword('admin');
+adminPassword('user');
