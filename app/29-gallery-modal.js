@@ -36,12 +36,6 @@ const markup = images.reduce(
   ''
 );
 
-const markupModal = images.reduce(
-  (acc, { title, src }) =>
-    (acc += `<img src="${src}" title="${title}" width="300" alt="${title}" />`),
-  ''
-);
-
 gallery.insertAdjacentHTML('beforeend', markup);
 
 gallery.addEventListener('click', onOpenModal);
