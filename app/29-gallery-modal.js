@@ -29,7 +29,6 @@ const gallery = document.querySelector('.images-gallery');
 const modalContainer = document.querySelector('.image-modal-overlay');
 const modalContent = document.querySelector('.image-modal');
 const btnClose = modalContainer.querySelector('.close');
-console.log(btnClose);
 
 const markup = images.reduce(
   (acc, { title, src }) =>
@@ -46,16 +45,18 @@ const markupModal = images.reduce(
 gallery.insertAdjacentHTML('beforeend', markup);
 
 gallery.addEventListener('click', onOpenModal);
-window.addEventListener('keydown', onEscapeKeypress);
+
+modalContainer.addEventListener('click', onBackdropClick);
 
 function onOpenModal(e) {
   if (e.target.nodeName !== 'IMG') return;
 
   modalContainer.classList.add('visible');
+  window.addEventListener('keydown', onEscapeKeypress);
 
   const currentImgUrl = e.target.src;
   console.dir(e.target);
-  modalContent.innerHTML = `<img src="${currentImgUrl}" width="300" height="auto"/><button type="button" class="close">x</button>`;
+  modalContent.innerHTML = `<img src="${currentImgUrl}" width="300" height="auto"/><button type="button" class="close">&times;</button>`;
 
   const btnClose = modalContainer.querySelector('.close');
   btnClose.addEventListener('click', onModalClose);
@@ -63,12 +64,18 @@ function onOpenModal(e) {
 
 function onEscapeKeypress(e) {
   if (e.code !== 'Escape') return;
-  modalContainer.classList.remove('visible');
+  onModalClose();
 }
 
-function onModalClose(e) {
-  if (!e.currentTarget.classList.contains('close')) return;
-
+function onModalClose() {
   modalContainer.classList.remove('visible');
   modalContent.innerHTML = '';
+  window.removeEventListener('keydown', onEscapeKeypress);
+}
+
+function onBackdropClick(e) {
+  console.log(e.target);
+  if (!e.target.classList.contains('image-modal-overlay')) return;
+  console.log('Click on Backdrop!');
+  onModalClose();
 }
