@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .images-gallery {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-content: center;
+        justify-content: center;
+        gap: 0.8rem;
+        height: 100vh;
+      }
+
+      .images-gallery__item {
+        max-width: 500px;
+        border-radius: 4px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .images-gallery__item > img:hover {
+        cursor: pointer;
+      }
+      #lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+
+        display: none;
+      }
+
+      #lightbox.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #lightbox img {
+        max-width: 50%;
+        max-height: 40%;
+        padding: 4px;
+        background: #f1f1f1;
+        border: 2px groove #1c6ea4;
+        border-radius: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <ul class="images-gallery"></ul>
+    </main>
+    <script src="./app/31-lightbox-gallery.js"></script>
+  </body>
+</html>
