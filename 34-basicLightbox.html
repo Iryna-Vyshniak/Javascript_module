@@ -8,6 +8,8 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css"
+      integrity="sha256-r7Neol40GubQBzMKAJovEaXbl9FClnADCrIMPljlx3E="
+      crossorigin="anonymous"
     />
     <style>
       .gallery {
@@ -37,7 +39,8 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
-        transition: transform var(--animation-duration) var(--timing-function);
+        transition: transform cubic-bezier(0.4, 0, 0.2, 1);
+        animation-duration: 250ms;
       }
 
       .gallery__link {
@@ -51,14 +54,15 @@
       }
     </style>
   </head>
-
   <body>
-    <p><a class="main-link" href="index.html">Go back</a></p>
-
     <!-- Add gallery items to this list -->
     <div class="gallery"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"
+      integrity="sha256-nMn34BfOxpKD0GwV5nZMwdS4e8SI8Ekz+G7dLeGE4XY="
+      crossorigin="anonymous"
+    ></script>
     <script src="./app/34-basicLightbox.js" type="module"></script>
   </body>
 </html>
