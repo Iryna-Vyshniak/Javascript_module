@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SimpleLightbox library</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.css"
+      integrity="sha512-BjQ2UJBKmkJynH20LaFAU4E/kOtE7r7it8YvfwhlyGA9HqB6ZQj1Z9d8tN+y3v2RYunBtcQ8NlbNOkXFkLfobQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .gallery {
+        display: grid;
+        max-width: 1140px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-auto-rows: 240px;
+        grid-gap: 12px;
+        justify-content: center;
+        padding: 0;
+        list-style: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .gallery__item {
+        position: relative;
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+          0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+      }
+
+      .gallery__image:hover {
+        transform: scale(1.03);
+      }
+
+      .gallery__image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: transform var(--animation-duration) var(--timing-function);
+      }
+
+      .gallery__link {
+        display: block;
+        text-decoration: none;
+        height: 100%;
+      }
+
+      .gallery__link:hover {
+        cursor: zoom-in;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Add gallery items to this list -->
+    <ul class="gallery"></ul>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.js"
+      integrity="sha512-QoopN2y0b53eP+J2BNc1ff4ImedQAt2xDdhLQkUzTCyfniKkUlHbhweoYxDhCY78Z5EnMtY5rLtjtTK0Yc9Jcw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./app/33-SimpleLightbox.js" type="module"></script>
+  </body>
+</html>
