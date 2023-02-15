@@ -157,3 +157,22 @@ buttons.forEach(button => {
     delete activeSlide.dataset.active;
   }
 });
+
+function autoSlider() {
+  buttons.forEach(button => {
+    const slides = button.closest('[data-carousel]').querySelector('[data-slides]');
+
+    const activeSlide = slides.querySelector('[data-active]');
+    let newIndex = [...slides.children].indexOf(activeSlide);
+
+    newIndex += 1;
+    // if (newIndex === images[images.length - 1]) newIndex = 0;
+    if (newIndex < 0) newIndex = slides.children.length - 1;
+    if (newIndex >= slides.children.length) newIndex = 0;
+
+    slides.children[newIndex].dataset.active = true;
+    activeSlide.removeAttribute('data-active');
+  });
+}
+
+setInterval(autoSlider, 5000);
