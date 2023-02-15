@@ -64,6 +64,29 @@ const markup = galleryItems.reduce(
   ''
 );
 
-console.log(markup);
-
 gallery.insertAdjacentHTML('beforeend', markup);
+gallery.addEventListener('click', onModalOpen);
+
+function onModalOpen(e) {
+  e.preventDefault();
+  //   if (e.target.nodeName !== 'IMG') return;
+  const img = e.target.classList.contains('gallery__image');
+  if (!img) return;
+
+  const imgUrl = e.target.dataset.source;
+
+  const instance = basicLightbox.create(`<img src="${imgUrl}" width="800" height="600">`, {
+    onShow: instance => {
+      window.addEventListener('keydown', onEscapeKeyPress);
+    },
+    onClose: instance => {
+      window.removeEventListener('keydown', onEscapeKeyPress);
+    },
+  });
+  instance.show();
+
+  function onEscapeKeyPress(e) {
+    if (e.code !== 'Escape') return;
+    instance.close();
+  }
+}
