@@ -1,8 +1,8 @@
 // когда писал отзыв, пропал интернет, и сообщение, которое писал, исчезло;
 //  скрипт, який буде зберігати значення полів у локальне сховище, коли користувач щось друкує.
-// import throttle from 'lodash.throttle';
-// import '../css/style.css';
-// import '../css/feedback.css';
+import throttle from 'lodash.throttle';
+import '../css/style.css';
+import '../css/feedback.css';
 
 // антипаттерн - не записать в константу ключ, т.к мы его используем часто и при повторении, чтобы не сделать ошибку в написании
 const STORAGE_KEY1 = 'feedback-msg';
@@ -87,3 +87,56 @@ function populateTextarea() {
   }
 }
 */
+
+// --------------------- task 2----------------------------------------
+// сделать так чтобы сохраняло не только сообщение но и имя, и все в одном обьекте
+
+// const formData = {};
+
+// refs.form.addEventListener('input', e => {
+//   // console.log(e.target.name);
+//   // console.log(e.target.value);
+
+//   formData[e.target.name] = e.target.value;
+
+//   console.log(formData);
+// });
+
+const STORAGE_KEY = 'feedback-form-state';
+let formData = {};
+
+const refS = {
+  form: document.querySelector('.feedback-form2'),
+  input: document.querySelector('.feedback-form2  input'),
+  textarea: document.querySelector('.feedback-form2 textarea'),
+};
+
+refS.form.addEventListener('input', localeStorageFormData);
+refS.form.addEventListener('submit', onFormSubmit);
+
+reloadPage();
+
+function localeStorageFormData(e) {
+  formData[e.target.name] = e.target.value.trim();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+}
+
+function onFormSubmit(e) {
+  e.preventDefault();
+
+  e.currentTarget.reset();
+  localStorage.removeItem(STORAGE_KEY);
+  formData = {};
+}
+
+function reloadPage() {
+  const savedValues = localStorage.getItem(STORAGE_KEY);
+
+  if (savedValues) {
+    formData = JSON.parse(savedValues);
+    console.log(formData);
+
+    refS.input.value = formData.email || '';
+    refS.textarea.value = formData.message || '';
+  }
+}
