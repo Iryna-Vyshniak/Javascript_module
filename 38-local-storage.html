@@ -5,9 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>localStorage</title>
+    <style>
+      body {
+        padding: 16px;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+    </style>
   </head>
 
   <body>
+    <p>Value from localStorage: <span id="output"></span></p>
+    <form id="message-form">
+      <input type="text" class="input" name="message" />
+      <button type="submit" class="btn">Save</button>
+    </form>
     <script src="./app/38-local-storage.js"></script>
   </body>
 </html>
