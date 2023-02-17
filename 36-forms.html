@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        * {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 30px;
+  background-color: rgb(130, 195, 132);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div {
+  margin-bottom: 100px;
+}
+
+#box {
+  width: 50px;
+  height: 50px;
+  border: 2px dashed red;
+  margin: 10px;
+}
+
+.outerCircle,
+.innerCircle {
+  margin: 0;
+  border-radius: 50%;
+}
+
+.outerCircle {
+  width: 40px;
+  height: 40px;
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: static;
+}
+
+.innerCircle {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+}
+
+#circleButton {
+  margin-top: 20px;
+}
+
+#place {
+  width: 100px;
+  height: 200px;
+  background-color: green;
+}
+
+.checkboxList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.taskTitle {
+  margin-top: 30px;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.grid {
+  display: flex;
+  width: 460px;
+  height: 460px;
+  border: 2px solid white;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+.gridItem {
+  width: calc(100% / 3);
+  height: calc(100% / 3);
+  background-color: red;
+  border: 1px dashed black;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+    </style>
+   </head>
+   <body>
+
+<!-- ЗАДАЧА 1 -->
+   <div>
+        <p class="taskTitle">Task 1</p>
+        <button id="alertButton">SHOW ME</button>
+        <input id="alertInput" type="text" />
+   </div>
+
+<!-- ЗАДАЧА 2 -->
+   <div>
+        <p class="taskTitle">Task 2</p>
+        <button id="swapButton">SWAP ME</button>
+        <input id="leftSwapInput" type="text" value="???" />
+        <input id="rightSwapInput" type="text" value="!!!" />
+   </div>
+
+<!-- ЗАДАЧА 3 -->
+   <div>
+        <p class="taskTitle">Task 3</p>
+        <input id="passwordInput" type="text">
+        <button id="passwordButton">Hide</button>
+    </div>
+
+<!-- ЗАДАЧА 4 -->
+    <div>
+        <p class="taskTitle">Task 4</p>
+        <div id="box"></div>
+        <button id="decrease">Decrease</button>
+        <button id="increase">Increase</button>
+    </div>
+
+<!-- ЗАДАЧА 5 -->
+    <div>
+        <p class="taskTitle">Task 5</p>
+        <div id="place"></div>
+    </div>
+
+<!-- ЗАДАЧА 6 -->
+    <div>
+        <p class="taskTitle">Task 6</p>
+        <ul class="list">
+            <li class="listItem">1</li>
+            <li class="listItem">4</li>
+            <li class="listItem">8</li>
+            <li class="listItem">16</li>
+            <li class="listItem">20</li>
+            <li class="listItem">30</li>
+        </ul>
+        <button id="double">Double</button>
+    </div>
+
+<!-- ЗАДАЧА 7 -->
+    <div>
+        <p class="taskTitle">Task 7</p>
+        <div class="outerCircle">
+            <div class="innerCircle"></div>
+        </div>
+    </div>
+
+<!-- ЗАДАЧА 8 -->
+<div>
+    <p class="taskTitle">Task 8</p>
+    <div class="statList">
+        <button class="calcButton" data-number=5>Button #1</button>
+        <button class="calcButton" data-number=2>Button #2</button>
+        <button class="calcButton" data-number=10>Button #3</button>
+        <button class="calcButton" data-number=50>Button #4</button>
+        <button class="calcButton" data-number=0>Button #5</button>
+        <button class="calcButton" data-number=20>Button #6</button>
+    </div>
+    <button id="resultButton">Show result</button>
+    <div id="resultSection"></div>
+</div>
+    <script src="./index.js" type="module"></script>
+   </body>
+</html>
+
+<!-- ЗАДАЧА 9 -->
+<div>
+    <p class="taskTitle">Task 9</p>
+    <form class="checkboxForm">
+      <div class="checkboxList">
+        <div class="checkboxWrapper">
+            <label for="checkbox1">Item 1</label>
+            <input type="checkbox" id="checkbox1" />
+        </div>
+
+        <div class="checkboxWrapper">
+            <label for="checkbox2">Item 2</label>
+            <input type="checkbox" id="checkbox2" />
+        </div>
+        <div class="checkboxWrapper">
+            <label for="checkbox3">Item 3</label>
+            <input type="checkbox" id="checkbox3" />
+        </div>
+        <div class="checkboxWrapper">
+            <label for="checkbox4">Item 4</label>
+            <input type="checkbox" id="checkbox4" />
+        </div>
+        <div class="checkboxWrapper">
+            <label for="checkbox5">Item 5</label>
+            <input type="checkbox" id="checkbox5" />
+        </div>
+        <div class="checkboxWrapper">
+            <label for="checkbox6">Item 6</label>
+            <input type="checkbox" id="checkbox6" />
+        </div>
+        <div class="checkboxWrapper">
+            <label for="checkbox7">Item 7</label>
+            <input type="checkbox" id="checkbox7" />
+        </div>
+      </div>
+        <button type="submit">Filter</button>
+    </form>
+</div>
+
+<!-- ЗАДАЧА 10 -->
+<p class="taskTitle">Task 10</p>
+<ul class="people">
+    <li class="person">Harry Potter</li>
+    <li class="person">Ronald Weasley</li>
+    <li class="person">Hermione Granger</li>
+    <li class="person">Draco Malfoy</li>
+    <li class="person">Neville Longbottom</li>
+</ul>
+<button id="sortByNameButton" type="button">Sort by name</button>
+<button id="sortByLastNameButton" type="button">Sort by lastname</button>
+
+
+<!-- ЗАДАЧА 11 -->
+<p class="taskTitle">Task 11</p>
+<input class="contactsFilter" type="text" />
+<ul class="contacts">
+    <li class="contact">Gandalf</li>
+    <li class="contact">Aragorn</li>
+    <li class="contact">Frodo Beggins</li>
+    <li class="contact">Samwise "Sam" Gamgee</li>
+    <li class="contact">Peregrin "Pippin" Took</li>
+    <li class="contact">Meriadoc "Merry" Brandybuck</li>
+    <li class="contact">Legolas</li>
+    <li class="contact">Gimli</li>
+    <li class="contact">Boromir</li>
+</ul>
+
+
+
+<!-- ЗАДАЧА 12 -->
+<p class="taskTitle">Task 12</p>
+<p class="text">
+    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+</p>
+<input id="from" type="text"/>
+<input id="to" type="text"/>
+<button id="replaceButton">Replace</button>
+
+<!-- ЗАДАЧА 13 -->
+<p class="taskTitle">Task 13</p>
+<ul class="grid">
+<li class="gridItem"></li>
+<li class="gridItem"></li>
+<li class="gridItem"></li>
+<li class="gridItem"></li>
+<li class="gridItem"></li>
+<li class="gridItem"></li>
+<li class="gridItem"></li>
+<li class="gridItem"></li>
+<li class="gridItem"></li>
+</ul>
+
+    <script src="./app/36-forms.js" type="module"></script>
+   </body>
+</html>
