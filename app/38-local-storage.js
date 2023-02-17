@@ -126,3 +126,27 @@ console.log(localStorage.getItem('notification-level')); // null
 //----------------------------------------------------------------
 
 sessionStorage; // хранилище сессии; закрыл вкладку - данные стерлись - для корзин покупок
+
+//----------------------------------------------------------------
+
+//  create a form for entering a message and store it in localStorage upon submission.
+// Створимо форму для введення повідомлення і будемо зберігати його в localStorage по сабміту. Змінюйте значення текстового поля і натискайте кнопку «Save». Текст в полі виведення зміниться на введений. Перезавантажте сторінку, і ви побачите той самий текст, хоча нічого ще не вводили. При завантаженні сторінки ми беремо з localStorage останнє збережене значення.
+
+const form = document.querySelector('#message-form');
+// <p>Value from localStorage: <span id="output"></span></p>
+const output = document.querySelector('#output');
+const LOCALSTORAGE_KEY = 'goit-example-message';
+
+updateOutput();
+form.addEventListener('submit', saveMessage);
+
+function saveMessage(e) {
+  e.preventDefault();
+  localStorage.setItem(LOCALSTORAGE_KEY, form.elements.message.value); // введене значення з <input type="text" class="input" name="message" />
+  updateOutput();
+  form.reset();
+}
+
+function updateOutput() {
+  output.textContent = localStorage.getItem(LOCALSTORAGE_KEY) || '';
+}
