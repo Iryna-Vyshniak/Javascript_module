@@ -21,6 +21,7 @@
   "dependencies": {
     "joi": "^17.6.4",
     "lodash": "^4.17.21",
-    "lodash.throttle": "^4.1.1"
+    "lodash.throttle": "^4.1.1",
+    "shortid": "^2.2.16"
   }
 }
