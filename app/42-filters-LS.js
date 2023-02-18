@@ -96,11 +96,13 @@ populateFilterForm();
 
 function onFormSubmit(e) {
   e.preventDefault();
+  // console.log(e.currentTarget.elements);
+  // console.log(e.currentTarget.elements.color.value); //green
   const formData = new FormData(e.currentTarget);
-  formData.forEach((value, name) => console.log(`${name} ${value}`));
+  formData.forEach((value, name) => console.log(name, value));
 }
 
-function onChangeFilter(e) {
+function onChange(e) {
   let persistedFilters = localStorage.getItem(LOCALSTORAGE_KEY);
   persistedFilters = persistedFilters ? JSON.parse(persistedFilters) : {};
   persistedFilters[e.target.name] = e.target.value;
@@ -109,12 +111,14 @@ function onChangeFilter(e) {
 
 function onFormReset() {
   localStorage.removeItem(LOCALSTORAGE_KEY);
+  console.clear();
 }
 
 function populateFilterForm() {
-  const persistedFilters = localStorage.getItem(LOCALSTORAGE_KEY);
+  let persistedFilters = localStorage.getItem(LOCALSTORAGE_KEY);
   if (persistedFilters) {
     persistedFilters = JSON.parse(persistedFilters);
+    console.log(persistedFilters);
     Object.entries(persistedFilters).forEach(([name, value]) => {
       filterForm.elements[name].value = value;
     });
