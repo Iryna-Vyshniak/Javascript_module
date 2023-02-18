@@ -170,11 +170,46 @@ function onAddLocal() {
   localStorage.setItem(KEY_LOCAL, JSON.stringify(arr));
 }
 
-function onGetLocal() {
-  // в змінну result зберегли результат виконання парсу, який отримали з localStorage по ключу KEY_LOCAL
+/* function onGetLocal() {
+//  в змінну result зберегли результат виконання парсу, який отримали з localStorage по ключу KEY_LOCAL
   const result = JSON.parse(localStorage.getItem(KEY_LOCAL));
   console.log(result);
+} */
+
+//1st variant
+/* function onGetLocal() {
+  //якщо локал сторідж нічого не містить - перевірка
+  const result = JSON.parse(localStorage.getItem(KEY_LOCAL)) || [];
+  result.forEach(item => console.log(item));
+  console.log(result);
+} */
+
+// 2nd  variant
+function onGetLocal() {
+  //якщо локал сторідж нічого не містить - перевірка
+  const result = JSON.parse(localStorage.getItem(KEY_LOCAL)) ?? []; // null or undefined
+  result.forEach(item => console.log(item));
+  console.log(result);
 }
+
 function onRemoveLocal() {
   localStorage.removeItem(KEY_LOCAL);
+}
+
+//---------------------- SESSION STORAGE------------------------------------------
+addSession.addEventListener('click', onAddSession);
+removeSession.addEventListener('click', onRemoveSession);
+
+function onAddSession() {
+  const obj = {
+    name: 'User',
+    getName() {
+      console.log(`Hello i'm ${this.name}`);
+    },
+  };
+  sessionStorage.setItem('sessionStorage', JSON.stringify(obj)); // {'name': 'User'}
+}
+
+function onRemoveSession() {
+  sessionStorage.removeItem('sessionStorage');
 }
