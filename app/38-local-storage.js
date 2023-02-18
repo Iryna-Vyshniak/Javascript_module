@@ -150,3 +150,31 @@ function saveMessage(e) {
 function updateOutput() {
   output.textContent = localStorage.getItem(LOCALSTORAGE_KEY) || '';
 }
+
+//----------------------------------------------------------------
+const addLocal = document.querySelector('.js-addLocal');
+const getLocal = document.querySelector('.js-getLocal');
+const removeLocal = document.querySelector('.js-removeLocal');
+const addSession = document.querySelector('.js-addSession');
+const removeSession = document.querySelector('.js-removeSession');
+
+const KEY_LOCAL = 'localStorage';
+addLocal.addEventListener('click', onAddLocal);
+getLocal.addEventListener('click', onGetLocal);
+removeLocal.addEventListener('click', onRemoveLocal);
+
+function onAddLocal() {
+  const arr = [1, 2, 3, 5];
+  // винятки, які не потрібно парсити - string
+  //const str = 'string';
+  localStorage.setItem(KEY_LOCAL, JSON.stringify(arr));
+}
+
+function onGetLocal() {
+  // в змінну result зберегли результат виконання парсу, який отримали з localStorage по ключу KEY_LOCAL
+  const result = JSON.parse(localStorage.getItem(KEY_LOCAL));
+  console.log(result);
+}
+function onRemoveLocal() {
+  localStorage.removeItem(KEY_LOCAL);
+}
