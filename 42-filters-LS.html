@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>42-filters-LS</title>
+  </head>
+  <style>
+    .filter-form {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+    }
+
+    .filter-form label {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+  <body>
+    <form class="filter-form">
+      <label>
+        Color
+        <select name="color">
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+        </select>
+      </label>
+
+      <label>
+        Size
+        <select name="size">
+          <option value="sm">Small</option>
+          <option value="md">Middle</option>
+          <option value="xl">Large</option>
+        </select>
+      </label>
+
+      <label>
+        Material
+        <select name="material">
+          <option value="steel">Steel</option>
+          <option value="wood">Wood</option>
+          <option value="plastic">Plastic</option>
+        </select>
+      </label>
+
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </form>
+
+    <script src="./app/42-filters-LS.js" type="module"></script>
+  </body>
+</html>
