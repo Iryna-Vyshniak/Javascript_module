@@ -3,6 +3,17 @@ const filterForm = document.querySelector('.filter-form');
 
 filterForm.addEventListener('change', onChange);
 filterForm.addEventListener('submit', onFormSubmit);
+filterForm.addEventListener('reset', onFormReset);
+// створюємо обєкт, де будуть збережені всі дані з нашої групи даних
+// {
+//     material: 'plastic',
+//     size: 'xl',
+//     color: 'blue',
+// }
+
+let selectedFilters = {};
+
+populateForm();
 
 function onFormSubmit(e) {
   e.preventDefault();
@@ -27,15 +38,6 @@ function onFormSubmit(e) {
   // steel: material
 }
 
-// створюємо обєкт, де будуть збережені всі дані з нашої групи даних
-// {
-//     material: 'plastic',
-//     size: 'xl',
-//     color: 'blue',
-// }
-
-const selectedFilters = {};
-
 // отримуємо значення з кожного select при зміні вибору даних
 function onChange(e) {
   //   console.log(e.target); // <select name="color"></select> <select name="size"></select> <select name="material"></select>
@@ -46,4 +48,43 @@ function onChange(e) {
   // add to local storage
   // "[object Object]" отримуємо, коли хочемо об'єкт перетворити на рядок, тому JSON.stringify
   localStorage.setItem('selectedFilters', JSON.stringify(selectedFilters));
+}
+
+// заповнити форму даними (які вводили раніше) з local storage при перезавантаженні сторінки
+// initForm  - Initializes the form
+// populateForm - Populates the form with data - заповнити
+
+function populateForm() {
+  // витягуємо фільтри з local storage
+  //  persistedFilters - постійні фільтри
+  let persistedFilters = localStorage.getItem('selectedFilters');
+  // console.log(filters); // {"color":"green","size":"md","material":"wood"} - string
+  // перевіряємо чи є ці фільтри, якщо є - розпарсимо в об'єкт
+  if (persistedFilters) {
+    persistedFilters = JSON.parse(persistedFilters); // get object
+    console.log(persistedFilters); // {color: 'green', size: 'md', material: 'wood'}
+    // отримуємо і ім'я, і значення з об'єкту
+    //console.log(Object.entries(persistedFilters)); // [['color', 'red'], ['size', 'xl'], ['material', 'plastic']]
+    //  Object.entries(persistedFilters).forEach(entry => console.log(entry));
+    //   ['color', 'green']
+    //   ['size', 'md']
+    //   ['material', 'wood']
+    Object.entries(persistedFilters).forEach(([name, value]) => {
+      //   console.log(name, value); //color green size md  material wood
+      selectedFilters[name] = value; // - заповнюємо обрані фільтри
+      // заповнюємо обрані фільтри в формі
+      // console.log(filterForm.elements); // [select, select, select, button, button, color: select, size: select, material: select]
+      // console.log(filterForm.elements[name].value); // red sm steel
+      filterForm.elements[name].value = value;
+      //console.log(filterForm.elements[name].value); // red xl plastic
+    });
+  }
+}
+// populateForm() викликаємо на початку вгорі, щоб її ініціалізувати
+
+function onFormReset() {
+  selectedFilters = {};
+  if (localStorage.getItem('selectedFilters')) {
+    localStorage.removeItem('selectedFilters');
+  }
 }
