@@ -2,6 +2,7 @@ console.log('hello world');
 
 const form = document.querySelector('.js-form-todo');
 const list = document.querySelector('.js-todo-list');
+
 // arr where add all that add when click btn - 2 об'єкти, так як лінтер зробить з одного рядок - важко читати
 // value: 'must to do 1', checked: true - значення одного елемента
 
@@ -37,7 +38,7 @@ const onFormSubmit = e => {
   const { value } = input;
   //   create new element
   //const newToDo = { value: value, checked: false };
-  const newToDo = { id: generateId(), value, checked: false };
+  const newToDo = { id: generateId(), value, checked: false, created: new Date() };
   console.log(newToDo); //{value: 'read', checked: false}
   //   add to arr todos
   todos.push(newToDo);
@@ -71,13 +72,29 @@ const render = () => {
 };
 
 // create modal from basiclightbox
-const modalToDo = basicLightbox.create(`
+const modalToDo = basicLightbox.create(
+  `
   <div class="modal">
     <h4></h4>
-    <p class="text">test modal text</p>
+    <p class="text"></p>
     <button class="todo-modal__close-btn js-todo-modal__close-btn">ok</button>
   </div>
-`);
+`,
+  {
+    onShow: modalToDo => {
+      window.addEventListener('keydown', onEscKeyPress);
+    },
+    onClose: modalToDo => {
+      window.removeEventListener('keydown', onEscKeyPress);
+    },
+  }
+);
+
+const onEscKeyPress = ({ code }) => {
+  if (code === 'Escape' && modalToDo.visible()) {
+    modalToDo.close();
+  }
+};
 
 const deleteToDo = id => {
   todos = todos.filter(todo => todo.id !== id);
@@ -88,11 +105,14 @@ const deleteToDo = id => {
 };
 
 const viewToDo = id => {
+  const { created } = todos.find(todo => todo.id === id);
+  const { value } = todos.find(todo => todo.id === id);
+
   const text = modalToDo.element().querySelector('.text');
   const title = modalToDo.element().querySelector('h4');
 
-  text.textContent = id;
-  //   title.textContent = document.querySelector('input + span').textContent;
+  text.textContent = created;
+  title.textContent = value;
   modalToDo.show();
 };
 
@@ -141,8 +161,11 @@ const onToDoClick = e => {
 
 loadTodos();
 render();
+
 form.addEventListener('submit', onFormSubmit);
 list.addEventListener('click', onToDoClick);
+const modalButton = modalToDo.element().querySelector('.js-todo-modal__close-btn');
+modalButton.addEventListener('click', modalToDo.close);
 
 function generateId() {
   return '_' + Math.random().toString(36).substr(2, 9);
