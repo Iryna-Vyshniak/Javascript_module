@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>46-setTimeout-setInterval</title>
+  </head>
+  <body>
+    <p>
+      Two seconds after clicking the button, alert specified inside the setTimeout callback will
+      appear.
+    </p>
+    <button type="button" class="btn">Click me - setTimeout</button>
+    <p>
+      By clicking on the "Start" button, we will start the interval and output a line to the console
+      every second. We use Math.random() so that the lines are different. After clicking on the
+      "Stop" button, we will call clearInterval() and pass the identifier of the interval that needs
+      to be stopped.
+    </p>
+    <button class="btn js-start">Start - setInterval</button>
+    <button class="btn js-stop">Stop - clearInterval</button>
+    <script src="./app/46-setTimeout-setInterval.js" type="module"></script>
+  </body>
+</html>
