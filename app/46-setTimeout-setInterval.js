@@ -20,7 +20,7 @@
 //     setTimeout(() => console.log(`delay ${delay}`, i), delay)
 // }
 
-// ---- next example --------------------------------
+//TODO ---- next example --------------------------------
 const foo = () => console.log('First');
 const bar = () => setTimeout(() => console.log('Second'), 500);
 const baz = () => console.log('Third');
@@ -47,7 +47,7 @@ baz();
 
 // console.log('After call setTimeout');
 
-//---- next example ------------------------------------------------------
+//TODO---- next example ------------------------------------------------------
 // Will run first
 console.log('First log');
 
@@ -59,7 +59,7 @@ setTimeout(() => {
 // Will run second
 console.log('Third log');
 
-// --- next example ----------------------------------------------------
+//TODO --- next example ----------------------------------------------------
 const button = document.querySelector('button');
 
 const onClick = () => {
@@ -76,10 +76,26 @@ button.addEventListener('click', onClick);
  * Clear timeout with clearTimeout(timeoutId)
  */
 
+// first example
+/* when you want then clear - must find timer id! */
+
+let timerIdFirst;
+
+if (timerIdFirst) {
+  clearTimeout(timerIdFirst);
+}
+
+const onClick2 = () => {
+  timerIdFirst = setTimeout(() => {
+    alert('I love async JS!');
+  }, 2000);
+};
+
 const logger = time => {
   console.log(`Log after ${time}ms because timeout was not canceled`);
 };
-/* when you want then clear - must find timer id! */
+// second example
+
 const timerId = setTimeout(logger, 2000, 2000);
 
 console.log(timerId); // for ex: 1
@@ -91,7 +107,7 @@ if (shouldCancelTimer) {
   clearTimeout(timerId);
 }
 
-//----------------- next example -----------------------------------------------
+//TODO----------------- next example -----------------------------------------------
 const greet = () => {
   console.log('Hello!');
 };
@@ -128,7 +144,7 @@ the interval does not trigger the execution of the function once, but regularly 
 //   clearInterval(intervalId);
 // }
 
-// ----- next example --------------------------------
+//TODO ----- next example --------------------------------
 const startBtn = document.querySelector('.js-start');
 const stopBtn = document.querySelector('.js-stop');
 let timerId3 = null;
@@ -152,3 +168,59 @@ stopBtn.addEventListener('click', () => {
 // "Interval with id 4 has stopped!"
 
 /*У браузерного таймера є мінімально можлива затримка. У сучасних браузерах вона коливається приблизно від 0 до 4 мілісекунд. У старіших браузерах затримка може бути більшою і досягати 15 мілісекунд. За стандартом, мінімальна затримка становить 4 мілісекунди, тому різниці між setTimeout(callback, 1) і setTimeout(callback, 4) немає. */
+
+//TODO ----------------------------------------------------------------
+// ?? більш точна затримка - викликати в середині функції рекурсивний setTimeout також
+function showMessage(text, message, num) {
+  console.log(`${text}, ${message} ${num}`); // 6 times in console 'Hallo, Harry! '
+  if (num < 6) {
+    setTimeout(showMessage, 500, 'Hallo', 'Harry!', (num += 1));
+  }
+}
+
+// setTimeout(() => {
+//   showMessage;
+// }, 500, 'Hallo', 'Harry!', 1);
+// or
+setTimeout(showMessage, 500, 'Hallo', 'Harry!', 1);
+
+// ----------------------------------------------------------------------
+let start = 0;
+function showGreeting(text, message, num) {
+  start += num;
+  console.log(`${text}, ${message} ${num}`);
+  if (start === 6) {
+    clearInterval(timeId7);
+  }
+}
+let timeId7 = setInterval(showGreeting, 1000, 'Hallo', 'Harry!', 1);
+
+//TODO ----------------------------------------------------------------
+
+function showNumber(num) {
+  console.log(num);
+  let timerId = setTimeout(showNumber, 1000, (num += 1));
+  if (num === 5) {
+    clearTimeout(timerId);
+  }
+}
+setTimeout(showNumber, 1000, 1); // 1 2 3 4
+
+//---------------------------------------------------------------------
+let result = 0;
+function showNum(num) {
+  result += num;
+  console.log(result);
+  if (result === 10) {
+    clearInterval(timeId6);
+  }
+}
+let timeId6 = setInterval(showNum, 1000, 1); // 1 2 3 4 5 6 7 8 9 10
+
+//----------------------------------------------------------------
+if (2 > 1) {
+  function showMessage() {
+    console.log('HI');
+  }
+  showMessage();
+}
