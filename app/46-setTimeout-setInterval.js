@@ -79,7 +79,7 @@ button.addEventListener('click', onClick);
 // first example
 /* when you want then clear - must find timer id! */
 
-let timerIdFirst;
+let timerIdFirst = null;
 
 if (timerIdFirst) {
   clearTimeout(timerIdFirst);
@@ -223,4 +223,41 @@ if (2 > 1) {
     console.log('HI');
   }
   showMessage();
+}
+
+// TODO ----------------NOTIFICATIONS-------------------------------
+
+/**
+ * - Show and hide by adding/removing the is-visible class
+ * - We hide after a certain time
+ * - Hide when clicked
+ * - Do not forget to clean the timer
+ */
+
+const NOTIFICATION_DELAY = 3000;
+let timeoutId = null;
+const notification = document.querySelector('.js-alert');
+notification.addEventListener('click', onNotificationClick);
+
+showNotification();
+
+/*
+ * Block with Functions
+ */
+function onNotificationClick() {
+  hideNotification();
+  clearTimeout(timeoutId);
+}
+
+function showNotification() {
+  notification.classList.add('is-visible');
+
+  timeoutId = setTimeout(() => {
+    console.log('close the alert automatically so that it does not hang');
+    hideNotification();
+  }, NOTIFICATION_DELAY);
+}
+
+function hideNotification() {
+  notification.classList.remove('is-visible');
 }
