@@ -3,6 +3,29 @@ console.log(products);
 import transactionHistory from './transactions.js';
 console.log(transactionHistory);
 
+// ----- INNER.TEXT .INNER.CONTENT --------------------------------
+/* 
+.innerText -> rewrite all text
+.innerContent => doesn`t rewrite - add text */
+
+// ----- .APPEND .APPENDCHILD --------------------------------
+const parent = document.createElement('div');
+const child = document.createElement('p');
+
+parent.append(child); // работает отлично
+parent.appendChild(child); // работает отлично
+
+parent.append('Hello world'); // работает отлично
+parent.appendChild('Hello world'); // Ошибка Error Нельзя вставить
+
+// аppend
+const appendValue = parent.append(child);
+console.log(appendValue); // undefined
+
+// аppendChild
+const appendChildValue = parent.appendChild(child);
+console.log(appendChildValue); // возвращает результат, который получили в результате appendChild =>  <p><p>
+
 /*
 document.querySelector(selector) => if didn`t find return => null и document.querySelectorAll(selector) => if didn`t find return []
  */
