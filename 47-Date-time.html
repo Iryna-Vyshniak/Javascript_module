@@ -13,6 +13,40 @@
         margin-left: auto;
         max-width: 500px;
       }
+
+      .timer {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        color: #212121;
+        border-radius: 2px;
+      }
+
+      .clockface {
+        margin-bottom: 15px;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 80px;
+        margin-top: 0;
+        margin-bottom: 24px;
+      }
+
+      .timer-btn {
+        display: inline-flex;
+        margin-left: 4px;
+        margin-right: 4px;
+        text-transform: uppercase;
+        border: 0;
+        background-color: #3f51b5;
+        color: #ffffff;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 24px;
+        border-radius: 3px;
+      }
+
+      .timer-btn.is-active {
+        background-color: #2196f3;
+      }
     </style>
   </head>
   <body>
@@ -23,6 +57,15 @@
       <button type="button" class="stop js-stop">Stop</button>
       <button type="button" class="start js-start">Start</button>
       <span class="stopwatch"></span>
+    </div>
+    <!-- timer -->
+    <div class="timer">
+      <p class="clockface js-clockface"></p>
+
+      <div class="actions">
+        <button class="timer-btn" data-action-start>Start</button>
+        <button class="timer-btn" data-action-stop>Stop</button>
+      </div>
     </div>
     <script src="./app/47-Date-time.js" type="module"></script>
   </body>
