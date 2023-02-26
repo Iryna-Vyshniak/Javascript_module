@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Iryna-Vyshniak/modul.js#readme",
   "dependencies": {
     "@vimeo/player": "^2.18.0",
+    "bootstrap.native": "^5.0.4",
     "joi": "^17.6.4",
     "lodash": "^4.17.21",
     "lodash.throttle": "^4.1.1",
