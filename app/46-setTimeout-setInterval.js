@@ -1,3 +1,9 @@
+/* 
+event loop => call stack - Web API - the callback queue - call stack 
+цикл подій => кол стек - Веб-інтерфейси API - черга зворотних викликів - кол стек
+Method LIFO 
+*/
+
 /**  ----- setTimeout -------------------------------------------------------------- **/
 
 /*
@@ -260,4 +266,28 @@ function showNotification() {
 
 function hideNotification() {
   notification.classList.remove('is-visible');
+}
+//TODO---------------------------------------------------------------------------
+const testBtn = document.querySelector('.js-test-btn');
+const spam = document.querySelector('.js-spam');
+const timeAd = document.querySelector('.js-timer-ad');
+const timeEnd = 7000;
+timeAd.textContent = `ad hide after 7seconds`;
+let count = 7;
+
+const intervalId = setInterval(() => {
+  count -= 1;
+  timeAd.textContent = `ad hide after ${count}seconds`;
+}, 1000);
+
+setTimeout(() => {
+  spam.textContent = '';
+  timeAd.textContent = '';
+  clearInterval(intervalId);
+}, timeEnd);
+
+testBtn.addEventListener('click', onClickTestBtn);
+
+function onClickTestBtn() {
+  console.log('Clicked');
 }
