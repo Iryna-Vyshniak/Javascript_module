@@ -228,20 +228,28 @@ const getLastDayOfBeforeMonths = (year, months) => {
   // const date = new Date(year, months, 0); // Tue Jan 31 2023 00:00:00 GMT+0200 (Eastern European Standard Time)
   // const date = new Date(year, months, -1); //Mon Jan 30 2023 00:00:00 GMT+0200 (Eastern European Standard Time)
   const date = new Date(year, months, 0);
-  console.log(date);
+  console.log(date.getDate());
+  return date.getDate();
 };
 
-getLastDayOfBeforeMonths(2023, 2); // Tue Feb 28 2023 00:00:00 GMT+0200
-getLastDayOfBeforeMonths(2022, 2); //Mon Feb 28 2022 00:00:00 GMT+0200
-getLastDayOfBeforeMonths(2020, 2); // Sat Feb 29 2020 00:00:00 GMT+0200
-getLastDayOfBeforeMonths(2012, 1); // Tue Jan 31 2012 00:00:00 GMT+0200
+getLastDayOfBeforeMonths(2023, 2); // 28  - Tue Feb 28 2023 00:00:00 GMT+0200
+getLastDayOfBeforeMonths(2022, 2); // 28 - Mon Feb 28 2022 00:00:00 GMT+0200
+getLastDayOfBeforeMonths(2020, 2); // 29 - Sat Feb 29 2020 00:00:00 GMT+0200
+getLastDayOfBeforeMonths(2012, 1); // 31 - Tue Jan 31 2012 00:00:00 GMT+0200
 
 const getLastDayOfMonths = (year, months) => {
   const date = new Date(year, months + 1, 0);
-  console.log(date);
+  console.log(date.getDate());
+  return date.getDate();
 };
 
-getLastDayOfMonths(2023, 2); // Fri Mar 31 2023 00:00:00 GMT+0300
-getLastDayOfMonths(2022, 2); //Thu Mar 31 2022 00:00:00 GMT+0300
-getLastDayOfMonths(2020, 2); // Tue Mar 31 2020 00:00:00 GMT+0300
-getLastDayOfMonths(2012, 1); // Wed Feb 29 2012 00:00:00 GMT+0200
+getLastDayOfMonths(2023, 2); // 31- Fri Mar 31 2023 00:00:00 GMT+0300
+getLastDayOfMonths(2022, 2); // 31 -Thu Mar 31 2022 00:00:00 GMT+0300
+getLastDayOfMonths(2020, 2); // 31 - Tue Mar 31 2020 00:00:00 GMT+0300
+getLastDayOfMonths(2012, 1); // 29 - Wed Feb 29 2012 00:00:00 GMT+0200
+
+// TODO----------------------------------------------------------------
+console.log(new Date(1970, 0, 1, 0, 0, 0, 0)); // 1970 00:00:00 GMT+0300 (Eastern European Standard Time)
+console.log(new Date(1970, 0, 1, -1, 0, 0, 0)); // 1969 23:00:00 GMT+0300 (Eastern European Standard Time)
+const dateBeforeUnixTime = new Date(1970, 0, 1, -1, 0, 0, 0);
+console.log(dateBeforeUnixTime.getTime()); // -14400000
