@@ -25,6 +25,7 @@
     "joi": "^17.6.4",
     "lodash": "^4.17.21",
     "lodash.throttle": "^4.1.1",
+    "notiflix": "^3.2.6",
     "shortid": "^2.2.16",
     "simplelightbox": "^2.12.1",
     "uuid": "^9.0.0"
