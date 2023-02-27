@@ -101,3 +101,64 @@ function updateTimerface({ days, hours, minutes, seconds }) {
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
+
+//TODO: NEXT SIMPLE VARIANT ---------------------------------------------------------------------------
+const wrapper = document.querySelector('.timer__items');
+const TIMER_DEADLINE = new Date(2023, 1, 27, 16, 58, 0);
+console.log(TIMER_DEADLINE); // Mon Feb 27 2023 23:45:00
+
+class Timer {
+  intervalId = null;
+  currentDate = null;
+
+  constructor(rootSelector, targetDate) {
+    this.rootSelector = rootSelector;
+    this.targetDate = targetDate;
+  }
+
+  start() {
+    this.intervalId = setInterval(() => {
+      currentDate = Date.now();
+      const delta = this.targetDate - currentDate;
+      convertMs(delta);
+      console.log(convertMs(delta));
+      this.updateClockface(convertMs(delta));
+
+      if (delta <= 1000) {
+        this.stop();
+      }
+    }, 1000);
+  }
+  stop() {
+    clearInterval(this.intervalId);
+    return;
+  }
+
+  pad(value) {
+    return String(value).padStart(2, '0');
+  }
+
+  convertMs(ms) {
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+    const days = this.pad(Math.floor(ms / day));
+    const hours = this.pad(Math.floor((ms % day) / hour));
+    const minutes = this.pad(Math.floor(((ms % day) % hour) / minute));
+    const seconds = this.pad(Math.floor((((ms % day) % hour) % minute) / second));
+
+    return { days, hours, minutes, seconds };
+  }
+
+  updateClockface({ days, hours, minutes, seconds }) {
+    this.rootSelector.querySelector('.js-timer__days').textContent = `${days}`;
+    this.rootSelector.querySelector('.js-timer__hours').textContent = `${hours}`;
+    this.rootSelector.querySelector('.js-timer__minutes').textContent = `${minutes}`;
+    this.rootSelector.querySelector('.js-timer__seconds').textContent = `${seconds}`;
+  }
+}
+
+const countdownTimer = new Timer(wrapper, TIMER_DEADLINE);
+
+countdownTimer.start();
