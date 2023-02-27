@@ -11,6 +11,37 @@
         display: flex;
         column-gap: 10px;
       }
+      .timer__items {
+        display: flex;
+        font-size: 48px;
+        max-width: max-content;
+        margin: 0 auto;
+      }
+
+      .timer__item {
+        position: relative;
+        min-width: 60px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-bottom: 15px;
+        text-align: center;
+      }
+
+      .timer__item::before {
+        content: attr(data-title);
+        display: block;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        font-size: 14px;
+      }
+
+      .timer__item:not(:last-child)::after {
+        content: ':';
+        position: absolute;
+        right: -15px;
+      }
     </style>
   </head>
   <body>
@@ -35,6 +66,16 @@
         <span class="label">Seconds</span>
       </div>
     </div>
+    <!-- SIMPLE COUNTER -->
+    <div class="timer">
+      <div class="timer__items">
+        <div class="timer__item js-timer__days" data-title="days">00</div>
+        <div class="timer__item js-timer__hours" data-title="hours">00</div>
+        <div class="timer__item js-timer__minutes" data-title="minutes">00</div>
+        <div class="timer__item js-timer__seconds" data-title="seconds">00</div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="./app/50-countdown-timer.js" type="module"></script>
   </body>
