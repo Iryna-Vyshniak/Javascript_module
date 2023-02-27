@@ -253,3 +253,51 @@ console.log(new Date(1970, 0, 1, 0, 0, 0, 0)); // 1970 00:00:00 GMT+0300 (Easter
 console.log(new Date(1970, 0, 1, -1, 0, 0, 0)); // 1969 23:00:00 GMT+0300 (Eastern European Standard Time)
 const dateBeforeUnixTime = new Date(1970, 0, 1, -1, 0, 0, 0);
 console.log(dateBeforeUnixTime.getTime()); // -14400000
+
+//todo  ----------------------------------------------------------------
+// function getSecondsToTomorrow() {
+//   let intervalId = setInterval(() => {
+//     let date = new Date();
+//     const year = date.getFullYear();
+//     const months = date.getMonth();
+//     const day = date.getDate();
+//     const tomorrow = new Date(year, months, day + 1, 0, 0, 0, 0);
+//     console.log(tomorrow);
+//     const delta = tomorrow - date;
+//     console.log(delta);
+//     if (delta === 0) {
+//       tomorrow = date.setDate(day + 1);
+//       clearInterval(intervalId);
+//       return;
+//     }
+//     return delta;
+//   }, 1000);
+// }
+
+// const time = getSecondsToTomorrow();
+// console.log(getTimeComponents(time));
+
+// function getTimeComponents(time) {
+//   const hours = pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+//   const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+//   const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
+
+//   return `${hours}, ${mins}, ${secs}`;
+// }
+
+// function pad(value) {
+//   return String(value).padStart(2, '0');
+// }
+//  getTimeComponents(time);
+// const tomorrow = new Date().getDate() + 1;
+// console.log(tomorrow); // 28
+// let dateCurrent = new Date();
+// console.log(dateCurrent); // Mon Feb 27 2023 14:52:34
+// const now = dateCurrent.getDate();
+// console.log(now); // 27
+// const tomorrow = dateCurrent.setDate(now + 1);
+// console.log(tomorrow); // 28
+// const tomorrow = new Date().getDate() + 1;
+// console.log(new Date(2023, 1, tomorrow));
+
+//TODO----------------------------------------------------------------
