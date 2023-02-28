@@ -430,3 +430,21 @@ const toastPromise = makeToast();
 Promise.all([coffeePromise, toastPromise]).then(([coffeePromise, toastPromise]) =>
   console.log(coffeePromise, toastPromise)
 ); // Your coffee is ready Your toast is ready
+
+//TODO -------------------------------------------------------------------------
+
+const fetchBeers = fetch('https://api.sampleapis.com/beers/ale');
+const fetchWines = fetch('https://api.sampleapis.com/wines/reds');
+
+//Promise.all([fetchBeers, fetchWines]).then(data => console.log(data)); //[Response, Response]
+
+// Promise.all([fetchBeers, fetchWines])
+//   .then(data => {
+//     return Promise.all(data.map(res => res.json()));
+//   })
+//   .then(finalData => console.log(finalData)); //[Array(180), Array(718)]
+
+Promise.all([fetchBeers, fetchWines])
+  .then(data => Promise.all(data.map(res => res.json())))
+  .then(finalData => console.log(finalData)) //[Array(180), Array(718)]
+  .catch(err => console.error(Error(`Doesn't find information for you`))); //Error: Doesn't find information for you
