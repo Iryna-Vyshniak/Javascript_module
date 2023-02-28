@@ -3,7 +3,7 @@
 
 Очікування (pending) - початковий стан під час створення промісу.
 Виконано (fulfilled) - операція виконана успішно з будь-яким результатом.
-Відхилено (rejected) - операція відхилена з помилкою. 
+Відхилено (rejected) - операція відхилена з помилкою.
 
 На момент створення проміс знаходиться в очікуванні (pending), після чого може завершитися успішно (fulfilled), повернувши результат (значення), або з помилкою (rejected), повернувши причину. Коли проміс переходить у стан fulfilled або rejected - це назавжди.
 
@@ -18,9 +18,9 @@
 
  * Створення 'обіцянок' - Promise
  * - Клас Promise
- 
+
  * -  resolve(value) - функція для виклику у разі успішної операції.    Переданий їй аргумент буде значенням виконаного промісу.
- 
+
  * -  reject(error) - функція для виклику у разі помилки. Переданий їй аргумент буде значенням відхиленого промісу.
 
  * - Promise.prototype.then(onResolve, onReject)
@@ -28,7 +28,16 @@
 
 //Проміс створюється як екземпляр класу Promise, який приймає функцію (executor) як аргумент і відразу викликає її, ще до створення і повернення промісу.
 
-const promise = new Promise((resolve, reject) => {
+const promise = new Promise((resolve, reject) => {});
+console.log(promise);
+//Promise {<pending>}
+//[[Prototype]]: Promise
+//[[PromiseState]]: "pending"
+//[[PromiseResult]]: undefined
+
+//----------------------------------------------------------------
+
+const promiseA = new Promise((resolve, reject) => {
   const canFullFill = Math.random() > 0.7;
 
   setTimeout(() => {
@@ -47,7 +56,7 @@ onResolve(value) - буде викликана у разі успішного в
 
 onReject(error) - буде викликана у разі виконання промісу з помилкою і отримає її як аргумент.
 */
-promise.then(
+promiseA.then(
   result => {
     console.log(`✅ ${result}`);
   },
@@ -57,7 +66,7 @@ promise.then(
 );
 
 //----- next variant ---------------------------------------------------------
-const promiseA = new Promise((resolve, reject) => {
+const promiseB = new Promise((resolve, reject) => {
   const fullfilled = Math.random() > 0.3;
   setTimeout(() => {
     if (fullfilled) {
@@ -67,7 +76,7 @@ const promiseA = new Promise((resolve, reject) => {
   }, 1000);
 });
 
-promiseA.then(onResolve, onReject);
+promiseB.then(onResolve, onReject);
 
 function onResolve(result) {
   console.log(`✅ ${result}`);
@@ -80,7 +89,7 @@ function onReject(err) {
 // Change value of isSuccess variable to call resolve or reject
 const isSuccess = true;
 
-const promiseB = new Promise((resolve, reject) => {
+const promiseC = new Promise((resolve, reject) => {
   setTimeout(() => {
     if (isSuccess) {
       resolve('Success! Value passed to resolve function');
@@ -90,7 +99,7 @@ const promiseB = new Promise((resolve, reject) => {
   }, 5000);
 });
 
-promiseB.then(onSuccess, onErr);
+promiseC.then(onSuccess, onErr);
 
 function onSuccess(result) {
   console.log('onSuccess call inside promise.then()');
@@ -102,3 +111,232 @@ function onErr(err) {
 }
 
 console.log('After promise.then()');
+
+//----- CHAINING --------------------------------
+/*
+ * Ланцюжки промісів  (chaining)
+ * Promise.prototype.catch(error)
+ * Promise.prototype.finally()
+
+ * На практиці в методі then() обробляють тільки успішне виконання промісу, а помилку його виконання у спеціальному методі catch() для «відловлювання» помилок.
+
+ promise.catch(error => {
+  /* Promise rejected
+});
+
+ promise
+  .then(result => {
+    console.log('resolve', result);
+  })
+  .catch(error => {
+    console.log('reject', error);
+  });
+ */
+
+const fullfilled = true;
+const promiseD = new Promise((resolve, reject) => {
+  if (fullfilled) {
+    resolve('fullfilled');
+  }
+  reject('fullfilled false');
+});
+
+/* then return promise
+   then - це виклик функції всередині
+   then повертає також проміс і тому до then можемо чейнити ще один then
+   якщо з першого then нічого не повертаємо - наступний then  - undefined
+
+   then повертає або "good", або "bad",  і так далі по ланцюжку
+*/
+
+promiseD
+  .then(result => {
+    console.log(result); // fullfilled
+  })
+  .then(abstractValue => {
+    console.log(abstractValue); // undefined
+  });
+
+//   ----------------------------------------------------------------
+
+promiseD
+  .then(result => {
+    console.log(result); // fullfilled
+    return `Hello, world!`;
+  })
+  .then(abstractValue => {
+    console.log(abstractValue); // `Hello, world!`
+  });
+
+// ----------------------------------------------------------------
+
+promiseD
+  .then(result => {
+    console.log(result); // fullfilled
+    return `Hello, world!`;
+  })
+  .then(abstractValue => {
+    console.log(abstractValue); // `Hello, world!`
+  })
+  .then(nextAbstractValue => {
+    console.log(nextAbstractValue); // undefined
+  });
+
+// ----------------------------------------------------------------
+/* then повертає або "good", або "bad",  і так далі по ланцюжку */
+
+promiseD
+  .then(
+    result => {
+      console.log(result); // fullfilled
+      return `Hello, world!`;
+    },
+    err => {
+      console.log(err);
+    }
+  )
+  .then(
+    abstractValue => {
+      console.log(abstractValue); // `Hello, world!`
+    },
+    err => console.log(err)
+  )
+  .then(
+    nextAbstractValue => {
+      console.log(nextAbstractValue); // undefined
+    },
+    err => console.log(err)
+  );
+
+// ----------------------------------------------------------------
+/* then повертає або "good", або "bad",  і так далі по ланцюжку */
+
+const fullfilledPlus = true;
+const promiseF = new Promise((resolve, reject) => {
+  if (fullfilledPlus) {
+    resolve('fullfilled');
+  }
+  reject('fullfilled false');
+});
+
+promiseF
+  .then(onResolved, onRegected)
+  .then(
+    firstAbstractValue => {
+      console.log(firstAbstractValue); // undefined
+      return `Hello, world!`;
+    },
+    err => {
+      console.log(err);
+    }
+  )
+  .then(
+    abstractValue => {
+      console.log(abstractValue); // `Hello, world!`
+    },
+    err => console.log(err)
+  )
+  .then(
+    nextAbstractValue => {
+      console.log(nextAbstractValue); // undefined
+    },
+    err => console.log(err)
+  );
+
+function onResolved(result) {
+  console.log('onSuccess call inside promise.then()'); // onSuccess call inside promise.then()
+  console.log(`✅ ${result}`); // ✅ fullfilled
+}
+function onRegected(err) {
+  console.log('onErr call inside promise.then()');
+  console.log(`❌ ${err}`);
+}
+
+// ------------------------------------------------------------------
+
+/* щоб не робити такий довгий ланцюжок, де в кожному then є і "добре", і "погано", в then передаємо лише resolve - успішне виконання, без оброблювання помилок - error. АЛЕ в кінці ланцюжка промісів then ставимо catch, який ловитиме наші помилки і опрацьовуватиме їх.
+Якщо проміс на початку відхилений - rejected, всі послідуючі then не виконаються, а дія перейде в catch, щоб опрацювати помилку.
+Де-небудь в ланцюжку помилка - все зламалось далі, наступні нижче then не виконуються, і вся дыя перейшла в catch(error=>{}) */
+
+const fullfilledA = true;
+const promiseK = new Promise((resolve, reject) => {
+  if (fullfilledA) {
+    resolve('fullfilled');
+  }
+  reject('fullfilled false');
+});
+
+promiseK
+  .then(onLuck)
+  .then(firstAbstractValue => {
+    console.log(firstAbstractValue); // undefined
+    return `Hello, world!`;
+  })
+  .then(abstractValue => {
+    console.log(abstractValue); // `Hello, world!`
+
+    throw new Error('error in third then');
+  })
+  .then(nextAbstractValue => {
+    console.log(nextAbstractValue); // doesn`t work because under Error
+  })
+  .catch(err => console.log(err)); //Error: error in third then at 51-promise.js:278:11
+
+function onLuck(result) {
+  console.log('onSuccess call inside promise.then()'); // onSuccess call inside promise.then()
+  console.log(`✅ ${result}`); // ✅ fullfilled
+}
+
+function onFiasco(err) {
+  console.log('onErr call inside promise.then()');
+  console.log(`❌ ${err}`);
+}
+
+/* .finally(() => console.log('Я буду виконаний у будь-якому випадку')); */
+
+// Цей метод може бути корисним, якщо необхідно виконати код після того, як обіцянка буде дозволена (fulfilled або rejected), незалежно від результату. Дозволяє уникнути дублювання коду в обробниках then() і catch().
+
+// Change value of isSuccess variable to call resolve or reject
+const isProsperity = true;
+
+const promiseG = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    if (isProsperity) {
+      resolve('Success! Value passed to resolve function');
+    } else {
+      reject('Error! Error passed to reject function');
+    }
+  }, 2000);
+});
+
+promiseG
+  .then(result => console.log(result)) // "Success! Value passed to resolve function"
+  .catch(error => console.log(error)) // "Error! Error passed to reject function"
+  .finally(() => console.log('Promise settled')); // "Promise settled"
+
+//   ----------------------------------------------------------------
+
+const promiseH = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(5);
+  }, 2000);
+});
+
+promiseH
+  .then(value => {
+    console.log(value); // 5
+    return value * 2;
+  })
+  .then(value => {
+    console.log(value); // 10
+    return value * 3;
+  })
+  .then(value => {
+    console.log(value); // 30
+  })
+  .catch(error => {
+    console.log(error);
+  })
+  .finally(() => {
+    console.log('Final task'); // Final task
+  });
