@@ -106,3 +106,17 @@ function onMakeOrderSuccessNext(result) {
 function onMakeOrderErrorNext(error) {
   console.log(error); // ❌ Oops, we're out of groceries
 }
+
+//TODO---------------------------------------------------------------
+
+const coffee = new Promise((resolve, reject) => {
+  const randomCoffee = Math.random() > 0.2;
+  setTimeout(() => {
+    if (randomCoffee) {
+      resolve(`Your coffee is ready`);
+    }
+    reject(Error(`Ooops... nothing...`));
+  }, 1000);
+});
+
+coffee.then(result => console.log(result)).catch(err => console.log(err)); //Your coffee is ready
