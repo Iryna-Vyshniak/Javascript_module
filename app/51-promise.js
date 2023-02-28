@@ -398,3 +398,35 @@ getFamilyMember(222)
 // image: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Tazzina_di_caff%C3%A8_a_Ventimiglia.jpg"
 // ingredients: ['1oz Espresso']
 // title: "Espresso"}}
+
+// TODO----------------------------------------------------------------
+
+const makeCoffee = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(`Your coffee is ready`);
+    }, 7000);
+  });
+};
+const makeToast = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(`Your toast is ready`);
+    }, 7500);
+  });
+};
+
+const coffeePromise = makeCoffee();
+const toastPromise = makeToast();
+
+// coffeePromise.then(result => console.log(result)); //Your coffee is ready
+// toastPromise.then(result => console.log(result)); // Your toast is ready
+
+//! Promise.all([promise1, promise2, promise3]);
+
+// nest variant to use Promise.all()
+
+//Promise.all([coffeePromise, toastPromise]).then(result => console.log(result)); // (2) ['Your coffee is ready', 'Your toast is ready']
+Promise.all([coffeePromise, toastPromise]).then(([coffeePromise, toastPromise]) =>
+  console.log(coffeePromise, toastPromise)
+); // Your coffee is ready Your toast is ready
