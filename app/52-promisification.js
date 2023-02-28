@@ -3,6 +3,8 @@
 Промісифікація - це перетворення функції з колбеками таким чином, щоб вона не приймала колбеки, а повертала проміс.
  * - Проблема доступу до результату промісу з колбеком
  * - Функція яка повертає проміс
+ * 
+ * fn().then().catch()
  */
 
 // функція не зважає на той код, який буде використовувати її результат. Вона просто виконує якусь операцію і повертає результат своєї роботи у зовнішній код. Для того щоб повернути результат асинхронної операції, з функції необхідно повернути проміс.
@@ -54,3 +56,53 @@ fetchUserFromServer('Mango')
 // };
 
 // fetchUserFromServer("Mango", onFetchSuccess, onFetchError);
+
+//TODO ----------------------------------------------------------------
+// use callbacks - связаность кода, зависимость от других функций
+
+function makeOrder(dish, onSuccess, onError) {
+  const passed = Math.random() > 0.3;
+
+  setTimeout(() => {
+    if (passed) {
+      onSuccess(`Here your ${dish}`);
+    } else {
+      onError(`Sorry, your ${dish} isn't here`);
+    }
+  }, 1000);
+}
+
+makeOrder('pizza', onMakeOrderSuccess, onMakeOrderError);
+
+function onMakeOrderSuccess(result) {
+  console.log(result); // Here your pizza
+}
+function onMakeOrderError(error) {
+  console.log(error); // Sorry, your pizza isn't here
+}
+
+// refactor with promise without callback
+function makeOrderNext(dish) {
+  return new Promise((resolve, reject) => {
+    const passed = Math.random() > 0.3;
+
+    setTimeout(() => {
+      if (passed) {
+        resolve(`✅ Here is your order: ${dish}`);
+      } else {
+        reject(`❌ Oops, we're out of groceries`);
+      }
+    }, 1000);
+  });
+}
+
+makeOrderNext('pizza')
+  .then(onMakeOrderSuccessNext) // ✅ Here is your order: pizza
+  .catch(onMakeOrderErrorNext); // ❌ Oops, we're out of groceries
+
+function onMakeOrderSuccessNext(result) {
+  console.log(result); // ✅ Here is your order: pizza
+}
+function onMakeOrderErrorNext(error) {
+  console.log(error); // ❌ Oops, we're out of groceries
+}
