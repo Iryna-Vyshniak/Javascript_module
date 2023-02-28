@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>53-racetrack</title>
+    <style>
+      button,
+      label {
+        cursor: pointer;
+      }
+
+      input {
+        font: inherit;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 10px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="js-start-race">Next run</button>
+    <hr />
+    <p class="js-winner"></p>
+    <p class="js-progress"></p>
+    <hr />
+
+    <table class="js-results-table">
+      <thead>
+        <tr>
+          <th>Horse riding</th>
+          <th>Winner</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script src="./app/53-racetrack.js" type="module"></script>
+  </body>
+</html>
