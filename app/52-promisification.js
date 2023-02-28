@@ -146,3 +146,27 @@ function makeCoffeeSuccess(result) {
 function makeCoffeeError(err) {
   console.error(Error(err));
 }
+
+//todo ---- POKEMONS ---- --------------------------------
+
+//! метод fetch повертає проміс на своє місце, як і  new Promise
+/* 
+function fetch(url) {
+    return new Promise(...)
+} 
+
+fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(result => result.json()); => it`s PROMISE */
+
+const fetchPokemonById = id =>
+  fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(result => result.json());
+
+fetchPokemonById(1).then(onFetchSuccess).catch(onFetchError);
+
+function onFetchError(error) {
+  console.error(Error(`Didn't find pokemon with this id`));
+  console.log(error);
+}
+
+function onFetchSuccess(pokemon) {
+  console.log(pokemon);
+}
