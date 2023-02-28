@@ -120,3 +120,29 @@ const coffee = new Promise((resolve, reject) => {
 });
 
 coffee.then(result => console.log(result)).catch(err => console.log(err)); //Your coffee is ready
+
+//TODO ----------------------------------------------------------------
+// if 100% resolve
+
+//BEFORE
+/* const makeCoffeeAroma = (coffee, onSuccess) => {
+  onSuccess(`Your ${coffee} is ready`);
+};
+
+makeCoffeeAroma('Latte', makeCoffeeSuccess); */
+
+// AFTER REFACTOR WITH PROMISE
+
+const makeCoffeeAroma = coffee => Promise.resolve(`Your ${coffee} is ready`);
+
+makeCoffeeAroma('Latte')
+  .then(result => console.log(result)) // Your Latte is ready
+  .catch(err => console.log(err)); //
+
+function makeCoffeeSuccess(result) {
+  console.log(result);
+}
+
+function makeCoffeeError(err) {
+  console.error(Error(err));
+}
