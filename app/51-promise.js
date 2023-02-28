@@ -341,3 +341,60 @@ promiseH
   .finally(() => {
     console.log('Final task'); // Final task
   });
+
+//TODO ----------------------------------------------------------
+
+const family = [
+  { member: 'Mom', id: 111, coffee: 'Latte' },
+  { member: 'Dad', id: 222, coffee: 'Espresso' },
+  { member: 'Son', id: 333, coffee: 'Capuchino' },
+];
+
+function getFamilyMember(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const member = family.find(data => data.id === id);
+      if (member) {
+        resolve(member);
+      }
+      reject(Error(`Member didn't find`));
+    }, 5000);
+  });
+}
+
+function getCoffee(member) {
+  const coffeePromise = fetch('https://api.sampleapis.com/coffee/hot');
+  return coffeePromise
+    .then(result => result.json())
+    .then(list => {
+      const coffee = list.find(drink => drink.title === member.coffee);
+      console.log(coffee);
+      return {
+        ...member,
+        // coffee: coffee,
+        coffee,
+      };
+    })
+    .catch(err => Error(err));
+}
+
+getFamilyMember(111); //{member: 'Mom', id: 111, coffee: 'Latte'}
+//getFamilyMember(121); // Error: Member didn't find
+
+getFamilyMember(222)
+  .then(result => {
+    console.log(result);
+    // const test = getCoffee(result); // promise: pending
+    getCoffee(result);
+  })
+  .then(newMember => console.log('newMember: ', newMember))
+  .catch(err => console.log(err));
+
+// list:  (20) [{…}, {…}, {…}, {…}, {…}, {…}, ...]
+//{title: 'Espresso', description: 'An espresso shot can be served solo or used as the…f most coffee drinks, like lattes and macchiatos.', ingredients: Array(1), image: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Tazzina_di_caff%C3%A8_a_Ventimiglia.jpg', id: 5}
+
+// {member: 'Dad', id: 222, coffee: {description: "An espresso shot can be served solo or used as the foundation of most coffee drinks, like lattes and macchiatos."
+// id: 5
+// image: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Tazzina_di_caff%C3%A8_a_Ventimiglia.jpg"
+// ingredients: ['1oz Espresso']
+// title: "Espresso"}}
