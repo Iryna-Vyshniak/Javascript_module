@@ -15,13 +15,13 @@ function onStartRace() {
   updateWinnerField('');
   //winnerField.textContent = '';
   updateProgressField(`Race is over, bids are being accepted.`);
-
-  Promise.race(promises).then(({ horse, time }) => {
-    updateWinnerField(`Winner ${horse} by finishing in ${time} time`);
-    updateResultsTable({ horse, time, raceCounter });
-  });
-
-  Promise.all(promises).then(updateProgressField(`Race is over, bids are being accepted.`));
+  getWinner(promises);
+  //   Promise.race(promises).then(({ horse, time }) => {
+  //     updateWinnerField(`Winner ${horse} by finishing in ${time} time`);
+  //     updateResultsTable({ horse, time, raceCounter });
+  //   });
+  waitForAll(promises);
+  //   Promise.all(promises).then(updateProgressField(`Race is over, bids are being accepted.`));
 }
 
 function run(horse) {
@@ -47,6 +47,17 @@ function getRandomTime(min, max) {
 function updateResultsTable({ horse, time, raceCounter }) {
   const tr = `<tr><td>${raceCounter}</td><td>${horse}</td><td>${time}</td></tr>`;
   tableBody.insertAdjacentHTML('beforeend', tr);
+}
+
+function waitForAll(horsesP) {
+  Promise.all(horsesP).then(updateProgressField(`Race is over, bids are being accepted.`));
+}
+
+function getWinner(horsesP) {
+  Promise.race(horsesP).then(({ horse, time }) => {
+    updateWinnerField(`Winner ${horse} by finishing in ${time} time`);
+    updateResultsTable({ horse, time, raceCounter });
+  });
 }
 
 // run('Secretariat')
