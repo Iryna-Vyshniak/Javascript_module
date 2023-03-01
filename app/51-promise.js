@@ -1,4 +1,36 @@
 /*
+const promise = new Promise(); // екземпляр класу Promise
+
+! Promise.resolve(value) - статичний метод класу Promise - повертає об'єкт Promise, виконаний з переданим значенням.
+
+! Promise.reject(value) - статичний метод класу Promise - повертає об'єкт Promise, який був відхилений по вказаній причині.
+
+! Promice.race([promise1, promise2, promise3])  -> to wait for the first fulfilled promise 
+
+! Promise.all([promise1, promise2, promise3]) to wait for all promises
+
+! Promise.allSettled([promise1, promise2, promise3]) повертає проміс, який виконується, коли всі отримані проміси завершені (виконані або відхилені), що містить масив результатів виконання отриманих промісів.
+
+const promise1 = Promise.resolve(3);
+const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'foo'));
+const promises = [promise1, promise2];
+
+TODO Promise.allSettled(promises).then((results) => results.forEach((result) => console.log(result.status)));
+Expected output:
+"fulfilled"
+"rejected"
+
+const promise = new Promise(executor: (resolve, reject){ }) // callback function called EXECUTOR
+executor приймає 2 аргументи : resolve, reject
+! resolve, reject - НЕ МЕТОДИ промісу, а параметри executor
+
+----------------------------------------------------------------------------------
+promise methods:
+.then
+.catch
+.finally
+
+-----------------------------------------------------------------------------------
 Проміс може бути у трьох станах:
 
 Очікування (pending) - початковий стан під час створення промісу.
@@ -8,6 +40,11 @@
 На момент створення проміс знаходиться в очікуванні (pending), після чого може завершитися успішно (fulfilled), повернувши результат (значення), або з помилкою (rejected), повернувши причину. Коли проміс переходить у стан fulfilled або rejected - це назавжди.
 
 Коли проміс виконаний або відхилений -> завершений (settled), термін, який описує те, що проміс перебуває в будь-якому стані, крім очікування.
+
+! settled - це лише форма мови, яка не є справжнім станом промісу
+
+ВЛАСТИВОСТІ promise:
+!Promise.length => Значення властивості завжди дорівнює 1 (кількість аргументів конструктора).
 
 Відмінності промісу і callback-функції:
 
@@ -444,7 +481,107 @@ const fetchWines = fetch('https://api.sampleapis.com/wines/reds');
 //   })
 //   .then(finalData => console.log(finalData)); //[Array(180), Array(718)]
 
-Promise.all([fetchBeers, fetchWines])
-  .then(data => Promise.all(data.map(res => res.json())))
-  .then(finalData => console.log(finalData)) //[Array(180), Array(718)]
-  .catch(err => console.error(Error(`Doesn't find information for you`))); //Error: Doesn't find information for you
+// Promise.all([fetchBeers, fetchWines])
+//   .then(data => Promise.all(data.map(res => res.json())))
+//   .then(finalData => console.log(finalData)) //[Array(180), Array(718)]
+//   .catch(err => console.error(Error(`Doesn't find information for you`))); //Error: Doesn't find information for you
+
+//todo ---- EXAMPLE --------------------------------
+const promiseL = new Promise((resolve, reject) => {
+  resolve('Hello, world'); // => передаємо все що завгодно, ex: {key: 'hello, world'}
+});
+
+console.log(promiseL);
+// Promise {<fulfilled>: 'Hello, world'}
+//[[Prototype]]: Promise
+//[[PromiseState]]: "fulfilled"
+//[[PromiseResult]]: "Hello, world"
+
+// console.log(promiseL[[PromiseResult]]); => не можемо звернутися
+// використовуємо then
+promiseL.then(response => console.log(response)); // => "Hello, world", ex: {key: 'hello, world'}
+
+// then приймає також, окрім response,  error; але наразi так не пишуть - використовують .catch()
+/* promiseL.then((response, error) => console.log(response, error)); */ // Hello, world  undefined
+
+/* icнують декілька конструкцій:
+.then().then().then().catch().finally(); - стандарт
+.then().catch().then().catch().then().catch().finally(); => щоб опрацювати локальні помилки: 
+*/
+const promiseM = new Promise((resolve, reject) => {
+  // resolve({ key: 'hello, world' });
+  resolve(null);
+});
+
+promiseM
+  .then(response => Object.keys(response))
+  .catch(err => {
+    console.log('catch1: ', err); //catch1:  TypeError: Cannot convert undefined or null to object => if null
+    return []; // опрацьовуєм, щоб код спрацював далі в then
+  })
+  .then(response => {
+    console.log('response2: ', response); // ['key'] => if not null, or get undefined if null, or get [] if return [] in .catch();
+    return response.map(item => `items ${item}`);
+  }) // response2:  undefined
+  .catch(err => console.log('error2: ', err))
+  .then(response => console.log('response3: ', response)) // response3:  ['items key'] => if not null, or get undefined if null, or get [] if return [] in .catch();
+  .catch(err => console.log('error3: ', err));
+
+//  todo ---------------------------------------------------------------
+
+Promise.resolve({ name: 'Helen' }) // /Promise {<fulfilled>: {…}}
+  .then(response => console.log(response)) // {name: 'Helen'}
+  .catch(err => console.log(err));
+
+// ------------------------------------------------------------
+
+Promise.resolve({ name: 'Helen' }) // /Promise {<fulfilled>: {…}}
+  .then(response => {
+    console.log(response); // {name: 'Helen'}
+    return Object.keys(response);
+  })
+  .then(response => console.log(response)) // ['name']
+  .catch(err => console.log(err));
+
+// ------------------------------------------------------------
+
+Promise.resolve() // /Promise {<fulfilled>: {…}}
+  .then(response => {
+    console.log(response); // undefined
+    return Object.keys(response);
+  })
+  .then(response => console.log(response)) // не виконається
+  .catch(err => console.error('err: ', err)); // err: TypeError: Cannot convert undefined or null to object at Function.keys
+
+//------------------------------------------------------------
+
+Promise.reject('Error')
+  .then(response => console.log(response))
+  .catch(err => console.log(err)) // 'Error'
+  .finally((resp, err) => console.log('finally: ', resp, err)); // finally: undefined undefined
+
+//------------------------------------------------
+Promise.all([Promise.resolve({ name: 'Helen' }), Promise.resolve({ name: 'John' })]).then(
+  response => console.log(response) //  [{…}, {…}]
+);
+//! Promise.all------------------------------------------------
+Promise.all([
+  Promise.resolve({ name: 'Helen' }),
+  Promise.reject('Error'),
+  Promise.resolve({ name: 'John' }),
+])
+  .then(
+    response => console.log(response) // нічого, бо не важливі інші, якщо є помилка
+  )
+  .catch(err => console.error(err)); //Error
+
+//! Promise.allSettled ------------------------------------------------
+Promise.allSettled([
+  Promise.resolve({ name: 'Helen' }),
+  Promise.reject('Error'),
+  Promise.resolve({ name: 'John' }),
+])
+  .then(
+    response => console.log(response) // [{…}, {…}, {…}] => [{ status: 'fulfilled', value: {name: 'Helen'}}, {{status: 'rejected', reason: 'Error'}}, {status: 'fulfilled', value: { name: 'John' }}]
+  )
+  .catch(err => console.error(err)); //Error
