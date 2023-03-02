@@ -1,4 +1,16 @@
 /*
+Мікро процеси мають БІЛЬШИЙ пріорітет
+1. Promise
+2. Observer
+3. Handlers
+
+
+Макро процеси мають МЕНЬШИЙ пріорітет
+setTimeout
+setInterval
+setImmediate
+requestAnimationFrame
+----------------------------------------------------------------------------
 const promise = new Promise(); // екземпляр класу Promise
 
 ! Promise.resolve(value) - статичний метод класу Promise - повертає об'єкт Promise, виконаний з переданим значенням.
