@@ -291,3 +291,12 @@ testBtn.addEventListener('click', onClickTestBtn);
 function onClickTestBtn() {
   console.log('Clicked');
 }
+
+//TODO --------------------------------------------------------
+const arr = ['😄', '😊', '🤗', '😎', '🥰'];
+
+for (let i = 0; i < arr.length; i += 1) {
+  setTimeout(() => {
+    console.log(arr[i]);
+  }, 5000 * (i + 1));
+}
