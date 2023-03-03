@@ -597,3 +597,53 @@ Promise.allSettled([
     response => console.log(response) // [{…}, {…}, {…}] => [{ status: 'fulfilled', value: {name: 'Helen'}}, {{status: 'rejected', reason: 'Error'}}, {status: 'fulfilled', value: { name: 'John' }}]
   )
   .catch(err => console.error(err)); //Error
+
+//TODO ------------------------------------------------------------------------
+//Write a script that, at the time of submitting the form, calls the createPromise(position, delay) function as many times as entered in the amount field. During each call, pass it the number of the position being created and the delay, taking into account the first delay entered by the user and the step.
+// Add code to the createPromise function so that it returns a single promise that is fulfilled or rejected due to a time delay. The value of the promise must be an object in which there will be the position and delay properties with the values ​​of the parameters of the same name. Use the function's initial code to choose what to do with the promise - perform or reject.
+document.body.style.backgroundColor = '#f7eff4';
+const form = document.querySelector('form.form');
+const options = {
+  position: 'center-bottom',
+  distance: '15px',
+  borderRadius: '15px',
+  timeout: 10000,
+  clickToClose: true,
+  cssAnimationStyle: 'from-right',
+};
+
+form.addEventListener('click', onPromiseCreate);
+
+function createPromise(position, delay) {
+  return new Promise((resolve, reject) => {
+    const shouldResolve = Math.random() > 0.3;
+    setTimeout(() => {
+      if (shouldResolve) {
+        resolve({ position, delay });
+      } else {
+        reject({ position, delay });
+      }
+    }, delay);
+  });
+}
+
+function onPromiseCreate(e) {
+  e.preventDefault();
+  const { delay, step, amount } = e.currentTarget.elements;
+  let inputDelay = Number(delay.value);
+  let inputStep = Number(step.value);
+  let inputAmount = Number(amount.value);
+
+  for (let i = 1; i <= inputAmount; i += 1) {
+    inputDelay += inputStep;
+
+    createPromise(i, inputDelay)
+      .then(({ position, delay }) => {
+        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`, options);
+      })
+      .catch(({ position, delay }) => {
+        console.log(`❌ Rejected promise ${position} in ${delay}ms`, options);
+      });
+    e.currentTarget.reset();
+  }
+}
