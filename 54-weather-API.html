@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>54-weather-API</title>
+  </head>
+  <style>
+    body {
+      min-height: 100vh;
+    }
+    ul {
+      list-style: none;
+    }
+  </style>
+  <body>
+    <div class="weather">
+      <div class="weather__container">
+        <h3 class="weather__title">Weather Forecast</h3>
+        <h2 class="city">Weather in <span>London</span></h2>
+        <form action="submit" class="weather__form-search js-weather">
+          <input type="text" name="query" data-query placeholder="Enter a city name..." />
+          <select name="days" class="days js-days">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+          <button type="submit" id="search-btn">Search</button>
+        </form>
+        <ul class="weather__list js-list-weather"></ul>
+      </div>
+    </div>
+    <script src="./app/54-weather-API.js" type="module"></script>
+  </body>
+</html>
