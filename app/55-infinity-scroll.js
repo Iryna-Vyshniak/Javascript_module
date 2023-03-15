@@ -15,8 +15,22 @@ function rickandmortyAPI(page = 1) {
 }
 
 //! --------------------- btn LOAD MORE -----------------------------------------------
-//const load = document.querySelector('.js-load');
+// const load = document.querySelector('.js-load');
 // load.addEventListener('click', onLoad);
+
+// // для плавного прокручування сторінки після запиту і відтворення кожної наступної групи зображень
+// document.addEventListener('scroll', onScroll);
+
+// function onScroll() {
+//   const { height: cardHeight } = document
+//     .querySelector('.js-list')
+//     .firstElementChild.getBoundingClientRect();
+
+//   window.scrollBy({
+//     top: cardHeight * 2,
+//     behavior: 'smooth',
+//   });
+// }
 
 // rickandmorty();
 
@@ -27,6 +41,7 @@ function rickandmortyAPI(page = 1) {
 
 //       createMarkup(results);
 //       load.hidden = false;
+//       onScroll(); //плавне прокручування сторінки після запиту і відтворення кожної наступної групи зображень
 //     })
 //     .catch(err => console.log(err));
 // }
@@ -53,7 +68,8 @@ function rickandmortyAPI(page = 1) {
 // function onLoad() {
 //   nextPage();
 //   return rickandmortyAPI()
-//     .then(({ info: { pages }, results }) => {  // data
+//     .then(({ info: { pages }, results }) => {
+//       // data
 //       console.log('сторінка: ', page, 'всього сторінок: ', pages);
 
 //       if (pages === page) {
@@ -61,6 +77,7 @@ function rickandmortyAPI(page = 1) {
 //         return;
 //       }
 //       createMarkup(results);
+//       //   onScroll(); //плавне прокручування сторінки після запиту і відтворення кожної наступної групи зображень
 //     })
 //     .catch(err => console.log(err));
 // }
@@ -73,7 +90,7 @@ function rickandmortyAPI(page = 1) {
 //   page += 1;
 // }
 
-// //! --------------------- INFINITY SCROLL -----------------------------------------------
+//! --------------------- INFINITY SCROLL -----------------------------------------------
 /* https://developer.mozilla.org/ru/docs/Web/API/Intersection_Observer_API */
 
 /*
@@ -91,7 +108,7 @@ const observer = new IntersectionObserver(callback, options); */
 const guard = document.querySelector('.js-guard');
 
 const options = {
-  root: null, // слідкуємо за усім в'юпортом, якщо модалка беремо селектор: ex: document.querySelector('#scrollArea')
+  root: null, // слідкуємо за усім в'юпортом, якщо модалка - беремо селектор: ex: document.querySelector('#scrollArea')
   rootMargin: '300px', //за скільки пікселів до входження елемента в в'юпорт обсервер почиає слідкувати за ним
   threshold: 1.0, // вказали px, залишаємо без змін; Число або масив чисел, що вказує, при якому відсотку видимості цільового елемента повинен спрацювати callback
 };
@@ -137,6 +154,21 @@ const onLoad = function (entries, observer) {
 
 const observer = new IntersectionObserver(onLoad, options);
 
+//  для плавного прокручування сторінки після запиту і відтворення кожної наступної групи зображень
+document.addEventListener('scroll', onScroll);
+
+function onScroll() {
+  const { height: cardHeight } = document
+    .querySelector('.js-list')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
+}
+
+// функції для рендерингу
 rickandmorty();
 
 function rickandmorty() {
@@ -145,6 +177,7 @@ function rickandmorty() {
       console.log('сторінка: ', page, 'всього сторінок: ', pages);
 
       createMarkup(results);
+      onScroll();
       observer.observe(guard); // як тільки сторінка зарендерилася, ставимо спостерігача - observer спостерігати - .observe за охоронцем - guard
     })
     .catch(err => console.log(err));
