@@ -9,16 +9,30 @@
   <style>
     ul {
       list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
 
     li {
       border: 1px dotted limegreen;
       margin-bottom: 30px;
       width: 250px;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+    }
+    img {
+      display: block;
+      margin: 0;
+      width: 250px;
     }
   </style>
   <body>
     <ul class="list js-list"></ul>
+    <button type="button" class="js-load" hidden>Load more</button>
     <div class="js-guard"></div>
     <script src="./app/55-infinity-scroll.js" type="module"></script>
   </body>
