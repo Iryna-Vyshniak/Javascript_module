@@ -21,7 +21,7 @@ form.addEventListener('submit', onSearcherSubmit);
 btn.addEventListener('click', onLoadMore);
 
 // function onLoadMore() {
-//   const querySearch = form.searchQuery.value;
+//   const querySearch = form.searchQuery.value.trim().toLowerCase();
 
 //   createNextPage();
 //   btn.classList.add('is-hidden');
@@ -43,7 +43,7 @@ btn.addEventListener('click', onLoadMore);
 
 // function onSearcherSubmit(e) {
 //   e.preventDefault();
-//   const querySearch = e.currentTarget.searchQuery.value;
+//   const querySearch = e.currentTarget.searchQuery.value.trim().toLowerCase();
 
 //   btn.classList.add('is-hidden');
 //   page = 1;
@@ -163,24 +163,30 @@ async function onLoadMore() {
   const querySearch = form.searchQuery.value.trim().toLowerCase();
   createNextPage();
   btn.classList.add('is-hidden');
-  //   console.log(page);
+
   try {
     const data = await fetchPixabay(querySearch, page);
-    // console.log(page);
-    // console.log(data);
-
-    insertGalleryContent(data.hits);
-    galleryLightbox.refresh();
     // onScroll();
-    if (data.hits.length < 40) {
+    if (data.total === 0) {
+      Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.'
+      );
+      return;
+    }
+
+    if (data.hits.length < per_page) {
       Notify.info('These are all the images we found for your search query.');
-      // !btn
       btn.classList.add('is-hidden');
     } else {
       btn.classList.remove('is-hidden');
     }
+
+    insertGalleryContent(data.hits);
+    galleryLightbox.refresh();
   } catch (err) {
-    console.error(err);
+    console.log(
+      'Sorry, there are no images matching your search query. Please try again.'
+    );
   }
 }
 
@@ -188,43 +194,69 @@ async function onSearcherSubmit(e) {
   e.preventDefault();
   const querySearch = e.currentTarget.searchQuery.value.trim().toLowerCase();
 
+  btn.classList.add('is-hidden');
+
   if (!querySearch) {
     Notify.info('Please, enter what do you want to search 😉');
     return;
   }
-  btn.classList.add('is-hidden');
+  // !
+  if (lastSearchQuery === querySearch && gallery.innerHTML !== '') {
+    Notify.warning(
+      `We already found images for "${querySearch.toUpperCase()}.
+    Please, enter another phrase😉`
+    );
+    btn.classList.remove('is-hidden');
+    return;
+  }
+
+  lastSearchQuery = querySearch;
   page = 1;
 
   try {
     const data = await fetchPixabay(querySearch, page);
 
     if (data.total === 0) {
-      Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-      return;
-    }
-
-    if (lastSearchQuery === querySearch) {
-      Notify.warning(
-        `We already found ${data.totalHits} images for "${querySearch.toUpperCase()}.
-      Please, enter another phrase😉`
+      Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.'
       );
       return;
     }
+
+    // if (lastSearchQuery === querySearch && data.total === 0 && page === 1) {
+    //   Notify.failure(
+    //     'Sorry, there are no images matching your search query. Please try again.'
+    //   );
+    //   btn.classList.add('is-hidden');
+    //   return;
+    // }
+
+    // if (lastSearchQuery === querySearch) {
+    //   Notify.warning(
+    //     `We already found images for "${querySearch.toUpperCase()}.
+    //   Please, enter another phrase😉`
+    //   );
+    //   btn.classList.remove('is-hidden');
+    //   return;
+    // }
+    // lastSearchQuery = querySearch;
+
     clearGalleryContent();
     Notify.success(`Hooray! We found ${data.totalHits} images.`);
-    lastSearchQuery = querySearch;
 
     insertGalleryContent(data.hits);
     galleryLightbox.refresh();
 
-    if (data.hits.length < 40) {
+    if (data.hits.length < per_page) {
       Notify.info('These are all the images we found for your search query.');
       btn.classList.add('is-hidden');
     } else {
       btn.classList.remove('is-hidden');
     }
   } catch (err) {
-    console.error(err);
+    Notify.failure(
+      'Sorry, there are no images matching your search query. Please try again.'
+    );
   }
 }
 
@@ -235,16 +267,24 @@ async function fetchPixabay(query, page) {
 
   try {
     const { data } = await axios.get(url);
-    //   console.log(await axios.get(url));
-    // console.log(data);
     return data;
   } catch (err) {
-    console.log(err);
+    Notify.failure(
+      'Sorry, there are no images matching your search query. Please try again.'
+    );
   }
 }
 
 //створює розмітку для однієї карточки
-function createMarkup({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) {
+function createMarkup({
+  webformatURL,
+  largeImageURL,
+  tags,
+  likes,
+  views,
+  comments,
+  downloads,
+}) {
   return `<a href="${largeImageURL}" class="card-link js-card-link"
 
 ><div class="photo-card">
@@ -270,7 +310,8 @@ function createMarkup({ webformatURL, largeImageURL, tags, likes, views, comment
 }
 
 //генеруємо 40 карток
-const generateGalleryContent = array => array.reduce((acc, item) => acc + createMarkup(item), '');
+const generateGalleryContent = array =>
+  array?.reduce((acc, item) => acc + createMarkup(item), '');
 
 //додаємо в DOM галерею
 // const insertGalleryContent = array =>
@@ -289,15 +330,15 @@ function createNextPage() {
 }
 
 //  для плавного прокручування сторінки після запиту і відтворення кожної наступної групи зображень
-document.addEventListener('scroll', onScroll);
+// document.addEventListener('scroll', onScroll);
 
-function onScroll() {
-  const { height: cardHeight } = document
-    .querySelector('.gallery')
-    .firstElementChild.getBoundingClientRect();
+// function onScroll() {
+//   const { height: cardHeight } = document
+//     .querySelector('.gallery')
+//     .firstElementChild.getBoundingClientRect();
 
-  window.scrollBy({
-    top: cardHeight * 2,
-    behavior: 'smooth',
-  });
-}
+//   window.scrollBy({
+//     top: cardHeight * 2,
+//     behavior: 'smooth',
+//   });
+// }
