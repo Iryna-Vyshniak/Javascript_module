@@ -47,16 +47,18 @@ class NewsApiService {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
+    this.pageSize = 10;
   }
 
   fetchArticles() {
-    const url = `${BASE_URL}/everything?q=${this.searchQuery}&language=en&pageSize=5&page=${this.page}`;
+    const url = `${BASE_URL}/everything?q=${this.searchQuery}&language=en&pageSize=${this.pageSize}&page=${this.page}`;
 
     return fetch(url, options)
       .then(response => response.json())
-      .then(({ articles }) => {
+      .then(data => {
+        console.log(data);
         this.nextPage();
-        return articles;
+        return data.articles;
       });
   }
 
@@ -119,9 +121,15 @@ function fetchArticles() {
   newsApiService
     .fetchArticles()
     .then(articles => {
+      if (!articles) {
+        loadMoreBtn.hide();
+        alert('Not found articles more');
+        return;
+      }
       if (articles.length === 0) {
         loadMoreBtn.hide();
-        return alert('Not found articles');
+        alert('Not found articles');
+        return;
       }
       appendArticlesMarkup(articles);
       loadMoreBtn.enable();
