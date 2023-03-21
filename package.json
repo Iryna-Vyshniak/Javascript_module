@@ -1,5 +1,5 @@
 {
-  "name": "modul",
+  "name": "javascript-module",
   "version": "1.0.0",
   "description": "practic js",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Iryna-Vyshniak/modul.js.git"
+    "url": "git+https://github.com/Iryna-Vyshniak/Javascript_module.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Iryna-Vyshniak/modul.js/issues"
+    "url": "https://github.com/Iryna-Vyshniak/Javascript_module/issues"
   },
-  "homepage": "https://github.com/Iryna-Vyshniak/modul.js#readme",
+  "homepage": "https://github.com/Iryna-Vyshniak/Javascript_module#readme",
   "dependencies": {
     "@vimeo/player": "^2.18.0",
     "bootstrap.native": "^5.0.4",
