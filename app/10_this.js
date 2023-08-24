@@ -761,3 +761,24 @@ const shape = {
 
 console.log(shape.getDiameter()); // 20
 //console.log(shape.getPerimeter()); // TypeError: Cannot read properties of undefined (reading 'radius')
+
+// -------------------------------
+const mango = {
+  username: 'Mango',
+  showUsername() {
+    console.log(this);
+    console.log(`My username is: ${this.username}`);
+  },
+};
+
+const btnMango = document.querySelector('.js-btnMango');
+
+// ✅ Працює
+mango.showUsername();
+
+// ❌ this буде посилатися на button, якщо використовувати showUsername як callback
+
+// btn.addEventListener("click", mango.showUsername); // не працює
+
+// ✅ Не забувайте прив'язувати контекст методів об'єкта
+btnMango.addEventListener('click', mango.showUsername.bind(mango));
