@@ -73,4 +73,126 @@ null || (2 && 3) || 4
 Метод map змінює вихідний масив
 f
 
+__proto__ vs prototype
+
+__proto__ и prototype це властивість об'єкту?
++
+
+__proto__ є у всіх об'єктів?
++
+
+Який тип властивісті __proto__?
+object
+
+
+звернення до змінної має сенс?
+
+
+const ex = true;
+
+console.log(ex.__proto__) +
+
+const ex = "true";
+
+console.log(ex.__proto__) +
+
+const ex = 7;
+
+console.log(ex.__proto__) +
+
+t or f
+
+const ex = 7;
+const str = "str";
+
+console.log(ex.__proto__ === str.__proto__) -
+
+
+-------------------------------
+const book = {
+title: "The Last Kingdom" }
+const clients = ["Mango ,"Ajax"];
+
+console. log( clients. __proto__ === book.__proto__) -
+--------------------------------
+const book = {
+title: "The Last Kingdom"}
+
+const location = {
+country: "Jamaica" ,
+city: "Ocho Rios" 
+}
+
+console. log( location. __proto__ === book.__proto_) +
+--------------------------------
+
+function multiply( ) {}
+const fn = function (){}
+
+const arrowAdd = () => {}
+class User {}
+
+
+console. log( multiply. __proto__ !== fn.__proto__); -
+console. log( arrowAdd. __proto__ !== User.__proto__) -
+
+--------------------------------
+Чи може стрілочна функція бути функцією-конструктором? -
+
+--------------------------------
+
+Об'єкт, який одночасно є класом/функцією-конструктором має prototype? +
+
+--------------------------------
+console. log( Object . prototype === Array. prototype) -
+
+--------------------------------
+function Component() { } ;
+const newComponent = new Component( ) ;
+console . log( newComponent._ proto_ === Component.prototype ) ; +
+
+-------------------------------
+
+const book = {
+title: "The Last Kingdom" }
+
+
+console. log( book.prototype); undefined
+
+-----------------------------
+
+Чи є в class User значення prototype? +
+
+class User {
+constructor (name) {
+this.name = name;
+hello() {
+console.log(this.name);
+
+const mango = new User( "Mango" );
+console . log( User );
+Чи є в class User значення proto? +
+
+--------------------------------
+
+console.log(Object.prototype.__proto__ ); null
+
+--------------------------------
+
+Чому дорівнює значення class User.__proto__? Function.prototype
+
+class User {
+constructor (name) {
+this.name = name;
+hello() {
+console.log(this.name);
+
+const mango = new User( "Mango" );
+console. log(User.prototype.__proto__ === Object. prototype); TRUE
+
+
+
+
+
+
 
