@@ -31,3 +31,10 @@ function onInnerChildClick(evt) {
   console.log('onInnerChildClick -> evt.target', evt.target); //целевой элемент inner-child -> inner-child -> inner-child
   console.log('onInnerChildClick -> evt.currentTarget', evt.currentTarget); //inner-child.addEventListener -> child.addEventListener -> parent.addEventListener
 }
+
+const parent2 = document.querySelector('#parent2');
+
+parent2.addEventListener('click', event => {
+  console.log('event.target: ', event.target);
+  console.log('event.currentTarget: ', event.currentTarget);
+});

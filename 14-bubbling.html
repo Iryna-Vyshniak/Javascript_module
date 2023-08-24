@@ -30,6 +30,29 @@
       #inner-child {
         background-color: #009688;
       }
+      #parent2,
+      #child2,
+      #descendant {
+        margin: 16px;
+        padding: 16px;
+        border: 1px solid #4dff07;
+        border-radius: 4px;
+        color: #fff;
+        font-weight: 500;
+        font-size: 18px;
+      }
+
+      #parent2 {
+        background-color: #ef2020;
+      }
+
+      #child2 {
+        background-color: #e2a2ff;
+      }
+
+      #descendant {
+        background-color: #ff8800;
+      }
     </style>
   </head>
 
@@ -39,6 +62,14 @@
       <div id="child">
         CHILD
         <div id="inner-child">INNER-CHILD</div>
+      </div>
+    </div>
+
+    <div id="parent2">
+      Parent2
+      <div id="child2">
+        Child2
+        <div id="descendant">Descendant</div>
       </div>
     </div>
 
