@@ -247,9 +247,40 @@ for...in
 всім, хто має посилання
 
 
+-------------------------------
 
+arrays
 
+Що повертає Array.prototype.forEach()?
+Нічого не повертає, просто перебирає
 
+Чи можна перервати виконання Array.prototype.forEach()?
+False
+
+Array.prototype.map() змінює оригінальний масив?
+False
+
+Array.prototype.map() повертає ...
+Масив такої ж довжини
+
+Навіщо використовується Array.prototype.map()?
+для трансформації масив
+
+Що повертає Array.prototype.filter()?
+Новий масив (з елементами чи порожній)
+
+Що повертає Array.prototype.find()?
+Перший елемент, який задовільняє умову або undefined
+
+Array.prototype.every() та Array.prototype.some() змінюють вихідний
+масив?
+не змінюють
+
+Чи змінює оригінальний масив Array.prototype.sort()?
+True
+["A", "B", "a", "b"] default
+
+[1000, 240, 670, 360, 89, 20] => [1000, 20, 240, 360, 670, 89]
 
 
 
