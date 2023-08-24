@@ -1,3 +1,15 @@
+Що про Javascript правда
+З автоматичним керуванням пам'яттю
+Інтерпретований
+Мультипародигменний
+Однопоточний
+
+ECMAscript - Специфікація мови Javascript
+
+
+--------------------------------------------
+
+
 What is the difference between continuing and breaking a cycle?
 continue skips the current value and break terminates the loop
 continue пропускає поточне значення а break завершує цикл
