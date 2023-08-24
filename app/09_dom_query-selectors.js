@@ -16,7 +16,7 @@ parent.append(child); // работает отлично
 parent.appendChild(child); // работает отлично
 
 parent.append('Hello world'); // работает отлично
-parent.appendChild('Hello world'); // Ошибка Error Нельзя вставить
+// parent.appendChild('Hello world'); // Ошибка Error Нельзя вставить
 
 // аppend
 const appendValue = parent.append(child);
@@ -90,6 +90,14 @@ message.addEventListener('input', () => {
   - textContent
   https://images.pexels.com/photos/1870376/pexels-photo-1870376.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=480
 */
+
+const imageLaptop = document.querySelector('.image-laptop');
+console.log(imageLaptop.src); // https://picsum.photos/id/9/320/240
+
+console.log(imageLaptop.alt); // A laptop
+
+imageLaptop.src = 'https://picsum.photos/id/13/640/480';
+imageLaptop.alt = 'River bank';
 
 const imageEl = document.querySelector('.hero__image');
 console.log('imageEl', imageEl); //<img class="hero__image" src="https://images.pexels.com/photos/57416/cat-sweet-kitty-animals-57416.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=480" alt="It's me" width="320">
@@ -1089,3 +1097,6 @@ const spans = carsList.querySelectorAll('.car-item span');
 console.log(spans); // [span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span, span]
 const lastSpanText = spans[spans.length - 1].textContent;
 console.log(lastSpanText); // 7000$
+
+const text = document.querySelector('.text');
+text.remove();
