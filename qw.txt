@@ -57,3 +57,20 @@ NaN
 Яким буде результат виразу true && 5 > 3 && "javascript"?
 "Javascript"
 
+true && 4 && "hello"
+hello
+
+true && 0 && "hello"
+0
+
+null || 2 || undefined
+2
+
+
+null || (2 && 3) || 4
+3
+
+Метод map змінює вихідний масив
+f
+
+
